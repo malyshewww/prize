@@ -1,0 +1,148 @@
+-
+	const menu = [
+		{
+			title: 'Сладкие подарки',
+			name: '',
+			link: '#',
+			submenu: [
+				{
+					title: 'В мешочке',
+					link: '#'
+				},
+				{
+					title: 'Жестяные',
+					link: '#'
+				},
+				{
+					title: 'В тубе',
+					link: '#'
+				},
+				{
+					title: 'Куклы',
+					link: '#'
+				},
+				{
+					title: 'Сундуки и шкатулки',
+					link: '#'
+				},
+				{
+					title: 'Керамика и фетр',
+					link: '#'
+				},
+				{
+					title: 'Вложения в подарки',
+					link: '#'
+				},
+				{
+					title: 'Конфеты в коробках',
+					link: '#'
+				},
+				{
+					title: 'VIP подарки',
+					link: '#'
+				},
+				{
+					title: 'Новинки',
+					link: '#'
+				},
+			]
+		},
+		{
+			title: 'Упаковка',
+			name: '',
+			link: '#',
+			submenu: [
+				{
+					title: 'Картон',
+					link: '#'
+				},
+				{
+					title: 'Мягкая игрушка',
+					link: '#'
+				},
+				{
+					title: 'Мешки',
+					link: '#'
+				},
+				{
+					title: 'Жестяная упаковка',
+					link: '#'
+				},
+				{
+					title: 'Тубы',
+					link: '#'
+				},
+				{
+					title: 'Куклы',
+					link: '#'
+				},
+				{
+					title: 'Сундуки и шкатулки',
+					link: '#'
+				},
+				{
+					title: 'Керамика и фетр',
+					link: '#'
+				},
+			]
+		},
+		{
+			title: 'Орехи и Сухофрукты',
+			name: '',
+			link: '#',
+			submenu: [
+				{
+					title: 'Орехи',
+					link: '#'
+				},
+				{
+					title: 'Сухофрукты',
+					link: '#'
+				},
+			]
+		},
+		{
+			title: 'Символ года 2022',
+			name: '',
+			link: '',
+			submenu: []
+		},
+		{
+			title: 'В мягкой игрушке',
+			name: '',
+			link: '',
+			submenu: []
+		},
+		{
+			title: 'В картоне',
+			name: '',
+			link: '',
+			submenu: []
+		},
+		{
+			title: 'Распродажа',
+			name: '',
+			link: '',
+			submenu: []
+		},
+	];
+- let selected = pageTitle;
+- let menuActive = "";
+nav.menu
+	ul.menu__list
+		each menuItem, i in menu
+			if selected === menuItem.title
+				- menuActive = "active"
+			else
+				- menuActive = ""
+			li(class="menu__item " + menuActive)
+				a.menu__link(href="/" + menuItem.link)= menuItem.title
+				if typeof menuItem.submenu == typeof []
+				if menuItem.submenu.length > 0
+					span.menu__arrow 
+					ul.submenu__list
+						each subItem in menuItem.submenu
+							li.submenu__item
+								a.submenu__link(href=subItem.link)= subItem.title
+		else 
+			li No values

@@ -1,0 +1,34 @@
+.nuts {
+   padding: 61px 0 90px;
+   &__body{
+      grid-template-rows: repeat(3, 1fr 30px) 1fr;
+   }
+}
+.item-prize--sets {
+	background-image: url('../img/nuts/sets-bg.svg');
+   & .item-prize__text{
+      &::before{
+         color: $pinkColor;
+      }
+   }
+}
+.item-prize--nuts {
+	background-image: url('../img/nuts/nuts-bg.svg');
+   & .item-prize__text{
+      &::before{
+         color: $greenColor;
+      }
+   }
+}
+.item-prize--candied {
+	background-image: url('../img/nuts/candied-bg.svg');
+}
+.item-prize--dried {
+	background-image: url('../img/nuts/dried-bg.svg');
+}
+.item-prize--candied, 
+.item-prize--dried {
+   & .item-prize__text{
+      color: $mainColor;
+   }
+} 

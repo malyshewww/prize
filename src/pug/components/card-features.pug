@@ -1,0 +1,27 @@
+-
+   features = [
+      {
+         icon: "icon-1",
+         title: "Скидки постоянным покупателям"
+      },
+      {
+         icon: "icon-2",
+         title: "Бесплатная доставка при заказе от 10 подарков"
+      },
+      {
+         icon: "icon-3",
+         title: "Весь ассортимент сертифицирован"
+      },
+      {
+         icon: "icon-4",
+         title: "Подарки собираем перед отгрузкой – едут свежие"
+      },
+   ]
+section.features 
+   .container 
+      .features__body
+         each item in features
+            .features__item.item-features
+               .item-features__icon 
+                  img(src=`img/features/${item.icon}.svg`, alt=item.title)
+               h2.item-features__title= item.title

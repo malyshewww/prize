@@ -1,0 +1,50 @@
+-
+	let product = [
+		{
+			image: '1.jpg',
+			badgeSale: '-20%',
+			badgeNew: 'New',
+			title: 'Название товара',
+			description: "Описание товара",
+			currentPrice: "3500",
+			oldPrice: "5000",
+			button: "Добавить в корзину",
+			favorites: "Добавить в избранное"
+		},
+		{
+			image: '1.jpg',
+			badgeNew: 'New',
+			title: 'Название товара',
+			description: "Описание товара",
+			currentPrice: "3500",
+			oldPrice: "5000",
+			button: "Добавить в корзину",
+			favorites: "Добавить в избранное"
+		},
+	];
+
+each productItem, value in product
+	article(class="products__item item-product")
+		if productItem.badgeSale && productItem.badgeNew
+			div(class="item-product__labels")
+				div.item-product__label.item-product__label_new= productItem.badgeNew
+				div.item-product__label.item-product__label_sale= productItem.badgeSale
+		else if productItem.badgeNew
+			div(class="item-product__labels")
+				div.item-product__label.item-product__label_new= productItem.badgeNew
+		else if productItem.badgeSale
+			div(class="item-product__labels")
+				div.item-product__label.item-product__label_sale= productItem.badgeSale
+		else 
+		a(href="", class="item-product__image")
+			img(src="img/block/" + productItem.image, alt=productItem.title)
+		div(class="item-product__body")
+			div(class="item-product__content")
+				h3(class="item-product__title")= productItem.title
+				div(class="item-product__description")= productItem.description
+			div(class="item-product__prices")
+				div(class="item-product__price")= productItem.currentPrice
+				div(class="item-product__price item-product__price_old")= productItem.oldPrice
+			div(class="item-product__actions actions-product")
+				div(class="actions-product__body")
+					a(href="" class="actions-product__button btn btn_white")= productItem.button

@@ -1,0 +1,41 @@
+.package{
+   padding: 61px 0 61px;
+   & .container {
+      max-width: 1354px;
+   }
+   &__body{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      background-image: url("../img/package/bg-bottom.png");
+      background-size: 100% 100%;
+      background-position: 100% 100%;
+      background-repeat: no-repeat;
+      background-color: $grayColorF2;
+      border-radius: 62px;
+      padding: 60px 159px 68px 0;
+   }
+   &__content{
+      max-width: 390px;
+   }
+   &__text{
+      & p {
+         font-size: 16px;
+         line-height: math.div(24, 16) * 100%;
+         color: $blackColor;
+         font-family: 'SourceSansPro', sans-serif;
+      }
+   }
+   &__btn{
+      margin-top: 34px;
+      max-width: 222px;
+   }
+   &__image{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+   }
+}

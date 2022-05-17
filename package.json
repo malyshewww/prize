@@ -1,0 +1,67 @@
+{
+	"name": "gulp-2022",
+	"version": "1.0.0",
+	"description": "",
+	"main": "gulpfile.js",
+	"type": "module",
+	"scripts": {
+		"dev": "gulp",
+		"build": "gulp build --build",
+		"zip": "gulp deployZIP --build",
+		"deploy": "gulp deployFTP --build",
+		"svgSprive": "gulp svgSprive"
+	},
+	"browserslist": [
+		"last 3 versions"
+	],
+	"babel": {
+		"presets": [
+			"@babel/preset-env"
+		]
+	},
+	"author": "Alex",
+	"license": "ISC",
+	"dependencies": {
+		"gulp-cli": "^2.3.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.16.12",
+		"@babel/preset-env": "^7.16.11",
+		"babel-loader": "^8.2.5",
+		"browser-sync": "latest",
+		"del": "latest",
+		"gulp": "latest",
+		"gulp-autoprefixer": "latest",
+		"gulp-babel": "^8.0.0",
+		"gulp-clean-css": "latest",
+		"gulp-file-include": "latest",
+		"gulp-fonter-fix": "latest",
+		"gulp-group-css-media-queries": "latest",
+		"gulp-if": "latest",
+		"gulp-imagemin": "latest",
+		"gulp-newer": "latest",
+		"gulp-notify": "latest",
+		"gulp-plumber": "latest",
+		"gulp-pug": "^5.0.0",
+		"gulp-rename": "latest",
+		"gulp-replace": "latest",
+		"gulp-sass": "latest",
+		"gulp-svg-sprite": "latest",
+		"gulp-tinypng-compress": "^1.2.5",
+		"gulp-ttf2woff2": "latest",
+		"gulp-uglify": "^3.0.2",
+		"gulp-util": "latest",
+		"gulp-version-number": "latest",
+		"gulp-webp": "latest",
+		"gulp-webp-html-nosvg": "latest",
+		"gulp-webpcss": "latest",
+		"gulp-zip": "latest",
+		"jquery": "^3.6.0",
+		"sass": "latest",
+		"swiper": "^8.1.4",
+		"vinyl-ftp": "latest",
+		"webp-converter": "2.2.3",
+		"webpack": "latest",
+		"webpack-stream": "latest"
+	}
+}

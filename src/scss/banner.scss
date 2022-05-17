@@ -1,0 +1,137 @@
+.home-banner {
+   padding-bottom: 46px;
+   &__body {
+      position: relative;
+   }
+   &__wrapper {
+   }
+   &__item {
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 357px;
+      height: initial;
+      padding: 70px 0 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+      & .container {
+         display: flex;
+         justify-content: flex-start;
+         width: 100%;
+      }
+      &::before{
+         content: "";
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: rgb(94,203,173);
+         background: radial-gradient(circle, rgba(94,203,173,1) 35%, rgba(255,250,203,1) 100%);
+         z-index: -1;
+      }
+   }
+   &__info {
+      max-width: 570px;
+      color: $whiteColor;
+   }
+   &__title {
+      font-size: 24px;
+      line-height: math.div(40, 24) * 100%;
+      text-transform: uppercase;
+      font-weight: 400;
+      & span{
+         font-weight: 700;
+      }
+   }
+   &__subtitle {
+      margin-top: 16px;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: math.div(45, 24) * 100%;
+      font-weight: 400;
+      & span{
+         font-weight: 700;
+      }
+   }
+   &__btn {
+      margin-top: 44px;
+      padding: 14px;
+      min-height: 52px;
+   }
+   &__navigation {
+      &.container{
+         max-width: 1390px;
+         margin: 0 auto;
+         position: absolute;
+         display: flex;
+         justify-content: space-between;
+         width: 100%;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+   }
+}
+.btn {
+   background: $redColor;
+   color: $whiteColor;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-radius: 50px;
+   min-height: 40px;
+   font-weight: 500;
+   max-width: 284px;
+   cursor: pointer;
+   font-size: 20px;
+   line-height: math.div(24, 20) * 100%;
+   transition: all .2s ease 0s;
+   @media (any-hover: hover) {
+      &:hover{
+         background-color: $redColorHover;
+      }
+   }
+}
+.btn.btn__zero {
+   background: $whiteColor;
+   color: $redColor;
+   max-width: 217px;
+   @media (any-hover: hover) {
+      &:hover{
+         background-color: $redColorHover;
+         color: $whiteColor;
+      }
+   }
+}
+.home-banner-button {
+   width: 31px;
+   height: 31px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: none;
+   &::before{
+      font-size: 25px;
+      color: $whiteColor;
+      transition: all .2s ease-in 0s;
+   }
+   &:hover{
+      &::before{
+         color: $redColor;
+      }
+   }
+   &.swiper-button-disabled{
+      cursor: default;
+      &:hover::before{
+         color: $whiteColor;
+      }
+   }
+   &__prev {
+   }
+   &__next {
+   }
+}
+

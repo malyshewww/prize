@@ -1,0 +1,83 @@
+-
+	footerMenu = [
+		{
+			label: "Сладкие подарки",
+			link1: "Сладкие подарки",
+			link2: "В мягкой игрушке",
+			link3: "В картоне",
+			link4: "В мешочке",
+			link5: "Жестяные",
+			link6: "Сундуки и шкатулки",
+		},
+		{
+			label: "Орехи и сухофрукты",
+			link1: "Наборы",
+			link2: "Орехи",
+			link3: "В картоне",
+			link4: "Сухофрукты",
+			link5: "Цукаты",
+			link6: "НОВОГОДНЯЯ УПАКОВКА",
+		},
+		{
+			label: "О компании",
+			link1: "Отзывы",
+			link2: "FAQ",
+			link3: "Сертификаты",
+			link4: "Доставка и оплата",
+			link5: "Гарантии",
+			link6: "Подарки с логотипом",
+		},
+		
+	]
+
+footer.footer 
+	.container
+		.footer__main.main-footer 
+			.footer__left 
+				a(href="#").footer-logo
+					.footer-logo__image 
+						img(src="img/footer/logo.svg", alt="")
+					.footer-logo__text 
+						img(src="img/footer/logo-text.svg", alt="")
+				a(href="#").footer__button.btn Соберите подарок
+			.footer__menu.menu-footer
+				each item in footerMenu
+					.menu-footer__column
+							p.menu-footer__label !{item.label} 
+							ul.menu-footer__list
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link1
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link2
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link3
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link4
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link5
+								li.menu-footer__item 
+									a(href="#").menu-footer__link= item.link6
+				.menu-footer__column.footer-contacts
+					p.menu-footer__label Контакты
+					ul.footer-contacts__list 
+						li.icon-phone-white.footer-contacts__item
+							a(href="tel:88312239969").footer-contacts__link 8 (831) 223-99-69
+						li.icon-email.footer-contacts__item 
+							a(href="mailto:info@podarok-nnov.ru").footer-contacts__link info@podarok-nnov.ru
+						li.icon-location.footer-contacts__item.
+							603096, г.&nbsp;Нижний Новгород, <br>
+							ул.&nbsp;Силикатная, д.4 <br>
+							БЦ&nbsp;“Комплекс-Групп”
+						li.icon-time.footer-contacts__item.
+							пн-пт, 9.00-19.00
+	.footer__bottom.bottom-footer 
+		.container 
+			.bottom-footer__copy © ООО «Комплекс-НН», 2004-2022
+			|
+			|
+			a(href="#").bottom-footer__map.icon-vk-white Карта сайта
+			|
+			|
+			a(href="#").bottom-footer__link Политика конфиденциальности
+
+

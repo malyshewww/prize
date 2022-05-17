@@ -1,0 +1,145 @@
+/* Адаптивные изображения */
+.ibg{
+	position: relative;
+	& img,
+	& video,
+	& iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+/* Знак рубля */
+.rub {
+	position: relative;
+	&::before{
+		content: "₽";
+		position: absolute;
+	}
+}
+
+/* Убираем стрелки у input[type="number"] */
+// для браузера Chrome
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+// для браузера Firefox
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+input[type="number"]:hover,
+input[type="number"]:focus {
+	-moz-appearance: number-input;
+}
+/* Убираем крестик у input[type="search"] */
+input[type=text]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal { display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+// Скрыть scrollbar
+// for Chrome
+.block::-webkit-scrollbar{
+	width: 0;
+	height: 0;
+	background: none;
+}
+.block::-webkit-scrollbar-track{
+	width: 0;
+	height: 0;
+	background: none;
+}
+.block::-webkit-scrollbar-thumb{
+	width: 0;
+	height: 0;
+	background: none;
+}
+// for Mozila
+.block {
+	scrollbar-width: none;
+}
+
+
+// Стили для swiper
+._swiper{
+	overflow: hidden;
+}
+._swiper-wrapper{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+}
+._swiper-slide {
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+// Шаблоны (заготовки)
+// @extend %имя шаблона;
+// Серый фильтр
+%grayfilter {
+	transition: all 0.3s ease 0s;
+	filter: grayscale(1);
+	@media (any-hover: hover) {
+		&:hover {
+			filter: grayscale(0);
+		}
+	}
+}
+
+// Счетчик для списка
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
+// Видео в качестве фона
+%videoBackground {
+	video,
+	iframe,
+	object,
+	embed {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		min-width: 100%;
+		min-height: 100%;
+		width: auto;
+		height: auto;
+		z-index: -100;
+		transform: translateX(-50%) translateY(-50%);
+		background-size: cover;
+	}
+}
+
+// Учет плавающей панели на мобильных устройствах при 100vh
+[data-fullscreen] {
+	min-height: 100vh;
+	.touch & {
+		min-height: calc(var(--vh, 1vh) * 100);
+		@media (max-width: $md) {
+			transition: height 0.2s;
+		}
+	}
+}

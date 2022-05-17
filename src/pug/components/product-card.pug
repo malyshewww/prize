@@ -1,0 +1,52 @@
+each productItem, index in product
+   .products__card.card-product
+      .card-product__box
+         .card-product__favorite.icon-favorites
+         .card-product__badge
+            span= productItem.badge
+         .card-product__header 
+            a(href="#").card-product__image.ibg
+               img(src=`img/products/${productItem.img}-${index+1}.png`, alt=productItem.name)
+            .card-product__article= productItem.article
+            a(href="#").card-product__title= productItem.name 
+         .card-product__body 
+            .card-product__inner 
+               ul.card-product__rating 
+                  li 
+                     img(src="img/icons/star.svg", alt="")
+                  li 
+                     img(src="img/icons/star.svg", alt="")
+                  li 
+                     img(src="img/icons/star.svg", alt="")
+                  li 
+                     img(src="img/icons/star.svg", alt="")
+                  li 
+                     img(src="img/icons/star-t.svg", alt="")
+               .card-product__compare.icon-prepare
+            .choice-groups
+               each item in choices
+                  .card-product__choice.choice-group
+                     label.choice-group__label
+                        input(type="radio" name=`radio-${index+1}` checked class="choice-group__input real-radio")
+                        span.custom-radio
+                        span.choice-group__text Классик
+                     .choice-group__value 200 г
+                     .choice-group__arrow
+                  .card-product__choice.choice-group
+                     label.choice-group__label
+                        input(type="radio" name=`radio-${index+1}` class="choice-group__input real-radio")
+                        span.custom-radio
+                        span.choice-group__text Премиум
+                     .choice-group__value 600 г
+                     .choice-group__arrow
+                  .card-product__choice.choice-group
+                     label.choice-group__label
+                        input(type="radio" name=`radio-${index+1}` class="choice-group__input real-radio")
+                        span.custom-radio
+                        span.choice-group__text VIP 
+                     .choice-group__value 300 г
+                     .choice-group__arrow
+         .card-product__footer 
+            .card-product__prices 
+               .card-product__price= productItem.price
+            a(href="#").card-product__button.btn Купить

@@ -1,0 +1,136 @@
+.footer {
+   background: $greenColorDark;
+   font-family: 'SourceSansPro', sans-serif;
+   color: $whiteColor;
+   &__main {
+      padding: 50px 0 50px;
+      display: flex;
+      align-items: flex-start;
+      column-gap: 53px;
+   }
+   &__left {
+      display: flex;
+      align-items: flex-end;
+      flex-direction: column;
+   }
+   &__button {
+      min-height: 33px;
+      max-width: 154px;
+      width: 100%;
+      font-size: 12px;
+      line-height: math.div(15, 12) * 100%;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 700;
+   }
+   &__menu {
+   }
+
+   &__bottom {
+   }
+}
+.main-footer {
+}
+.footer-logo {
+   display: flex;
+   align-items: center;
+   column-gap: 12px;
+   &__image {
+   }
+   &__text {
+      padding: 12px 0 0;
+   }
+}
+.menu-footer {
+   display: flex;
+   row-gap: 20px;
+   &__column {
+      display: flex;
+      flex-direction: column;
+      &:not(:last-child){
+         margin-right: 37px;
+      }
+   }
+   &__label {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+   }
+   &__list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2px;
+   }
+   &__item {
+   }
+   &__link {
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+      transition: color .2s ease 0s;
+      &:hover {
+         color: $redColorHover;
+      }
+   }
+}
+.footer-contacts {
+   &__list {
+   }
+   &__item {
+      display: flex;
+      align-items: center;
+      &:not(:last-child) {
+         margin-bottom: 8px;
+      }
+      &::before{
+         width: 16px;
+         height: 20px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         font-size: 16px;
+         margin-right: 10px;
+      }
+   }
+   &__link {
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+   }
+}
+.icon-email::before{
+   font-size: 12px;
+}
+.icon-location.footer-contacts__item{
+   align-items: flex-start;
+   line-height: math.div(20 , 16) * 100%;
+}
+.bottom-footer {
+   border-top: 1px solid rgba($whiteColor, 0.5);
+   padding: 24px 0 24px;
+   font-size: 16px;
+   line-height: math.div(24, 16) * 100%;
+   & .container {
+      display: flex;
+      column-gap: 23px;
+   }
+   &__copy {
+   }
+   &__map {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      &::before{
+         width: 24px;
+         height: 24px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         margin-right: 24px;
+         font-size: 14px;
+      }
+   }
+   & a.bottom-footer__link {
+      text-decoration: underline;
+   }
+}
+

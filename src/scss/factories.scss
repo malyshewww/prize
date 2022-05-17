@@ -1,0 +1,35 @@
+.factories {
+	padding: 65px 0 60px;
+	& .container {
+		max-width: 1354px;
+	}
+	&__body {
+		border-radius: 60px;
+		background-color: $grayColorF2;
+		padding: 55px 92px 67px 92px;
+		background-image: url("../img/factories/bg.svg");
+		background-repeat: no-repeat;
+		background-position: 0 0;
+	}
+	&-slider {
+		position: relative;
+		padding: 0 10px;
+	}
+	&__wrapper {
+	}
+	&__item {
+	}
+	&__controls {
+	}
+}
+.item-factories {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&__image {
+		& img {
+			height: auto;
+			width: 100%;
+		}
+	}
+}

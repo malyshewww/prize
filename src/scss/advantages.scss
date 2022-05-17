@@ -1,0 +1,51 @@
+.advantages {
+   padding: 46px 0 64px;
+   &__body {
+      display: flex;
+      justify-content: space-between;
+      column-gap: 47px;
+   }
+   &__item {
+   }
+}
+.item-advantages {
+   display: flex;
+   &--price{
+      flex: 0 1 33%;
+   }
+   &--individual{
+      flex: 0 1 31%;
+      & .item-advantages__title{
+         margin-bottom: 12px;
+      }
+   }
+   &--quality{
+      flex: 0 1 34%;
+   }
+   &__icon {
+      width: 110px;
+      height: 110px;
+      flex: 0 0 110px;
+   }
+
+   &__content {
+      padding-top: 14px;
+   }
+   &__title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: math.div(24, 20) * 100%;
+      margin-bottom: 10px;
+   }
+   &__text {
+      & p {
+         font-family: 'SourceSansPro', sans-serif;
+         font-size: $fontSize;
+         line-height: math.div(23, 16) * 100%;
+         color: $blackColor;
+      }
+      & p:not(:last-child) {
+         margin-bottom: 10px;
+      }
+   }
+}

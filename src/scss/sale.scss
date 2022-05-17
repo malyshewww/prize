@@ -1,0 +1,44 @@
+.sale {
+	padding: 65px 0 72px;
+	& .container {
+		max-width: 1354px;
+	}
+	&__body {
+		padding: 55px 88px 67px;
+		background: url("../img/sale/bg.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		border-radius: 60px;
+		position: relative;
+		overflow: hidden;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90.24deg, #f2f2f2 0.23%, rgba(242, 242, 242, 0) 61.33%);
+			z-index: -1;
+		}
+	}
+	&__content {
+		max-width: 668px;
+	}
+	&__text {
+		margin-bottom: 34px;
+		& p {
+			font-size: 16px;
+			line-height: math.div(24, 16) * 100%;
+			color: $blackColor;
+			font-family: "SourceSansPro", sans-serif;
+			font-weight: 400;
+		}
+		& p:not(:last-child) {
+			margin-bottom: 24px;
+		}
+	}
+	&__button {
+		max-width: 203px;
+	}
+}

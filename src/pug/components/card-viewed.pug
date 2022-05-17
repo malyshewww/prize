@@ -1,0 +1,49 @@
+-
+   product = [
+      {
+         "img": "product",
+         "article": "#0002",
+         "name": "Cнежинка золотая",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+      {
+         "img": "product",
+         "article": "#0074",
+         "name": "Короб почтальона Ассорти",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+   ],
+   choices = [
+      choice = [
+         {
+            "title": "Классик",
+            "value": "1100 г",
+            "checked": true,
+         },
+         {
+            "title": "Премиум",
+            "value": "600 г",
+            "checked": false,
+         },
+         {
+            "title": "VIP",
+            "value": "300 г",
+            "checked": false,
+         },
+      ],
+   ]
+section.products.viewed
+   .container 
+      .header-block.header-block__products
+         h2.header-block__title
+            span.header-block__text Просмотренные подарки
+   .slider-container.container
+      .products__slider
+         .products__wrapper
+            .products__body
+               include product-card
+            .products__controls
+               button.slide-arrow.slide-arrow__prev.icon-arrow-prev
+               button.slide-arrow.slide-arrow__next.icon-arrow-next

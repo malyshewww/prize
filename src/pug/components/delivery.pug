@@ -1,0 +1,40 @@
+-
+	delivery = [
+		{
+			"img":"1.svg",
+			"title":"Поможем определиться с&nbsp;выбором презента",
+			"description":"",
+		},
+		{
+			"img":"2.svg",
+			"title":"Дополним подарок <br> логотипом",
+			"description":"",
+		},
+		{
+			"img":"3.svg",
+			"title":"Подберем оптимальный по&nbsp;стоимости вариант",
+			"description":"",
+		},
+		{
+			"img":"4.svg",
+			"title":"Доставим в любой город РФ",
+			"description":'<p class="item-delivery__description">Доставка по Нижнему Новгороду и&nbsp;области — <span class="red">БЕСПЛАТНО</span></p>',
+		},
+	]
+
+section.delivery
+	.container
+		.delivery__body
+			.delivery__image
+				img(src="img/delivery/car.png", alt="")
+			.delivery__content
+				h2.delivery__title Мы возьмем на себя все хлопоты по&nbsp;оформлению, подбору и доставке корпоративных подарков:
+				.delivery__items
+					each item, index in delivery
+						.delivery__item.item-delivery
+							.item-delivery__icon
+								img(src=`/img/delivery/${index+1}.svg`, alt=item.title)
+							.item-delivery__content 
+								.item-delivery__title!= item.title
+								!=item.description?item.description:""
+

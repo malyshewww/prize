@@ -1,0 +1,37 @@
+.breadcrumbs {
+   padding: 31px 15px 29px;
+   &__list {
+      display: flex;
+      align-items: center;
+      column-gap: 9px;
+   }
+   &__item {
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+      color: $grayColor82;
+      font-family: 'SourceSansPro', sans-serif;
+      position: relative;
+      & + .breadcrumbs__item {
+         padding-left: 17px;
+         &::before{
+            content: ">";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            display: inline-block;
+            color: $greenColor;
+            font-size: 16px;
+            line-height: math.div(24, 16) * 100%;
+            font-family: inherit;
+            font-weight: 600;
+         }
+      }
+   }
+
+   &__link {
+      color: inherit;
+      font-family: inherit;
+   }
+}
+

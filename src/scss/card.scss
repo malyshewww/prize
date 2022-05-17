@@ -1,0 +1,597 @@
+// ================ CARD-SLIDER ================================
+.main-card {
+   &__wrapper {
+      display: flex;
+      column-gap: 50px;
+      max-width: 1073px;
+      padding-bottom: 18px;
+   }
+   &__info {
+   }
+   &__title {
+   }
+}
+.main-card-slider {
+   display: flex;
+   flex: 0 0 math.div(602, 1140) * 100%;
+   max-width: 602px;
+   max-height: 446px;
+   &__thumbs {
+   }
+   &__base {
+   }
+}
+.thumbs-slider {
+   padding: 20px;
+   margin: -20px;
+   flex-shrink: 0;
+   max-height: 480px;
+   &__wrapper {
+      flex-direction: column;
+   }
+   &__item {
+      width: 136px;
+      height: 100%;
+      flex: 0 0 136px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      background: $whiteColor;
+      transition: box-shadow .2s ease 0s;
+      &.swiper-slide-thumb-active{
+         box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+      }
+   }
+   &__image {
+      & img {
+         max-width: 100%;
+      }
+   }
+}
+.base-slider {
+   height: 100%;
+   margin-left: 20px;
+   position: relative;
+   &__wrapper {
+   }
+   &__item {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 78px 55px;
+   }
+   &__image {
+      padding-bottom: math.div(291, 335) * 100%;
+      position: relative;
+      width: 100%;
+      & img {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         max-width: 100%;
+      }
+   }
+   &__controls{
+      & .slide-arrow__prev{
+         left: 14px;
+      }
+      & .slide-arrow__next{
+         right: 14px;
+      }
+   }
+}
+.main-card {
+   &__info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+   }
+   &__title {
+      margin-bottom: 3px;
+   }
+   &__reviews {
+      display: flex;
+      align-items: center;
+   }
+   &__parameters {
+   }
+   &__quantity {
+   }
+   &__actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 0 6px;
+   }
+   &__bottom {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: math.div(20, 16) * 100%;
+      font-family: 'Montserrat', sans-serif;
+
+   }
+   &__favorite,
+   &__compare {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      &::before{
+         font-size: 20px;
+         color: inherit;
+      }
+   }
+}
+.reviews-rating {
+   &__list {
+      display: flex;
+      align-items: center;
+      column-gap: 3px;
+      & li {
+         width: 27px;
+         height: 27px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   }
+   &__value {
+      margin-left: 10px;
+      color: $grayColor82;
+      text-decoration: underline;
+   }
+   &__count {
+   }
+}
+.parameters {
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
+   &__label {
+      color: $grayColorBD;
+      line-height: math.div(24, 16) * 100%;
+      flex-shrink: 0;
+   }
+   &__value {
+      line-height: math.div(24, 16) * 100%;
+      color: $mainColor;
+      display: flex;
+      align-items: center;
+   }
+   &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+   }
+   &__button {
+      background: $greenColor;
+      color: $whiteColor;
+      border-radius: 5px;
+      min-height: 24px;
+      min-width: 87px;
+      padding: 4px 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: math.div(15, 12) * 100%;
+      font-family: 'Montserrat', sans-serif;
+      &--zero{
+         background-color: transparent;
+         border: 1px solid $greenColor;
+         color: $greenColor;
+      }
+   }
+   &__warning {
+      font-weight: 600;
+      font-size: 11px;
+      line-height: math.div(12, 11) * 100%;
+      color: $pinkColor;
+      margin-left: 18px;
+   }
+   & a.parameters__watch {
+      line-height: math.div(24, 16) * 100%;
+      color: $grayColor82;
+      text-decoration: underline;
+      margin-left: 6px;
+   }
+}
+.parameters-group {
+   display: flex;
+   align-items: center;
+   column-gap: 10px;
+   font-size: 16px;
+   &--weight{
+      & .parameters__button {
+         min-width: 54px;
+      }
+   }
+}
+.quantity-card {
+   display: flex;
+   align-items: center;
+   column-gap: 20px;
+   &__box {
+      border: 1px solid $grayColorBD;
+      border-radius: 5px;
+      max-width: 80px;
+      display: flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      gap: 10px;
+   }
+   &__button {
+      height: 11px;
+      flex: 0 0 11px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      background: none;
+      position: relative;
+      &--minus::before,
+      &--plus::before,
+      &--plus::after{
+         content: "";
+         width: 11px;
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         height: 1px;
+         background: $blackColor;
+      }
+      &--plus::after{
+         transform: rotate(-90deg);
+      }
+      &--disabled{
+         pointer-events: none;
+         &::before,
+         &::after{
+            background: $grayColorBD;
+         }
+      }
+   }
+   &__input {
+      width: 100%;
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+   }
+   &__price {
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 45px;
+   }
+}
+.actions {
+   &__buttons {
+   }
+   &__button {
+      font-family: 'Montserrat', sans-serif;
+      flex: 1 1 auto;
+      max-width: 161px;
+      min-height: 40px;
+      padding: 9px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: math.div(20, 16) * 100%; 
+      &.btn__zero{
+         max-width: 161px;
+         border: 1px solid $redColor;
+      }
+   }
+}
+
+.general {
+   &__title {
+      font-size: 30px;
+      line-height: math.div(45, 30) * 100%;
+      font-weight: 700;
+      color: $blackColor;
+      text-transform: uppercase;
+   }
+}
+
+// ================ CARD-FEATURES ================================
+.features {
+   padding: 52px 0 100px;
+   &__body {
+      padding: 13px 36px 13px 16px;
+      border: 1px solid $grayColorBD;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr 1.2fr;
+      gap: 48px;
+   }
+   &__item {
+   }
+}
+.item-features {
+   display: flex;
+   align-items: center;
+   &__icon {
+      width: 70px;
+      height: 70px;
+   }
+   &__title {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+      color: $blackColor;
+   }
+}
+
+// ================ CARD-TABS ================================
+.tabs {
+   padding: 0 0 65px;
+   &__body {
+   }
+   &__list {
+      display: flex;
+      align-items: center;
+      column-gap: 67px;
+      position: relative;
+      &::before,
+      &::after{
+         content: "";
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         width: 100vw;
+         height: 4px;
+         background: $grayColorF2;
+         border-radius: 10px;
+      }
+      &::after{
+         transform: translateX(-100%);
+      }
+   }
+   &__item {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: math.div(24, 20) * 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      padding-bottom: 18px;
+      position: relative;
+      &::before{
+         content: "";
+         position: absolute;
+         border-bottom: 4px solid $redColor;
+         width: 100%;
+         bottom: 0;
+         left: 0;
+         background: $redColor;
+         transform: scale(0);
+         transition: transform .3s ease 0s;
+      }
+      &.active::before{
+         transform: scale(1);
+      }
+   }
+   &__content {
+      display: none;
+      padding-top: 70px;
+      &.show{
+         display: block;
+      }
+   }
+   &__content--compound {
+   }
+   &__content--description {
+      padding-top: 51px;
+   }
+   &__content--reviews {
+   }
+}
+.card-compound {
+   &__box {
+      &:not(:last-child){
+         margin-bottom: 46px;
+      }
+   }
+   &__label {
+      background: $grayColorF2;
+      border-radius: 10px;
+      padding: 13px 26px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      text-transform: uppercase;
+   }
+   &__body {
+      padding: 35px 0 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px 30px;
+   }
+   &__item {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      min-height: 235px;
+      position: relative;
+      padding: 11px 0 0;
+   }
+   &__count {
+      background: $greenColor;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      color: $whiteColor;
+   }
+   &__image {
+      width: 100%;
+      max-width: 100%;
+      height: 134px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 7px;
+      & img {
+         width: 100%;
+      }
+   }
+   &__company-name {
+      font-weight: 400;
+      line-height: math.div(24, 16) * 100%;
+      color: $grayColor82;
+      margin-bottom: 4px;
+   }
+   &__title {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      color: $blackColor;
+   }
+}
+.label-compound-result {
+   background: $greenColor;
+   color: $whiteColor;
+   display: flex;
+   align-items: center;
+   column-gap: 3px;
+   &__quantity {
+      text-transform: lowercase;
+   }
+}
+
+.tabs-content {
+   &__description {
+   }
+}
+.card-description {
+   &__body {
+      display: flex;
+      align-items: center;
+      column-gap: 30px;
+      margin-right: -90px;
+   }
+   &__image {
+      & img {
+         height: auto;
+      }
+   }
+   &__content {
+      background-color: $grayColorF2;
+      border-radius: 30px;
+      background-image: url('../img/card/descr-bg.svg');
+      background-repeat: no-repeat;
+      background-position: 100% 0;
+      background-size: auto auto;
+      padding: 43px 72px 43px 63px;
+      & p {
+         font-family: 'SourceSansPro', sans-serif;
+         font-size: 16px;
+         line-height: math.div(24, 16) * 100%;
+         color: $blackColor;
+      }
+   }
+}
+
+.card-reviews {
+}
+.reviews {
+   &__body {
+   }
+   &__button {
+      max-width: 200px;
+   }
+   &__show-more.btn.btn-green {
+      border: 1px solid $greenColor;
+      background: transparent;
+      color: $greenColor;
+      max-width: 195px;
+   }
+}
+
+.reviews-items {
+   display: flex;
+   flex-direction: column;
+   padding: 50px 0 32px;
+}
+.reviews-item {
+   padding: 24px 0;
+   display: flex;
+   align-items: flex-start;
+   column-gap: 39px;
+   border-top: 1px solid $grayColorF2;
+   &:last-child {
+      border-bottom: 1px solid $grayColorF2;
+   }
+   &__data {
+   }
+   &__content {
+   }
+   &__rating {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-bottom: 10px;
+   }
+   &__text {
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+   }
+}
+.data-reviews {
+   text-align: center;
+   &__icon {
+      background: $redColorLight;
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      flex: 0 0 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $whiteColor;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: math.div(45, 30) * 100%;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 6px;
+   }
+   &__name {
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+   }
+   &__date {
+      font-weight: 600;
+      font-size: 11px;
+      color: $grayColor82;
+   }
+}
+
+// ================ CARD-SIMILAR ================================
+.products.similar{
+   padding: 65px 0 65px;
+}
+// ================ CARD-VIEWED ================================
+.products.viewed{
+   padding: 65px 0 130px;
+}

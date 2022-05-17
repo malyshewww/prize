@@ -1,0 +1,73 @@
+.consultation {
+   padding: 65px 0 130px;
+   & > .container {
+      max-width: 1354px;
+   }
+   &__body {
+      border-radius: 60px;
+      background-image: url('../img/consultation/bg.svg');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: 0 2px;
+      background-color: $greenLightColor-2;
+      padding: 55px 0 61px;
+      position: relative;
+   }
+   &__content {
+      max-width: 730px;
+   }
+   &__image{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 48px;
+      & img {
+         height: auto;
+      }
+   }
+}
+.form {
+   &__item {
+      max-width: 195px;
+      flex: 1 1 auto;
+   }
+   &__input {
+      max-width: 100%;
+      background: $whiteColor;
+      border-radius: 19px;
+      min-height: 40px;
+      padding: 8px 20px;
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+      color: $grayColorBD;
+      font-family: 'SourceSansPro', sans-serif;
+      font-weight: 400;
+      &::placeholder{
+         font-size: 16px;
+         line-height: math.div(24, 16) * 100%;
+         color: $grayColorBD;
+         font-family: 'SourceSansPro', sans-serif;
+         font-weight: 400;
+      }
+   }
+   &__button {
+      flex: 1;
+      min-height: 40px;
+      font-size: 16px;
+      line-height: math.div(20, 16) * 100%;
+      min-width: 161px;
+   }
+   & a.form__link {
+      color: $redColor;
+      text-decoration: underline;
+      margin-left: 3px;
+   }
+}
+.form-group {
+   display: flex;
+   align-items: center;
+   flex-wrap: wrap;
+   column-gap: 28px;
+   margin-bottom: 27px;
+}
+
