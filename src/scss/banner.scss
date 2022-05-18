@@ -89,6 +89,7 @@
    font-size: 20px;
    line-height: math.div(24, 20) * 100%;
    transition: all .2s ease 0s;
+   font-family: 'Montserrat', sans-serif;
    @media (any-hover: hover) {
       &:hover{
          background-color: $redColorHover;
@@ -106,13 +107,16 @@
       }
    }
 }
+.swiper-initialized .home-banner-button {
+   display: flex;
+}
 .home-banner-button {
    width: 31px;
    height: 31px;
-   display: flex;
    justify-content: center;
    align-items: center;
    background: none;
+   display: none;
    &::before{
       font-size: 25px;
       color: $whiteColor;

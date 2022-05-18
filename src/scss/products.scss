@@ -28,9 +28,9 @@
             transform: translateX(-50%) scale(1);
          }
       }
-      // &.disabled .products__body {
-      //    gap: 30px;
-      // }
+      &.disabled .products__body {
+         gap: 30px;
+      }
       &.disabled .products__controls {
          display: none;
       }
@@ -190,6 +190,7 @@
    &__prices {
    }
    &__price {
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;

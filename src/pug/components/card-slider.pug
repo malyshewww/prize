@@ -72,14 +72,14 @@ section.main-card
                   p.parameters__label Выберите состав:
                   .parameters__value
                      .parameters__buttons 
-                        .parameters__button Классик
-                        .parameters__button.parameters__button--zero VIP
+                        button(type="button").parameters__button.current Классик
+                        button(type="button").parameters__button VIP
                .parameters-group.parameters-group--weight
                   p.parameters__label Выберите вес:
                   .parameters__value
                      .parameters__buttons
-                        .parameters__button 290 г
-                        .parameters__button.parameters__button--zero 380 г
+                        button(type="button").parameters__button.current 290 г
+                        button(type="button").parameters__button 380 г
                      .parameters__warning Вес подарка указан без упаковки и дополнительных вложений
                .parameters-group 
                   p.parameters__label Состав: 
@@ -90,7 +90,7 @@ section.main-card
                   .parameters__value 31-50 шт.
             .main-card__quantity.quantity-card
                .quantity-card__box
-                  button.quantity-card__button.quantity-card__button--minus(data-minus)
+                  button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
                   input(type="text" value="1").quantity-card__input
                   button.quantity-card__button.quantity-card__button--plus(data-plus)
                .quantity-card__price 300 ₽

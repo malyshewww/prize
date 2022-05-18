@@ -1,3 +1,60 @@
+-
+   product = [
+      {
+         "img": "product",
+         "article": "#0002",
+         "name": "Cнежинка золотая",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+      {
+         "img": "product",
+         "article": "#0074",
+         "name": "Короб почтальона Ассорти",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+      {
+         "img": "product",
+         "article": "#0184",
+         "name": "Чемодан Фантазия маленький",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+      {
+         "img": "product",
+         "article": "#0225",
+         "name": "Почта-копилка",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+      {
+         "img": "product",
+         "article": "#0225",
+         "name": "Почта-копилка",
+         "price": "1005 ₽",
+         "badge": "Хит",
+      },
+   ],
+   choices = [
+      choice = [
+         {
+            "title": "Классик",
+            "value": "1100 г",
+            "checked": true,
+         },
+         {
+            "title": "Премиум",
+            "value": "600 г",
+            "checked": false,
+         },
+         {
+            "title": "VIP",
+            "value": "300 г",
+            "checked": false,
+         },
+      ],
+   ]
 section.products.popular
    .container 
       .header-block.header-block__products
@@ -8,8 +65,8 @@ section.products.popular
          .products__wrapper
             .products__body
                include product-card
-         .products__controls
-            button.slide-arrow.slide-arrow__prev.icon-arrow-prev
-            button.slide-arrow.slide-arrow__next.icon-arrow-next
+            .products__controls
+               button.slide-arrow.slide-arrow__prev.icon-arrow-prev
+               button.slide-arrow.slide-arrow__next.icon-arrow-next
 
 

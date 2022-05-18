@@ -1,0 +1,213 @@
+.modal {
+   position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba($blackColor, 0.8);
+	opacity: 0;
+	visibility: hidden;
+   overflow-y: auto;
+   overflow-x: hidden;
+	transition: all .5s ease 0s;
+	z-index: 30;
+	&.open-modal{
+		opacity: 1;
+		visibility: visible;
+      & .modal__content{
+         opacity: 1;
+         transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+      }
+	}
+   &__wrapper {
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 10px;
+      transition: all 0.5s ease 0s;
+   }
+   &__content {
+      background: $whiteColor;
+      max-width: 571px;
+      width: 100%;
+      padding: 50px 28px 40px 42px;
+      position: relative;
+      opacity: 0;
+      transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+      transition: all 0.5s ease 0s;
+      border-radius: 10px;
+   }
+   &__close {
+      position: absolute;
+      top: 27px;
+      right: 27px;
+      width: 20px;
+      height: 20px;
+      transition: all .3s ease 0s;
+      cursor: pointer;
+      &::before{
+         font-size: 20px;
+         color: #C4C4C4;
+         transition: all .3s ease 0s;
+      }
+      &:hover::before{
+         color: $redColor;
+      }
+   }
+   &__title {
+      text-align: center;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: math.div(24, 20) * 100%;
+      font-family: 'Montserrat', sans-serif;
+   }
+   &__form {
+   }
+   &__icon{
+      text-align: center;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 16px;
+   }
+   &__description{
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+   }
+}
+
+.form-modal {
+   font-size: 16px;
+   line-height: 22px;
+   color: $grayColor82;
+   font-family: 'SourceSansPro', sans-serif;
+   font-weight: 400;
+   &__items {
+      display: flex;
+      flex-direction: column;
+      padding: 40px 0;
+   }
+   &__item {
+      width: 100%;
+      &:not(:last-child){
+         margin-bottom: 30px;
+      }
+   }
+   &__input,
+   &__textarea {
+      width: 100%;
+      border: 1px solid $grayColorBD;
+      min-height: 40px;
+      padding: 9px 17px;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      font-family: 'SourceSansPro', sans-serif;
+      color: currentColor;
+      border-radius: 20px;
+      &::placeholder{
+         font-size: 16px;
+         line-height: math.div(22, 16) * 100%;
+         font-family: 'SourceSansPro', sans-serif;
+         color: currentColor;
+      }
+   }
+   &__textarea {
+      min-height: 225px;
+      resize: none;
+   }
+   &__button {
+      border: 1px solid $redColor;
+      color: $redColor;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 40px;
+      padding: 10px 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      margin: 0 auto;
+      min-width: 200px;
+      background: transparent;
+      font-size: 16px;
+      line-height: math.div(22, 16) * 100%;
+      transition: all .3s ease 0s;
+      &:hover {
+         color: $whiteColor;
+         background: $redColor;
+      }
+   }
+}
+.modal-message__title{
+   max-width: 315px;
+   margin: 0 auto 14px;
+}
+.modal-message .modal__content{
+   padding: 40px 40px 50px;
+}
+.estimate-modal {
+   padding-left: 17px;
+   display: flex;
+   align-items: center;
+   gap: 23px;
+   &__label {
+      color: $grayColor82;
+   }
+   &__list {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      & li {
+         width: 37px;
+         height: 37px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   }
+}
+
+// RATING
+.rating {
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: center;
+   justify-content: flex-end;
+}
+.rating:not(:checked)>input {
+   display: none;
+}
+.rating:not(:checked)>label {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   text-align: center;
+   line-height: 1;
+   transition: all .3s ease 0s;
+   font-size: 0;
+   margin-right: 4px;
+}
+.rating:not(:checked)>label:before {
+   content: url('../img/icons/star-t-big.svg');
+}
+.rating>input:checked~label::before {
+   content: url('../img/icons/star-big.svg');
+}
+.rating:not(:checked)>label:hover,
+.rating:not(:checked)>label:hover~label::before {
+   content: url('../img/icons/star-big.svg');
+}
+.rating>input:checked+label:hover,
+.rating>input:checked+label:hover~label::before,
+.rating>input:checked~label:hover,
+.rating>input:checked~label:hover~label::before,
+.rating>label:hover~input:checked~label::before {
+   content: url('../img/icons/star-big.svg');
+}

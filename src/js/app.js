@@ -1,66 +1,45 @@
 import $ from "jquery"
-import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
-const swiper = new Swiper('.home-banner__body', {
-	autoHeight: true,
-	modules: [Navigation],
-	wrapperClass: "home-banner__wrapper",
-	slideClass: "home-banner__item",
-	loop: false,
-	initialSlide: 0,
-	slidesPerView: 1,
-	speed: 1000,
-	navigation: {
-		nextEl: '.home-banner-button.home-banner-button__next',
-		prevEl: '.home-banner-button.home-banner-button__prev',
-	},
-})
-const productSlider = document.querySelectorAll('.products__wrapper');
-if (productSlider) {
-	productSlider.forEach((el) => {
-		const productSwiper = new Swiper(el, {
-			modules: [Navigation],
-			wrapperClass: "products__body",
-			slideClass: "products__card",
-			loop: false,
-			spaceBetween: 30,
-			slidesPerView: 4,
-			watchOverflow: true,
-			simulateTouch: false,
-			watchSlidesVisibility: true,
-			watchSlidesProgress: true,
-			observeParents: true,
-			observer: true,
-			observeSlideChildren: true,
-			speed: 1000,
-			navigation: {
-				nextEl: '.slide-arrow.slide-arrow__next',
-				prevEl: '.slide-arrow.slide-arrow__prev',
-			},
-		})
-	})
-	// $(".products__wrapper").each(function () {
-	// 	const $slideItems = $(this).find(".products__card");
-	// 	console.log($slideItems);
-	// 	if ($slideItems.length <= 4) {
-	// 		$slideItems.closest($(this)).addClass('disabled');
-	// 		$(this).destroy();
-	// 	}
-	// })
+// Подключаем слайдер Swiper из node_modules
+import './modules/sliders.js';
+
+// Подключаем счетчика для цены
+import "./modules/stepper.js";
+
+// Переход к нужному табу "Посмотреть состав"
+// $(document).ready(function(){
+// 	$("#menu").on("click","a", function (event) {
+// 		//отменяем стандартную обработку нажатия по ссылке
+// 		event.preventDefault();
+
+// 		//забираем идентификатор бока с атрибута href
+// 		var id  = $(this).attr('href'),
+
+// 		//узнаем высоту от начала страницы до блока на который ссылается якорь
+// 			top = $(id).offset().top;
+
+// 		//анимируем переход на расстояние - top за 1500 мс
+// 		$('body,html').animate({scrollTop: top}, 1500);
+// 	});
+// });
+const parametersButtons = document.querySelectorAll('.parameters__buttons');
+for (let i = 0; i < parametersButtons.length; i++) {
+	const el = parametersButtons[i];
+	let parametersButton = el.querySelectorAll('.parameters__button');
+	el.addEventListener('click', (event) => {
+		// Отлавливаем элемент в родители на который мы нажали
+		let target = event.target;
+		// Проверяем тот ли это элемент который нам нужен
+		if (target.classList.contains('parameters__button')) {
+			for (let i = 0; i < parametersButton.length; i++) {
+				// Убираем у других
+				parametersButton[i].classList.remove('current');
+			}
+			// Добавляем тому на который нажали
+			target.classList.add('current');
+		}
+	});
 }
 
-const factoriesSwiper = new Swiper('.factories-slider', {
-	modules: [Navigation],
-	loop: true,
-	slidesPerView: 5,
-	spaceBetween: 49,
-	wrapperClass: "factories__wrapper",
-	slideClass: "factories__item",
-	simulateTouch: true,
-	navigation: {
-		nextEl: '.factories__controls .slide-arrow__next',
-		prevEl: '.factories__controls .slide-arrow__prev',
-	},
-});
 
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
@@ -90,98 +69,6 @@ $(document).mouseup(function (e) {
 	}
 });
 
-// MAIN-CARD SLIDER
-const cardMainSlider = document.querySelector('.base-slider');
-const cardNavSlider = document.querySelector('.thumbs-slider');
-const cardNavSwiper = new Swiper(cardNavSlider, {
-	modules: [Thumbs],
-	direction: 'vertical',
-	watchOverflow: true,
-	slidesPerView: 3,
-	spaceBetween: 19,
-	simulateTouch: true,
-	freeMode: false,
-	slideClass: "thumbs-slider__item",
-	wrapperClass: "thumbs-slider__wrapper",
-	watchSlidesVisibility: true,
-	watchSlidesProgress: true,
-	speed: 600,
-	breakpoints: {
-		991.98: {
-			slidesPerView: 3,
-		},
-	},
-})
-const cardMainSwiper = new Swiper(cardMainSlider, {
-	modules: [Thumbs, Navigation],
-	slidesPerView: 1,
-	watchOverflow: true,
-	simulateTouch: true,
-	slideClass: "base-slider__item",
-	wrapperClass: "base-slider__wrapper",
-	speed: 600,
-	thumbs: {
-		swiper: cardNavSwiper,
-	},
-	navigation: {
-		nextEl: '.base-slider__controls .slide-arrow__next',
-		prevEl: '.base-slider__controls .slide-arrow__prev',
-	},
-})
-
-
-// STEPPER QUANTITY
-const stepper = document.querySelector('.quantity-card__box');
-const stepperInput = stepper.querySelector('.quantity-card__input');
-const stepperBtnUp = stepper.querySelector('.quantity-card__button--plus');
-const stepperBtnDown = stepper.querySelector('.quantity-card__button--minus');
-if (stepper) {
-	let count = stepperInput.value;
-	stepperInput.addEventListener('keyup', (e) => {
-		let self = e.currentTarget;
-		if (self.value == '0') {
-			self.value = 1;
-		}
-		count = stepperInput.value;
-		if (count == 1) {
-			stepperBtnDown.classList.add('quantity-card__button--disabled');
-		} else {
-			stepperBtnDown.classList.remove('quantity-card__button--disabled');
-		}
-	});
-	stepperInput.addEventListener('change', (e) => {
-		let self = e.currentTarget;
-		if (!self.value) {
-			self.value = 1;
-		}
-		count = stepperInput.value;
-		if (count == 1) {
-			stepperBtnDown.classList.add('quantity-card__button--disabled');
-		} else {
-			stepperBtnDown.classList.remove('quantity-card__button--disabled');
-		}
-	});
-	stepperBtnUp.addEventListener('click', (e) => {
-		e.preventDefault();
-		count++;
-		if (count == 1) {
-			stepperBtnDown.classList.add('quantity-card__button--disabled');
-		} else {
-			stepperBtnDown.classList.remove('quantity-card__button--disabled');
-		}
-		stepperInput.value = count;
-	});
-	stepperBtnDown.addEventListener('click', (e) => {
-		e.preventDefault();
-		count--;
-		if (count == 1) {
-			stepperBtnDown.classList.add('quantity-card__button--disabled');
-		} else {
-			stepperBtnDown.classList.remove('quantity-card__button--disabled');
-		}
-		stepperInput.value = count;
-	});
-}
 // CARD-TABS
 document.addEventListener('click', tabsActions);
 function tabsActions(event) {
@@ -200,6 +87,8 @@ function tabsActions(event) {
 		}
 	}
 }
+// Модальные окна
+import "./modules/modals.js";
 
 // Меню бургер
 const iconMenu = document.querySelector('.menu__icon');

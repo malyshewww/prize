@@ -110,8 +110,22 @@
       }
    }
 }
+.general {
+   &__title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      line-height: math.div(45, 30) * 100%;
+      font-weight: 700;
+      color: $blackColor;
+      text-transform: uppercase;
+   }
+}
 
+.swiper-initialized .slide-arrow{
+   display: block;
+}
 .slide-arrow {
+   display: none;
    z-index: 10;
    position: absolute;
    top: 50%;

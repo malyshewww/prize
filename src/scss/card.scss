@@ -2,7 +2,7 @@
 .main-card {
    &__wrapper {
       display: flex;
-      column-gap: 50px;
+      column-gap: 51px;
       max-width: 1073px;
       padding-bottom: 18px;
    }
@@ -25,7 +25,6 @@
    padding: 20px;
    margin: -20px;
    flex-shrink: 0;
-   max-height: 480px;
    &__wrapper {
       flex-direction: column;
    }
@@ -51,6 +50,7 @@
 }
 .base-slider {
    height: 100%;
+   width: 100%;
    margin-left: 20px;
    position: relative;
    &__wrapper {
@@ -93,7 +93,7 @@
       gap: 12px;
    }
    &__title {
-      margin-bottom: 3px;
+      margin-bottom: 2px;
    }
    &__reviews {
       display: flex;
@@ -106,26 +106,27 @@
    &__actions {
       display: flex;
       align-items: center;
-      gap: 16px;
-      margin: 8px 0 6px;
+      gap: 18px;
+      margin: 9px 0 9px;
    }
    &__bottom {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 23px;
       font-weight: 500;
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
       font-family: 'Montserrat', sans-serif;
+      padding: 0 0 0 5px;
 
    }
    &__favorite,
    &__compare {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       &::before{
-         font-size: 20px;
+         font-size: 21px;
          color: inherit;
       }
    }
@@ -144,7 +145,7 @@
       }
    }
    &__value {
-      margin-left: 10px;
+      margin-left: 8px;
       color: $grayColor82;
       text-decoration: underline;
    }
@@ -172,12 +173,13 @@
       gap: 10px;
    }
    &__button {
-      background: $greenColor;
-      color: $whiteColor;
+      background-color: transparent;
+      border: 1px solid $greenColor;
+      color: $greenColor;
       border-radius: 5px;
       min-height: 24px;
       min-width: 87px;
-      padding: 4px 4px;
+      padding: 3px 4px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -185,10 +187,9 @@
       font-size: 12px;
       line-height: math.div(15, 12) * 100%;
       font-family: 'Montserrat', sans-serif;
-      &--zero{
-         background-color: transparent;
-         border: 1px solid $greenColor;
-         color: $greenColor;
+      &.current{
+         background: $greenColor;
+         color: $whiteColor;
       }
    }
    &__warning {
@@ -202,7 +203,7 @@
       line-height: math.div(24, 16) * 100%;
       color: $grayColor82;
       text-decoration: underline;
-      margin-left: 6px;
+      margin-left: 7px;
    }
 }
 .parameters-group {
@@ -214,6 +215,9 @@
       & .parameters__button {
          min-width: 54px;
       }
+      & .parameters__value{
+         margin-left: 2px;
+      }
    }
 }
 .quantity-card {
@@ -223,12 +227,13 @@
    &__box {
       border: 1px solid $grayColorBD;
       border-radius: 5px;
-      max-width: 80px;
       display: flex;
       align-items: center;
       min-height: 24px;
       padding: 0 8px;
       gap: 10px;
+      max-width: 86px;
+      height: 25px;
    }
    &__button {
       height: 11px;
@@ -268,12 +273,13 @@
       justify-content: center;
       text-align: center;
       font-size: 16px;
-      line-height: math.div(24, 16) * 100%;
+      height: 100%;
    }
    &__price {
       font-weight: 700;
       font-size: 30px;
       line-height: 45px;
+      font-family: 'Montserrat', sans-serif;
    }
 }
 .actions {
@@ -296,19 +302,11 @@
    }
 }
 
-.general {
-   &__title {
-      font-size: 30px;
-      line-height: math.div(45, 30) * 100%;
-      font-weight: 700;
-      color: $blackColor;
-      text-transform: uppercase;
-   }
-}
+
 
 // ================ CARD-FEATURES ================================
 .features {
-   padding: 52px 0 100px;
+   padding: 32px 0 100px;
    &__body {
       padding: 13px 36px 13px 16px;
       border: 1px solid $grayColorBD;
@@ -452,7 +450,8 @@
       align-items: center;
       margin-bottom: 7px;
       & img {
-         width: 100%;
+         max-width: 100%;
+         max-height: 100%;
       }
    }
    &__company-name {
