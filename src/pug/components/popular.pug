@@ -1,0 +1,35 @@
+- 
+	popular = [
+		{
+			img: "popular-1",
+			link: "Сладкие подарки",
+			classes: "item-prize--candies-prize item-prize--big",
+		},
+		{
+			img: "popular-2",
+			link: "В картоне",
+			classes: "item-prize--cardboard item-prize--min",
+		},
+		{
+			img: "popular-3",
+			link: "Орехи и сухофрукты",
+			classes: "item-prize--nuts-fruits item-prize--long",
+		},
+		{
+			img: "popular-4",
+			link: "Распродажа",
+			classes: "item-prize--sale item-prize--long",
+		},
+	]
+section.popular-section
+	.container 
+		.header-block.header-block__popular-section
+			h2.header-block__title 
+				span.header-block__text популярные разделы
+		.popular-section__body.prize-inner
+			each item in popular
+				a(href="#").popular-section__item.item-prize(class=item.classes)
+					.item-prize__image 
+						img(src=`img/popular/${item.img}.png`, alt=item.title)
+					.item-prize__content
+						.item-prize__text.icon-arrow-link= item.link

@@ -1,0 +1,19 @@
+.certificate {
+	padding: 0 0 64px;
+	&__container {
+	}
+	&__title {
+		margin-bottom: 45px;
+	}
+	&__body {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 30px;
+	}
+	&__item {
+		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+		border-radius: 10px;
+	}
+	&__image {
+	}
+}

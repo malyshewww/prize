@@ -1,0 +1,19 @@
+extends base/layout.pug
+
+block vars 
+	- var pageTitle = "FAQ";
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link О компании
+			li.breadcrumbs__item= pageTitle
+	section.faq
+		.faq__container 
+			h1.faq__title.general__title= pageTitle
+			include ./components/faq-accordeon
+	include ./components/consultation
+	include ./components/popular

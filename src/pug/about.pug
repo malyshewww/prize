@@ -9,12 +9,15 @@ block content
             li.breadcrumbs__item 
                a(href="#").breadcrumbs__link Главная
             li.breadcrumbs__item= pageTitle 
-   .about 
+   section.about 
       .about__container
-         .about__title.general__title о компании
+         h1.about__title.general__title= pageTitle
       include ./components/about-important
       include ./components/about-guarantees
       include ./components/about-advantages
+      include ./components/about-delivery
+      include ./components/consultation
+      include ./components/popular
 
 
 

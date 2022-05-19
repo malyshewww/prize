@@ -18,22 +18,22 @@
       },
       {
          icon: "icon-5",
-         title: "удобные способы оплаты: наличный, безналичный расчет, оплата по карте"
+         title: "удобные способы оплаты: наличный, безналичный расчет, <br> оплата по карте"
       },
       {
          icon: "icon-6",
          title: "возможность заказа любого количества продукции"
       },
    ]
-.about-advantges 
-   .about-advantges__container 
-      .about-advantges__header 
-         h2.about-advantges__title Преимущества интернет-магазина сладких новогодних подарков «Комплекс-НН»
+.about-advantages 
+   .about-advantages__container 
+      .about-advantages__header 
+         h2.about-advantages__title Преимущества интернет-магазина сладких новогодних подарков «Комплекс-НН»
          .about-advantages__subtitle Почему следует приобретать сладкие новогодние подарки в интернет магазине «Комплекс-НН»? Наши преимущества очевидны:
       .about-advantages__items
          each item in advantages
-            .about-advantages__item 
-               .about-advantages__icon 
+            .about-advantages__item
+               .about-advantages__icon
                   img(src=`img/about/advantages-${item.icon}.svg`, alt="")
                .about-advantages__content
-                  h3.about-advantages__title= item.title
+                  h3.about-advantages__text!= item.title

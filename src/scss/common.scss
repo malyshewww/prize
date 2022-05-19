@@ -1,7 +1,13 @@
 .red {
    color: $redColor;
 }
+.color-red {
+   color: $redColor;
+}
 .green {
+   color: $greenColor;
+}
+.color-green {
    color: $greenColor;
 }
 .header-block {
@@ -108,6 +114,9 @@
          height: 3px;
          background: $redColor;
       }
+   }
+   &__popular-section {
+      margin-bottom: 42px;
    }
 }
 .general {
@@ -249,7 +258,7 @@
    transition: 0.2s ease-in;
    cursor: pointer;
 }
-.compare-checkbox .custom-checkbox{
+.compare-checkbox .custom-checkbox {
    border: 1px solid $grayColorBD;
 }
 .compare-checkbox .checkbox-item__text {
