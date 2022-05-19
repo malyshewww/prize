@@ -1,0 +1,39 @@
+-
+   advantages = [
+      {
+         icon: "icon-1",
+         title: "широкий ассортимент презентов на любой вкус для детей разных возрастов"
+      },
+      {
+         icon: "icon-2",
+         title: "доступные цены от производителей без лишних наценок"
+      },
+      {
+         icon: "icon-3",
+         title: "оперативная доставка во все города РФ транспортной компанией"
+      },
+      {
+         icon: "icon-4",
+         title: "многочисленные положительные отзывы от наших клиентов"
+      },
+      {
+         icon: "icon-5",
+         title: "удобные способы оплаты: наличный, безналичный расчет, оплата по карте"
+      },
+      {
+         icon: "icon-6",
+         title: "возможность заказа любого количества продукции"
+      },
+   ]
+.about-advantges 
+   .about-advantges__container 
+      .about-advantges__header 
+         h2.about-advantges__title Преимущества интернет-магазина сладких новогодних подарков «Комплекс-НН»
+         .about-advantages__subtitle Почему следует приобретать сладкие новогодние подарки в интернет магазине «Комплекс-НН»? Наши преимущества очевидны:
+      .about-advantages__items
+         each item in advantages
+            .about-advantages__item 
+               .about-advantages__icon 
+                  img(src=`img/about/advantages-${item.icon}.svg`, alt="")
+               .about-advantages__content
+                  h3.about-advantages__title= item.title

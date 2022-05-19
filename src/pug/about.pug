@@ -1,0 +1,21 @@
+extends base/layout.pug
+
+block vars 
+   - var pageTitle = "О компании";
+
+block content
+   div.breadcrumbs.container
+         ul.breadcrumbs__list
+            li.breadcrumbs__item 
+               a(href="#").breadcrumbs__link Главная
+            li.breadcrumbs__item= pageTitle 
+   .about 
+      .about__container
+         .about__title.general__title о компании
+      include ./components/about-important
+      include ./components/about-guarantees
+      include ./components/about-advantages
+
+
+
+

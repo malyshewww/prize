@@ -1,38 +1,59 @@
 -
    product = [
       {
-         "img": "product",
+         "img": "product-1",
          "article": "#0002",
          "name": "Cнежинка золотая",
          "price": "1005 ₽",
          "badge": "Хит",
+         choice: [
+            {
+               "title": "Классик",
+               "value": "200 г",
+               "checked": true,
+               "radio": "viewed-1"
+            },
+            {
+               "title": "Премиум",
+               "value": "600 г",
+               "checked": false,
+               "radio": "viewed-1"
+            },
+            {
+               "title": "VIP",
+               "value": "300 г",
+               "checked": false,
+               "radio": "viewed-1"
+            },
+         ]
       },
       {
-         "img": "product",
+         "img": "product-2",
          "article": "#0074",
          "name": "Короб почтальона Ассорти",
          "price": "1005 ₽",
          "badge": "Хит",
+         choice: [
+            {
+               "title": "Классик",
+               "value": "1100 г",
+               "checked": true,
+               "radio": "viewed-2"
+            },
+            {
+               "title": "Премиум",
+               "value": "600 г",
+               "checked": false,
+               "radio": "viewed-2"
+            },
+            {
+               "title": "VIP",
+               "value": "300 г",
+               "checked": false,
+               "radio": "viewed-2"
+            },
+         ]
       },
-   ],
-   choices = [
-      choices = [
-         {
-            "title": "Классик",
-            "value": "1100 г",
-            "checked": true,
-         },
-         {
-            "title": "Премиум",
-            "value": "600 г",
-            "checked": false,
-         },
-         {
-            "title": "VIP",
-            "value": "300 г",
-            "checked": false,
-         },
-      ],
    ]
 section.products.viewed
    .container 

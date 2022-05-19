@@ -1,26 +1,15 @@
 import $ from "jquery"
+
 // Подключаем слайдер Swiper из node_modules
 import './modules/sliders.js';
 
-// Подключаем счетчика для цены
+// Подключаем счетчик для цены
 import "./modules/stepper.js";
 
-// Переход к нужному табу "Посмотреть состав"
-// $(document).ready(function(){
-// 	$("#menu").on("click","a", function (event) {
-// 		//отменяем стандартную обработку нажатия по ссылке
-// 		event.preventDefault();
+// Модальные окна
+import "./modules/modals.js";
 
-// 		//забираем идентификатор бока с атрибута href
-// 		var id  = $(this).attr('href'),
-
-// 		//узнаем высоту от начала страницы до блока на который ссылается якорь
-// 			top = $(id).offset().top;
-
-// 		//анимируем переход на расстояние - top за 1500 мс
-// 		$('body,html').animate({scrollTop: top}, 1500);
-// 	});
-// });
+// Переключение кнопок с параметрами "Состав" и "Вес"
 const parametersButtons = document.querySelectorAll('.parameters__buttons');
 for (let i = 0; i < parametersButtons.length; i++) {
 	const el = parametersButtons[i];
@@ -40,6 +29,19 @@ for (let i = 0; i < parametersButtons.length; i++) {
 	});
 }
 
+// Переход к табу "Cостав"
+$(".parameters__watch").on("click", function (event) {
+	//отменяем стандартную обработку нажатия по ссылке
+	event.preventDefault();
+	//забираем идентификатор бока с атрибута href
+	let id = $(this).attr('href'),
+		//узнаем высоту от начала страницы до блока на который ссылается якорь
+		top = $(id).offset().top;
+	$('#compound').addClass('active').siblings().removeClass('active');
+	$('.tabs__content--compound').addClass('show').siblings().removeClass('show');
+	//анимируем переход на расстояние - top за 800 мс
+	$('body,html').animate({ scrollTop: top }, 800);
+});
 
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
@@ -62,13 +64,6 @@ function addTouchClass() {
 }
 addTouchClass();
 
-$(document).mouseup(function (e) {
-	let menuContainer = $('.menu__item');
-	if (!menuContainer.is(e.target) && menuContainer.has(e.target).length === 0) {
-		menuContainer.removeClass('active');
-	}
-});
-
 // CARD-TABS
 document.addEventListener('click', tabsActions);
 function tabsActions(event) {
@@ -87,8 +82,7 @@ function tabsActions(event) {
 		}
 	}
 }
-// Модальные окна
-import "./modules/modals.js";
+
 
 // Меню бургер
 const iconMenu = document.querySelector('.menu__icon');

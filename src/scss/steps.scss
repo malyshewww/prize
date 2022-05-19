@@ -1,108 +1,12 @@
 .steps {
-	padding: 60px 0 65px;
+	padding: 60px 0 63px;
 	&__body {
-		margin: 0 auto;
-		padding-bottom: 244px;
-		background: url("../img/steps/bg.png");
-		background-position: 49% 100%;
-		background-repeat: no-repeat;
-	}
-	&__row {
-		display: flex;
-	}
-}
-.row-steps--top {
-	justify-content: center;
-	& .step-item::before {
-		content: url("../img/steps/arrow-green-bottom.png");
-		background-repeat: no-repeat;
-		position: absolute;
-		width: 212px;
-		height: 101px;
-		top: 0px;
-		transform: translateX(calc(80%));
-	}
-}
-.row-steps--middle {
-	justify-content: space-between;
-	max-width: 892px;
-	padding-left: 5px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: -52px;
-	margin-bottom: 99px;
-	& .step-item:nth-child(1)::before {
-		content: url("../img/steps/arrow-green-right.png");
-		background-repeat: no-repeat;
-		position: absolute;
-		width: 56px;
-		height: 183px;
-		top: -65px;
-		transform: translateX(calc(100% + 40px));
-	}
-	& .step-item:nth-child(2)::before {
-		content: url("../img/steps/arrow-red-bottom.png");
-		background-repeat: no-repeat;
-		position: absolute;
-		width: 20px;
-		height: 110px;
-		transform: translateY(calc(100% + 27px));
-		bottom: 0;
-	}
-}
-.row-steps--bottom {
-	justify-content: space-between;
-	max-width: 1117px;
-	margin: 0 auto;
-	padding-left: 34px;
-	& .step-item:nth-child(1)::before {
-		content: "";
-		background: url("../img/steps/arrow-green-up.png");
-		position: absolute;
-		width: 72px;
-		height: 186px;
-		transform: translateY(calc((-100%) - 34px));
-	}
-}
-.step-item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	row-gap: 19px;
-	position: relative;
-	&__result {
-		& .step-item__icon {
-			background: $redColor;
+		margin: 0 auto 0 46px;
+		& svg {
+			max-width: 100%;
+			font-family: "Montserrat", sans-serif;
+			font-weight: 600;
+			font-size: 20px;
 		}
-	}
-	&__icon {
-		width: 85px;
-		height: 85px;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: $greenColorDark;
-		position: relative;
-		&::before {
-			content: "";
-			z-index: -1;
-			border-radius: 50%;
-			position: absolute;
-			top: -10px;
-			right: -10px;
-			bottom: -10px;
-			left: -10px;
-			background: $yellowColor;
-			filter: blur(10px);
-		}
-	}
-	&__text {
-		font-size: 20px;
-		line-height: math.div(24, 20) * 100%;
-		font-weight: 600;
-		min-width: 134px;
-		max-width: 229px;
-		text-align: center;
 	}
 }

@@ -1,0 +1,27 @@
+-
+   guarantees = [
+      {
+         icon: "icon-1",
+         text: 'Компания "Комплекс-НН" работает с <strong>ведущими российскимифабриками-производителями</strong>, что обеспечивает <strong>высокое качество</strong> каждой составляющей нашего каталога: конфет, шоколада, десертов с сухофруктами, чайных наборов'
+      },
+      {
+         icon: "icon-2",
+         text: 'Закупка кондитерских изделий и формирование заказа происходит за <strong>3 дня</strong> до поставки клиенту, поэтому вы гарантированно получите <strong>свежие подарки</strong>'
+      },
+      {
+         icon: "icon-3",
+         text: 'Мы всегда <strong>четко соблюдаем оговоренные сроки</strong>, потому что понимаем, как важно получить праздничный сюрприз вовремя.'
+      },
+   ]
+.about-guarantees
+   .about-guarantees__container
+      .container
+         .about-guarantees__image 
+            img(src="img/about/guarantees-img-left.png", alt="")
+         .about-guarantees__items
+            each item in guarantees
+               .about-guarantees__item
+                  .about-guarantees__icon 
+                     img(src=`img/about/guarantees-${item.icon}.svg`, alt="")
+                  .about-guarantees__text 
+                     p!= item.text

@@ -51,15 +51,19 @@
    max-width: 1260px;
    padding: 0 60px;
 }
+.swiper-initialized .card-product{
+   opacity: 0;
+   visibility: hidden;
+   & .card-product__image img{
+      transform: translateX(-50%) scale(0);
+   }
+}
 .card-product {
    background: $whiteColor;
    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
    border-radius: 10px;
    position: relative;
    max-width: 263px;
-   overflow: hidden;
-   opacity: 0;
-   visibility: hidden;
    transition: all 0.3s ease 0s;
    &.swiper-slide-visible {
       opacity: 1;
@@ -74,6 +78,8 @@
       flex-direction: column;
       padding: 23px 20px 18px;
       position: relative;
+      overflow: hidden;
+      border-radius: inherit;
    }
    &__header {
       margin-bottom: 12px;
@@ -123,8 +129,8 @@
       overflow: hidden;
       margin-bottom: 6px;
       & img {
+         transform: translateX(-50%) scale(1);
          left: 50%;
-         transform: translateX(-50%) scale(0);
          max-width: 100%;
          width: auto;
          transition: all 0.5s ease 0s;
@@ -157,27 +163,27 @@
       row-gap: 10px;
       margin-bottom: 14px;
    }
-   &__rating {
-      display: flex;
-      align-items: center;
-      column-gap: 3px;
-      & li {
-         width: 26px;
-         height: 26px;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-      }
-   }
    &__compare {
       color: $grayColorBD;
+      width: 23px;
+      height: 23px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
       &::before {
          font-size: 20px;
+         transition: all .2s ease 0s;
+      }
+      &:hover::before{
+         color: $redColor;
+      }
+      &.selected::before{
+         color: $redColor;
       }
    }
    &__choice {
    }
-
    &__footer {
       margin-top: auto;
       display: flex;
@@ -202,6 +208,34 @@
       min-height: 40px;
       font-weight: 500;
    }
+   &__delete{
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 29px;
+      height: 29px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1.3px solid $grayColorBD;
+      color: $grayColorBD;
+      border-radius: 50%;
+      transition: all .2s ease 0s;
+      cursor: pointer;
+      &::before{
+         color: inherit;
+         font-size: 14px;
+         transition: all .2s ease 0s;
+      }
+      &:hover{
+         border: 1.3px solid $redColor;
+         &::before{
+            color: $redColor;
+         }
+      }
+   }
 }
 .choice-group {
    border: 0.5px solid #bdbdbd;
@@ -222,6 +256,7 @@
    &__label {
       display: flex;
       align-items: center;
+      cursor: pointer;
    }
    &__input {
    }

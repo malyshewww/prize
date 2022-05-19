@@ -25,6 +25,7 @@
    padding: 20px;
    margin: -20px;
    flex-shrink: 0;
+   height: auto;
    &__wrapper {
       flex-direction: column;
    }
@@ -37,8 +38,8 @@
       align-items: center;
       border-radius: 10px;
       background: $whiteColor;
-      transition: box-shadow .2s ease 0s;
-      &.swiper-slide-thumb-active{
+      transition: box-shadow 0.2s ease 0s;
+      &.swiper-slide-thumb-active {
          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
       }
    }
@@ -77,11 +78,11 @@
          max-width: 100%;
       }
    }
-   &__controls{
-      & .slide-arrow__prev{
+   &__controls {
+      & .slide-arrow__prev {
          left: 14px;
       }
-      & .slide-arrow__next{
+      & .slide-arrow__next {
          right: 14px;
       }
    }
@@ -96,8 +97,6 @@
       margin-bottom: 2px;
    }
    &__reviews {
-      display: flex;
-      align-items: center;
    }
    &__parameters {
    }
@@ -116,22 +115,27 @@
       font-weight: 500;
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       padding: 0 0 0 5px;
-
    }
    &__favorite,
    &__compare {
       display: flex;
       align-items: center;
       gap: 9px;
-      &::before{
+      cursor: pointer;
+      &::before {
          font-size: 21px;
          color: inherit;
+      }
+      &:hover{
+         color: $redColor;
       }
    }
 }
 .reviews-rating {
+   display: flex;
+   align-items: center;
    &__list {
       display: flex;
       align-items: center;
@@ -186,8 +190,8 @@
       font-weight: 500;
       font-size: 12px;
       line-height: math.div(15, 12) * 100%;
-      font-family: 'Montserrat', sans-serif;
-      &.current{
+      font-family: "Montserrat", sans-serif;
+      &.current {
          background: $greenColor;
          color: $whiteColor;
       }
@@ -211,11 +215,11 @@
    align-items: center;
    column-gap: 10px;
    font-size: 16px;
-   &--weight{
+   &--weight {
       & .parameters__button {
          min-width: 54px;
       }
-      & .parameters__value{
+      & .parameters__value {
          margin-left: 2px;
       }
    }
@@ -246,7 +250,7 @@
       position: relative;
       &--minus::before,
       &--plus::before,
-      &--plus::after{
+      &--plus::after {
          content: "";
          width: 11px;
          position: absolute;
@@ -255,13 +259,13 @@
          height: 1px;
          background: $blackColor;
       }
-      &--plus::after{
+      &--plus::after {
          transform: rotate(-90deg);
       }
-      &--disabled{
+      &--disabled {
          pointer-events: none;
          &::before,
-         &::after{
+         &::after {
             background: $grayColorBD;
          }
       }
@@ -279,14 +283,14 @@
       font-weight: 700;
       font-size: 30px;
       line-height: 45px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
    }
 }
 .actions {
    &__buttons {
    }
    &__button {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       flex: 1 1 auto;
       max-width: 161px;
       min-height: 40px;
@@ -294,15 +298,13 @@
       border-radius: 20px;
       font-weight: 500;
       font-size: 16px;
-      line-height: math.div(20, 16) * 100%; 
-      &.btn__zero{
+      line-height: math.div(20, 16) * 100%;
+      &.btn__zero {
          max-width: 161px;
          border: 1px solid $redColor;
       }
    }
 }
-
-
 
 // ================ CARD-FEATURES ================================
 .features {
@@ -344,7 +346,7 @@
       column-gap: 67px;
       position: relative;
       &::before,
-      &::after{
+      &::after {
          content: "";
          position: absolute;
          bottom: 0;
@@ -354,7 +356,7 @@
          background: $grayColorF2;
          border-radius: 10px;
       }
-      &::after{
+      &::after {
          transform: translateX(-100%);
       }
    }
@@ -362,11 +364,12 @@
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 600;
       padding-bottom: 18px;
       position: relative;
-      &::before{
+      cursor: pointer;
+      &::before {
          content: "";
          position: absolute;
          border-bottom: 4px solid $redColor;
@@ -375,16 +378,16 @@
          left: 0;
          background: $redColor;
          transform: scale(0);
-         transition: transform .3s ease 0s;
+         transition: transform 0.3s ease 0s;
       }
-      &.active::before{
+      &.active::before {
          transform: scale(1);
       }
    }
    &__content {
       display: none;
       padding-top: 70px;
-      &.show{
+      &.show {
          display: block;
       }
    }
@@ -398,7 +401,7 @@
 }
 .card-compound {
    &__box {
-      &:not(:last-child){
+      &:not(:last-child) {
          margin-bottom: 46px;
       }
    }
@@ -442,7 +445,6 @@
       color: $whiteColor;
    }
    &__image {
-      width: 100%;
       max-width: 100%;
       height: 134px;
       display: flex;
@@ -497,13 +499,13 @@
    &__content {
       background-color: $grayColorF2;
       border-radius: 30px;
-      background-image: url('../img/card/descr-bg.svg');
+      background-image: url("../img/card/descr-bg.svg");
       background-repeat: no-repeat;
       background-position: 100% 0;
       background-size: auto auto;
       padding: 43px 72px 43px 63px;
       & p {
-         font-family: 'SourceSansPro', sans-serif;
+         font-family: "SourceSansPro", sans-serif;
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
          color: $blackColor;
@@ -572,7 +574,7 @@
       font-weight: 500;
       font-size: 30px;
       line-height: math.div(45, 30) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       margin-bottom: 6px;
    }
    &__name {
@@ -587,10 +589,10 @@
 }
 
 // ================ CARD-SIMILAR ================================
-.products.similar{
+.products.similar {
    padding: 65px 0 65px;
 }
 // ================ CARD-VIEWED ================================
-.products.viewed{
+.products.viewed {
    padding: 65px 0 130px;
 }
