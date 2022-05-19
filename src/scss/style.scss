@@ -62,19 +62,18 @@ $whiteColor: #ffffff;
 $greenColor: #5ecbad;
 $greenLightColor: #7cbd65;
 $greenColorDark: #46ad91;
-$greenLightColor-2: #A8E094;
+$greenLightColor-2: #a8e094;
 $redColor: #f04c41;
-$redColorLight: #FF8B84;
+$redColorLight: #ff8b84;
 $grayColor: #ababab;
 $grayColorBD: #bdbdbd;
 $grayColor82: #828282;
 $blackColor: #000;
 $grayColorF2: #f2f2f2;
 $pinkColor: #ff8b84;
-$pinkColorLight: #FFE3E3;
+$pinkColorLight: #ffe3e3;
 $yellowColor: #feffd4;
-$yellowColorBold: #FFF388;
-
+$yellowColorBold: #fff388;
 $redColorHover: #da443a;
 $greenColorHover: #46ad91;
 //<НАСТРОЙКИ/ПЕРЕМЕННЫЕ>==========================================================================================================
@@ -83,9 +82,9 @@ $greenColorHover: #46ad91;
 @import "base/nullstyle";
 
 body {
-	font-family: 'SourceSansPro', sans-serif;
-	&.home{
-		font-family: 'Montserrat', sans-serif;
+	font-family: "SourceSansPro", sans-serif;
+	&.home {
+		font-family: "Montserrat", sans-serif;
 	}
 	// Скролл заблокирован
 	&.lock {
