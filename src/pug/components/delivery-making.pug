@@ -1,0 +1,23 @@
+-
+   deliveryMaking = [
+      {
+         text: "Выгрузка осуществляется в соответствии с условиями транспортной компании"
+      },
+      {
+         text: "Перемещение груза от машины до двери не входит в стоимость <br> доставки, согласовывается заранее с менеджером компании"
+      },
+      {
+         text: "Для получения заказа требуется предъявить паспорт (юридическим <br> лицам - паспорт и доверенность/печать организации)"
+      },
+   ]
+section.delivery-page__making.making-delivery
+   .making-delivery__container 
+      .making-delivery__inner 
+         .making-delivery__image 
+            img(src="img/delivery-page/making.png", alt="")
+         .making-delivery__info
+            h2.making-delivery__title.content-title Получение заказа
+            ul.making-delivery__list.indicator-list
+               each item in deliveryMaking
+                  li!= item.text
+                     <span class="indicator"></span>

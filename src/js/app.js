@@ -83,6 +83,14 @@ function tabsActions(event) {
 	}
 }
 
+// Accordeon
+$('.item-accordeon__header').click(function(event){
+	if($('.accordeon')){
+		$('.item-accordeon__header').not($(this)).removeClass('active');
+		$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
+	}
+	$(this).toggleClass('active').next().slideToggle(300);
+});
 
 // Меню бургер
 const iconMenu = document.querySelector('.menu__icon');

@@ -1,0 +1,32 @@
+-
+   variantsDelivery = [
+      {
+         icon: "variants-icon-1",
+         title: "Самовывоз",
+         text: "Заказ можно забрать самостоятельно в&nbsp;офисе по адресу: <strong>г. Нижний Новгород, ул. Силикатная, д.4 <br> </strong>  (Сообщить за два дня до получения)"
+      },
+      {
+         icon: "variants-icon-2",
+         title: "Бесплатная доставка",
+         text: "При заказе подарков на сумму <strong>от&nbsp;3000&nbsp;руб.</strong> доставка по Нижнему Новгороду и Нижегородской области осуществляется <strong>БЕСПЛАТНО.</strong> Выгрузка осуществляется силами покупателя"
+      },
+      {
+         icon: "variants-icon-3",
+         title: "Платная доставка",
+         text: "По России - по тарифу транспортной компании (любой удобной для вас ТК). При заказе подарков на сумме <strong>менее 3000 руб</strong> доставка по Нижнему Новгороду - <strong>350 руб</strong>"
+      },
+   ]
+section.delivery-page__variants.variants-delivery
+   .variants-delivery__container 
+      .variants-delivery__title.content-title Варианты доставки
+      .variants-delivery__items
+         each item in variantsDelivery
+            .variants-delivery__item.delivery-variant
+               .delivery-variant__icon 
+                  img(src=`img/delivery-page/${item.icon}.svg`, alt="")
+               h3.delivery-variant__title!= item.title
+               .delivery-variant__text 
+                  p!= item.text
+      .variants-delivery__info 
+         p <span class="color-red">ВНИМАНИЕ:</span> СРОКИ И СТОИМОСТЬ ДОСТАВКИ ЗАВИСЯТ ОТ РАССТОЯНИЯ ДО ПУНКТА ВЫДАЧИ ЗАКАЗА
+         p При оформлении доставки потребуются точные данные получателя: ФИО, адрес (почтовый индекс, населенный пункт, улица, дом, кв./офис, бизнес-центр), контактный номер телефона, паспортные данные (для отдельных транспортных компаний). 

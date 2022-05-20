@@ -76,6 +76,7 @@ function initSliders() {
    const cardNavSlides = cardNavSlider.querySelectorAll('.thumbs-slider__item').length;
    let cardNavSwiper;
    let cardMainSwiper;
+   if (cardNavSlider) {
    cardNavSwiper = new Swiper(cardNavSlider, {
       modules: [Thumbs, Navigation],
       direction: 'vertical',
@@ -99,6 +100,8 @@ function initSliders() {
       cardNavSwiper.destroy();
       cardNavSlider.classList.add('disabled');
    }
+}
+if (cardMainSlider) {
    cardMainSwiper = new Swiper(cardMainSlider, {
       modules: [Thumbs, Navigation],
       slidesPerView: 1,
@@ -121,6 +124,7 @@ function initSliders() {
       cardMainSwiper.destroy();
       cardMainSlider.classList.add('disabled');
    }
+}
 
 }
 

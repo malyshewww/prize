@@ -118,6 +118,35 @@
    &__popular-section {
       margin-bottom: 42px;
    }
+   &__clients-banner {
+      margin-bottom: 30px;
+   }
+   &__clients-sets{
+      margin-bottom: 50px;
+      text-align: center;
+      & .header-block__title{
+         font-size: 20px;
+         line-height: math.div(30, 20) * 100%;
+         font-weight: 700;
+         text-transform: none;
+      }
+      & .header-block__text {
+         padding-left: 90px;
+         &::after {
+            background: $greenLightColor-2;
+         }
+         &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 70px;
+            height: 3px;
+            background: $greenLightColor-2;
+         }
+      }
+   }
 }
 .general {
    &__title {
@@ -129,6 +158,12 @@
       text-transform: uppercase;
       margin-bottom: 50px;
    }
+}
+.content-title{
+   font-weight: 600;
+   font-size: 20px;
+   line-height: math.div(24, 20) * 100%;
+   font-family: 'Montserrat', sans-serif;
 }
 
 .swiper-initialized .slide-arrow {

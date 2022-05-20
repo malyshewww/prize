@@ -4,15 +4,14 @@
    }
    &__container {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       column-gap: 46px;
    }
    &__title {
       margin-bottom: 56px;
    }
    &__important {
-      margin-top: -70px;
-      padding: 0 0 55px;
+      padding: 0 0 53px;
    }
 }
 .important-about {
@@ -23,20 +22,22 @@
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
+      font-family: 'Montserrat', sans-serif;
    }
    &__list {
       & li {
          font-size: 16px;
-         line-height: math.div(22, 16) * 100%;
+         line-height: math.div(23, 16) * 100%;
          color: $blackColor;
-         padding-left: 40px;
+         padding-left: 38px;
          &:not(:last-child) {
-            margin-bottom: 22px;
+            margin-bottom: 24px;
          }
       }
    }
    &__image {
-      margin-right: -19px;
+      margin-top: -70px;
+      margin-right: -16px;
    }
 }
 .indicator-list {
@@ -54,7 +55,7 @@
 }
 .indicator {
    position: absolute;
-   top: 3px;
+   top: 4px;
    left: 0;
    width: 14px;
    height: 14px;
@@ -75,10 +76,10 @@
 .about-guarantees {
    padding: 55px 0 64px;
    &__container {
-      max-width: 1354px;
+      max-width: 1324px;
       background: $greenLightColor-2;
       border-radius: 60px;
-      padding: 40px 0 0;
+      padding: 41px 0 0;
       position: relative;
    }
    & .container {
@@ -89,7 +90,7 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      left: 0;
+      left: 18px;
    }
    &__items {
       width: 50%;
@@ -97,14 +98,20 @@
       flex-direction: column;
       row-gap: 30px;
       margin-bottom: -60px;
+      padding-left: 16px;
    }
    &__item {
       display: flex;
       align-items: flex-start;
+      column-gap: 25px;
       background: $whiteColor;
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: 30px 30px;
+      &:last-child{
+         column-gap: 30px;
+         padding: 31px 24px;
+      }
    }
    &__icon {
       margin: 2px 0 0;
@@ -123,7 +130,7 @@
 }
 // =========== ABOUT ADVANTAGES =================
 .about-advantages {
-   padding: 63px 0 30px;
+   padding: 55px 0 30px;
    &__container {
    }
    &__header {
@@ -133,6 +140,8 @@
       margin: 0 auto 88px;
    }
    &__title {
+      font-size: 20px;
+      line-height: math.div(24, 20) * 100%;   
       font-weight: 600;
       margin-bottom: 30px;
       font-family: "Montserrat", sans-serif;
@@ -141,6 +150,8 @@
       font-weight: 400;
       max-width: 530px;
       margin: 0 auto;
+      font-size: 16px;
+      line-height: math.div(24, 16) * 100%;
    }
    &__items {
       display: grid;
@@ -157,25 +168,34 @@
    &__icon {
       width: 85px;
       height: 85px;
+      position: absolute;
+      top: calc(-42.5px);
+      left: calc(50% - 42.5px);
+      transform-style: preserve-3d;
+      &::before {
+         content: "";
+         position: absolute;
+         background-color: $yellowColor;
+         filter: blur(10px);
+         border-radius: 50%;
+         top: -10px;
+         right: -10px;
+         bottom: -10px;
+         left: -10px;
+         z-index: -1;
+         transform: translateZ(0);
+      }
+   }
+   &__circle{
+      position: relative;
+      background: $redColor;
+      width: 85px;
+      height: 85px;
       display: flex;
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      background: $redColor;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      &::before {
-         content: "";
-         position: absolute;
-         // background-color: $yellowColor;
-         filter: blur(10px);
-         border-radius: 50%;
-         width: 104px;
-         height: 104px;
-         z-index: 1;
-      }
+      
    }
    &__content {
       text-align: center;
@@ -189,7 +209,7 @@
 
 // ========== ABOUT-DELIVERY ==============
 .about-delivery {
-   padding: 30px 0 65px;
+   padding: 31px 0 65px;
    &__container {
       text-align: center;
    }

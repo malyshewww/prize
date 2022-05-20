@@ -1,0 +1,174 @@
+// ========== CLIENTS-BANNER ==============
+.clients-banner {
+   color: $whiteColor;
+   padding-bottom: 25px;
+   &__container {
+      max-width: 1354px;
+   }
+   &__inner {
+      display: flex;
+      border-radius: 60px;
+   }
+   &__info {
+      width: 50%;
+      background: $redColor;
+      padding: 68px 68px 68px 92px;
+      border-radius: 60px 0 0 60px;
+   }
+   &__text {
+      max-width: 366px;
+      & p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 500;
+         font-size: 20px;
+         line-height: math.div(27, 20) * 100%;
+      }
+   }
+   &__button {
+      margin-top: 50px;
+      max-width: 200px;
+   }
+   &__image {
+      width: 50%;
+      border-radius: 0px 60px 60px 0px;
+      overflow: hidden;
+   }
+}
+// ========== CLIENTS-SETS ==============
+.clients-sets {
+   padding: 25px 0 25px;
+   &__container {
+   }
+   &__inner {
+      display: flex;
+      align-items: center;
+      column-gap: 32px;
+   }
+   &__image {
+   }
+   &__info {
+   }
+   &__title {
+      max-width: 428px;
+   }
+   &__items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 47px 37px;
+   }
+   &__item {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+   }
+   &__icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   &__text {
+      line-height: math.div(24, 16) * 100%;
+      color: $blackColor;
+   }
+}
+.clients-title {
+   font-weight: 700;
+   font-size: 20px;
+   line-height: math.div(35, 20) * 100%;
+   font-family: "Montserrat", sans-serif;
+   text-transform: uppercase;
+   margin-bottom: 40px;
+}
+
+// ========== CLIENTS-STAGES ==============
+.clients-stages {
+   padding: 25px 0 25px;
+   max-width: 1354px;
+   margin: 0 auto;
+   &__container {
+      max-width: 1354px;
+      background: $grayColorF2;
+      border-radius: 60px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+   }
+   &__title {
+      text-align: center;
+      max-width: 850px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+   &__inner {
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 1fr 1.1fr;
+      gap: 20px;
+      counter-reset: item;
+   }
+   &__item {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      counter-increment: item;
+   }
+   &__icon {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      flex: 0 0 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $redColor;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+      &::before{
+         content: "";
+         position: absolute;
+         width: 84px;
+         height: 84px;
+         border: 1px solid $redColor;
+         border-radius: 50%;
+      }
+      &::after{
+			content: counter(item);
+         position: absolute;
+         top: 65%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         font-weight: 700;
+         font-size: 25px;
+         line-height: math.div(45, 25) * 100%;
+         color: $whiteColor;
+         font-family: "Montserrat", sans-serif;
+      }
+   }
+   &__text {
+      line-height: math.div(24, 16) * 100%;
+      color: $blackColor;
+   }
+}
+
+// ========== CLIENTS-STAGES ==============
+.clients-order {
+   padding: 25px 0 65px;
+   &__container {
+   }
+   &__title {
+      max-width: 590px;
+      margin: 0 auto 50px;
+      text-align: center;
+   }
+   &__button {
+      margin: 0 auto;
+      min-height: 49px;
+      max-width: 256px;
+      padding: 14px 25px;
+      font-size: 16px;
+      line-height: math.div(20, 16) * 100%;
+   }
+}
+
+
+

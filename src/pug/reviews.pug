@@ -1,0 +1,19 @@
+extends base/layout.pug
+
+block vars 
+   - var pageTitle = "Отзывы";
+
+block content
+   div.breadcrumbs.container
+      ul.breadcrumbs__list
+         li.breadcrumbs__item
+            a(href="#").breadcrumbs__link Главная
+         li.breadcrumbs__item
+            a(href="#").breadcrumbs__link О компании
+         li.breadcrumbs__item= pageTitle
+   .reviews 
+      .reviews__container 
+         h1.reviews__title.general__title= pageTitle
+         include ./components/certificates
+         include ./components/reviews
+   include ./components/consultation

@@ -1,0 +1,37 @@
+-
+   clientsSets = [
+      {
+         icon: "clients-sets-icon-1",
+         text: "Признак вашего особого отношения"
+      },
+      {
+         icon: "clients-sets-icon-2",
+         text: "Приятное напоминание о вас в самые счастливые моменты торжества"
+      },
+      {
+         icon: "clients-sets-icon-3",
+         text: "Интерсеный, <br> радующий глаз, <br> уместный подарок"
+      },
+      {
+         icon: "clients-sets-icon-4",
+         text: "Множество вариантов на любой вкус и кошелек"
+      },
+   ]
+section.clients-sets
+   .clients-sets__container 
+      .header-block.header-block__clients-sets
+         h2.header-block__title
+            span.header-block__text.
+               Выбирая подарок коллегам или партнерам по бизнесу, поневоле 
+               сталкиваешься с проблемой: <span class="color-red">как найти подарок, который понравится всем, и при этом уложиться в установленный бюджет?<span>
+      .clients-sets__inner 
+         .clients-sets__image 
+            img(src="img/clients/clients-sets-img.png", alt="")
+         .clients-sets__info 
+            .clients-sets__title.clients-title Сладкие наборы конфет или чая <span class="color-red">с логотипом компании<span>
+            .clients-sets__items
+               each item in clientsSets
+                  .clients-sets__item
+                     .clients-sets__icon 
+                        img(src=`img/clients/${item.icon}.svg`, alt="")
+                     .clients-sets__text!= item.text

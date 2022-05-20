@@ -1,0 +1,52 @@
+-
+   terms = [
+      {
+         text: "Вы можете заказать любое количество подарков, оформив заявку при&nbsp;личной встрече с менеджером, на сайте, странице социальных сетей или&nbsp;по&nbsp;электронному адресу: <strong>podaroknn@inbox.ru.</strong> <br> Оптовым считается заказ на сумму от <strong>30 000  р.</strong>"
+      },
+      {
+         text: "Оформление заказа производится менеджером компании «Комплекс-НН», который перезвонит вам для подтверждения заявки и сформирует счет. С&nbsp;этого момента нужное вам количество товара будет закреплено за вами (вы можете быть уверены в их наличии)."
+      },
+      {
+         text: "После поступления оплаты заказа происходит фиксирование стоимости (независимо от изменений в стоимости подарочных наборов на сайте сумма вашего заказа не изменится)."
+      },
+      {
+         text: "Способы и сроки доставки вашего заказа оговариваются в индивидуальном порядке. Вы можете получить заказ сразу же после оплаты (с учетом срока доставки), либо назначить конкретную дату (ближе к событию). <span class='color-red'> <br> ВНИМАНИЕ:</span> <strong>СРОК ФОРМИРОВАНИЯ ЗАКАЗА – 3 ДНЯ</strong> <br> <span class='color-green'>СРОК ДОСТАВКИ</span> – <strong>ОТ 1 ДО 5 ДНЕЙ</strong> (в редких случаях – до 20 дней, <br> в зависимости от выбранного способа)"
+      },
+      {
+         text: "Вся необходимая клиенту документация направляется вместе с заказом."
+      },
+   ],
+   termsPayment = [
+      {
+         icon: "payment-icon-1",
+         text: "Наличный расчёт"
+      },
+      {
+         icon: "payment-icon-2",
+         text: "Безналичный расчёт"
+      },
+   ]
+
+section.delivery-page__terms.terms-delivery
+   .container
+      .terms-delivery__wrapper
+         .terms-delivery__inner 
+            .terms-delivery__info
+               h2.terms-delivery__title.content-title Условия оформления заказа
+               ul.terms-delivery__list.indicator-list
+                  each item in terms
+                     li!= item.text
+                        <span class="indicator"></span>
+            .terms-delivery__image.ibg
+               img(src="img/delivery-page/terms.jpg", alt="")
+         .terms-delivery__payment.terms-payment
+            .terms-payment__title.content-title Способы оплаты
+            .terms-payment__inner
+               each item in termsPayment
+                  .terms-payment__item 
+                     .terms-payment__icon
+                        img(src=`img/delivery-page/${item.icon}.svg`, alt="")
+                     .terms-payment__text= item.text
+               span.terms-payment__warning Все налоги включены в стоимость заказа
+
+

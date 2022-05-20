@@ -18,7 +18,7 @@
       },
       {
          icon: "icon-5",
-         title: "удобные способы оплаты: наличный, безналичный расчет, <br> оплата по карте"
+         title: "удобные способы оплаты: наличный,&nbsp;безналичный расчет, <br> оплата по карте"
       },
       {
          icon: "icon-6",
@@ -34,6 +34,7 @@
          each item in advantages
             .about-advantages__item
                .about-advantages__icon
-                  img(src=`img/about/advantages-${item.icon}.svg`, alt="")
+                  .about-advantages__circle
+                     img(src=`img/about/advantages-${item.icon}.svg`, alt="")
                .about-advantages__content
                   h3.about-advantages__text!= item.title

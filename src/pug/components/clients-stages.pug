@@ -1,0 +1,31 @@
+-
+   clientsStages = [
+      {
+         icon: "clients-stages-icon",
+         text: "Проведем бесплатную консультацию"
+      },
+      {
+         icon: "clients-stages-icon",
+         text: "Подберем вариант, соответствующий бюджету и корпоративному стилю"
+      },
+      {
+         icon: "clients-stages-icon",
+         text: "Соберем и доставим точно в срок"
+      },
+      {
+         icon: "clients-stages-icon",
+         text: "Подарим скидку на заказ новогодних праздничных наборов"
+      },
+   ]
+section.clients-stages
+   .clients-stages__container
+      .container
+         h2.clients-stages__title.clients-title.
+            мы поможем вам <span class="color-green">легко и безболезненно пройти</span> все этапы
+            подготовки <span class="color-red">корпоративных праздничных подарков</span>
+         .clients-stages__inner
+            each item in clientsStages
+               .clients-stages__item
+                  .clients-stages__icon 
+                     img(src=`img/clients/${item.icon}.svg`, alt="")
+                  .clients-stages__text!= item.text

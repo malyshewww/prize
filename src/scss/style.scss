@@ -175,7 +175,9 @@ body {
 @import "prizes";
 @import "package";
 @import "nuts";
+//Блок "delivery" на главной + Страница "Доставка и оплата"
 @import "delivery";
+
 @import "products";
 @import "factories";
 @import "steps";
@@ -197,6 +199,21 @@ body {
 
 // Страница "Сертификаты"
 @import "certificate";
+
+// Страница "FAQ"
+@import "faq";
+
+// Страница "Вакансии"
+@import "vacancy";
+
+// Страница "Отзывы"
+@import "reviews";
+
+// Страница "Отзывы"
+@import "reviews";
+
+// Страница "Корпоративные клиенты"
+@import "clients";
 
 @import "home";
 

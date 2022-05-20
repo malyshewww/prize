@@ -1,0 +1,27 @@
+-
+   certificates = [
+      {
+         img: "certificate-1",
+      },
+      {
+         img: "certificate-1",
+      },
+      {
+         img: "certificate-1",
+      },
+      {
+         img: "certificate-1",
+      },
+      {
+         img: "certificate-1",
+      },
+      {
+         img: "certificate-1",
+      },
+   ]
+section.certificate.reviews
+   .certificate__body
+      each item in certificates
+         a(href="#").certificate__item
+            .certificate__image
+               img(src=`img/certificate/${item.img}.jpg`, alt="")

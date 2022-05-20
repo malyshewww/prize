@@ -526,6 +526,11 @@
       background: transparent;
       color: $greenColor;
       max-width: 195px;
+      &:hover {
+         background: $greenColorHover;
+         border: 1px solid transparent;
+         color: $whiteColor;
+      }
    }
 }
 
