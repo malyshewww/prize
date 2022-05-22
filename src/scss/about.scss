@@ -22,7 +22,7 @@
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
    }
    &__list {
       & li {
@@ -108,7 +108,7 @@
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       padding: 30px 30px;
-      &:last-child{
+      &:last-child {
          column-gap: 30px;
          padding: 31px 24px;
       }
@@ -141,7 +141,7 @@
    }
    &__title {
       font-size: 20px;
-      line-height: math.div(24, 20) * 100%;   
+      line-height: math.div(24, 20) * 100%;
       font-weight: 600;
       margin-bottom: 30px;
       font-family: "Montserrat", sans-serif;
@@ -186,7 +186,7 @@
          transform: translateZ(0);
       }
    }
-   &__circle{
+   &__circle {
       position: relative;
       background: $redColor;
       width: 85px;
@@ -195,7 +195,6 @@
       justify-content: center;
       align-items: center;
       border-radius: 50%;
-      
    }
    &__content {
       text-align: center;
@@ -252,8 +251,10 @@
    &::before {
       content: "";
       background: url("../img/popular/popular-3-bg.svg");
+      background-repeat: no-repeat;
+      background-position: 0 100%;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       width: 100%;
       height: 100%;

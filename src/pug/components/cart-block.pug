@@ -1,0 +1,82 @@
+-
+	cartItems = [
+		{
+			img: "cart-1",
+			sale: "-20%",
+			title: "Cнежинка золотая",
+			category: "Классик",
+			weight: "290 гр.",
+			oldPrice: "300 ₽",
+			currentPrice: "105 ₽"
+		},
+		{
+			img: "cart-2",
+			sale: "",
+			title: "Почта-копилка",
+			category: "Классик",
+			weight: "290 гр.",
+			oldPrice: "",
+			currentPrice: "300 ₽"
+		},
+		{
+			img: "cart-3",
+			sale: "",
+			title: "Чемодан Фантазия маленький",
+			category: "Классик",
+			weight: "290 гр.",
+			oldPrice: "",
+			currentPrice: "1325 ₽"
+		},
+	]
+	cartQuantity = 0;
+section.cart
+	.cart__container
+		if cartQuantity == 0
+			.cart__empty
+				h2.content-title Ваша корзина пока пуста
+				a.cart__button.btn.btn-green(href="#") Перейти на главную
+		else
+			.cart__inner 
+				.cart__items
+					each item in cartItems
+						.cart-item
+							.cart-item__actions.actions-cart
+								button.actions-cart__favorite.icon-favorites
+								button.actions-cart__delete.icon-delete
+							.cart-item__image.ibg
+								img(src=`img/cart/${item.img}.png`, alt=item.title)
+								if item.sale
+									.cart-item__badges
+										.cart-item__badge.cart-item__badge_sale= item.sale
+							.cart-item__body
+								.cart-item__info
+									h2.cart-item__title= item.title
+									.cart-item__group
+										span.cart-item__label Категория:
+										span.cart-item__value= item.category
+									.cart-item__group
+										span.cart-item__label Вес НЕТТО:
+										span.cart-item__value= item.weight
+								.cart-item__quantity.quantity-card
+									button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
+									input(type="text" value="1").quantity-card__input
+									button.quantity-card__button.quantity-card__button--plus(data-plus)
+								.cart-item__prices 
+									.cart-item__price.cart-item__price_old= item.oldPrice 
+									.cart-item__price= item.currentPrice 
+				aside.cart-result
+					.cart-result__body
+						ul.cart-result__list
+							li 
+								.cart-result__name Вес заказа
+								.cart-result__value 870 гр.
+							li 
+								.cart-result__name Товары - 3 шт.
+								.cart-result__value 1925 ₽
+							li 
+								.cart-result__name Скидка
+								.cart-result__value -195 ₽ 
+						.cart-result__sum.cart-sum
+							.cart-sum__label Итого
+							.cart-sum__value 1730 ₽
+						a(href="#").cart-result__button.btn Перейти к оформлению

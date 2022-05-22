@@ -1,10 +1,10 @@
 // STEPPER QUANTITY
-const stepper = document.querySelector('.quantity-card__box');
+const stepper = document.querySelectorAll('.quantity-card');
 if (stepper) {
-   const stepperInput = stepper.querySelector('.quantity-card__input');
-   const stepperBtnUp = stepper.querySelector('.quantity-card__button--plus');
-   const stepperBtnDown = stepper.querySelector('.quantity-card__button--minus');
-   if (stepper) {
+   stepper.forEach(el => {
+      const stepperInput = el.querySelector('.quantity-card__input');
+      const stepperBtnUp = el.querySelector('.quantity-card__button--plus');
+      const stepperBtnDown = el.querySelector('.quantity-card__button--minus');
       let count = stepperInput.value;
       stepperInput.addEventListener('keyup', (e) => {
          let self = e.currentTarget;
@@ -50,5 +50,5 @@ if (stepper) {
          }
          stepperInput.value = count;
       });
-   }
+   })
 }

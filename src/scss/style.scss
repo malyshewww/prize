@@ -167,6 +167,8 @@ body {
 
 @import "common";
 
+@import "range-slider";
+
 // Подключение стилей отдельных блоков
 @import "header";
 
@@ -214,6 +216,21 @@ body {
 
 // Страница "Корпоративные клиенты"
 @import "clients";
+
+// Страница "Контакты"
+@import "contacts";
+
+// Страница "Корзина"
+@import "cart";
+
+// Страница "Оформление заказа"
+@import "order";
+
+// Страница "Соберите подарок"
+@import "collect";
+
+// Страница "Категории"
+@import "category";
 
 @import "home";
 

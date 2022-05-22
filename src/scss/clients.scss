@@ -1,6 +1,7 @@
 // ========== CLIENTS-BANNER ==============
 .clients-banner {
    color: $whiteColor;
+   padding-top: 10px;
    padding-bottom: 25px;
    &__container {
       max-width: 1354px;
@@ -41,20 +42,24 @@
    }
    &__inner {
       display: flex;
-      align-items: center;
-      column-gap: 32px;
+      column-gap: 33px;
    }
    &__image {
    }
    &__info {
+      padding: 97px 0 0;
+      min-width: 570px;
    }
    &__title {
       max-width: 428px;
+      &.clients-title {
+         margin-bottom: 38px;
+      }
    }
    &__items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 47px 37px;
+      gap: 43px 12px;
    }
    &__item {
       display: flex;
@@ -85,24 +90,25 @@
 // ========== CLIENTS-STAGES ==============
 .clients-stages {
    padding: 25px 0 25px;
-   max-width: 1354px;
    margin: 0 auto;
    &__container {
-      max-width: 1354px;
+      max-width: 1334px;
       background: $grayColorF2;
       border-radius: 60px;
       padding-top: 50px;
-      padding-bottom: 50px;
+      padding-bottom: 58px;
    }
    &__title {
       text-align: center;
       max-width: 850px;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 45px;
    }
    &__inner {
+      padding: 0 7px;
       display: grid;
-      grid-template-columns: 1.1fr 1.2fr 1fr 1.1fr;
+      grid-template-columns: 1.1fr 1.3fr 1.1fr 1.1fr;
       gap: 20px;
       counter-reset: item;
    }
@@ -123,7 +129,7 @@
       align-items: center;
       background: $redColor;
       box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
-      &::before{
+      &::before {
          content: "";
          position: absolute;
          width: 84px;
@@ -131,8 +137,8 @@
          border: 1px solid $redColor;
          border-radius: 50%;
       }
-      &::after{
-			content: counter(item);
+      &::after {
+         content: counter(item);
          position: absolute;
          top: 65%;
          left: 50%;
@@ -169,6 +175,3 @@
       line-height: math.div(20, 16) * 100%;
    }
 }
-
-
-

@@ -1,0 +1,17 @@
+extends base/layout.pug
+
+block vars 
+	- var pageTitle = "Оформление заказа";
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Корзина
+			li.breadcrumbs__item= pageTitle
+	.order-page 
+		.order-page__container 
+			h1.order-page__title.general__title= pageTitle
+		include ./components/order-block

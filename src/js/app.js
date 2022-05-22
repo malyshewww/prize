@@ -9,6 +9,12 @@ import "./modules/stepper.js";
 // Модальные окна
 import "./modules/modals.js";
 
+// Модуль яндекс карты
+import "./modules/map.js";
+
+// Подключение RANGE-SLIDER
+import "./modules/range-slider.js";
+
 // Переключение кнопок с параметрами "Состав" и "Вес"
 const parametersButtons = document.querySelectorAll('.parameters__buttons');
 for (let i = 0; i < parametersButtons.length; i++) {
@@ -84,13 +90,63 @@ function tabsActions(event) {
 }
 
 // Accordeon
-$('.item-accordeon__header').click(function(event){
-	if($('.accordeon')){
+$('.item-accordeon__header').click(function (event) {
+	if ($('.accordeon')) {
 		$('.item-accordeon__header').not($(this)).removeClass('active');
 		$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
 	}
 	$(this).toggleClass('active').next().slideToggle(300);
 });
+
+// Sticky aside in Cart
+const cart = document.querySelector('.cart');
+if (cart) {
+	window.addEventListener("scroll", scrollPosition);
+	window.addEventListener("resize", scrollPosition);
+	function scrollPosition() {
+		cartPosition();
+	}
+	function cartPosition() {
+		if (window.innerWidth > 992) {
+			const wrapper = document.querySelector('.wrapper');
+			/*Позиция элемента от верха страницы
+			В данном случае - это 100px
+			*/
+			const cartPosition = cart.getBoundingClientRect().top + scrollY;
+			// const headerTopHeight = headerTop.getBoundingClientRect().height;
+			/*Если прокручено больше,чем позиция элемента, т.е. больше 100px
+			добавляем класс fixed
+			*/
+			if (scrollY > cartPosition) {
+				cart.classList.add('sticky');
+				wrapper.style.overflow = 'visible';
+			} else {
+				cart.classList.remove('sticky');
+				wrapper.style.overflow = 'hidden';
+			}
+		}
+	}
+}
+
+/*===== FORM FOCUS =====*/
+const fields = document.querySelectorAll("[data-field]")
+/*=== Add focus ===*/
+function addfocus() {
+	let parent = this.parentNode;
+	parent.classList.add("focus")
+}
+/*=== Remove focus ===*/
+function remfocus() {
+	let parent = this.parentNode;
+	if (this.value == "") {
+		parent.classList.remove("focus");
+	}
+}
+/*=== To call function===*/
+fields.forEach(input => {
+	input.addEventListener("focus", addfocus)
+	input.addEventListener("blur", remfocus)
+})
 
 // Меню бургер
 const iconMenu = document.querySelector('.menu__icon');

@@ -121,10 +121,11 @@
    &__clients-banner {
       margin-bottom: 30px;
    }
-   &__clients-sets{
-      margin-bottom: 50px;
+   &__clients-sets {
+      max-width: 1010px;
+      margin: 0 auto 50px;
       text-align: center;
-      & .header-block__title{
+      & .header-block__title {
          font-size: 20px;
          line-height: math.div(30, 20) * 100%;
          font-weight: 700;
@@ -159,11 +160,11 @@
       margin-bottom: 50px;
    }
 }
-.content-title{
+.content-title {
    font-weight: 600;
    font-size: 20px;
    line-height: math.div(24, 20) * 100%;
-   font-family: 'Montserrat', sans-serif;
+   font-family: "Montserrat", sans-serif;
 }
 
 .swiper-initialized .slide-arrow {

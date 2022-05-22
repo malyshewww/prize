@@ -73,58 +73,58 @@ function initSliders() {
    const cardMainSlider = document.querySelector('.base-slider');
    const cardMainSlides = document.querySelectorAll('.base-slider__item').length;
    const cardNavSlider = document.querySelector('.thumbs-slider');
-   const cardNavSlides = cardNavSlider.querySelectorAll('.thumbs-slider__item').length;
+   const cardNavSlides = document.querySelectorAll('.thumbs-slider__item').length;
    let cardNavSwiper;
    let cardMainSwiper;
    if (cardNavSlider) {
-   cardNavSwiper = new Swiper(cardNavSlider, {
-      modules: [Thumbs, Navigation],
-      direction: 'vertical',
-      watchOverflow: true,
-      slidesPerView: 3,
-      spaceBetween: 19,
-      simulateTouch: true,
-      freeMode: false,
-      slideClass: "thumbs-slider__item",
-      wrapperClass: "thumbs-slider__wrapper",
-      watchSlidesVisibility: true,
-      watchSlidesProgress: true,
-      speed: 600,
-      breakpoints: {
-         991.98: {
-            slidesPerView: 3,
+      cardNavSwiper = new Swiper(cardNavSlider, {
+         modules: [Thumbs, Navigation],
+         direction: 'vertical',
+         watchOverflow: true,
+         slidesPerView: 3,
+         spaceBetween: 19,
+         simulateTouch: true,
+         freeMode: false,
+         slideClass: "thumbs-slider__item",
+         wrapperClass: "thumbs-slider__wrapper",
+         watchSlidesVisibility: true,
+         watchSlidesProgress: true,
+         speed: 600,
+         breakpoints: {
+            991.98: {
+               slidesPerView: 3,
+            },
          },
-      },
-   })
-   if (cardNavSlides < 3) {
-      cardNavSwiper.destroy();
-      cardNavSlider.classList.add('disabled');
+      })
+      if (cardNavSlides < 3) {
+         cardNavSwiper.destroy();
+         cardNavSlider.classList.add('disabled');
+      }
    }
-}
-if (cardMainSlider) {
-   cardMainSwiper = new Swiper(cardMainSlider, {
-      modules: [Thumbs, Navigation],
-      slidesPerView: 1,
-      watchOverflow: true,
-      simulateTouch: true,
-      slideClass: "base-slider__item",
-      wrapperClass: "base-slider__wrapper",
-      speed: 600,
-      thumbs: {
-         swiper: cardNavSwiper,
-      },
-      navigation: {
-         nextEl: '.base-slider__controls .slide-arrow__next',
-         prevEl: '.base-slider__controls .slide-arrow__prev',
-      },
-   })
-   if (cardMainSlides > 1) {
-      cardMainSwiper.init();
-   } else {
-      cardMainSwiper.destroy();
-      cardMainSlider.classList.add('disabled');
+   if (cardMainSlider) {
+      cardMainSwiper = new Swiper(cardMainSlider, {
+         modules: [Thumbs, Navigation],
+         slidesPerView: 1,
+         watchOverflow: true,
+         simulateTouch: true,
+         slideClass: "base-slider__item",
+         wrapperClass: "base-slider__wrapper",
+         speed: 600,
+         thumbs: {
+            swiper: cardNavSwiper,
+         },
+         navigation: {
+            nextEl: '.base-slider__controls .slide-arrow__next',
+            prevEl: '.base-slider__controls .slide-arrow__prev',
+         },
+      })
+      if (cardMainSlides > 1) {
+         cardMainSwiper.init();
+      } else {
+         cardMainSwiper.destroy();
+         cardMainSlider.classList.add('disabled');
+      }
    }
-}
 
 }
 

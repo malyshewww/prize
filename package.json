@@ -22,7 +22,8 @@
 	"author": "Alex",
 	"license": "ISC",
 	"dependencies": {
-		"gulp-cli": "^2.3.0"
+		"gulp-cli": "^2.3.0",
+		"nouislider": "^15.6.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.16.12",

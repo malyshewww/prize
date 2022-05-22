@@ -166,6 +166,7 @@
 }
 .item-prize--big {
 	max-height: 366px;
+	min-height: 366px;
 	& .item-prize__text {
 		font-size: 30px;
 		line-height: math.div(30, 30) * 100%;

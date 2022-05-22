@@ -1,0 +1,85 @@
+section.order 
+	.container 
+		.order__body 
+			.order-content
+				.order__payment.payment-order
+					h2.payment-order__title.content-title Способ оплаты
+					form(action="#").payment-order__form
+						.payment-order__group.radiobutton-item
+							label
+								input(type="radio" name="payment" checked class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Наличными
+						.payment-order__group.radiobutton-item
+							label
+								input(type="radio" name="payment" class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Безналичный расчет
+						.payment-order__group.radiobutton-item
+							label
+								input(type="radio" name="payment" class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Постоплата (для корпоративных клиентов)
+				.order__variant.variant-order
+					h2.variant-order__title.content-title Вариант доставки
+					form(action="#").variant-order__form
+						.variant-order__group.radiobutton-item
+							label
+								input(type="radio" name="variant" checked class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Самовывоз
+						.payment-order__group.radiobutton-item
+							label
+								input(type="radio" name="variant" class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Курьером
+						.payment-order__group.radiobutton-item
+							label
+								input(type="radio" name="variant" class="real-radio")
+								span.custom-radio
+								span.radiobutton-item__text Транспортной компанией по РФ
+					.variant-order__company.company-order
+						.company-order__item
+							.company-order__logo 
+								img(src="img/order/company-1.png", alt="")
+							.company-order__content 
+								h3.company-order__title Транспортная компания DPD 
+								.company-order__descr экспресс-доставка <br> в течение 2-4 дней
+						.company-order__item
+							.company-order__logo 
+								img(src="img/order/company-2.png", alt="")
+							.company-order__content 
+								h3.company-order__title Транспортная компания <br> «Деловые линии» 
+								.company-order__descr доставка в течение 2-14 дней
+						.company-order__item
+							.company-order__logo 
+								img(src="img/order/company-3.png", alt="")
+							.company-order__content 
+								h3.company-order__title Транспортная компания«СДЭК»
+								.company-order__descr доставка в течение 2-4 дней
+								a(href="#").company-order__link Пункты выдачи  
+					.variant-order__info.
+						<span class="color-red">ВАЖНО:</span> стоимость доставки в регионы рассчитывается менеджером при согласовании 
+						заказа и зависит от объема заказа и тарифов выбранной транспортной компании
+			aside.order-data
+				.order-data__body 
+					.order-data__title.content-title Контактные данные
+					form(action="#").order-data__form.form
+						.form__items
+							.form__item 
+								label.form__label.required Ваше имя
+								input(type="text" required data-field).form__input
+							.form__item 
+								label.form__label.required E-mail
+								input(type="email" required data-field).form__input
+							.form__item 
+								label.form__label.required Телефон 
+								input(type="tel" required data-field).form__input
+							.form__item 
+								label.form__label Адрес доставки 
+								input(type="text" data-field).form__input
+							.form__item 
+								label.form__label Сообщение
+								textarea(data-field).form__textarea
+						.form__text * Поля обязательны к заполнению
+						button(type="submit").form__button.btn Отправить

@@ -1,0 +1,16 @@
+extends base/layout.pug
+
+block vars 
+	- var pageTitle = "Соберите подарок";
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item= pageTitle
+	.collect-page 
+		.collect-page__container 
+			h1.collect-page__title.general__title= pageTitle
+		include ./components/collect-block
+		include ./components/consultation
