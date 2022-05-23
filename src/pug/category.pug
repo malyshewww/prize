@@ -1,20 +1,21 @@
 extends base/layout.pug
 
 block vars 
-	- var pageTitle = "Сладкие подарки";
+	- var pageTitle = "Категория Сладкие подарки";
+	- var currentTitle = "Сладкие подарки"
 
 block content
 	div.breadcrumbs.container
 		ul.breadcrumbs__list
 			li.breadcrumbs__item
 				a(href="#").breadcrumbs__link Главная
-			li.breadcrumbs__item= pageTitle
+			li.breadcrumbs__item= currentTitle
 	.category-page 
 		.category-page__container 
-			h1.category-page__title.general__title= pageTitle
+			h1.category-page__title.general__title= currentTitle
 		section.category 
 			.category__container 
 				include ./components/category-sorting
-				.category__body 
+				.category__body
 					include ./components/category-aside
 					include ./components/category-content

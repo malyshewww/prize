@@ -192,7 +192,7 @@
    line-height: 1;
    transition: all .3s ease 0s;
    font-size: 0;
-   margin-right: 4px;
+   padding-right: 4px;
 }
 .rating:not(:checked)>label:before {
    content: url('../img/icons/star-t-big.svg');

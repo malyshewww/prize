@@ -1,7 +1,9 @@
 .category-sorting
 	.category-sorting__label Сортировать:
-	.category-sorting__button По цене
-	ul.category-sorting__list.dropdown-list
-		li.dropdown-list По цене
-		li.dropdown-list По рейтингу
-		li.dropdown-list По популярности
+	.dropdown
+		.category-sorting__button.dropdown__button По цене
+		ul.category-sorting__list.dropdown-list
+			li.dropdown-list__item По цене
+			li.dropdown-list__item По рейтингу
+			li.dropdown-list__item По популярности
+		input(type="text").dropdown__input-hidden

@@ -15,6 +15,9 @@ import "./modules/map.js";
 // Подключение RANGE-SLIDER
 import "./modules/range-slider.js";
 
+// Подключение модуля выпадающего меню
+import "./modules/dropdown-menu.js";
+
 // Переключение кнопок с параметрами "Состав" и "Вес"
 const parametersButtons = document.querySelectorAll('.parameters__buttons');
 for (let i = 0; i < parametersButtons.length; i++) {
@@ -43,7 +46,7 @@ $(".parameters__watch").on("click", function (event) {
 	let id = $(this).attr('href'),
 		//узнаем высоту от начала страницы до блока на который ссылается якорь
 		top = $(id).offset().top;
-	$('#compound').addClass('active').siblings().removeClass('active');
+	$('#compound').addClass('active').closest('.tabs__item').siblings().find('.tabs__link').removeClass('active');
 	$('.tabs__content--compound').addClass('show').siblings().removeClass('show');
 	//анимируем переход на расстояние - top за 800 мс
 	$('body,html').animate({ scrollTop: top }, 800);
@@ -74,6 +77,7 @@ addTouchClass();
 document.addEventListener('click', tabsActions);
 function tabsActions(event) {
 	if (event.target.closest('[data-tab]')) {
+		event.preventDefault();
 		const tabItemId = event.target.dataset.tab;
 		const tabContent = document.querySelector(`[data-tab-content="${tabItemId}"]`);
 		if (tabContent) {

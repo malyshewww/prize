@@ -6,8 +6,7 @@ aside.category__aside
 				button(type="button").filter__button.filter-reset Сбросить всё
 			.filter-group
 				.filter-group__title.content-title Цена
-				.filter-group__item 
-					.filter-group__slider.slider-filter(id="price-slider")
+				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
 							input(type="number" id="input-price_1").filter-group__input
@@ -16,10 +15,10 @@ aside.category__aside
 						label.filter-group__label
 							input(type="number" id="input-price_2").filter-group__input
 							span ₽
+					.filter-group__slider.slider-filter(id="price-slider")
 			.filter-group
 				.filter-group__title.content-title Вес
-				.filter-group__item 
-					.filter-group__slider.slider-filter(id="weight-slider")
+				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
 							input(type="number" id="input-weight_1").filter-group__input
@@ -28,7 +27,8 @@ aside.category__aside
 						label.filter-group__label
 							input(type="number" id="input-weight_2").filter-group__input
 							span г
-			.filter-group
+					.filter-group__slider.slider-filter(id="weight-slider")
+			.filter-group.filter-group__material
 				.filter-group__title.content-title Материал упаковки
 				.radiobutton-item
 					label

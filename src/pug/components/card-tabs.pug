@@ -255,9 +255,12 @@ section.tabs
    .tabs__body
       .container
          ul.tabs__list 
-            li.tabs__item.active(data-tab="1" id="compound") Состав
-            li.tabs__item(data-tab="2") Описание
-            li.tabs__item(data-tab="3") Отзывы
+            li.tabs__item
+               a.tabs__link.active(href="#compound" data-tab="1" id="compound") Состав
+            li.tabs__item
+               a.tabs__link(href="#description" data-tab="2") Описание
+            li.tabs__item
+               a.tabs__link(href="#reviews" data-tab="3") Отзывы
          div.tabs__content.tabs__content--compound.tabs-content.show(data-tab-content="1")
             .card-compound
                .card-compound__box
@@ -336,18 +339,14 @@ section.tabs
                            .data-reviews__icon= item.icon
                            .data-reviews__name= item.name
                            .data-reviews__date= item.date 
-                        .reviews-item__content 
-                           ul.reviews-item__rating 
-                              li 
-                                 img(src="img/icons/star.svg", alt="")
-                              li 
-                                 img(src="img/icons/star.svg", alt="")
-                              li 
-                                 img(src="img/icons/star.svg", alt="")
-                              li 
-                                 img(src="img/icons/star.svg", alt="")
-                              li 
-                                 img(src="img/icons/star.svg", alt="")
-                           .reviews-item__text 
-                              p= item.text
+                        .reviews-item__content
+                           .reviews-rating
+                              ul.reviews-item__rating.reviews-rating__list.r-4
+                                 li.reviews-rating__item
+                                 li.reviews-rating__item
+                                 li.reviews-rating__item
+                                 li.reviews-rating__item
+                                 li.reviews-rating__item
+                              .reviews-item__text 
+                                 p= item.text
                a(href="#").reviews__button.reviews__show-more.btn.btn-green Показать ещё 

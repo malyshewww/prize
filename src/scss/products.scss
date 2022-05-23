@@ -104,20 +104,55 @@
       position: absolute;
       top: 0;
       left: 0px;
-      background: url("../img/icons/badge.svg");
       background-position: -20px -10px;
       background-repeat: no-repeat;
       background-size: auto 100%;
       width: 87px;
       height: 63px;
+      &_hit {
+         background-image: url("../img/icons/badge.svg");
+         & span{
+            color: $whiteColor;
+            text-indent: 0%;
+            transform: rotate(-45deg) translate(9px, -12px);
+         }
+      }
+      &_new {
+         background-image: url("../img/icons/badge-new.svg");
+         & span{
+            color: $mainColor;
+            transform: rotate(-45deg) translate(5px, -12px);
+         }
+      }
       & span {
-         color: $whiteColor;
          display: block;
-         transform: rotate(-45deg) translate(9px, -12px);
          font-family: "SourceSansPro", sans-serif;
          font-weight: 700;
          font-size: 16px;
          line-height: math.div(22, 16) * 100%;
+      }
+   }
+   &__sale {
+      position: absolute;
+      z-index: 5;
+      top: 60px;
+      left: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: math.div(20, 16) * 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: $whiteColor;
+      &.card-product__sale--pink {
+         background: $redColorLight;
+      }
+      &.card-product__sale--green {
+         background: $greenLightColor;
       }
    }
    &__image {
@@ -237,6 +272,26 @@
       }
    }
 }
+   .reviews-rating__list {
+      & li {
+      display: block;
+      margin-right: 3px;
+      background-image: url("../img/icons/star-t.svg");
+      background-size: 21px 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition:  all .3s ease;
+   }
+   @for $i from 1 to 6{
+      &.r-#{$i}{
+         & li:nth-last-child(-n+#{$i}){
+            background-image: url("../img/icons/star.svg");
+            background-repeat: no-repeat;
+         }
+      }
+   }
+}
+   
 .choice-group {
    border: 0.5px solid #bdbdbd;
    border-radius: 19px;

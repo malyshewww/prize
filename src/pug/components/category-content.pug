@@ -1,2 +1,71 @@
-.category__content.
-	Контент
+-
+	product = [
+		{
+			"img": "product-6",
+			"article": "#0074",
+			"name": "Короб почтальона Ассорти",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"sale": `<div class="card-product__sale card-product__sale--pink">-20%</div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"value": "1100 г",
+				},
+				{
+					"title": "Премиум",
+					"value": "600 г",
+				},
+				{
+					"title": "VIP",
+					"value": "300 г",
+				},
+			]
+		},
+		{
+			"img": "product-7",
+			"article": "#0184",
+			"name": "Кубок желтый",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_new"><span>New</span></div>`,
+			"sale": `<div class="card-product__sale card-product__sale--green">-10%</div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"value": "400 г",
+				},
+				{
+					"title": "Премиум",
+					"value": "600 г",
+				},
+				{
+					"title": "VIP",
+					"value": "300 г",
+				},
+			]
+		},
+		{
+			"img": "product-4",
+			"article": "#0225",
+			"name": "Почта-копилка",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"sale": `<div class="card-product__sale card-product__sale--green">-10%</div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"value": "550 г",
+				},
+				{
+					"title": "Премиум",
+					"value": "600 г",
+				},
+				{
+					"title": "VIP",
+					"value": "300 г",
+				},
+			]
+		},
+	];
+.category__content
+	include product-card
