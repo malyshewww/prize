@@ -15,7 +15,6 @@
    display: flex;
    flex: 0 0 math.div(602, 1140) * 100%;
    max-width: 602px;
-   max-height: 446px;
    &__thumbs {
    }
    &__base {
@@ -25,7 +24,7 @@
    padding: 20px;
    margin: -20px;
    flex-shrink: 0;
-   height: auto;
+   height: 490px;
    &__wrapper {
       flex-direction: column;
    }

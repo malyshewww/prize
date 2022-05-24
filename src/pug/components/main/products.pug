@@ -1,151 +1,123 @@
 -
    product = [
       {
-         "img": "product-1",
+         "img": "products/product-1",
          "article": "#0002",
          "name": "Cнежинка золотая",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "200 г",
-               "checked": true,
-               "radio": "similar-1"
+               "values": ["200 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "similar-1"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "similar-1"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
       {
-         "img": "product-2",
+         "img": "products/product-2",
          "article": "#0074",
          "name": "Короб почтальона Ассорти",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "1100 г",
-               "checked": true,
-               "radio": "similar-2"
+               "values": ["1100 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "similar-2"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "similar-2"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
       {
-         "img": "product-3",
+         "img": "products/product-3",
          "article": "#0184",
          "name": "Чемодан Фантазия маленький",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "700 г",
-               "checked": true,
-               "radio": "similar-3"
+               "values": ["700 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "similar-3"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "similar-3"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
       {
-         "img": "product-4",
+         "img": "products/product-4",
          "article": "#0225",
          "name": "Почта-копилка",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "550 г",
-               "checked": true,
-               "radio": "similar-4"
+               "values": ["550 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "similar-4"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "similar-4"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
       {
-         "img": "product-4",
+         "img": "products/product-4",
          "article": "#0225",
          "name": "Почта-копилка",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "550 г",
-               "checked": true,
-               "radio": "similar-5"
+               "values": ["550 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "similar-5"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "similar-5"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
    ]
-section.products.similar
+section.products.popular
    .container 
       .header-block.header-block__products
          h2.header-block__title
-            span.header-block__text Похожие подарки
+            span.header-block__text Популярные товары
    .slider-container.container
       .products__slider
          .products__wrapper
             .products__body
-               include product-card
+               include ../product-card
             .products__controls
                button.slide-arrow.slide-arrow__prev.icon-arrow-prev
                button.slide-arrow.slide-arrow__next.icon-arrow-next
+
+

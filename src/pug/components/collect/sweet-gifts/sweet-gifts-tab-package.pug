@@ -1,0 +1,117 @@
+.collect__table.collect-table
+	.collect-table__header.collect-table__thead
+		.collect-table__th Наименование
+		.collect-table__th Вместимость
+		.collect-table__th Цена 1 шт.
+	.collect-table__sub-header.sub-header-table
+		.collect-table__tr 
+			.collect-table__td.no-pacakge
+				.collect-table__title Без упаковки
+				.collect-table__value
+				.collect-table__radiobutton.radiobutton-item
+					label
+						span.radiobutton-item__text 0 ₽
+						input(type="radio" name="package" checked class="real-radio")
+						span.custom-radio
+	.collect-table__body.collect-table__tbody
+		.accordeon
+			.accordeon__item.item-accordeon
+				.item-accordeon__header.icon-arrow-next.active Картон
+				.item-accordeon__content.open
+					.collect-table__row.collect-table__tr
+						each paperboardItem, index in collectPaperboard
+							.collect-table__td
+								.collect-table__name
+									.collect-table__images
+										.collect-table__image 
+											img(src=`img/collect/${paperboardItem.img}.png`, alt=paperboardItem.title)
+										if paperboardItem.tooltip
+											.collect-table__tooltip 
+												img(src=`img/collect/${paperboardItem.tooltip}.png`, alt=paperboardItem.title)
+									h2.collect-table__title!= paperboardItem.title
+								.collect-table__value= paperboardItem.value
+								.collect-table__radiobutton.radiobutton-item
+									label
+										span.radiobutton-item__text= paperboardItem.price
+										input(type="radio" name="package" class="real-radio")
+										span.custom-radio
+			.accordeon__item.item-accordeon
+				.item-accordeon__header.icon-arrow-next.active Жестяные
+				.item-accordeon__content.open
+					.collect-table__row.collect-table__tr
+						each item, index in collectTin
+							.collect-table__td
+								.collect-table__name
+									.collect-table__images
+										.collect-table__image 
+											img(src=`img/collect/${item.img}.png`, alt=item.title)
+										if item.tooltip
+											.collect-table__tooltip 
+												img(src=`img/collect/${item.tooltip}.png`, alt=item.title)
+									h2.collect-table__title!= item.title
+								.collect-table__value= item.value
+								.collect-table__radiobutton.radiobutton-item
+									label
+										span.radiobutton-item__text= item.price
+										input(type="radio" name="package" class="real-radio")
+										span.custom-radio
+			.accordeon__item.item-accordeon
+				.item-accordeon__header.icon-arrow-next.active Туба
+				.item-accordeon__content.open
+					.collect-table__row.collect-table__tr
+						each item, index in collectTuba
+							.collect-table__td
+								.collect-table__name
+									.collect-table__images
+										.collect-table__image 
+											img(src=`img/collect/${item.img}.png`, alt=item.title)
+										if item.tooltip
+											.collect-table__tooltip 
+												img(src=`img/collect/${item.tooltip}.png`, alt=item.title)
+									h2.collect-table__title!= item.title
+								.collect-table__value= item.value
+								.collect-table__radiobutton.radiobutton-item
+									label
+										span.radiobutton-item__text= item.price
+										input(type="radio" name="package" class="real-radio")
+										span.custom-radio
+			.accordeon__item.item-accordeon
+				.item-accordeon__header.icon-arrow-next.active Мешки
+				.item-accordeon__content.open
+					.collect-table__row.collect-table__tr
+						each item, index in collectBags
+							.collect-table__td
+								.collect-table__name
+									.collect-table__images
+										.collect-table__image 
+											img(src=`img/collect/${item.img}.png`, alt=item.title)
+										if item.tooltip
+											.collect-table__tooltip 
+												img(src=`img/collect/${item.tooltip}.png`, alt=item.title)
+									h2.collect-table__title!= item.title
+								.collect-table__value= item.value
+								.collect-table__radiobutton.radiobutton-item
+									label
+										span.radiobutton-item__text= item.price
+										input(type="radio" name="package" class="real-radio")
+										span.custom-radio
+			.accordeon__item.item-accordeon
+				.item-accordeon__header.icon-arrow-next.active Текстиль
+				.item-accordeon__content.open
+					.collect-table__row.collect-table__tr
+						each item, index in collectTextile
+							.collect-table__td
+								.collect-table__name
+									.collect-table__images
+										.collect-table__image 
+											img(src=`img/collect/${item.img}.png`, alt=item.title)
+										if item.tooltip
+											.collect-table__tooltip 
+												img(src=`img/collect/${item.tooltip}.png`, alt=item.title)
+									h2.collect-table__title!= item.title
+								.collect-table__value= item.value
+								.collect-table__radiobutton.radiobutton-item
+									label
+										span.radiobutton-item__text= item.price
+										input(type="radio" name="package" class="real-radio")
+										span.custom-radio

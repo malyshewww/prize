@@ -4,16 +4,16 @@ block vars
 
 doctype html
 html(lang="ru")
-	include ../components/head
+	include ../chunks/head
 	body(class=bodyClass)
 		.wrapper
-			include ../components/header
+			include ../chunks/header
 			main.content
 				block content
 			
-			include ../components/footer
+			include ../chunks/footer
 
-		include ../components/modals
+		include ../chunks/modals
 
 		block scripts
 			script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js")

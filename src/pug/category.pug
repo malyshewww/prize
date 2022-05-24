@@ -15,7 +15,9 @@ block content
 			h1.category-page__title.general__title= currentTitle
 		section.category 
 			.category__container 
-				include ./components/category-sorting
+				include ./components/category/category-sorting
 				.category__body
-					include ./components/category-aside
-					include ./components/category-content
+					include ./components/category/category-aside
+					include ./components/category/category-content
+		include ./components/consultation
+		include ./components/popular

@@ -1,0 +1,70 @@
+-
+	product = [
+		{
+			"img": "products/category-nuts/product-1",
+			"article": "#0074",
+			"name": "Набор сухофруктов и орехов",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1000 г", "700 г"],
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+				},
+			]
+		},
+		{
+			"img": "products/category-nuts/product-2",
+			"article": "#0074",
+			"name": "Манго",
+			"price": "1005 ₽",
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1000 г", "700 г"],
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+				},
+			]
+		},
+		{
+			"img": "products/category-nuts/product-3",
+			"article": "#0074",
+			"name": "Цукаты лист ассорти",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1000 г", "700 г"],
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+				},
+			]
+		},
+	];
+.category__content
+	.category__cards
+		include ../product-card
+	button(type="button").category__button Показать ещё
+	include ../../chunks/pagination

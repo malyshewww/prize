@@ -1,0 +1,22 @@
+extends base/layout.pug
+
+block vars 
+	- var pageTitle = "Соберите подарок";
+	- var currentTitle = "Сладкие подарки";
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link= pageTitle
+			li.breadcrumbs__item= currentTitle
+	.collect-page
+		.collect-page__container 
+			h1.collect-page__title.general__title= currentTitle
+		section.collect 
+			.collect__container
+				include ./components/collect/sweet-gifts/sweet-gifts-tabs
+				include ./components/collect/sweet-gifts/sweet-gifts-footer
+		include ./components/consultation

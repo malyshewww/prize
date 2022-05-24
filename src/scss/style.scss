@@ -232,10 +232,15 @@ body {
 // Страница "Категории"
 @import "category";
 
+// Страница "Главная"
 @import "home";
 
 // Стили для хлебных крошек
 @import "breadcrumbs";
+
+// Стили для Пагинации
+@import "pagination";
+
 // Стили для модальных окон
 @import "modals";
 

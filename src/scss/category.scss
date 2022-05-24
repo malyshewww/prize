@@ -2,6 +2,7 @@
 }
 
 .category {
+	padding-bottom: 64px;
 	&__body {
 		display: grid;
 		grid-template-columns: 264px 1fr;
@@ -11,9 +12,33 @@
 	&__aside {
 	}
 	&__content {
+	}
+	&__cards{
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 30px;
+	}
+	&__button{
+		margin: 30px 0 0;
+		width: 100%;
+		min-height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 10px 10px;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: math.div(20, 16) * 100%;
+		color: $greenColor;
+		border: 1px solid $greenColor;
+		background: transparent;
+		border-radius: 20px;
+		transition: all .2s linear 0s;
+		&:hover{
+			background: $greenColor;
+			color: $whiteColor;
+		}
 	}
 }
 .category-sorting {

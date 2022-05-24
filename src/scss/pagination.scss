@@ -1,0 +1,40 @@
+.pagination {
+   margin: 25px auto 0;
+   width: 100%;
+   &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   &__item {
+      &.current .pagination__link {
+         border: 1px solid $mainColor;
+      }
+      &.disabled .pagination__link::before{
+         color: #E0E0E0;
+      }
+      &.disabled .pagination__link{
+         cursor: default;
+         pointer-events: none;
+      }
+   }
+   &__link {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid transparent;
+      cursor: pointer;
+      line-height: math.div(20, 16) * 100%;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      &::before{
+         color: #333;
+      }
+   }
+}
+
+

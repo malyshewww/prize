@@ -40,18 +40,13 @@
                .data-reviews__icon= item.icon
                .data-reviews__name= item.name
                .data-reviews__date= item.date 
-            .reviews-item__content 
-               ul.reviews-item__rating 
-                  li 
-                     img(src="img/icons/star.svg", alt="")
-                  li 
-                     img(src="img/icons/star.svg", alt="")
-                  li 
-                     img(src="img/icons/star.svg", alt="")
-                  li 
-                     img(src="img/icons/star.svg", alt="")
-                  li 
-                     img(src="img/icons/star.svg", alt="")
-               .reviews-item__text 
+            .reviews-item__content
+               ul.reviews-item__rating.reviews-rating__list.r-5
+                  li.reviews-rating__item
+                  li.reviews-rating__item 
+                  li.reviews-rating__item 
+                  li.reviews-rating__item 
+                  li.reviews-rating__item 
+               .reviews-item__text
                   p= item.text
    a(href="#").reviews__button.reviews__show-more.btn.btn-green Показать ещё

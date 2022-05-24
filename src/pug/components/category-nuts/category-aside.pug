@@ -1,0 +1,52 @@
+aside.category__aside
+	form(action="#").filter
+		.filter__body 
+			.filter__header 
+				.filter__title.content-title Фильтры
+				button(type="button").filter__button.filter-reset Сбросить всё
+			.filter-group
+				.filter-group__title.content-title Цена
+				.filter-group__item
+					.filter-group__inputs
+						label.filter-group__label
+							input(type="number" id="input-price_1").filter-group__input
+							span ₽
+						span.filter-group__line
+						label.filter-group__label
+							input(type="number" id="input-price_2").filter-group__input
+							span ₽
+					.filter-group__slider.slider-filter(id="price-slider")
+			.filter-group
+				.filter-group__title.content-title Вес
+				.filter-group__item
+					.filter-group__inputs
+						label.filter-group__label
+							input(type="number" id="input-weight_1").filter-group__input
+							span г
+						span.filter-group__line
+						label.filter-group__label
+							input(type="number" id="input-weight_2").filter-group__input
+							span г
+					.filter-group__slider.slider-filter(id="weight-slider")
+			.filter-group.filter-group__material
+				.filter-group__title.content-title Категория
+				.radiobutton-item
+					label
+						input(type="radio" name="material" checked class="real-radio")
+						span.custom-radio
+						span.radiobutton-item__text Орехи
+				.radiobutton-item
+					label
+						input(type="radio" name="material" class="real-radio")
+						span.custom-radio
+						span.radiobutton-item__text Сухофрукты
+				.radiobutton-item
+					label
+						input(type="radio" name="material" class="real-radio")
+						span.custom-radio
+						span.radiobutton-item__text Цукаты
+				.radiobutton-item
+					label
+						input(type="radio" name="material" class="real-radio")
+						span.custom-radio
+						span.radiobutton-item__text Наборы

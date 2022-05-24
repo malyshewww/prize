@@ -330,6 +330,7 @@
       line-height: math.div(22, 16) * 100%;
    }
    &__arrow {
+      margin-left: auto;
       width: 0;
       height: 0;
       border-style: solid;

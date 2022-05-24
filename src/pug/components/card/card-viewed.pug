@@ -1,56 +1,44 @@
 -
    product = [
       {
-         "img": "product-1",
+         "img": "products/product-1",
          "article": "#0002",
          "name": "Cнежинка золотая",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "200 г",
-               "checked": true,
-               "radio": "viewed-1"
+               "values": ["200 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "viewed-1"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "viewed-1"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
       {
-         "img": "product-2",
+         "img": "products/product-2",
          "article": "#0074",
          "name": "Короб почтальона Ассорти",
          "price": "1005 ₽",
-         "badge": "Хит",
+         "badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
          choice: [
             {
                "title": "Классик",
-               "value": "1100 г",
-               "checked": true,
-               "radio": "viewed-2"
+               "values": ["1100 г", "700 г"],
             },
             {
                "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "viewed-2"
+               "values": ["600 г", "700 г"],
             },
             {
                "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "viewed-2"
+               "values": ["300 г", "700 г"],
             },
          ]
       },
@@ -64,7 +52,7 @@ section.products.viewed
       .products__slider
          .products__wrapper
             .products__body
-               include product-card
+               include ../product-card
             .products__controls
                button.slide-arrow.slide-arrow__prev.icon-arrow-prev
                button.slide-arrow.slide-arrow__next.icon-arrow-next
