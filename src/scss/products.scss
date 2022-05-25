@@ -99,6 +99,9 @@
       &:hover::before {
          color: $redColor;
       }
+      &.selected::before{
+         color: $redColor;
+      }
    }
    &__badge {
       position: absolute;

@@ -72,6 +72,14 @@
       justify-content: center;
       align-items: center;
       margin: 0 auto 16px;
+      &-check{
+         width: 40px;
+         height: 40px;
+         margin: 0 auto 21px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
    }
    &__description{
       font-size: 16px;
@@ -150,6 +158,12 @@
 }
 .modal-message .modal__content{
    padding: 40px 40px 50px;
+}
+.modal-consultation .modal__content{
+   padding: 50px 48px;
+   max-width: 448px;
+   font-family: "Montserrat", sans-serif;
+   font-weight: 500; 
 }
 .estimate-modal {
    padding-left: 17px;

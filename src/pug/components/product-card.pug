@@ -2,7 +2,7 @@ each productItem, productIndex in product
    .products__card.card-product
       !=productItem.delete ? productItem.delete : ""
       .card-product__box
-         .card-product__favorite.icon-favorites
+         .card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
          !=productItem.badge ? productItem.badge : ""
          !=productItem.sale ? productItem.sale : ""
          .card-product__header 
@@ -22,10 +22,11 @@ each productItem, productIndex in product
                .card-product__compare.icon-prepare(class=productItem.selectedClass)
             .choice-groups
             if productItem.choice
+               - var count = 0;
                each choiceItem, choiceIndex in productItem.choice
                   .card-product__choice.choice-group
                      label.choice-group__label
-                        input(type="radio" name=`radio-${productIndex}` checked="choiceItem[0] ? checked :''" class="choice-group__input real-radio")
+                        input(type="radio" name=`radio-${productIndex}` checked=choiceIndex[0] ? "false" : "true" class="choice-group__input real-radio")
                         span.custom-radio
                         span.choice-group__text= choiceItem.title
                      if choiceItem.values

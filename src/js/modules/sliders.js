@@ -83,8 +83,7 @@ function initSliders() {
          watchOverflow: true,
          slidesPerView: 3,
          spaceBetween: 19,
-         simulateTouch: true,
-         freeMode: false,
+         grabCursor: true,
          slideClass: "thumbs-slider__item",
          wrapperClass: "thumbs-slider__wrapper",
          watchSlidesVisibility: true,
@@ -104,9 +103,8 @@ function initSliders() {
    if (cardMainSlider) {
       cardMainSwiper = new Swiper(cardMainSlider, {
          modules: [Thumbs, Navigation],
-         slidesPerView: 1,
          watchOverflow: true,
-         simulateTouch: true,
+         grabCursor: true,
          slideClass: "base-slider__item",
          wrapperClass: "base-slider__wrapper",
          speed: 600,
