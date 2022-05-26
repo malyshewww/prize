@@ -74,38 +74,41 @@ function addTouchClass() {
 addTouchClass();
 
 
-// document.querySelectorAll('.tabs__link').forEach((item) => {
-// 	item.addEventListener('click', function (e) {
-// 		e.preventDefault();
-// 		const id = e.target.getAttribute('href').replace('#', "");
-// 		document.querySelectorAll('.tabs__link').forEach((child) => {
-// 			child.classList.remove('active')
-// 		})
-// 		document.querySelectorAll('.tabs__content').forEach((child) => {
-// 			child.classList.remove('show')
-// 		})
-// 		item.classList.add('active');
-// 		document.getElementById(id).classList.add('show');
-// 		const tabItemPath = e.target.getAttribute('href');
-// 		window.location.href = tabItemPath;
-// 		// window.pushState({}, "", tabItemPath);
-// 		// history.pushState({}, "", tabItemPath);
-// 	})
-// })
-// $(window).on("hashchange", function () {
-// 	let hash = window.location.hash;
-// 	$("a[href$='" + hash + "']").addClass("active").siblings().removeClass("active");
-// 	setTimeout(function () {
-// 		$(hash).addClass("open").siblings().removeClass("open");
-// 	}, 100);
-// });
-// if (window.location.hash) {
-// 	$(window).trigger("hashchange");
-// }
-window.addEventListener('customScroll', (event) => {
+// CARD-TABS
+// document.addEventListener('click', tabsActions);
+function tabsActions(event) {
 	event.preventDefault();
+	if (event.target.closest('[data-tab]')) {
+		const tabItemId = event.target.dataset.tab;
+		const tabContent = document.querySelector(`[data-tab-content="${tabItemId}"]`);
+		if (tabContent) {
+			const activeTabItem = document.querySelector('.active');
+			const activeTabContent = document.querySelector('.show');
+			if (activeTabItem) {
+				activeTabItem.classList.remove('active');
+				activeTabContent.classList.remove('show');
+			}
+			event.target.classList.toggle('active');
+			tabContent.classList.toggle('show');
+		}
+	}
+}
+
+// Accordeon
+$('.item-accordeon__header').click(function (event) {
+	if ($('.accordeon')) {
+		$('.item-accordeon__header').not($(this)).removeClass('active');
+		$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
+	}
+	$(this).toggleClass('active').next().slideToggle(300);
+});
+
+window.addEventListener('customScroll', (event) => {
+	const item = event.detail.item;
+	const parent = item.closest('.tabs');
+	console.log(parent);
+	window.scrollTo({ top: parent.offsetTop });
 	console.log(event);
-	event.detail.item;
 })
 let flag = true;
 window.addEventListener('hashchange', (event) => {
@@ -136,39 +139,9 @@ if (window.location.hash) {
 	window.dispatchEvent(new Event("hashchange"))
 	console.log('if');
 }
-// CARD-TABS
-// document.addEventListener('click', tabsActions);
-// function tabsActions(event) {
-// 	event.preventDefault();
-// 	if (event.target.closest('[data-tab]')) {
-// 		const tabItemId = event.target.dataset.tab;
-// 		const tabContent = document.querySelector(`[data-tab-content="${tabItemId}"]`);
-// 		if (tabContent) {
-// 			const activeTabItem = document.querySelector('.active');
-// 			const activeTabContent = document.querySelector('.show');
-// 			if (activeTabItem) {
-// 				activeTabItem.classList.remove('active');
-// 				activeTabContent.classList.remove('show');
-// 			}
-// 			event.target.classList.toggle('active');
-// 			tabContent.classList.toggle('show');
-// 		}
-// 		// Передача get Параметров в адресную строку
-// 		const tabItemPath = event.target.getAttribute('href').replace('#', '');
-// 		console.log(tabItemPath);
-// 		window.location.href = tabItemPath;
-// 		history.pushState(null, null, '#' + tabItemPath);
-// 	}
-// }
 
-// Accordeon
-$('.item-accordeon__header').click(function (event) {
-	if ($('.accordeon')) {
-		$('.item-accordeon__header').not($(this)).removeClass('active');
-		$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
-	}
-	$(this).toggleClass('active').next().slideToggle(300);
-});
+
+
 
 // Sticky aside in Cart
 const cart = document.querySelector('.cart');

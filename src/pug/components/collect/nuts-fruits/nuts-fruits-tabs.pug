@@ -1,0 +1,272 @@
+-
+	arrayTabs = [
+		{
+			title: "Упаковка",
+			key: "package",
+			arrayHeaders: ["Наименование", "Вместимость", "Цена 1 шт."],
+			objectCategories: {
+				tree: {
+					title: "Дерево",
+					children: [
+						{
+							"title": "4 секции",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "6 секций",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "9 секций",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+					]
+				},
+				paperboard: {
+					title: "Картон",
+					chidren: [
+						{
+							"title": "1 секция",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "2 секции",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "3 секции",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "4 секции",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+						{
+							"title": "5 секций",
+							"value": "200-300 г",
+							"price": "40 ₽"
+						},
+					]
+				}
+			}
+		},
+		{
+			title: "Товары",
+			key: "goods",
+			arrayHeaders: ["Наименование", "Вес 1 шт.", "Количество"],
+			objectCategories: {
+				dried: {
+					title: "Сухофрукты",
+					children: [
+						{
+							"title": "Смесь фруктовая",
+							"value": "100 г"
+						},
+						{
+							"title": "Киви сушеный",
+							"value": "70 г"
+						},
+						{
+							"title": "Чернослив",
+							"value": "70 г"
+						},
+						{
+							"title": "Курага",
+							"value": "70 г"
+						},
+						{
+							"title": "Финик",
+							"value": "70 г"
+						},
+						{
+							"title": "Хурма сушеная",
+							"value": "70 г"
+						},
+						{
+							"title": "Инжир",
+							"value": "100 г"
+						},
+						{
+							"title": "Манго",
+							"value": "40 г"
+						},
+						{
+							"title": "Кокос",
+							"value": "70 г"
+						},
+						{
+							"title": "Маракуйя",
+							"value": "70 г"
+						},
+						{
+							"title": "Имбирь",
+							"value": "70 г"
+						},
+						{
+							"title": "Помело",
+							"value": "70 г"
+						},
+					]
+				},
+				candied: {
+					title: "Цукаты",
+					children: [
+						{
+							"title": "Папайя желтая цукаты",
+							"value": "70 г"
+						},
+						{
+							"title": "Папайя цукаты",
+							"value": "70 г"
+						},
+						{
+							"title": "Цукаты лист ассорти",
+							"value": "70 г"
+						},
+						{
+							"title": "Ананас цукаты",
+							"value": "60 г"
+						},
+					]
+				},
+				nuts-clear: {
+					title: "Орехи очищенные",
+					children: [
+						{
+							"title": "Бразильский орех",
+							"value": "100 г"
+						},
+						{
+							"title": "Арахис в кунжуте",
+							"value": "100 г"
+						},
+						{
+							"title": "Арахис микс",
+							"value": "75 г"
+						},
+						{
+							"title": "Миндаль",
+							"value": "100 г"
+						},
+						{
+							"title": "Кешью",
+							"value": "100 г"
+						},
+						{
+							"title": "Грецкий орех",
+							"value": "70 г"
+						},
+						{
+							"title": "Пекан",
+							"value": "70 г"
+						},
+						{
+							"title": "Фундук",
+							"value": "100 г"
+						},
+						{
+							"title": "Смесь ореховая",
+							"value": "100 г"
+						},
+					]
+				},
+				nuts-shell: {
+					title: "Орехи в скорлупе",
+					children: [
+						{
+							"title": "Арахис в скорлупе",
+							"value": "35 г"
+						},
+						{
+							"title": "Фундук в скорлупе",
+							"value": "70 г"
+						},
+						{
+							"title": "Грецкий орех в скорлупе светлый",
+							"value": "65 г"
+						},
+						{
+							"title": "Миндаль",
+							"value": "100 г"
+						},
+						{
+							"title": "Макадамия",
+							"value": "75 г"
+						},
+						{
+							"title": "Миндаль в скорлупе солёный",
+							"value": "60 г"
+						},
+						{
+							"title": "Пекан в скорлупе",
+							"value": "60 г"
+						},
+						{
+							"title": "Фисташки",
+							"value": "75 г"
+						},
+					]
+				}
+			}
+		}
+	];
+section.collect-tabs
+	.collect__container 
+		.tabs__body 
+			ul.tabs__list
+				each  tabItem, tabIndex in arrayTabs
+					li.tabs__item
+						a.tabs__link(href=`#${tabItem.key}` class=(tabIndex==0 ? "active" : "") )= tabItem.title
+			each tabItem, tabIndex in arrayTabs
+				div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
+					.collect__table.collect-table
+							.collect-table__header.collect-table__thead
+								each itemHeader in tabItem.arrayHeaders
+									.collect-table__th=itemHeader
+							if tabItem.key == "package"
+								.collect-table__sub-header.sub-header-table
+									.collect-table__tr
+										.collect-table__td.no-pacakge
+											.collect-table__title Без упаковки
+											.collect-table__value
+											.collect-table__radiobutton.radiobutton-item
+												label
+													span.radiobutton-item__text 0 ₽
+													input(type="radio" name="package" checked class="real-radio")
+													span.custom-radio
+							.collect-table__body.collect-table__tbody
+								.accordeon
+									each itemCategories, CategoriesIndex in tabItem.objectCategories
+										.accordeon__item.item-accordeon
+												.item-accordeon__header.icon-arrow-next= itemCategories.title
+												.item-accordeon__content
+													each child, childIndex in itemCategories.children
+														.collect-table__row.collect-table__tr
+															.collect-table__td
+																.collect-table__name
+																	.collect-table__images
+																		.collect-table__image
+																			img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
+																			.collect-table__tooltip
+																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
+																	h2.collect-table__title!= child.title
+																.collect-table__value= child.value
+																case tabItem.key
+																	when "goods"
+																		.collect-table__quantity.quantity-card
+																			button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
+																			input(type="text" value="1").quantity-card__input
+																			button.quantity-card__button.quantity-card__button--plus(data-plus)
+																	when "package"
+																		.collect-table__radiobutton.radiobutton-item
+																			label
+																				span.radiobutton-item__text= child.price
+																				input(type="radio" name="package" class="real-radio")
+																				span.custom-radio
