@@ -1,39 +1,45 @@
 each productItem, productIndex in product
-   .products__card.card-product
-      !=productItem.delete ? productItem.delete : ""
-      .card-product__box
-         .card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
-         !=productItem.badge ? productItem.badge : ""
-         !=productItem.sale ? productItem.sale : ""
-         .card-product__header 
-            a(href="#").card-product__image.ibg
-               img(src=`img/${productItem.img}.png`, alt=productItem.name)
-            .card-product__article= productItem.article
-            a(href="#").card-product__title= productItem.name 
-         .card-product__body 
-            .card-product__inner 
-               .reviews-rating
-                  ul.card-product__rating.reviews-rating__list.r-4
-                     li.reviews-rating__item
-                     li.reviews-rating__item
-                     li.reviews-rating__item
-                     li.reviews-rating__item
-                     li.reviews-rating__item
-               .card-product__compare.icon-prepare(class=productItem.selectedClass)
-            .choice-groups
-            if productItem.choice
-               - var count = 0;
-               each choiceItem, choiceIndex in productItem.choice
-                  .card-product__choice.choice-group
-                     label.choice-group__label
-                        input(type="radio" name=`radio-${productIndex}` checked=choiceIndex[0] ? "false" : "true" class="choice-group__input real-radio")
-                        span.custom-radio
-                        span.choice-group__text= choiceItem.title
-                     if choiceItem.values
-                        .choice-group__value= choiceItem.values[0]
-                     .choice-group__arrow
-         .card-product__footer 
-            .card-product__prices 
-               .card-product__price= productItem.price
-            button(type="button").card-product__button.btn Купить
+	.products__card.card-product
+		!=productItem.delete ? productItem.delete : ""
+		.card-product__box
+			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
+			!=productItem.badge ? productItem.badge : ""
+			!=productItem.sale ? productItem.sale : ""
+			.card-product__header 
+				a(href="#").card-product__image.ibg
+					img(src=`img/${productItem.img}.png`, alt=productItem.name)
+				.card-product__article= productItem.article
+				a(href="#").card-product__title= productItem.name 
+			.card-product__body 
+				.card-product__inner 
+					.reviews-rating
+						ul.card-product__rating.reviews-rating__list.r-4
+							- for (var x = 0; x < 5; x++)
+								li.reviews-rating__item
+					.card-product__compare.icon-prepare(class=productItem.selectedClass)
+				.choice-groups
+					if productItem.choice
+						each choiceItem, choiceIndex in productItem.choice
+							.choice-group__wrap
+								.card-product__choice.choice-group
+									label.choice-group__label
+										input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "checked" : "") class="choice-group__input real-radio")
+										span.custom-radio
+										span.choice-group__text= choiceItem.title
+									if choiceItem.values
+										.choice-group__value= choiceItem.values[0]
+									.choice-group__arrow
+								.choice-group__dropdown.dropdown-list
+									each choiceItem, choiceIndex in productItem.choice
+										.choice-group
+											label.choice-group__label
+												input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "checked" : "") class="choice-group__input real-radio")
+												span.custom-radio
+												span.choice-group__text= choiceItem.title
+											if choiceItem.values
+												.choice-group__value= choiceItem.values[1]
+			.card-product__footer 
+				.card-product__prices 
+					.card-product__price= productItem.price
+				button(type="button").card-product__button.btn Купить
 

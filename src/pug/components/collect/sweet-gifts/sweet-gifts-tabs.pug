@@ -181,55 +181,54 @@
 		}
 	];
 section.collect-tabs
-	.collect__container 
-		.tabs__body
-			ul.tabs__list
-				each tabItem, tabIndex in arrayTabs
-					li.tabs__item
-						a.tabs__link(href=`#${tabItem.key}` class=(tabIndex==0 ? "active" : "") )= tabItem.title
+	.tabs__body
+		ul.tabs__list
 			each tabItem, tabIndex in arrayTabs
-				div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
-					.collect__table.collect-table
-						.collect-table__header.collect-table__thead
-							each itemHeader in tabItem.arrayHeaders
-								.collect-table__th=itemHeader
-						if tabItem.key == "package"
-							.collect-table__sub-header.sub-header-table
-								.collect-table__tr 
-									.collect-table__td.no-pacakge
-										.collect-table__title Без упаковки
-										.collect-table__value
-										.collect-table__radiobutton.radiobutton-item
-											label
-												span.radiobutton-item__text 0 ₽
-												input(type="radio" name="package" checked class="real-radio")
-												span.custom-radio
-						.collect-table__body.collect-table__tbody
-							.accordeon
-								each itemCategories, CategorieIndex in tabItem.objectCategories
-									.accordeon__item.item-accordeon
-											.item-accordeon__header.icon-arrow-next= itemCategories.title
-											.item-accordeon__content
-												each child, childIndex in itemCategories.children
-													.collect-table__row.collect-table__tr
-														.collect-table__td
-															.collect-table__name
-																.collect-table__images
-																	.collect-table__image 
+				li.tabs__item
+					a.tabs__link(href=`#${tabItem.key}` class=(tabIndex==0 ? "active" : "") )= tabItem.title
+		each tabItem, tabIndex in arrayTabs
+			div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
+				.collect__table.collect-table
+					.collect-table__header.collect-table__thead
+						each itemHeader in tabItem.arrayHeaders
+							.collect-table__th=itemHeader
+					if tabItem.key == "package"
+						.collect-table__sub-header.sub-header-table
+							.collect-table__tr 
+								.collect-table__td.no-pacakge
+									.collect-table__title Без упаковки
+									.collect-table__value
+									.collect-table__radiobutton.radiobutton-item
+										label
+											span.radiobutton-item__text 0 ₽
+											input(type="radio" name="package" checked class="real-radio")
+											span.custom-radio
+					.collect-table__body.collect-table__tbody
+						.accordeon
+							each itemCategories, CategorieIndex in tabItem.objectCategories
+								.accordeon__item.item-accordeon
+										.item-accordeon__header.icon-arrow-next= itemCategories.title
+										.item-accordeon__content
+											each child, childIndex in itemCategories.children
+												.collect-table__row.collect-table__tr
+													.collect-table__td
+														.collect-table__name
+															.collect-table__images
+																.collect-table__image 
+																	img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
+																	.collect-table__tooltip
 																		img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
-																		.collect-table__tooltip
-																			img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
-																h2.collect-table__title!= child.title
-															.collect-table__value= child.value
-															case tabItem.key
-																when "goods"
-																	.collect-table__quantity.quantity-card
-																		button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
-																		input(type="text" value="1").quantity-card__input
-																		button.quantity-card__button.quantity-card__button--plus(data-plus)
-																when "package"
-																	.collect-table__radiobutton.radiobutton-item
-																		label
-																			span.radiobutton-item__text= child.price
-																			input(type="radio" name="package" class="real-radio")
-																			span.custom-radio
+															h2.collect-table__title!= child.title
+														.collect-table__value= child.value
+														case tabItem.key
+															when "goods"
+																.collect-table__quantity.quantity-card
+																	button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
+																	input(type="text" value="1").quantity-card__input
+																	button.quantity-card__button.quantity-card__button--plus(data-plus)
+															when "package"
+																.collect-table__radiobutton.radiobutton-item
+																	label
+																		span.radiobutton-item__text= child.price
+																		input(type="radio" name="package" class="real-radio")
+																		span.custom-radio

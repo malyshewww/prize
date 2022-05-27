@@ -1,0 +1,25 @@
+.politic-page {
+}
+.politic {
+   padding-bottom: 100px;
+   & a {
+      font-weight: 700;
+      cursor: pointer;
+   }
+   &__item {
+      color: $blackColor;
+      line-height: math.div(24, 16) * 100%;
+      &:not(:last-child){
+         margin-bottom: 25px;
+      }
+   }
+   &__label {
+   }
+   &__list {
+      & li {
+         &:not(:last-child){
+            margin-bottom: 23px;
+         }
+      }
+   }
+}

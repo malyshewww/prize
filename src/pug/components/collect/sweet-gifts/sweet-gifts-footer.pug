@@ -1,45 +1,45 @@
-.collect-footer.footer-collect
-   .footer-collect__items
-      .footer-collect__item
-         .footer-collect__actions
-            .footer-collect__buttons 
-               a(href="#").footer-collect__button.btn.btn-red Заказать
-               a(href="#").footer-collect__button.btn.btn__zero Добавить в корзину
-            .footer-collect__exports 
-               a(href="#").footer-collect__export.icon-photo
-               a(href="#").footer-collect__export.icon-download
-         .footer-collect__result.result-collect
-            ul.result-collect__list 
-               li.result-collect__item.result-collect__item-total
-                  .result-collect__name <span>Итого</span>
-                  .result-collect__value 1730 ₽
-         button(type="button").footer-collect__delete.icon-delete
-      .footer-collect__item.footer-collect__item_2
-         .footer-collect__item-wrap
-            .footer-collect__actions
-               .footer-collect__buttons 
-                  a(href="#").footer-collect__button.btn.btn-red Заказать
-                  a(href="#").footer-collect__button.btn.btn__zero Добавить в корзину
-               .footer-collect__exports 
-                  a(href="#").footer-collect__export.icon-photo
-                  a(href="#").footer-collect__export.icon-download
-            .footer-collect__info
-               p Вес подарка и соответственно стоимость могут отличаться от заявленных значений, но&nbsp;не более/менее <strong>3%</strong>
-         .footer-collect__result.result-collect
-            ul.result-collect__list
-               li.result-collect__item
-                  .result-collect__name <span>Уникальных позиций</span>
-                  .result-collect__value 18
-               li.result-collect__item
-                  .result-collect__name <span>Количество</span>
-                  .result-collect__value 20 шт.
-               li.result-collect__item
-                  .result-collect__name <span class="important">Вес</span>
-                  .result-collect__value 870 гр.
-               li.result-collect__item
-                  .result-collect__name <span>Упаковка</span>
-                  .result-collect__value 195 ₽
-               li.result-collect__item.result-collect__item-total
-                  .result-collect__name <span class="important">Итого</span>
-                  .result-collect__value 1730 ₽
-         button(type="button").footer-collect__delete.icon-delete
+-
+	collectFooter = [
+		{
+			btnOrder: "Заказать",
+			btnCart: "Добавить в корзину",
+			list: [
+				{
+					name: "Итого",
+					value: "0 ₽",
+					itemClass: "result-collect__item-total",
+				},
+			]
+		},
+		{
+			wrapperClass: "footer-collect__item_2",
+			btnOrder: "Заказать",
+			btnCart: "Добавить в корзину",
+			list: [
+				{
+					name: "Уникальных позиций",
+					value: "18"
+				},
+				{
+					name: "Количество",
+					value: "20 шт."
+				},
+				{
+					name: "Вес",
+					value: "870 гр.",
+					important: "important"
+				},
+				{
+					name: "Упаковка",
+					value: "195 ₽"
+				},
+				{
+					name: "Итого",
+					value: "1730 ₽",
+					itemClass: "result-collect__item-total",
+					important: "important"
+				},
+			]
+		}
+	];
+include ../collect-footer

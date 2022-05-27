@@ -29,6 +29,7 @@ for (let i = 0; i < parametersButtons.length; i++) {
 		// Проверяем тот ли это элемент который нам нужен
 		if (target.classList.contains('parameters__button')) {
 			for (let i = 0; i < parametersButton.length; i++) {
+				console.log('click')
 				// Убираем у других
 				parametersButton[i].classList.remove('current');
 			}
@@ -37,6 +38,21 @@ for (let i = 0; i < parametersButtons.length; i++) {
 		}
 	});
 }
+
+// Переключение кнопок с превью карточки товара
+$('.choice-group__wrap').each(function (e) {
+	$('.choice-group__wrap').on('click', function () {
+		$(this).addClass('active').siblings().removeClass('active');
+	})
+})
+$(document).mouseup(function (e) {
+	var div = $(".choice-group__wrap");
+	if (!div.is(e.target) && div.has(e.target).length === 0) {
+		div.removeClass("active")
+	}
+});
+
+
 
 // Переход к табу "Cостав"
 $(".parameters__watch").on("click", function (event) {
@@ -72,7 +88,6 @@ function addTouchClass() {
 	}
 }
 addTouchClass();
-
 
 // CARD-TABS
 // document.addEventListener('click', tabsActions);
@@ -139,9 +154,6 @@ if (window.location.hash) {
 	window.dispatchEvent(new Event("hashchange"))
 	console.log('if');
 }
-
-
-
 
 // Sticky aside in Cart
 const cart = document.querySelector('.cart');

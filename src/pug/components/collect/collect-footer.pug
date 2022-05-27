@@ -1,0 +1,23 @@
+.collect-footer.footer-collect
+	.footer-collect__items
+		each collectItem, collectIndex in collectFooter
+			.footer-collect__item(class=collectItem.wrapperClass)
+				.footer-collect__item-wrap
+					.footer-collect__actions
+						.footer-collect__buttons 
+							a(href="#").footer-collect__button.btn.btn-red= collectItem.btnOrder
+							a(href="#").footer-collect__button.btn.btn__zero= collectItem.btnCart
+						.footer-collect__exports
+							a(href="#").footer-collect__export.icon-photo
+							a(href="#").footer-collect__export.icon-download
+					if collectIndex == 1
+						.footer-collect__info
+							p Вес подарка и соответственно стоимость могут отличаться от заявленных значений, но&nbsp;не более/менее <strong>3%</strong>
+				.footer-collect__result.result-collect
+					ul.result-collect__list
+						each item, i in collectItem.list
+							li.result-collect__item(class=item.itemClass)
+								.result-collect__name
+									span(class=item.important)= item.name
+								.result-collect__value= item.value
+				button(type="button").footer-collect__delete.icon-delete

@@ -291,6 +291,7 @@
 		align-items: center;
 		border: 1px solid $grayColorBD;
 		color: $grayColorBD;
+		margin-left: auto;
 		&::before {
 			font-size: 12px;
 		}
@@ -302,6 +303,7 @@
 	}
 	&__item-wrap {
 		max-width: 674px;
+		flex: 1 1 auto;
 	}
 	&__info {
 		padding: 22px 27px;

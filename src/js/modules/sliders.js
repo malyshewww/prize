@@ -84,6 +84,7 @@ function initSliders() {
          slidesPerView: 3,
          spaceBetween: 19,
          grabCursor: true,
+         simulateTouch: true,
          slideClass: "thumbs-slider__item",
          wrapperClass: "thumbs-slider__wrapper",
          watchSlidesVisibility: true,
