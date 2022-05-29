@@ -29,6 +29,8 @@
 		"@babel/core": "^7.16.12",
 		"@babel/preset-env": "^7.16.11",
 		"babel-loader": "^8.2.5",
+		"babel-plugin-module-resolver": "^4.1.0",
+		"babel-plugin-root-import": "^6.6.0",
 		"browser-sync": "latest",
 		"del": "latest",
 		"gulp": "latest",
@@ -60,7 +62,9 @@
 		"jquery": "^3.6.0",
 		"sass": "latest",
 		"swiper": "^8.1.4",
+		"terser-webpack-plugin": "^5.3.1",
 		"vinyl-ftp": "latest",
+		"vinyl-named": "^1.1.0",
 		"webp-converter": "2.2.3",
 		"webpack": "latest",
 		"webpack-stream": "latest"
