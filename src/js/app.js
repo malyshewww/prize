@@ -1,6 +1,6 @@
 import $ from "jquery"
 
-// Подключаем слайдер Swiper из node_modules
+// Подключаем слайдер Swiper
 import './modules/sliders.js';
 
 // Подключаем счетчик для цены
@@ -18,55 +18,30 @@ import "./modules/range-slider.js";
 // Подключение модуля выпадающего меню
 import "./modules/dropdown-menu.js";
 
-// Переключение кнопок с параметрами "Состав" и "Вес"
-const parametersButtons = document.querySelectorAll('.parameters__buttons');
-for (let i = 0; i < parametersButtons.length; i++) {
-	const el = parametersButtons[i];
-	let parametersButton = el.querySelectorAll('.parameters__button');
-	el.addEventListener('click', (event) => {
-		// Отлавливаем элемент в родители на который мы нажали
-		let target = event.target;
-		// Проверяем тот ли это элемент который нам нужен
-		if (target.classList.contains('parameters__button')) {
-			for (let i = 0; i < parametersButton.length; i++) {
-				console.log('click')
-				// Убираем у других
-				parametersButton[i].classList.remove('current');
-			}
-			// Добавляем тому на который нажали
-			target.classList.add('current');
-		}
-	});
-}
-
 // Переключение кнопок с превью карточки товара
-$('.choice-group__wrap').each(function (e) {
-	$('.choice-group__wrap').on('click', function () {
-		$(this).addClass('active').siblings().removeClass('active');
-	})
+$('.choice-group__wrap').on('click', function () {
+	$(this).addClass('active').siblings().removeClass('active');
 })
-$(document).mouseup(function (e) {
+$(document).on('mouseup', function (e) {
 	var div = $(".choice-group__wrap");
 	if (!div.is(e.target) && div.has(e.target).length === 0) {
 		div.removeClass("active")
 	}
 });
 
-
-
 // Переход к табу "Cостав"
-$(".parameters__watch").on("click", function (event) {
-	//отменяем стандартную обработку нажатия по ссылке
-	event.preventDefault();
-	//забираем идентификатор бока с атрибута href
-	let id = $(this).attr('href'),
-		//узнаем высоту от начала страницы до блока на который ссылается якорь
-		top = $(id).offset().top;
-	$('#compound').addClass('active').closest('.tabs__item').siblings().find('.tabs__link').removeClass('active');
-	$('.tabs__content--compound').addClass('show').siblings().removeClass('show');
-	//анимируем переход на расстояние - top за 800 мс
-	$('body,html').animate({ scrollTop: top }, 800);
-});
+// $(".parameters__watch").on("click", function (event) {
+// 	//отменяем стандартную обработку нажатия по ссылке
+// 	event.preventDefault();
+// 	//забираем идентификатор бока с атрибута href
+// 	let id = $(this).attr('href'),
+// 		//узнаем высоту от начала страницы до блока на который ссылается якорь
+// 		top = $(id).offset().top;
+// 	$('#compound').addClass('active').closest('.tabs__item').siblings().find('.tabs__link').removeClass('active');
+// 	$('.tabs__content--compound').addClass('show').siblings().removeClass('show');
+// 	//анимируем переход на расстояние - top за 800 мс
+// 	$('body,html').animate({ scrollTop: top }, 800);
+// });
 
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
@@ -79,7 +54,7 @@ function addTouchClass() {
 			for (let index = 0; index < menuArrows.length; index++) {
 				let menuArrow = menuArrows[index];
 				menuArrow.addEventListener("click", function (e) {
-					menuArrow.parentElement.classList.toggle('active');
+					menuArrow.parentElement.classList.toggle('open');
 				});
 			}
 		}
@@ -89,45 +64,21 @@ function addTouchClass() {
 }
 addTouchClass();
 
-// CARD-TABS
-// document.addEventListener('click', tabsActions);
-function tabsActions(event) {
-	event.preventDefault();
-	if (event.target.closest('[data-tab]')) {
-		const tabItemId = event.target.dataset.tab;
-		const tabContent = document.querySelector(`[data-tab-content="${tabItemId}"]`);
-		if (tabContent) {
-			const activeTabItem = document.querySelector('.active');
-			const activeTabContent = document.querySelector('.show');
-			if (activeTabItem) {
-				activeTabItem.classList.remove('active');
-				activeTabContent.classList.remove('show');
-			}
-			event.target.classList.toggle('active');
-			tabContent.classList.toggle('show');
-		}
-	}
-}
-
 // Accordeon
-$('.item-accordeon__header').click(function (event) {
-	if ($('.accordeon')) {
-		$('.item-accordeon__header').not($(this)).removeClass('active');
-		$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
-	}
+$('.item-accordeon__header').on('click', function (event) {
+	$('.item-accordeon__header').not($(this).next()).removeClass('active');
+	$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
 	$(this).toggleClass('active').next().slideToggle(300);
 });
 
+// HashChange Event for Tabs
 window.addEventListener('customScroll', (event) => {
 	const item = event.detail.item;
 	const parent = item.closest('.tabs');
-	console.log(parent);
-	window.scrollTo({ top: parent.offsetTop });
-	console.log(event);
+	window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
 })
 let flag = true;
 window.addEventListener('hashchange', (event) => {
-	console.log('Click');
 	let hash = window.location.hash;
 	const hashLInk = document.querySelector(`.tabs__link[href$="${hash}"]`);
 	const hashElement = document.querySelector(hash);
@@ -140,50 +91,62 @@ window.addEventListener('hashchange', (event) => {
 		})
 		hashLInk.classList.add('active');
 		hashElement.classList.add('show');
-		if (flag) {
-			window.dispatchEvent(new CustomEvent("customScroll", {
-				detail: {
-					item: hashElement,
-				},
-			}))
-			flag = false;
-		}
+		// if (flag) {
+		// 	window.dispatchEvent(new CustomEvent("customScroll", {
+		// 		detail: {
+		// 			item: hashElement,
+		// 		},
+		// 	}))
+		// 	flag = false;
+		// }
 	}, 100)
 })
 if (window.location.hash) {
 	window.dispatchEvent(new Event("hashchange"))
-	console.log('if');
+} else {
+	flag = false;
 }
 
-// Sticky aside in Cart
-const cart = document.querySelector('.cart');
-if (cart) {
-	window.addEventListener("scroll", scrollPosition);
-	window.addEventListener("resize", scrollPosition);
-	function scrollPosition() {
-		cartPosition();
-	}
-	function cartPosition() {
-		if (window.innerWidth > 992) {
-			const wrapper = document.querySelector('.wrapper');
-			/*Позиция элемента от верха страницы
-			В данном случае - это 100px
-			*/
-			const cartPosition = cart.getBoundingClientRect().top + scrollY;
-			// const headerTopHeight = headerTop.getBoundingClientRect().height;
-			/*Если прокручено больше,чем позиция элемента, т.е. больше 100px
-			добавляем класс fixed
-			*/
-			if (scrollY > cartPosition) {
-				cart.classList.add('sticky');
-				wrapper.style.overflow = 'visible';
-			} else {
-				cart.classList.remove('sticky');
-				wrapper.style.overflow = 'hidden';
-			}
+// Intersection Observer
+const changeNav = (entries, observer) => {
+	entries.forEach((entry) => {
+		// чекаем, то элемент пересекает наблюдаемую область более, чем на 55%
+		if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+			// удаляем активный класс у элемента меню
+			parent.classList.remove('tabs');
 		}
-	}
+	});
 }
+// обратите внимание на значение опции threshold
+const options = {
+	threshold: 0.55
+}
+const observer = new IntersectionObserver(changeNav, options);
+
+
+
+// Sticky aside in Cart
+// const cart = document.querySelector('.cart');
+// if (cart) {
+// 	window.addEventListener("scroll", scrollPosition);
+// 	window.addEventListener("resize", scrollPosition);
+// 	function scrollPosition() {
+// 		cartPosition();
+// 	}
+// 	function cartPosition() {
+// 		if (window.innerWidth > 992) {
+// 			const wrapper = document.querySelector('.wrapper');
+// 			const cartPosition = cart.getBoundingClientRect().top + window.scrollY;
+// 			if (window.scrollY > cartPosition) {
+// 				cart.classList.add('sticky');
+// 				wrapper.style.overflow = 'visible';
+// 			} else {
+// 				cart.classList.remove('sticky');
+// 				wrapper.style.overflow = 'hidden';
+// 			}
+// 		}
+// 	}
+// }
 
 /*===== FORM FOCUS =====*/
 const fields = document.querySelectorAll("[data-field]")
@@ -215,6 +178,4 @@ if (iconMenu) {
 		document.body.classList.toggle('lock');
 	});
 }
-const sum = (a, b) => a + b;
-console.log(sum(10, 12))
 

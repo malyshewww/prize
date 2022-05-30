@@ -23,7 +23,7 @@ each productItem, productIndex in product
 							.choice-group__wrap
 								.card-product__choice.choice-group
 									label.choice-group__label
-										input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "checked" : "") class="choice-group__input real-radio")
+										input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "true" : "false") class="choice-group__input real-radio")
 										span.custom-radio
 										span.choice-group__text= choiceItem.title
 									if choiceItem.values
@@ -33,7 +33,7 @@ each productItem, productIndex in product
 									each choiceItem, choiceIndex in productItem.choice
 										.choice-group
 											label.choice-group__label
-												input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "checked" : "") class="choice-group__input real-radio")
+												input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? true : false) class="choice-group__input real-radio")
 												span.custom-radio
 												span.choice-group__text= choiceItem.title
 											if choiceItem.values

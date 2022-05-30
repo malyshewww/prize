@@ -1,105 +1,118 @@
 -
-   cardSliderThumbs = [
-      {
-         img: "thumb-1",
-      },
-      {
-         img: "thumb-2",
-      },
-      {
-         img: "thumb-3",
-      },
-      {
-         img: "thumb-1",
-      },
-   ],
-   cardSliderBase = [
-      {
-         img: "big-img",
-      },
-      {
-         img: "big-img",
-      },
-      {
-         img: "big-img",
-      },
-      {
-         img: "big-img",
-      },
-   ]
+	cardSliderThumbs = [
+		{
+			img: "thumb-1",
+		},
+		{
+			img: "thumb-2",
+		},
+		{
+			img: "thumb-3",
+		},
+		{
+			img: "thumb-1",
+		},
+	],
+	cardSliderBase = [
+		{
+			img: "big-img",
+		},
+		{
+			img: "big-img",
+		},
+		{
+			img: "big-img",
+		},
+		{
+			img: "big-img",
+		},
+	]
 
 
 section.main-card 
-   .container
-      .main-card__wrapper 
-         .main-card-slider
-            .main-card-slider__thumbs.thumbs-slider._swiper
-               .thumbs-slider__wrapper._swiper-wrapper
-                  each item in cardSliderThumbs
-                     .thumbs-slider__item._swiper-slide
-                        .thumbs-slider__image
-                           img(src=`img/card/${item.img}.png`, alt="")
-            .main-card-slider__base.base-slider._swiper
-               .base-slider__wrapper._swiper-wrapper
-                  each item in cardSliderBase
-                     .base-slider__item._swiper-slide 
-                        .base-slider__image 
-                           img(src=`img/card/${item.img}-1.png`, alt="")
-               .base-slider__controls 
-                  button.slide-arrow.slide-arrow__prev.icon-arrow-prev
-                  button.slide-arrow.slide-arrow__next.icon-arrow-next
-         .main-card__info
-            h1.main-card__title.general__title Почта-копилка
-            .main-card__reviews.reviews-rating
-               ul.reviews-rating__list.r-4
-                  li.reviews-rating__item
-                  li.reviews-rating__item
-                  li.reviews-rating__item
-                  li.reviews-rating__item
-                  li.reviews-rating__item
-               .reviews-rating__value.
-                  Отзывы (<span class="reviews-rating__count">5</span>)
-            .main-card__parameters.parameters
-               .parameters-group 
-                  p.parameters__label Размер (см): 
-                  .parameters__value 11*5,5*18
-               .parameters-group 
-                  p.parameters__label Выберите состав:
-                  .parameters__value
-                     .parameters__buttons 
-                        button(type="button").parameters__button.current Классик
-                        button(type="button").parameters__button VIP
-               .parameters-group.parameters-group--weight
-                  p.parameters__label Выберите вес:
-                  .parameters__value
-                     .parameters__buttons
-                        button(type="button").parameters__button.current 290 г
-                        button(type="button").parameters__button 380 г
-                     .parameters__warning Вес подарка указан без упаковки и дополнительных вложений
-               .parameters-group 
-                  p.parameters__label Состав: 
-                  .parameters__value 97 конфет
-                  a(href="#compound").parameters__watch Посмотреть состав
-               .parameters-group 
-                  p.parameters__label В наличии: 
-                  .parameters__value 31-50 шт.
-            .main-card__quantity.quantity-card
-               .quantity-card__box
-                  button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
-                  input(type="text" value="1").quantity-card__input
-                  button.quantity-card__button.quantity-card__button--plus(data-plus)
-               .quantity-card__price 300 ₽
-            .main-card__actions.actions__buttons
-               |
-               |
-               a(href="#").actions__button.btn Купить
-               |
-               |
-               a(href="#").actions__button.btn.btn__zero Купить в 1 клик
-            .main-card__bottom
-               |
-               |
-               a(href="#").main-card__favorite.icon-favorites Избранное
-               |
-               |
-               a(href="#").main-card__compare.icon-prepare К сравнению
+	.container
+		.main-card__wrapper 
+			.main-card-slider
+				.main-card-slider__thumbs.thumbs-slider._swiper
+					.thumbs-slider__wrapper._swiper-wrapper
+						each item in cardSliderThumbs
+							.thumbs-slider__item._swiper-slide
+								.thumbs-slider__image
+									img(src=`img/card/${item.img}.png`, alt="")
+				.main-card-slider__base.base-slider._swiper
+					.base-slider__wrapper._swiper-wrapper
+						each item in cardSliderBase
+							.base-slider__item._swiper-slide 
+								.base-slider__image 
+									img(src=`img/card/${item.img}-1.png`, alt="")
+					.base-slider__controls 
+						button.slide-arrow.slide-arrow__prev.icon-arrow-prev
+						button.slide-arrow.slide-arrow__next.icon-arrow-next
+			form(action="#").main-card__form 
+				.main-card__info
+					h1.main-card__title.general__title Почта-копилка
+					.main-card__reviews.reviews-rating
+						ul.reviews-rating__list.r-4
+							li.reviews-rating__item
+							li.reviews-rating__item
+							li.reviews-rating__item
+							li.reviews-rating__item
+							li.reviews-rating__item
+						.reviews-rating__value.
+							Отзывы (<span class="reviews-rating__count">5</span>)
+					.main-card__parameters.parameters
+						.parameters-group 
+							p.parameters__label Размер (см): 
+							.parameters__value 11*5,5*18
+						.parameters-group 
+							p.parameters__label Выберите состав:
+							.parameters__value
+								.parameters__buttons
+									.parameters-radiobutton
+										label
+											input(type="radio" name="compound" checked class="real-radio")
+											span.parameters__button Классик
+									.parameters-radiobutton
+										label
+											input(type="radio" name="compound" class="real-radio")
+											span.parameters__button VIP
+						.parameters-group.parameters-group--weight
+							p.parameters__label Выберите вес:
+							.parameters__value
+								.parameters__buttons
+									.parameters-radiobutton
+										label
+											input(type="radio" name="weight" checked class="real-radio")
+											span.parameters__button 290 г
+									.parameters-radiobutton
+										label
+											input(type="radio" name="weight" class="real-radio")
+											span.parameters__button 380 г
+								.parameters__warning Вес подарка указан без упаковки и дополнительных вложений
+						.parameters-group 
+							p.parameters__label Состав: 
+							.parameters__value 97 конфет
+							a(href="#compound").parameters__watch Посмотреть состав
+						.parameters-group 
+							p.parameters__label В наличии: 
+							.parameters__value 31-50 шт.
+					.main-card__quantity.quantity-card
+						.quantity-card__box
+							button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
+							input(type="text" value="1").quantity-card__input
+							button.quantity-card__button.quantity-card__button--plus(data-plus)
+						.quantity-card__price 300 ₽
+					.main-card__actions.actions__buttons
+						|
+						|
+						a(href="#").actions__button.btn Купить
+						|
+						|
+						a(href="#").actions__button.btn.btn__zero Купить в 1 клик
+					.main-card__bottom
+						|
+						|
+						a(href="#").main-card__favorite.icon-favorites Избранное
+						|
+						|
+						a(href="#").main-card__compare.icon-prepare К сравнению

@@ -1,17 +1,29 @@
+-
+	bannerSlider = [
+		{
+			"img": "slide-1",
+			"title": "При заказе от 1000 наборов доставку в&nbsp;любой город  <span>мы оплатим сами</span>",
+			"subtitle": "По Нижнему Новгороду <span>от 10 наборов</span>",
+			"button": "Бесплатная доставка"
+		},
+		{
+			"img": "slide-2",
+			"title": "При заказе от 50 наборов <span>оформление вашими логотипами - в&nbsp;подарок</span>",
+			"subtitle": "",
+			"button": "Подробнее"
+		}
+	];
 section.home-banner
-   .home-banner__body._swiper
-      .home-banner__wrapper._swiper-wrapper
-         .home-banner__item._swiper-slide(style="background-image: url('./img/home/slide-1.jpg');")
-            .container
-               .home-banner__info
-                  h2.home-banner__title При заказе от 1000 наборов доставку в&nbsp;любой город  <span>мы оплатим сами</span>
-                  p.home-banner__subtitle По Нижнему Новгороду <span>от 10 наборов</span>
-                  a(href="#").home-banner__btn.btn Бесплатная доставка
-         .home-banner__item._swiper-slide(style="background-image: url('./img/home/slide-2.jpg');")
-            .container
-               .home-banner__info
-                  h2.home-banner__title При заказе от 50 наборов <span>оформление вашими логотипами - в&nbsp;подарок</span>
-                  a(href="#").home-banner__btn.btn.btn__zero Подробнее
-      .home-banner__navigation.container
-         button.home-banner-button.home-banner-button__prev.icon-arrow-prev
-         button.home-banner-button.home-banner-button__next.icon-arrow-next
+	.home-banner__body._swiper
+		.home-banner__wrapper._swiper-wrapper
+			each item, index in bannerSlider
+				.home-banner__item._swiper-slide(style=`background-image: url('./img/home/${item.img}.jpg');`)
+					.container
+						.home-banner__info
+							h2.home-banner__title!= item.title
+							if item.subtitle
+								p.home-banner__subtitle!= item.subtitle
+							a(href="#").home-banner__btn.btn(class=(index==1 ? "btn__zero" : ""))= item.button
+		.home-banner__navigation.container
+			button.home-banner-button.home-banner-button__prev.icon-arrow-prev
+			button.home-banner-button.home-banner-button__next.icon-arrow-next

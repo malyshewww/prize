@@ -1,19 +1,15 @@
 -
    clientsSets = [
       {
-         icon: "clients-sets-icon-1",
          text: "Признак вашего особого отношения"
       },
       {
-         icon: "clients-sets-icon-2",
          text: "Приятное напоминание о вас в самые счастливые моменты торжества"
       },
       {
-         icon: "clients-sets-icon-3",
          text: "Интерсеный, <br> радующий глаз, <br> уместный подарок"
       },
       {
-         icon: "clients-sets-icon-4",
          text: "Множество вариантов на&nbsp;любой&nbsp;вкус и <br>  кошелек"
       },
    ]
@@ -30,8 +26,8 @@ section.clients-sets
          .clients-sets__info 
             .clients-sets__title.clients-title Сладкие наборы конфет или чая <span class="color-red">с логотипом компании<span>
             .clients-sets__items
-               each item in clientsSets
+               each item, index in clientsSets
                   .clients-sets__item
                      .clients-sets__icon 
-                        img(src=`img/clients/${item.icon}.svg`, alt="")
+                        img(src=`img/clients/clients-sets-icon-${index+1}.svg`, alt="")
                      .clients-sets__text!= item.text

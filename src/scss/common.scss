@@ -252,6 +252,11 @@
    background: $redColor;
 }
 
+.real-radio:checked + .parameters__button{
+   background: $greenColor;
+   color: $whiteColor;
+}
+
 .checkbox-item {
    font-family: "SourceSansPro", sans-serif;
    font-weight: 400;
