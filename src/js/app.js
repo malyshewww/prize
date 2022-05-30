@@ -72,11 +72,13 @@ $('.item-accordeon__header').on('click', function (event) {
 });
 
 // HashChange Event for Tabs
-window.addEventListener('customScroll', (event) => {
-	const item = event.detail.item;
-	const parent = item.closest('.tabs');
-	window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
-})
+
+// window.addEventListener('customScroll', (event) => {
+// 	const item = event.detail.item;
+// 	const parent = item.closest('.tabs');
+// 	window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
+// })
+
 let flag = true;
 window.addEventListener('hashchange', (event) => {
 	let hash = window.location.hash;
@@ -99,6 +101,18 @@ window.addEventListener('hashchange', (event) => {
 		// 	}))
 		// 	flag = false;
 		// }
+		const cb = (hashElement) => {
+			hashElement.forEach(el => {
+				const parent = el.target.closest('.tabs');
+				if (el.isIntersecting && el.IntersectionRatio > 0.5) {
+					window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
+					console.log(hashElement)
+				}
+			})
+		};
+		const sectionObserver = new IntersectionObserver(cb, {
+			threshold: [0.5]
+		});
 	}, 100)
 })
 if (window.location.hash) {
@@ -106,24 +120,6 @@ if (window.location.hash) {
 } else {
 	flag = false;
 }
-
-// Intersection Observer
-const changeNav = (entries, observer) => {
-	entries.forEach((entry) => {
-		// чекаем, то элемент пересекает наблюдаемую область более, чем на 55%
-		if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
-			// удаляем активный класс у элемента меню
-			parent.classList.remove('tabs');
-		}
-	});
-}
-// обратите внимание на значение опции threshold
-const options = {
-	threshold: 0.55
-}
-const observer = new IntersectionObserver(changeNav, options);
-
-
 
 // Sticky aside in Cart
 // const cart = document.querySelector('.cart');
