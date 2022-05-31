@@ -29,15 +29,15 @@ each productItem, productIndex in product
 									if choiceItem.values
 										.choice-group__value= choiceItem.values[0]
 									.choice-group__arrow
-								.choice-group__dropdown.dropdown-list
-									each choiceItem, choiceIndex in productItem.choice
-										.choice-group
-											label.choice-group__label
-												input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? true : false) class="choice-group__input real-radio")
-												span.custom-radio
-												span.choice-group__text= choiceItem.title
-											if choiceItem.values
-												.choice-group__value= choiceItem.values[1]
+								//- .choice-group__dropdown.dropdown-list
+								//- 	each choiceItem, choiceIndex in productItem.choice
+								//- 		.choice-group
+								//- 			label.choice-group__label
+								//- 				input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? true : false) class="choice-group__input real-radio")
+								//- 				span.custom-radio
+								//- 				span.choice-group__text= choiceItem.title
+								//- 			if choiceItem.values
+								//- 				.choice-group__value= choiceItem.values[1]
 			.card-product__footer 
 				.card-product__prices 
 					.card-product__price= productItem.price

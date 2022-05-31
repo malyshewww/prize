@@ -214,6 +214,8 @@
 
 // COLLECT FOOTER
 .collect-footer {
+	position: sticky;
+	bottom: 0;
 }
 .footer-collect {
 	&__items {
@@ -306,6 +308,7 @@
 		flex: 1 1 auto;
 	}
 	&__info {
+		display: none;
 		padding: 22px 27px;
 		background: $grayColorF2;
 		margin-top: 27px;
@@ -327,16 +330,19 @@
 		}
 	}
 }
+
 .result-collect {
 	align-self: center;
 	flex: 1 1 auto;
 	max-width: 294px;
 	margin-right: 35px;
 	margin-left: 51px;
+	color: $blackColor;
 	&__list {
+		margin-bottom: 8px;
+		display: none;
 	}
 	&__item {
-		color: $blackColor;
 		font-size: 16px;
 		line-height: math.div(22, 16) * 100%;
 		display: flex;
@@ -345,14 +351,17 @@
 		&:not(:last-child) {
 			margin-bottom: 6px;
 		}
-		&-total {
-			font-size: 20px;
-			line-height: math.div(24, 20) * 100%;
-			font-family: "Montserrat", sans-serif;
+	}
+	&__total{
+		display: flex;
+		align-items: flex-end;
+		width: 100%;
+		font-size: 20px;
+		line-height: math.div(24, 20) * 100%;
+		font-family: "Montserrat", sans-serif;
+		font-weight: 600;
+		& .result-collect__value {
 			font-weight: 600;
-			& .result-collect__value {
-				font-weight: 600;
-			}
 		}
 	}
 	&__name {
@@ -393,5 +402,8 @@
 		padding-left: 6px;
 	}
 }
-.warning {
+.collect-footer.show .result-collect__list, 
+.collect-footer.show .footer-collect__info {
+	display: block;
 }
+

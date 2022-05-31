@@ -228,58 +228,59 @@
 	]
 section.tabs 
 	.tabs__body
-		.container
-			ul.tabs__list 
-				li.tabs__item
-					a.tabs__link.active(href="#compound" data-tab="1") Состав
-				li.tabs__item
-					a.tabs__link(href="#description" data-tab="2") Описание
-				li.tabs__item
-					a.tabs__link(href="#reviews" data-tab="3") Отзывы
-			.tabs__content-wrapper
-				div.tabs__content.tabs__content--compound.tabs-content.show(data-tab-content="1" id="compound")
-					.card-compound
-						each item, i in categoryCandies
-							.card-compound__box
-								h2.card-compound__label= item.title
-								.card-compound__body
-									each childrenItem, index in item.children
-										.card-compound__item.item-compound
-											.card-compound__count 1
-											.card-compound__image
-												img(src=`img/compound/${i}/${i}-${index+1}.png`, alt=childrenItem.title)
-											.item-compound__content
-												.card-compound__company-name= childrenItem.companyName
-												.card-compound__title!= childrenItem.title
+		.tabs__top.top-tabs
+			.top-tabs__container
+				ul.tabs__list 
+					li.tabs__item
+						a.tabs__link.active(href="#compound" data-tab="1") Состав
+					li.tabs__item
+						a.tabs__link(href="#description" data-tab="2") Описание
+					li.tabs__item
+						a.tabs__link(href="#reviews" data-tab="3") Отзывы
+		.tabs__content-wrapper.container
+			div.tabs__content.tabs__content--compound.tabs-content.show(data-tab-content="1" id="compound")
+				.card-compound
+					each item, i in categoryCandies
 						.card-compound__box
-							h2.card-compound__label.label-compound-result
-								span Всего
-								span.label-compound-result__quantity 43 шт.
-				div.tabs__content.tabs__content--description.tabs-content(data-tab-content="2" id="description")
-					.card-description
-						.card-description__body 
-							.card-description__image
-								img(src="img/card/descr-img.png", alt="")
-							.card-description__content
-								p Самый универсальный состав из линейки и наиболее интересный в соотношении цена/качество. И дети и взрослые обрадуются шоколадке Alpen Gold, которая является лидером в сегменте плиточного шоколада по итогам 2019 года, а также оценят все 55 уникальных конфет, каждая из которых имеет от 4 до 5 баллов рейтинга на сайтах отзывов otzovik.com и irecommend.ru. Максимально шоколадный и разнообразный состав из конфет и шоколадных дессертов от фабрик Акконд, Mondelēz, РотФронт, Nestle, Славянка, только 5% неглазированных желейных конфет на основе натуральных соков и пектина и полное отсутствие карамели. 
-				div.tabs__content.tabs__content--reviews.tabs-content(data-tab-content="3" id="reviews")
-					.card-reviews.reviews__body 
-						a.reviews__button.btn.btn-green(data-modal-button="reviews") Написать отзыв
-						.reviews-items
-							each item in reviews
-								.reviews-item
-									.reviews-item__data.data-reviews
-										.data-reviews__icon= item.icon
-										.data-reviews__name= item.name
-										.data-reviews__date= item.date 
-									.reviews-item__content
-										.reviews-rating
-											ul.reviews-item__rating.reviews-rating__list.r-4
-												li.reviews-rating__item
-												li.reviews-rating__item
-												li.reviews-rating__item
-												li.reviews-rating__item
-												li.reviews-rating__item
-										.reviews-item__text 
-											p= item.text
-						a(href="#").reviews__button.reviews__show-more.btn.btn-green Показать ещё 
+							h2.card-compound__label= item.title
+							.card-compound__body
+								each childrenItem, index in item.children
+									.card-compound__item.item-compound
+										.card-compound__count 1
+										.card-compound__image
+											img(src=`img/compound/${i}/${i}-${index+1}.png`, alt=childrenItem.title)
+										.item-compound__content
+											.card-compound__company-name= childrenItem.companyName
+											.card-compound__title!= childrenItem.title
+					.card-compound__box
+						h2.card-compound__label.label-compound-result
+							span Всего
+							span.label-compound-result__quantity 43 шт.
+			div.tabs__content.tabs__content--description.tabs-content(data-tab-content="2" id="description")
+				.card-description
+					.card-description__body 
+						.card-description__image
+							img(src="img/card/descr-img.png", alt="")
+						.card-description__content
+							p Самый универсальный состав из линейки и наиболее интересный в соотношении цена/качество. И дети и взрослые обрадуются шоколадке Alpen Gold, которая является лидером в сегменте плиточного шоколада по итогам 2019 года, а также оценят все 55 уникальных конфет, каждая из которых имеет от 4 до 5 баллов рейтинга на сайтах отзывов otzovik.com и irecommend.ru. Максимально шоколадный и разнообразный состав из конфет и шоколадных дессертов от фабрик Акконд, Mondelēz, РотФронт, Nestle, Славянка, только 5% неглазированных желейных конфет на основе натуральных соков и пектина и полное отсутствие карамели. 
+			div.tabs__content.tabs__content--reviews.tabs-content(data-tab-content="3" id="reviews")
+				.card-reviews.reviews__body 
+					a.reviews__button.btn.btn-green(data-modal-button="reviews") Написать отзыв
+					.reviews-items
+						each item in reviews
+							.reviews-item
+								.reviews-item__data.data-reviews
+									.data-reviews__icon= item.icon
+									.data-reviews__name= item.name
+									.data-reviews__date= item.date 
+								.reviews-item__content
+									.reviews-rating
+										ul.reviews-item__rating.reviews-rating__list.r-4
+											li.reviews-rating__item
+											li.reviews-rating__item
+											li.reviews-rating__item
+											li.reviews-rating__item
+											li.reviews-rating__item
+									.reviews-item__text 
+										p= item.text
+					a(href="#").reviews__button.reviews__show-more.btn.btn-green Показать ещё 

@@ -66,20 +66,12 @@ addTouchClass();
 
 // Accordeon
 $('.item-accordeon__header').on('click', function (event) {
-	$('.item-accordeon__header').not($(this).next()).removeClass('active');
+	$('.item-accordeon__header').not($(this)).removeClass('active');
 	$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
 	$(this).toggleClass('active').next().slideToggle(300);
 });
 
 // HashChange Event for Tabs
-
-// window.addEventListener('customScroll', (event) => {
-// 	const item = event.detail.item;
-// 	const parent = item.closest('.tabs');
-// 	window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
-// })
-
-let flag = true;
 window.addEventListener('hashchange', (event) => {
 	let hash = window.location.hash;
 	const hashLInk = document.querySelector(`.tabs__link[href$="${hash}"]`);
@@ -93,33 +85,54 @@ window.addEventListener('hashchange', (event) => {
 		})
 		hashLInk.classList.add('active');
 		hashElement.classList.add('show');
-		// if (flag) {
-		// 	window.dispatchEvent(new CustomEvent("customScroll", {
-		// 		detail: {
-		// 			item: hashElement,
-		// 		},
-		// 	}))
-		// 	flag = false;
-		// }
-		const cb = (hashElement) => {
-			hashElement.forEach(el => {
-				const parent = el.target.closest('.tabs');
-				if (el.isIntersecting && el.IntersectionRatio > 0.5) {
-					window.scrollTo({ top: parent.offsetTop, behavior: "smooth" });
-					console.log(hashElement)
-				}
-			})
-		};
-		const sectionObserver = new IntersectionObserver(cb, {
-			threshold: [0.5]
-		});
+		const hashElementParent = hashElement.closest('.tabs');
+		const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
+		const viewportHeight = window.innerHeight;
+		if (hashElementParentPosition > (viewportHeight / 2)) {
+			window.scrollTo({ top: hashElementParent.offsetTop, behavior: "smooth" });
+		}
 	}, 100)
+	if (window.location.hash) {
+		window.dispatchEvent(new Event("hashchange"))
+	}
 })
-if (window.location.hash) {
-	window.dispatchEvent(new Event("hashchange"))
-} else {
-	flag = false;
+/**
+	Создаем intersection observer
+	callback - callback-функция
+	options - объект опций, если они необходимы (необязательный параметр)
+*/
+// Указываем элемент для «наблюдения»
+const collect = document.getElementById('collect-footer');
+const collectItem = collect.querySelector('.footer-collect__item')
+const callback = ([entry]) => {
+	const targetInfo = entry.boundingClientRect;
+	const rootBoundsInfo = entry.rootBounds;
+	if (targetInfo.bottom > rootBoundsInfo.bottom && targetInfo.top > rootBoundsInfo.top) {
+		collect.classList.add('show');
+	} else {
+		collect.classList.remove('show');
+	}
+};
+// Задаем опции для «наблюдателя»
+const options = {
+	rootMargin: '0px 0px -1px 0px',
+	// Когда будет срабатывать callback функция
+	threshold: [1]
 }
+// Создаем новый «наблюдатель»
+const observer = new IntersectionObserver(callback, options);
+// Прикрепляем «наблюдателя» к элементу
+observer.observe(collect);
+
+
+// CollectFooter
+const collectFooter = document.querySelector('.collect-footer');
+collectFooter.addEventListener('mouseenter', () => {
+	collectFooter.classList.add('show');
+})
+collectFooter.addEventListener('mouseleave', () => {
+	collectFooter.classList.remove('show');
+})
 
 // Sticky aside in Cart
 // const cart = document.querySelector('.cart');
