@@ -238,10 +238,11 @@
       grid-template-rows: repeat(3, 1fr 30px) 1fr;
    }
    &__item {
+      background-repeat: no-repeat;
    }
 }
 .item-prize--candies-prize {
-   background: url("../img/popular/popular-1-bg.svg");
+   background-image: url("../img/popular/popular-1-bg.svg");
    & .item-prize__text::before {
       color: $greenColor;
    }
@@ -250,7 +251,7 @@
    background: $yellowColor;
    &::before {
       content: "";
-      background: url("../img/popular/popular-3-bg.svg");
+      background-image: url("../img/popular/popular-3-bg.svg");
       background-repeat: no-repeat;
       background-position: 0 100%;
       position: absolute;
@@ -270,7 +271,7 @@
    }
 }
 .item-prize--sale {
-   background: url("../img/popular/popular-4-bg.svg");
+   background-image: url("../img/popular/popular-4-bg.svg");
    & .item-prize__text::before {
       color: $redColor;
    }

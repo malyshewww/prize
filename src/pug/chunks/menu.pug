@@ -137,7 +137,7 @@ nav.menu
 				- menuActive = ""
 			li(class="menu__item " + menuActive)
 				a.menu__link(href="/" + menuItem.link)= menuItem.title
-				if menuItem.submenu
+				if menuItem.submenu.length > 0
 					span.menu__arrow 
 					ul.submenu__list
 						each subItem in menuItem.submenu

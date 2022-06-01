@@ -1,15 +1,15 @@
 each productItem, productIndex in product
 	.products__card.card-product
 		!=productItem.delete ? productItem.delete : ""
-		.card-product__box
+		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
 			!=productItem.badge ? productItem.badge : ""
 			!=productItem.sale ? productItem.sale : ""
 			.card-product__header 
-				a(href="#").card-product__image.ibg
+				a(href="card.html").card-product__image.ibg
 					img(src=`img/${productItem.img}.png`, alt=productItem.name)
 				.card-product__article= productItem.article
-				a(href="#").card-product__title= productItem.name 
+				a(href="card.html").card-product__title= productItem.name
 			.card-product__body 
 				.card-product__inner 
 					.reviews-rating
@@ -23,21 +23,22 @@ each productItem, productIndex in product
 							.choice-group__wrap
 								.card-product__choice.choice-group
 									label.choice-group__label
-										input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? "true" : "false") class="choice-group__input real-radio")
+										input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="choice-group__input real-radio")
 										span.custom-radio
 										span.choice-group__text= choiceItem.title
 									if choiceItem.values
 										.choice-group__value= choiceItem.values[0]
 									.choice-group__arrow
-								//- .choice-group__dropdown.dropdown-list
-								//- 	each choiceItem, choiceIndex in productItem.choice
-								//- 		.choice-group
-								//- 			label.choice-group__label
-								//- 				input(type="radio" name=`radio-${productIndex}` checked=(choiceIndex==0 ? true : false) class="choice-group__input real-radio")
-								//- 				span.custom-radio
-								//- 				span.choice-group__text= choiceItem.title
-								//- 			if choiceItem.values
-								//- 				.choice-group__value= choiceItem.values[1]
+								if choiceItem.dropmenu
+									.choice-group__dropdown.dropdown-list
+										each dropItem, dropIndex in choiceItem.dropmenu
+											.choice-group__wrap
+												.choice-group
+													label.choice-group__label
+														input(type="radio" name=`radio-${dropIndex}` class="choice-group__input real-radio")
+														span.custom-radio
+													span.choice-group__text= dropItem.title
+													.choice-group__value= dropItem.value
 			.card-product__footer 
 				.card-product__prices 
 					.card-product__price= productItem.price

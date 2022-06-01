@@ -3,11 +3,18 @@
 .collect {
 	padding-bottom: 64px;
 	&__body {
-		grid-template-rows: repeat(3, 1fr 30px) 1fr;
+		display: flex;
 	}
 	&__item {
+		flex: 0 0 40.2%;
+		&:not(:last-child){
+			margin-right: 30px;
+		}
+		&:nth-child(1) {
+			grid-area: none;
+		}
 		&:nth-child(2) {
-			grid-area: 1/11/8/20;
+			grid-area: none;
 		}
 		.item-prize__text {
 			max-width: 95%;
@@ -15,13 +22,16 @@
 	}
 }
 .collect__item.item-prize--nuts-fruits::before {
-	background: url(../img/collect/collect-nuts-bg.svg);
+	background-image: url(../img/collect/collect-nuts-bg.svg);
 	background-position: 0 100%;
 	top: auto;
+	bottom: 0px;
 	border-radius: 10px;
+	box-shadow: none;
 }
 // COLLECT TABS
 .collect-tabs {
+	padding-bottom: 45px;
 	& .tabs__list {
 		justify-content: center;
 	}
@@ -216,6 +226,17 @@
 .collect-footer {
 	position: sticky;
 	bottom: 0;
+	z-index: 2;
+	transition: all .3s linear 0s;
+	max-height: 94px;
+	display: flex;
+	flex-direction: column-reverse;
+	&.show{
+		height: 100%;
+	}
+	&:hover{
+		height: 100%;
+	}
 }
 .footer-collect {
 	&__items {
@@ -402,8 +423,12 @@
 		padding-left: 6px;
 	}
 }
-.collect-footer.show .result-collect__list, 
-.collect-footer.show .footer-collect__info {
+.collect-footer:hover .result-collect__list, 
+.collect-footer:hover .footer-collect__info {
+	display: block;
+}
+.collect-footer.show .result-collect__list,
+.collect-footer.show .footer-collect__info{
 	display: block;
 }
 

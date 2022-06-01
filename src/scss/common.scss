@@ -229,7 +229,7 @@
    height: 14px;
    flex: 0 0 14px;
    border-radius: 50%;
-   border: 1px solid $redColor;
+   border: 1px solid $grayColorBD;
    transition: 0.2s ease-in;
    cursor: pointer;
 }
@@ -250,6 +250,9 @@
 .real-radio:checked + .custom-radio::before {
    transform: translate(-50%, -50%) scale(1);
    background: $redColor;
+}
+.real-radio:checked + .custom-radio {
+   border: 1px solid $redColor;
 }
 
 .real-radio:checked + .parameters__button{

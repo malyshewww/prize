@@ -114,6 +114,9 @@
 			padding: 8px 19px;
 		}
 		&.collect {
+			min-height: 33px;
+			font-size: 12px;
+			left: math.div(15, 12) * 100%;
 			font-weight: 700;
 			padding: 9px 16px;
 			background: $redColor;
@@ -368,6 +371,7 @@
 		text-transform: uppercase;
 		color: $blackColor;
 		transition: all 0.3s ease 0s;
+		font-family: "Montserrat", sans-serif;
 		&.current {
 			background: #ffe3e3;
 		}

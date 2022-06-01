@@ -66,8 +66,8 @@ addTouchClass();
 
 // Accordeon
 $('.item-accordeon__header').on('click', function (event) {
-	$('.item-accordeon__header').not($(this)).removeClass('active');
-	$('.item-accordeon__content').not($(this).next()).removeClass('open').slideUp(500);
+	// $(this).removeClass('active');
+	// $('.item-accordeon__content').slideUp(300);
 	$(this).toggleClass('active').next().slideToggle(300);
 });
 
@@ -85,7 +85,7 @@ window.addEventListener('hashchange', (event) => {
 		})
 		hashLInk.classList.add('active');
 		hashElement.classList.add('show');
-		const hashElementParent = hashElement.closest('.tabs');
+		const hashElementParent = hashElement.closest('.tabs__body');
 		const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
 		const viewportHeight = window.innerHeight;
 		if (hashElementParentPosition > (viewportHeight / 2)) {
@@ -103,37 +103,39 @@ window.addEventListener('hashchange', (event) => {
 */
 // Указываем элемент для «наблюдения»
 const collect = document.getElementById('collect-footer');
-const collectItem = collect.querySelector('.footer-collect__item')
-const callback = ([entry]) => {
-	const targetInfo = entry.boundingClientRect;
-	const rootBoundsInfo = entry.rootBounds;
-	if (targetInfo.bottom > rootBoundsInfo.bottom && targetInfo.top > rootBoundsInfo.top) {
-		collect.classList.add('show');
-	} else {
-		collect.classList.remove('show');
+if (collect) {
+	const collectItem = collect.querySelector('.footer-collect__item');
+	const callback = ([entry]) => {
+		const targetInfo = entry.boundingClientRect;
+		const rootBoundsInfo = entry.rootBounds;
+		if (targetInfo.bottom < rootBoundsInfo.bottom) {
+			collect.classList.add('show');
+		} else {
+			collect.classList.remove('show');
+		}
+	};
+	// Задаем опции для «наблюдателя»
+	const options = {
+		rootMargin: '0px 0px -1px 0px',
+		// Когда будет срабатывать callback функция
+		threshold: [1]
 	}
-};
-// Задаем опции для «наблюдателя»
-const options = {
-	rootMargin: '0px 0px -1px 0px',
-	// Когда будет срабатывать callback функция
-	threshold: [1]
+	// Создаем новый «наблюдатель»
+	const observer = new IntersectionObserver(callback, options);
+	// Прикрепляем «наблюдателя» к элементу
+	observer.observe(collect);
 }
-// Создаем новый «наблюдатель»
-const observer = new IntersectionObserver(callback, options);
-// Прикрепляем «наблюдателя» к элементу
-observer.observe(collect);
-
 
 // CollectFooter
-const collectFooter = document.querySelector('.collect-footer');
-collectFooter.addEventListener('mouseenter', () => {
-	collectFooter.classList.add('show');
-})
-collectFooter.addEventListener('mouseleave', () => {
-	collectFooter.classList.remove('show');
-})
-
+// const collectFooter = document.querySelector('.collect-footer');
+// if (collectFooter) {
+// 	collectFooter.addEventListener('mouseenter', () => {
+// 		collectFooter.classList.add('show');
+// 	})
+// 	collectFooter.addEventListener('mouseleave', () => {
+// 		collectFooter.classList.remove('show');
+// 	})
+// }
 // Sticky aside in Cart
 // const cart = document.querySelector('.cart');
 // if (cart) {

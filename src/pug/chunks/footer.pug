@@ -2,39 +2,98 @@
 	footerMenu = [
 		{
 			label: "Сладкие подарки",
-			link1: "Сладкие подарки",
-			link2: "В мягкой игрушке",
-			link3: "В картоне",
-			link4: "В мешочке",
-			link5: "Жестяные",
-			link6: "Сундуки и шкатулки",
+			children: [
+				{
+					title: "Сладкие подарки",
+					link: "#"
+				},
+				{
+					title: "В мягкой игрушке",
+					link: "#"
+				},
+				{
+					title: "В картоне",
+					link: "#"
+				},
+				{
+					title: "В мешочке",
+					link: "#"
+				},
+				{
+					title: "Жестяные",
+					link: "#"
+				},
+				{
+					title: "Сундуки и шкатулки",
+					link: "#"
+				},
+			]
 		},
 		{
 			label: "Орехи и сухофрукты",
-			link1: "Наборы",
-			link2: "Орехи",
-			link3: "В картоне",
-			link4: "Сухофрукты",
-			link5: "Цукаты",
-			link6: "НОВОГОДНЯЯ УПАКОВКА",
+			children: [
+				{
+					title: "Наборы",
+					link: "#"
+				},
+				{
+					title: "Орехи",
+					link: "#"
+				},
+				{
+					title: "В картоне",
+					link: "#"
+				},
+				{
+					title: "Сухофрукты",
+					link: "#"
+				},
+				{
+					title: "Цукаты",
+					link: "#"
+				},
+				{
+					title: "НОВОГОДНЯЯ УПАКОВКА",
+					link: "#"
+				},
+			]
 		},
 		{
 			label: "О компании",
-			link1: "Отзывы",
-			link2: "FAQ",
-			link3: "Сертификаты",
-			link4: "Доставка и оплата",
-			link5: "Гарантии",
-			link6: "Подарки с логотипом",
+			children: [
+				{
+					title: "Отзывы",
+					link: "reviews.html"
+				},
+				{
+					title: "FAQ",
+					link: "faq.html"
+				},
+				{
+					title: "Сертификаты",
+					link: "certificate.html"
+				},
+				{
+					title: "Доставка и оплата",
+					link: "delivery-and-payment.html"
+				},
+				{
+					title: "Гарантии",
+					link: "guarantees.html"
+				},
+				{
+					title: "Подарки с логотипом",
+					link: "#"
+				},
+			]
 		},
-		
 	]
 
 footer.footer 
 	.container
 		.footer__main.main-footer 
 			.footer__left 
-				a(href="#").footer-logo
+				a(href="./index.html").footer-logo
 					.footer-logo__image 
 						img(src="img/footer/logo.svg", alt="")
 					.footer-logo__text 
@@ -45,18 +104,9 @@ footer.footer
 					.menu-footer__column
 							p.menu-footer__label !{item.label} 
 							ul.menu-footer__list
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link1
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link2
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link3
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link4
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link5
-								li.menu-footer__item 
-									a(href="#").menu-footer__link= item.link6
+								each childItem in item.children
+									li.menu-footer__item 
+										a(href=childItem.link).menu-footer__link= childItem.title
 				.menu-footer__column.footer-contacts
 					p.menu-footer__label Контакты
 					ul.footer-contacts__list 
