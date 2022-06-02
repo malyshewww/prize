@@ -65,8 +65,9 @@ function addTouchClass() {
 		if (menuArrows.length > 0) {
 			for (let index = 0; index < menuArrows.length; index++) {
 				let menuArrow = menuArrows[index];
+				const menuParent = menuArrow.parentElement;
 				menuArrow.addEventListener("click", function (e) {
-					menuArrow.parentElement.classList.toggle('open');
+					menuParent.classList.toggle('open');
 				});
 			}
 		}
@@ -156,11 +157,25 @@ fields.forEach(input => {
 	input.addEventListener("blur", remfocus)
 })
 
+// Подключаем Галереи LightGallery
+import './libs/lightgallery.min.js';
+
+lightGallery(document.getElementById('gallery'), {
+	thumbnail: true,
+	animateThumb: true,
+	showThumbByDefault: false,
+	subHtmlSelectorRelative: true,
+	enableTouch: true,
+	zoom: true,
+	scale: 1,
+	showZoomInOutIcons: true
+});
+
 // Menu burger
 const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu');
 if (iconMenu) {
-	iconMenu.addEventListener("click", function (event) {
+	iconMenu.addEventListener("click", (event) => {
 		iconMenu.classList.toggle('active');
 		menuBody.classList.toggle('show-menu');
 		document.body.classList.toggle('lock');

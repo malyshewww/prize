@@ -24,6 +24,13 @@
                         label(for="star-1" title="Оценка «1»")
                   .form-modal__item 
                      textarea(class="form-modal__textarea" placeholder="Ваш отзыв")
+               .checkbox-item
+                  label
+                     input(type="checkbox" checked).real-checkbox
+                     span.custom-checkbox 
+                     span.checkbox-item__text.
+                        Отправляя заявку, Вы соглашаетесь с
+                        <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
                button.form-modal__button(type="button") Отправить
 .modal(id="order" data-modal)
    .modal__wrapper
@@ -38,6 +45,13 @@
                      input(type="number" class="form-modal__input" placeholder="Ваш телефон")
                   .form-modal__item 
                      textarea(class="form-modal__textarea" placeholder="Комментарий")
+               .checkbox-item
+                  label
+                     input(type="checkbox" checked).real-checkbox
+                     span.custom-checkbox 
+                     span.checkbox-item__text.
+                        Отправляя заявку, Вы соглашаетесь с
+                        <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
                button.form-modal__button(type="button") Отправить
 .modal(id="success-order" data-modal).modal-message
    .modal__wrapper
@@ -74,4 +88,11 @@
                      input(type="text" class="form-modal__input" placeholder="Ваше имя")
                   .form-modal__item 
                      input(type="number" class="form-modal__input" placeholder="Ваш телефон")
+               .checkbox-item
+                  label
+                     input(type="checkbox" checked).real-checkbox
+                     span.custom-checkbox 
+                     span.checkbox-item__text.
+                        Отправляя заявку, Вы соглашаетесь с
+                        <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
                button.form-modal__button(type="button") Отправить

@@ -3,12 +3,17 @@
 		{
 			img: "certificate-1",
 		},
+		{
+			img: "certificate-1",
+		},
+		{
+			img: "certificate-1",
+		},
 	]
 section.certificate 
 	.certificate__container 
 		h1.certificate__title.general__title= pageTitle
-	.certificate__body.container
+	.certificate__body.container(id="gallery")
 		each item in certificates
-			a(href="#").certificate__item
-				.certificate__image
-					img(src=`img/certificate/${item.img}.jpg`, alt="")
+			a(href=`img/certificate/${item.img}.jpg`).certificate__item
+				img(src=`img/certificate/${item.img}.jpg`, alt="")
