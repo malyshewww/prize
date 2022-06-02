@@ -3,8 +3,6 @@
    &__body {
       position: relative;
    }
-   &__wrapper {
-   }
    &__item {
       background-size: auto 100%;
       background-repeat: no-repeat;
@@ -132,10 +130,6 @@
       &:hover::before{
          color: $whiteColor;
       }
-   }
-   &__prev {
-   }
-   &__next {
    }
 }
 

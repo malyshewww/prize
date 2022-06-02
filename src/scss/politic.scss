@@ -1,5 +1,3 @@
-.politic-page {
-}
 .politic {
    padding-bottom: 100px;
    & a {
@@ -12,8 +10,6 @@
       &:not(:last-child){
          margin-bottom: 25px;
       }
-   }
-   &__label {
    }
    &__list {
       & li {

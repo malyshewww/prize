@@ -1,7 +1,5 @@
 // ============= ABOUT IMPORTANT ================
 .about {
-   &__body {
-   }
    &__container {
       display: flex;
       align-items: flex-start;
@@ -15,8 +13,6 @@
    }
 }
 .important-about {
-   &__info {
-   }
    &__label {
       margin-bottom: 30px;
       font-weight: 600;

@@ -19,9 +19,14 @@ import "./modules/range-slider.js";
 import "./modules/dropdown-menu.js";
 
 // Переключение кнопок с превью карточки товара
-$('.choice-group__wrap').on('click', function () {
-	$(this).addClass('active').siblings().removeClass('active');
-})
+const choiceGroup = document.querySelectorAll('[data-choice-wrap]');
+choiceGroup.forEach((item, i, arr) => {
+	item.addEventListener('click', () => arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item)));
+	console.log(item.childNodes);
+	// if (item.childNodes = '.dropdown-list') {
+	// 	item.childNodes('.menu__arrow').style.display = 'block';
+	// }
+});
 $(document).on('mouseup', function (e) {
 	var div = $(".choice-group__wrap");
 	if (!div.is(e.target) && div.has(e.target).length === 0) {
@@ -66,8 +71,6 @@ addTouchClass();
 
 // Accordeon
 $('.item-accordeon__header').on('click', function (event) {
-	// $(this).removeClass('active');
-	// $('.item-accordeon__content').slideUp(300);
 	$(this).toggleClass('active').next().slideToggle(300);
 });
 

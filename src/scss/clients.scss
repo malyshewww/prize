@@ -38,13 +38,9 @@
 // ========== CLIENTS-SETS ==============
 .clients-sets {
    padding: 25px 0 25px;
-   &__container {
-   }
    &__inner {
       display: flex;
       column-gap: 33px;
-   }
-   &__image {
    }
    &__info {
       padding: 97px 0 0;
@@ -159,8 +155,6 @@
 // ========== CLIENTS-STAGES ==============
 .clients-order {
    padding: 25px 0 65px;
-   &__container {
-   }
    &__title {
       max-width: 590px;
       margin: 0 auto 50px;

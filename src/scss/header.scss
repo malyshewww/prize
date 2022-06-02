@@ -1,11 +1,5 @@
 .header {
 	font-family: "Montserrat", sans-serif;
-	&__body {
-	}
-	&__top {
-	}
-	&__main {
-	}
 	&__catalog {
 		padding-bottom: 18px;
 	}
@@ -149,12 +143,6 @@
 			}
 		}
 	}
-	&__social {
-	}
-	&__search {
-	}
-	&__actions {
-	}
 }
 .logo {
 	display: flex;
@@ -292,8 +280,6 @@
 	}
 }
 .menu {
-	&__list {
-	}
 	&__item {
 		display: flex;
 		align-items: center;

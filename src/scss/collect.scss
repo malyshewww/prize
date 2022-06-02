@@ -1,5 +1,3 @@
-.collect-page {
-}
 .collect {
 	padding-bottom: 64px;
 	&__body {
@@ -52,8 +50,6 @@
 		gap: 6px;
 		margin-bottom: 26px;
 	}
-	&__thead {
-	}
 	&__th {
 		background: $greenLightColor;
 		min-height: 48px;
@@ -66,14 +62,6 @@
 		font-weight: 600;
 		line-height: math.div(20, 16) * 100%;
 		border-radius: 6px;
-	}
-	&__body {
-	}
-	&__tbody {
-	}
-	&__row {
-	}
-	&__tr {
 	}
 	&__td {
 		min-height: 95px;
@@ -145,8 +133,6 @@
 		line-height: math.div(24, 16) * 100%;
 		color: $blackColor;
 	}
-	&__quantity {
-	}
 	&__radiobutton {
 		padding-right: 120px;
 		display: flex;
@@ -177,12 +163,6 @@
 		}
 	}
 }
-.accordeon {
-	&__body {
-	}
-	&__item {
-	}
-}
 .collect-table .item-accordeon {
 	&__header {
 		background: $grayColorF2;
@@ -210,16 +190,6 @@
 	border-radius: 30px;
 	padding: 0 12px;
 	margin: 0 auto;
-	&__button {
-	}
-	&__button--minus {
-	}
-	&__button--disabled {
-	}
-	&__input {
-	}
-	&__button--plus {
-	}
 }
 
 // COLLECT FOOTER
@@ -300,8 +270,6 @@
 		&:not(:last-child) {
 			margin-right: 20px;
 		}
-	}
-	&__result {
 	}
 	&__delete {
 		align-self: flex-end;

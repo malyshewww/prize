@@ -44,8 +44,6 @@
    &__card {
       flex-shrink: 0;
    }
-   &__controls {
-   }
 }
 .slider-container.container {
    max-width: 1260px;
@@ -309,18 +307,18 @@
    position: relative;
    transition: all .15s linear 0s;
    &__wrap{
-      position: relative;
-      &:not(:last-child) {
-      margin-bottom: 7px;
-   }
+         position: relative;
+         &:not(:last-child) {
+         margin-bottom: 7px;
+      }
    }
    &:hover {
       background: $pinkColorLight;
    }
-   
    &__label {
       display: flex;
       align-items: center;
+      width: 100%;
       cursor: pointer;
    }
    &__input {
@@ -338,9 +336,11 @@
       font-weight: 700;
       font-size: 16px;
       line-height: math.div(22, 16) * 100%;
+      width: 100%;
    }
    &__arrow {
-      margin-left: auto;
+      margin-left: 8px;
+      display: none;
       width: 0;
       height: 0;
       border-style: solid;
@@ -348,7 +348,9 @@
       border-color: $greenColor transparent transparent transparent;
       transition: all .15s ease 0s;
    }
-   
+}
+[data-choice-wrap] .choice-group__arrow{
+   display: block;
 }
 .choice-group__wrap{
    & .dropdown-list{

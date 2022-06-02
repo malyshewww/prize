@@ -38,8 +38,6 @@
 		grid-template-columns: repeat(2, 1fr);
       gap: 30px 26px;
    }
-   &__item {
-   }
 }
 
 .item-delivery {
@@ -63,7 +61,6 @@
       align-items: flex-end;
       margin-bottom: 12px;
    }
-
    &__content {
       text-align: center;
       font-weight: 600;
@@ -163,10 +160,6 @@
    }
 }
 
-.terms-delivery {
-   &__payment {
-   }
-}
 .terms-payment {
    &__title {
       margin-bottom: 30px;
@@ -221,8 +214,6 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 31px;
-   }
-   &__item {
    }
    &__info {
       padding-top: 30px;
@@ -297,18 +288,11 @@
    }
 }
 .making-delivery {
-   &__container {
-   }
    &__inner {
       display: flex;
       align-items: center;
       column-gap: 91px;
    }
-   &__image {
-   }
-   &__info {
-   }
-
    &__title {
       margin-bottom: 30px;
    }

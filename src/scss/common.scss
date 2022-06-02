@@ -335,3 +335,16 @@
    background: $greenColor;
    border: 1px solid transparent;
 }
+.radiobutton-item {
+	& label {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+	&__text {
+		display: inline-block;
+		margin-left: 16px;
+		line-height: math.div(24, 16) * 100%;
+		color: $blackColor;
+	}
+}
