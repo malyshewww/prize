@@ -110,12 +110,22 @@
 }
 
 .noUi-horizontal .noUi-handle {
+	width: 16px;
+	height: 16px;
+	right: -8px;
+	top: -6.5px;
+}
+.noUi-handle::before{
+	content: "";
+	position: absolute;
 	width: 8px;
 	height: 8px;
-	right: -4px;
-	top: -2.5px;
+	border-radius: 50%;
+	background: $redColor;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
-
 .noUi-vertical {
 	width: 18px;
 }
@@ -177,24 +187,13 @@
 }
 
 .noUi-handle {
-	background-color: $redColor;
+	border: 1px solid transparent;
 	border-radius: 50%;
 	cursor: pointer;
 }
 
-// .noUi-handle::after {
-// 	content: "";
-// 	width: 15px;
-// 	height: 15px;
-// 	position: absolute;
-// 	left: 3px;
-// 	top: 3px;
-// 	border-radius: 50%;
-// 	background-color: #f68038;
-// }
-
 .noUi-active {
-	background: $redColor;
+	background: none;
 }
 
 /* Disabled state;

@@ -21,32 +21,39 @@ import "./modules/dropdown-menu.js";
 // Переключение кнопок с превью карточки товара
 const choiceGroup = document.querySelectorAll('[data-choice-wrap]');
 choiceGroup.forEach((item, i, arr) => {
-	item.addEventListener('click', () => arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item)));
-	console.log(item.childNodes);
-	// if (item.childNodes = '.dropdown-list') {
-	// 	item.childNodes('.menu__arrow').style.display = 'block';
-	// }
-});
-$(document).on('mouseup', function (e) {
-	var div = $(".choice-group__wrap");
-	if (!div.is(e.target) && div.has(e.target).length === 0) {
-		div.removeClass("active")
-	}
-});
+	const choiceList = item.querySelector('.dropdown-list');
+	const choiceArrow = item.querySelector('.choice-group__arrow');
+	const choiceGroupLabels = item.querySelectorAll('.dropdown-list .choice-group__label');
 
-// Переход к табу "Cостав"
-// $(".parameters__watch").on("click", function (event) {
-// 	//отменяем стандартную обработку нажатия по ссылке
-// 	event.preventDefault();
-// 	//забираем идентификатор бока с атрибута href
-// 	let id = $(this).attr('href'),
-// 		//узнаем высоту от начала страницы до блока на который ссылается якорь
-// 		top = $(id).offset().top;
-// 	$('#compound').addClass('active').closest('.tabs__item').siblings().find('.tabs__link').removeClass('active');
-// 	$('.tabs__content--compound').addClass('show').siblings().removeClass('show');
-// 	//анимируем переход на расстояние - top за 800 мс
-// 	$('body,html').animate({ scrollTop: top }, 800);
-// });
+	const choiceValue = item.querySelector('[data-value]');
+	const choiceDropdownValue = item.querySelector('[data-dropdown-value]');
+	if (choiceList) {
+		item.addEventListener('click', (e) => {
+			e.stopPropagation();
+			arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
+		});
+		choiceArrow.classList.add('show');
+	}
+	choiceGroupLabels.forEach((label) => {
+		label.addEventListener('click', (e) => {
+			e.stopPropagation();
+			choiceValue.innerText = choiceDropdownValue.innerText;
+			item.classList.remove('active')
+		})
+	})
+	// Клик снаружи [data-choice-wrap]. Закрыть [data-choice-wrap]
+	document.addEventListener('click', function (e) {
+		if (e.target != item) {
+			item.classList.remove('active')
+		}
+	})
+	// Нажатие на Tab или Escape. Закрыть [data-choice-wrap]
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Tab' || e.key === 'Escape') {
+			item.classList.remove('active')
+		}
+	});
+});
 
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
@@ -129,39 +136,6 @@ if (collect) {
 	observer.observe(collect);
 }
 
-// CollectFooter
-// const collectFooter = document.querySelector('.collect-footer');
-// if (collectFooter) {
-// 	collectFooter.addEventListener('mouseenter', () => {
-// 		collectFooter.classList.add('show');
-// 	})
-// 	collectFooter.addEventListener('mouseleave', () => {
-// 		collectFooter.classList.remove('show');
-// 	})
-// }
-// Sticky aside in Cart
-// const cart = document.querySelector('.cart');
-// if (cart) {
-// 	window.addEventListener("scroll", scrollPosition);
-// 	window.addEventListener("resize", scrollPosition);
-// 	function scrollPosition() {
-// 		cartPosition();
-// 	}
-// 	function cartPosition() {
-// 		if (window.innerWidth > 992) {
-// 			const wrapper = document.querySelector('.wrapper');
-// 			const cartPosition = cart.getBoundingClientRect().top + window.scrollY;
-// 			if (window.scrollY > cartPosition) {
-// 				cart.classList.add('sticky');
-// 				wrapper.style.overflow = 'visible';
-// 			} else {
-// 				cart.classList.remove('sticky');
-// 				wrapper.style.overflow = 'hidden';
-// 			}
-// 		}
-// 	}
-// }
-
 /*===== FORM FOCUS =====*/
 const fields = document.querySelectorAll("[data-field]")
 /*=== Add focus ===*/
@@ -182,7 +156,7 @@ fields.forEach(input => {
 	input.addEventListener("blur", remfocus)
 })
 
-// Меню бургер
+// Menu burger
 const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu');
 if (iconMenu) {

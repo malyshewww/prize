@@ -81,7 +81,6 @@
    }
    &__header {
       margin-bottom: 12px;
-      flex: 1 1 auto;
    }
    &__favorite {
       position: absolute;
@@ -185,12 +184,15 @@
       font-size: 16px;
       line-height: math.div(22, 16) * 100%;
       font-weight: 700;
+      min-height: 42px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
    }
    &__body {
       padding-bottom: 14px;
-      margin-top: auto;
    }
-
    &__inner {
       display: flex;
       justify-content: space-between;
@@ -226,16 +228,25 @@
       justify-content: space-between;
       flex-wrap: wrap;
       align-items: center;
-      column-gap: 15px;
+      column-gap: 5px;
       row-gap: 10px;
    }
    &__prices {
+      display: flex;
+      align-items: flex-end;
    }
    &__price {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
+      &-old{
+         margin-left: 7px;
+         color: $grayColorBD;
+         font-size: 10px;
+         line-height: math.div(12, 10) * 100%;
+         text-decoration: line-through;
+      }
    }
    &__button {
       padding: 10px 25px;
@@ -301,7 +312,6 @@
    align-items: center;
    column-gap: 8px;
    min-height: 30px;
-   padding: 3px 11px 4px 14px;
    font-family: "SourceSansPro", sans-serif;
    cursor: pointer;
    position: relative;
@@ -319,6 +329,7 @@
       display: flex;
       align-items: center;
       width: 100%;
+      padding: 3px 11px 4px 14px;
       cursor: pointer;
    }
    &__input {
@@ -347,10 +358,10 @@
       border-width: 8px 5px 0 5px;
       border-color: $greenColor transparent transparent transparent;
       transition: all .15s ease 0s;
+      &.show{
+         display: block;
+      }
    }
-}
-[data-choice-wrap] .choice-group__arrow{
-   display: block;
 }
 .choice-group__wrap{
    & .dropdown-list{
@@ -366,8 +377,10 @@
       }
       & .choice-group {
          border: none;
-         padding-right: 28px;
          column-gap: 0;
+      }
+      & .choice-group__label {
+         padding-right: 28px;
       }
    }
 }

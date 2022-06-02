@@ -1,5 +1,5 @@
 each productItem, productIndex in product
-	.products__card.card-product
+	.products__card.card-product(class=category)
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
@@ -17,31 +17,33 @@ each productItem, productIndex in product
 							- for (var x = 0; x < 5; x++)
 								li.reviews-rating__item
 					.card-product__compare.icon-prepare(class=productItem.selectedClass)
-				.choice-groups
-					if productItem.choice
-						each choiceItem, choiceIndex in productItem.choice
-							.choice-group__wrap(data-choice-wrap)
-								.card-product__choice.choice-group
-									label.choice-group__label
-										input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="choice-group__input real-radio")
-										span.custom-radio
-										span.choice-group__text= choiceItem.title
-										if choiceItem.values
-											.choice-group__value= choiceItem.values[0]
-										if choiceItem.dropmenu
+				if !category
+					.choice-groups
+						if productItem.choice
+							each choiceItem, choiceIndex in productItem.choice
+								.choice-group__wrap(data-choice-wrap)
+									.card-product__choice.choice-group
+										label.choice-group__label
+											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="choice-group__input real-radio")
+											span.custom-radio
+											span.choice-group__text= choiceItem.title
+											if choiceItem.values
+												.choice-group__value(data-value)= choiceItem.values[0]
 											.choice-group__arrow
-								if choiceItem.dropmenu
-									.choice-group__dropdown.dropdown-list
-										each dropItem, dropIndex in choiceItem.dropmenu
-											.choice-group__wrap
-												.choice-group
-													label.choice-group__label
-														input(type="radio" name=`radio-${dropIndex}` class="choice-group__input real-radio")
-														span.custom-radio
-														span.choice-group__text= dropItem.title
-													.choice-group__value= dropItem.value
-			.card-product__footer 
+									if choiceItem.dropmenu
+										.choice-group__dropdown.dropdown-list
+											each dropItem, dropIndex in choiceItem.dropmenu
+												.choice-group__wrap
+													.choice-group
+														label.choice-group__label
+															input(type="radio" name=`radio-${dropIndex}` class="choice-group__input real-radio")
+															span.custom-radio
+															span.choice-group__text= dropItem.title
+															.choice-group__value(data-dropdown-value)= dropItem.value
+			.card-product__footer
 				.card-product__prices 
 					.card-product__price= productItem.price
+					if productItem.priceOld
+						.card-product__price-old= productItem.priceOld
 				button(type="button").card-product__button.btn Купить
 
