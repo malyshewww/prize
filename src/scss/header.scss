@@ -37,7 +37,7 @@
 			}
 			._pc &:hover .menu__arrow {
 				border-top: 6px solid $whiteColor;
-				transform: rotate(-180deg) translateY(1px);
+				transform: rotate(-180deg) translateY(0px);
 			}
 		}
 		& li .submenu__list {
@@ -218,11 +218,19 @@
 		font-family: "Montserrat", sans-serif;
 		border: 1px solid #dbdbdb;
 		border-radius: 50px;
+		transition: all .2s ease 0s;
 		&::placeholder {
 			font-size: 12px;
 			line-height: math.div(15, 12) * 100%;
 			color: #ababab;
 			font-family: "Montserrat", sans-serif;
+			transition: opacity .2s ease 0s;
+		}
+		&:focus {
+			border: 1px solid $greenColor;
+			&::placeholder{
+				opacity: 0;
+			}
 		}
 	}
 	&__icon {

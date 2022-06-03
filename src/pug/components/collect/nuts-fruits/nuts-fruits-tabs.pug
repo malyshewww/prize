@@ -244,10 +244,10 @@ section.collect-tabs
 													input(type="radio" name="package" checked class="real-radio")
 													span.custom-radio
 							.collect-table__body.collect-table__tbody
-								.accordeon
+								.accordeon(data-spollers)
 									each itemCategories, CategoriesIndex in tabItem.objectCategories
 										.accordeon__item.item-accordeon
-												.item-accordeon__header.icon-arrow-next.active= itemCategories.title
+												.item-accordeon__header.icon-arrow-next._active(data-spollers)= itemCategories.title
 												.item-accordeon__content.open
 													each child, childIndex in itemCategories.children
 														.collect-table__row.collect-table__tr

@@ -116,12 +116,21 @@
       font-family: "SourceSansPro", sans-serif;
       color: currentColor;
       border-radius: 20px;
+		transition: all .2s ease 0s;
+      cursor: pointer;
       &::placeholder {
          font-size: 16px;
          line-height: math.div(22, 16) * 100%;
          font-family: "SourceSansPro", sans-serif;
          color: currentColor;
+		   transition: opacity .2s ease 0s;
       }
+      &:focus {
+			border: 1px solid $greenColor;
+			&::placeholder{
+				opacity: 0;
+			}
+		}
    }
    &__textarea {
       min-height: 225px;

@@ -32,6 +32,25 @@
                         Отправляя заявку, Вы соглашаетесь с
                         <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
                button.form-modal__button(type="button") Отправить
+.modal(id="modal-call" data-modal)
+   .modal__wrapper
+      .modal__content
+         .modal__close.icon-delete(data-modal-close)
+         .modal__title Заказать звонок
+            form(action="#").modal__form.form-modal
+               .form-modal__items
+                  .form-modal__item 
+                     input(type="text" class="form-modal__input" placeholder="Ваше имя")
+                  .form-modal__item 
+                     input(type="number" class="form-modal__input" placeholder="Ваш телефон")
+               .checkbox-item
+                  label
+                     input(type="checkbox" checked).real-checkbox
+                     span.custom-checkbox 
+                     span.checkbox-item__text.
+                        Отправляя заявку, Вы соглашаетесь с
+                        <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
+               button.form-modal__button(type="button") Отправить
 .modal(id="order" data-modal)
    .modal__wrapper
       .modal__content
@@ -77,22 +96,3 @@
          .modal__description
             p Спасибо за вашу заявку. 
             p Мы перезвоним вам в ближайшее время
-.modal(id="call" data-modal)
-   .modal__wrapper
-      .modal__content
-         .modal__close.icon-delete(data-modal-close)
-         .modal__title Заказать звонок
-            form(action="#").modal__form.form-modal
-               .form-modal__items
-                  .form-modal__item 
-                     input(type="text" class="form-modal__input" placeholder="Ваше имя")
-                  .form-modal__item 
-                     input(type="number" class="form-modal__input" placeholder="Ваш телефон")
-               .checkbox-item
-                  label
-                     input(type="checkbox" checked).real-checkbox
-                     span.custom-checkbox 
-                     span.checkbox-item__text.
-                        Отправляя заявку, Вы соглашаетесь с
-                        <a href="politic.html" class="form__link"> Политикой конфиденциальности</a>
-               button.form-modal__button(type="button") Отправить

@@ -1,29 +1,29 @@
 // DROP-MENU
-document.querySelectorAll('.dropdown').forEach(function (dropDownWrapper) {
+document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
    const dropMenuBtn = document.querySelector('.dropdown__button');
    const dropMenuList = dropDownWrapper.querySelector('.dropdown-list');
    const dropMenuListItems = dropMenuList.querySelectorAll('.dropdown-list__item');
    const dropMenuInput = dropDownWrapper.querySelector('.dropdown__input-hidden');
    // Клик по кнопке. Открыть/Закрыть select
-   dropMenuBtn.addEventListener('click', function (e) {
+   dropMenuBtn.addEventListener('click', (e) => {
       dropMenuList.classList.toggle('show');
       dropDownWrapper.classList.toggle('active');
-      this.classList.toggle('active');
+      e.target.classList.toggle('active');
    });
    // Выбор элемента списка. Запомнить выбранное значение. Закрыть дропдаун
-   dropMenuListItems.forEach(function (listItem) {
-      listItem.addEventListener('click', function (e) {
+   dropMenuListItems.forEach((listItem) => {
+      listItem.addEventListener('click', (e) => {
          e.stopPropagation();
-         dropMenuBtn.innerHTML = this.innerHTML;
+         dropMenuBtn.innerHTML = listItem.innerHTML;
          dropMenuBtn.focus();
-         dropMenuInput.value = this.dataset.value;
+         dropMenuInput.value = listItem.dataset.value;
          dropMenuList.classList.remove('show');
          dropMenuBtn.classList.remove('active');
          dropDownWrapper.classList.remove('active');
       });
    });
    // Клик снаружи дропдауна. Закрыть дропдаун
-   document.addEventListener('click', function (e) {
+   document.addEventListener('click', (e) => {
       if (e.target !== dropMenuBtn) {
          dropMenuBtn.classList.remove('active');
          dropMenuList.classList.remove('show');
@@ -31,7 +31,7 @@ document.querySelectorAll('.dropdown').forEach(function (dropDownWrapper) {
       }
    });
    // Нажатие на Tab или Escape. Закрыть дропдаун
-   document.addEventListener('keydown', function (e) {
+   document.addEventListener('keydown', (e) => {
       if (e.key === 'Tab' || e.key === 'Escape') {
          dropMenuBtn.classList.remove('active');
          dropMenuList.classList.remove('show');

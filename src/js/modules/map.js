@@ -2,7 +2,7 @@
 	if (typeof ymaps === 'undefined') {
 		return;
 	}
-	ymaps.ready(function () {
+	ymaps.ready(() => {
 		var myMap = new ymaps.Map('ymap', {
 			center: [56.359624, 43.832279],
 			zoom: 16.5

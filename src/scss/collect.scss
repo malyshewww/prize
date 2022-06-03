@@ -173,14 +173,13 @@
 		line-height: math.div(22, 16) * 100%;
 		border-radius: 6px;
 		text-transform: uppercase;
-		margin-bottom: 10px;
 	}
 	&__content {
-		padding: 0;
+		padding: 10px 0 0;
 		max-width: 100%;
 	}
 	&:not(:last-child) {
-		margin-bottom: 20px;
+		margin-bottom: 26px;
 	}
 }
 .collect-table .quantity-card {
@@ -188,7 +187,7 @@
 	min-height: 28px;
 	background: $grayColorF2;
 	border-radius: 30px;
-	padding: 0 12px;
+	padding: 0 8px;
 	margin: 0 auto;
 }
 
@@ -197,7 +196,7 @@
 	position: sticky;
 	bottom: 0;
 	z-index: 2;
-	transition: all .3s linear 0s;
+	transition: max-height .3s ease-in-out 0s;
 	max-height: 94px;
 	display: flex;
 	flex-direction: column-reverse;

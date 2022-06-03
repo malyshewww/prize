@@ -21,7 +21,7 @@
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      &.active::before {
+      &._active::before {
          transform: rotate(-90deg);
          color: $greenColor;
       }
@@ -33,7 +33,6 @@
       }
    }
    &__content {
-      display: none;
       padding: 42px 40px 12px;
       max-width: 90%;
       &.open {

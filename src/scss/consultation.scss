@@ -42,13 +42,22 @@
       color: $grayColorBD;
       font-family: 'SourceSansPro', sans-serif;
       font-weight: 400;
+      border: 1px solid transparent;
+		transition: all .2s ease 0s;
       &::placeholder{
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
          color: $grayColorBD;
          font-family: 'SourceSansPro', sans-serif;
          font-weight: 400;
+			transition: opacity .2s ease 0s;
       }
+      &:focus {
+			border: 1px solid $greenColor;
+			&::placeholder{
+				opacity: 0;
+			}
+		}
    }
    &__button {
       flex: 1;

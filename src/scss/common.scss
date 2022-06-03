@@ -338,7 +338,7 @@
 .radiobutton-item {
 	& label {
 		cursor: pointer;
-		display: flex;
+		display: inline-flex;
 		align-items: center;
 	}
 	&__text {

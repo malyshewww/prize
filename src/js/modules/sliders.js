@@ -42,7 +42,6 @@ function initSliders() {
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
             speed: 1000,
-            observeSlideChildren: true,
             observer: true,
             navigation: {
                nextEl: el.querySelector('.slide-arrow.slide-arrow__next'),
@@ -90,6 +89,7 @@ function initSliders() {
          watchSlidesVisibility: true,
          watchSlidesProgress: true,
          speed: 600,
+         observer: true,
          breakpoints: {
             991.98: {
                slidesPerView: 3,
@@ -127,7 +127,7 @@ function initSliders() {
 
 }
 
-window.addEventListener("load", function (e) {
+window.addEventListener("load", (e) => {
    // Запуск инициализации слайдеров
    initSliders();
 });
