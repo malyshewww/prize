@@ -25,7 +25,7 @@
          visibility: visible;
          flex-grow: 1;
          & img {
-            transform: translateX(-50%) scale(1);
+            transform: scale(1);
          }
       }
       &.disabled .products__body {
@@ -53,7 +53,7 @@
    opacity: 0;
    visibility: hidden;
    & .card-product__image img{
-      transform: translateX(-50%) scale(0);
+      transform: scale(0);
    }
 }
 .card-product {
@@ -68,7 +68,7 @@
       visibility: visible;
    }
    &.swiper-slide-visible .card-product__image img {
-      transform: translateX(-50%) scale(1);
+      transform: scale(1);
    }
    &__box {
       height: 100%;
@@ -164,8 +164,8 @@
       overflow: hidden;
       margin-bottom: 6px;
       & img {
-         transform: translateX(-50%) scale(1);
-         left: 50%;
+         transform: scale(1);
+         left: initial;
          max-width: 100%;
          width: auto;
          transition: all 0.5s ease 0s;
