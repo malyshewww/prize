@@ -375,7 +375,8 @@
 	}
 }
 
-body._touch .menu__list > li.open .submenu__list {
+body._touch .menu__list > li.open .submenu__list,
+body._touch .top-header__list > li.open .submenu__list {
 	opacity: 1;
 	visibility: visible;
 	transform: translate(0px, 0px);
@@ -384,6 +385,10 @@ body._touch .menu__list > li.open .submenu__list {
 body._touch .menu__list > li.open .menu__arrow {
 	border-top: 6px solid $redColor;
 	transform: rotate(-180deg) translateY(1px);
+}
+body._touch .top-header__list > li.open .menu__arrow {
+	border-top: 6px solid $whiteColor;
+	transform: rotate(-180deg) translateY(0px);
 }
 body._touch .menu__list > li.open .menu__link {
 	color: $redColor;
@@ -410,6 +415,9 @@ body._touch .menu__list > li.open .menu__link {
 		display: none;
 	}
 	.menu__list > li.open .submenu__list {
+		display: block;
+	}
+	.top-header__list > li.open .submenu__list {
 		display: block;
 	}
 }

@@ -3,6 +3,9 @@
    & .container {
       max-width: 1354px;
    }
+   &__wrapper {
+      position: relative;
+   }
    &__body{
       position: relative;
       display: flex;
@@ -14,8 +17,9 @@
       background-position: 100% 100%;
       background-repeat: no-repeat;
       background-color: $grayColorF2;
-      border-radius: 62px;
       padding: 60px 159px 68px 0;
+      border-radius: 62px;
+      overflow: hidden;
    }
    &__content{
       max-width: 390px;
@@ -37,5 +41,9 @@
       bottom: 0;
       left: 0;
       pointer-events: none;
+      border-radius: 0 0 0 62px;
+      & img{
+         border-radius: inherit;
+      } 
    }
 }
