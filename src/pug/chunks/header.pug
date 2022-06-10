@@ -10,7 +10,7 @@ header.header
 								span.menu__arrow
 								ul.submenu__list
 									each item in [{"title": "FAQ", "link": "faq.html"}, {"title": "Отзывы", "link": "reviews.html"}, {"title": "Вакансии","link": "vacancy.html"}, {"title": "Сертификаты", "link": "certificate.html"}]
-										li.submenu__item 
+										li.submenu__item
 											a.submenu__link(href=item.link)= item.title
 							li
 								a.top-header__link(href="delivery-and-payment.html") Доставка и оплата
@@ -20,7 +20,7 @@ header.header
 								a.top-header__link(href="contacts.html") Контакты
 					.top-header__actions.actions-top-header
 						a.actions-top-header__link.download(href="#") Скачать буклет
-						a.actions-top-header__link.collect.btn.btn-red(href="#") Соберите подарок							
+						a.actions-top-header__link.collect.btn.btn-red(href="collect.html") Соберите подарок							
 		.header__main.main-header 	
 			.container 
 				.main-header__body 
@@ -44,18 +44,18 @@ header.header
 									img(src="img/icons/viber.svg", alt="")
 							li 
 								a(href="/", target="_blank").social-header__link
-									img(src="img/icons/vk.png", alt="")
+									img(src="img/icons/vk.svg", alt="")
 					.main-header__search.search-header
 						button(type="button").search-header__button
 						form(action="/").search-header__form
 							input.search-header__input(type="search", autocomplete="off", placeholder="Поиск по сайту")
 							button(type="button").search-header__icon
 					.main-header__actions.actions-header
-						a.actions-header__link.icon-favorites
+						a(href="favorites.html").actions-header__link.icon-favorites
 							span.actions-header__count 1
 						a.actions-header__link.icon-prepare
 							span.actions-header__count 1
-						a.actions-header__link.icon-cart
+						a(href="cart.html").actions-header__link.icon-cart
 							span.actions-header__count 1
 		.header__catalog
 			.container

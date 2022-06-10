@@ -140,7 +140,7 @@
 			margin-bottom: 20px;
 		}
 		&.focus .form__label {
-			top: -10px;
+			transform: translate(16px, -10px);
 			color: $greenColor;
 		}
 	}
@@ -150,10 +150,9 @@
 		background: $whiteColor;
 		padding: 0 10px;
 		position: absolute;
-		top: 8px;
-		transform: translate(16px, 0%);
+		transform: translate(16px, 8px);
 		pointer-events: none;
-		transition: top 0.3s linear 0s;
+		transition: transform 0.3s linear 0s;
 		&.required::before {
 			content: "*";
 			position: absolute;

@@ -5,27 +5,27 @@
 			children: [
 				{
 					title: "Сладкие подарки",
-					link: "#"
+					link: "category.html"
 				},
 				{
 					title: "В мягкой игрушке",
-					link: "#"
+					link: "category.html"
 				},
 				{
 					title: "В картоне",
-					link: "#"
+					link: "category.html"
 				},
 				{
 					title: "В мешочке",
-					link: "#"
+					link: "category.html"
 				},
 				{
 					title: "Жестяные",
-					link: "#"
+					link: "category.html"
 				},
 				{
 					title: "Сундуки и шкатулки",
-					link: "#"
+					link: "category.html"
 				},
 			]
 		},
@@ -34,23 +34,23 @@
 			children: [
 				{
 					title: "Наборы",
-					link: "#"
+					link: "category-nuts.html"
 				},
 				{
 					title: "Орехи",
-					link: "#"
+					link: "category-nuts.html"
 				},
 				{
 					title: "Сухофрукты",
-					link: "#"
+					link: "category-nuts.html"
 				},
 				{
 					title: "Цукаты",
-					link: "#"
+					link: "category-nuts.html"
 				},
 				{
 					title: "НОВОГОДНЯЯ УПАКОВКА",
-					link: "#"
+					link: "category-nuts.html"
 				},
 			]
 		},
@@ -90,7 +90,7 @@ footer.footer
 						img(src="img/footer/logo.svg", alt="")
 					.footer-logo__text 
 						img(src="img/footer/logo-text.svg", alt="")
-				a(href="#").footer__button.btn Соберите подарок
+				a(href="collect.html").footer__button.btn Соберите подарок
 			.footer__menu.menu-footer
 				each item in footerMenu
 					.menu-footer__column
@@ -117,7 +117,10 @@ footer.footer
 			.bottom-footer__copy © ООО «Комплекс-НН», 2004-2022
 			|
 			|
-			a(href="#").bottom-footer__map.icon-vk-white Карта сайта
+			a(href="#" target="_blank").bottom-footer__vk.icon-vk-white
+			|
+			|
+			a(href="#").bottom-footer__map Карта сайта
 			|
 			|
 			a(href="#").bottom-footer__link Политика конфиденциальности

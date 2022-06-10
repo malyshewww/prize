@@ -1,5 +1,5 @@
 block vars 
-	- var siteTitle = "Название сайта компании"
+	- var siteTitle = "Новогодние подарки"
 
 doctype html
 html(lang="ru")
@@ -16,15 +16,86 @@ html(lang="ru")
 				<b>Описание:</b> Адаптивная верстка интернет магазина. Проработка адаптива без макетов.
 			span.rootpage__text Ниже вы найдете ссылки на все страницы. Для просмотра кликайте на нужную страничку (откроется в новом окне)
 			h2 Страницы:
+			- 
+				rootlinks = [
+					{
+						title: "Главная",
+						link: "index.html"
+					},
+					{
+						title: "Карточка товара",
+						link: "card.html"
+					},
+					{
+						title: 'Категория "Сладкие подарки"',
+						link: "category.html"
+					},
+					{
+						title: 'Категория "Орехи и сухофрукты"',
+						link: "category-nuts.html"
+					},
+					{
+						title: "О Компании",
+						link: "about.html"
+					},
+					{
+						title: "Сертификаты",
+						link: "certificate.html"
+					},
+					{
+						title: "FAQ (Вопрос - ответ)",
+						link: "faq.html"
+					},
+					{
+						title: "Отзывы",
+						link: "reviews.html"
+					},
+					{
+						title: "Вакансии",
+						link: "vacancy.html"
+					},
+					{
+						title: "Доставка и оплата",
+						link: "delivery-and-payment.html"
+					},
+					{
+						title: "Корпоративным клиентам",
+						link: "clients.html"
+					},
+					{
+						title: "Контакты",
+						link: "contacts.html"
+					},
+					{
+						title: "Избранное",
+						link: "favorites.html"
+					},
+					{
+						title: "Корзина",
+						link: "cart.html"
+					},
+					{
+						title: "Оформление заказа",
+						link: "order.html"
+					},
+					{
+						title: "Соберите подарок (Выбор раздела)",
+						link: "collect.html"
+					},
+					{
+						title: "Соберите подарок (Сладкие подарки)",
+						link: "collect-gifts.html"
+					},
+					{
+						title: "Соберите подарок (Орехи и сухофрукты)",
+						link: "collect-nutsfruits.html"
+					},
+				]
 			ol.rootpage__list
-				li 
-					a(target="_blank", href="index.html") Главная
-				li 
-					a(target="_blank", href="card.html") Карточка товара
-				li 
-					a(target="_blank", href="category.html") Категория "Сладкие подарки"
-				li 
-					a(target="_blank", href="category.html") Категория "Орехи и сухофрукты"
+				each item in rootlinks
+					li 
+						a(target="_blank", href=item.link)= item.title
+				
 		style.
 			@charset "UTF-8";
 			@import url("https://fonts.googleapis.com/css?family=Montserrat:regular,500,700&display=swap");
@@ -75,7 +146,7 @@ html(lang="ru")
 
 			ol li {
 				position: relative;
-				padding: 0 0 0 20px;
+				padding: 0 0 0 30px;
 			}
 
 			ol li::before {

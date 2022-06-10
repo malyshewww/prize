@@ -2,12 +2,14 @@
 	collect = [
 		{
 			img: "collect-1",
-			link: "Сладкие подарки",
+			title: "Сладкие подарки",
+			link: "collect-gifts.html",
 			classes: "item-prize--candies-prize item-prize--big",
 		},
 		{
 			img: "collect-2",
-			link: "Орехи и сухофрукты",
+			title: "Орехи и сухофрукты",
+			link: "collect-nutsfruits.html",
 			classes: "item-prize--nuts-fruits item-prize--big",
 		},
 	]
@@ -15,8 +17,8 @@ div.collect
 	.collect__container 
 		.collect__body.prize-inner
 			each item in collect
-				a(href="#").collect__item.item-prize(class=item.classes)
+				a(href=item.link).collect__item.item-prize(class=item.classes)
 					.item-prize__image 
-						img(src=`img/collect/${item.img}.png`, alt=item.link)
+						img(src=`img/collect/${item.img}.png`, alt=item.title)
 					.item-prize__content
-						.item-prize__text.icon-arrow-link= item.link
+						.item-prize__text.icon-arrow-link= item.title

@@ -40,8 +40,12 @@
    }
    &__close {
       position: absolute;
-      top: 27px;
-      right: 27px;
+      padding: 37px;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 20px;
       height: 20px;
       transition: all 0.3s ease 0s;
@@ -117,7 +121,7 @@
       color: currentColor;
       border-radius: 20px;
 		transition: all .2s ease 0s;
-      cursor: pointer;
+      cursor: auto;
       &::placeholder {
          font-size: 16px;
          line-height: math.div(22, 16) * 100%;

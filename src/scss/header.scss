@@ -39,6 +39,9 @@
 				border-top: 6px solid $whiteColor;
 				transform: rotate(-180deg) translateY(0px);
 			}
+			&.active .submenu__list .submenu__link{
+				background: #ffe3e3;
+			}
 		}
 		& li .submenu__list {
 			min-width: 133px;

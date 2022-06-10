@@ -185,6 +185,7 @@
    }
    &.swiper-button-disabled {
       cursor: default;
+      opacity: 0.2;
       &:hover::before {
          color: $grayColorBD;
       }
@@ -326,13 +327,8 @@
 }
 .real-checkbox:checked + .custom-checkbox::before {
    transform: translate(-50%, -50%) scale(1);
-   transition-delay: 0.15s;
-}
-.real-checkbox:checked + .custom-checkbox {
-   background: $greenColor;
 }
 .compare-checkbox .real-checkbox:checked + .custom-checkbox {
-   background: $greenColor;
    border: 1px solid transparent;
 }
 .radiobutton-item {

@@ -10,7 +10,7 @@
 			searchControlProvider: 'yandex#search'
 		}),
 			myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-				balloonContent: 'Селикатная улица, 4'
+				balloonContent: 'Силикатная улица, 4'
 			}, {
 				iconLayout: 'default#image',
 				iconImageHref: 'img/icons/location.svg',
