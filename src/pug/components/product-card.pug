@@ -28,8 +28,8 @@ each productItem, productIndex in product
 											span.custom-radio
 											span.choice-group__text= choiceItem.title
 											if choiceItem.values
-												.choice-group__value(data-value)= choiceItem.values[0]
-											.choice-group__arrow
+												span.choice-group__value(data-value)= choiceItem.values[0]
+											span.choice-group__arrow
 									if choiceItem.dropmenu
 										.choice-group__dropdown.dropdown-list
 											each dropItem, dropIndex in choiceItem.dropmenu
@@ -39,7 +39,7 @@ each productItem, productIndex in product
 															input(type="radio" name=`radio-${dropIndex}` class="choice-group__input real-radio")
 															span.custom-radio
 															span.choice-group__text= dropItem.title
-															.choice-group__value(data-dropdown-value)= dropItem.value
+															span.choice-group__value(data-dropdown-value)= dropItem.value
 			.card-product__footer
 				.card-product__prices 
 					.card-product__price= productItem.price
