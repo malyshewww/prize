@@ -1,3 +1,4 @@
+import $ from 'jquery';
 // Подключаем слайдер Swiper
 import './modules/sliders.js';
 
@@ -53,32 +54,20 @@ function addTouchClass() {
 }
 addTouchClass();
 
-// Добавление стрелок, если имеется submenu
-let menuArrows = document.querySelectorAll('.menu__arrow');
-if (menuArrows.length > 0) {
-	for (let index = 0; index < menuArrows.length; index++) {
-		let menuArrow = menuArrows[index];
-		const submenu = menuArrow.nextElementSibling;
-		if (submenu != null) {
-			menuArrow.style.display = 'block';
-		} else {
-			menuArrow.style.display = 'none';
-		}
-	}
-}
-
 // Подключаем Галерею LightGallery
 import './libs/lightgallery.min.js';
 
-lightGallery(document.getElementById('gallery'), {
+lightGallery(document.querySelector('[data-gallery]'), {
+	// plugins: [lgZoom, lgThumbnail],
 	thumbnail: true,
 	animateThumb: true,
-	showThumbByDefault: false,
-	subHtmlSelectorRelative: true,
+	showThumbByDefault: true,
+	// subHtmlSelectorRelative: true,
 	enableTouch: true,
 	zoom: true,
 	scale: 1,
-	showZoomInOutIcons: true
+	showZoomInOutIcons: true,
+	actualSize: true,
 });
 
 // Menu burger

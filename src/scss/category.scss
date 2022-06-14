@@ -139,8 +139,12 @@
 	font-weight: 700;
 	font-size: 14px;
 	line-height: math.div(22, 14) * 100%;
-	color: $grayColorBD;
+	color: $redColor;
 	background: none;
+	&[disabled]{
+		pointer-events: none;
+		color: $grayColorBD;
+	}
 }
 .filter-group {
 	padding: 30px 24px 44px;
@@ -180,6 +184,7 @@
 		line-height: 100%;
 		color: $mainColor;
 		font-family: "SourceSansPro", sans-serif;
+		cursor: auto;
 	}
 	&__line {
 		width: 17px;

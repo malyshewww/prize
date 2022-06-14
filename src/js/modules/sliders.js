@@ -20,7 +20,6 @@ function initSliders() {
             },
          })
       } else {
-         bannerSlider.destroy();
          bannerSlider.classList.add('disabled');
       }
    }
@@ -54,19 +53,27 @@ function initSliders() {
    })
    // FACTORIES SLIDER
    const factoriesSlider = document.querySelector('.factories-slider');
-   const factoriesSwiper = new Swiper(factoriesSlider, {
-      modules: [Navigation],
-      loop: true,
-      slidesPerView: 5,
-      spaceBetween: 49,
-      wrapperClass: "factories__wrapper",
-      slideClass: "factories__item",
-      simulateTouch: true,
-      navigation: {
-         nextEl: '.factories__controls .slide-arrow__next',
-         prevEl: '.factories__controls .slide-arrow__prev',
-      },
-   });
+   if (factoriesSlider) {
+      const factoriesSlides = factoriesSlider.querySelectorAll('.factories__item').length;
+      if (factoriesSlides > 5) {
+         const factoriesSwiper = new Swiper(factoriesSlider, {
+            modules: [Navigation],
+            loop: false,
+            slidesPerView: 5,
+            spaceBetween: 49,
+            wrapperClass: "factories__wrapper",
+            slideClass: "factories__item",
+            simulateTouch: true,
+            navigation: {
+               nextEl: '.factories__controls .slide-arrow__next',
+               prevEl: '.factories__controls .slide-arrow__prev',
+            },
+         });
+      } else {
+         factoriesSlider.classList.add('disabled');
+      }
+   }
+
 
    // MAIN-CARD SLIDER
    const cardMainSlider = document.querySelector('.base-slider');
@@ -96,15 +103,12 @@ function initSliders() {
             },
          },
       })
-      if (cardNavSlides < 3) {
-         cardNavSwiper.destroy();
-         cardNavSlider.classList.add('disabled');
-      }
    }
    if (cardMainSlider) {
       cardMainSwiper = new Swiper(cardMainSlider, {
          modules: [Thumbs, Navigation],
          watchOverflow: true,
+         slidesPerView: 1,
          grabCursor: true,
          slideClass: "base-slider__item",
          wrapperClass: "base-slider__wrapper",
@@ -117,10 +121,7 @@ function initSliders() {
             prevEl: '.base-slider__controls .slide-arrow__prev',
          },
       })
-      if (cardMainSlides > 1) {
-         cardMainSwiper.init();
-      } else {
-         cardMainSwiper.destroy();
+      if (cardMainSlides == 1) {
          cardMainSlider.classList.add('disabled');
       }
    }

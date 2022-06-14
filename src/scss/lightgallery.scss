@@ -99,7 +99,7 @@
 	background-size: 20px 20px;
 }
 .lg-toolbar .lg-download {
-	display: block;
+	display: none;
 }
 .lg-toolbar .lg-download {
 	background: url("../img/icons/download.svg") center no-repeat;
@@ -829,6 +829,12 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 .lg-outer.lg-hide-download #lg-download {
 	display: none;
+}
+.lg-zoom-in.lg-icon#lg-zoom-in-1{
+	display: block;
+}
+.lg-zoom-out.lg-icon#lg-zoom-out-1{
+	display: block;
 }
 
 .lg-backdrop {

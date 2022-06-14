@@ -24,7 +24,7 @@ section.factories
 					span.header-block__text в наших <span class="green">подарках</span> конфеты <span class="red">лучших</span> кондитерских фабрик
 			.factories-slider._swiper
 				.factories__wrapper._swiper-wrapper
-					each item in factories
+					each item, index in factories
 						a(href="#").factories__item.item-factories._swiper-slide
 							.item-factories__image 
 								img(src=`img/factories/${item.img}`, alt="")

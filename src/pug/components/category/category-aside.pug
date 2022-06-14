@@ -3,31 +3,27 @@ aside.category__aside
 		.filter__body 
 			.filter__header 
 				h2.filter__title.content-title Фильтры
-				button(type="button").filter__button.filter-reset Сбросить всё
-			.filter-group
+				button(type="button" disabled).filter__button.filter-reset Сбросить всё
+			.filter-group(data-filter-group)
 				.filter-group__title.content-title Цена
 				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
-							input(type="number" id="input-price_1").filter-group__input
-							span ₽
+							input(type="number" data-value-start="0").filter-group__input
 						span.filter-group__line
 						label.filter-group__label
-							input(type="number" id="input-price_2").filter-group__input
-							span ₽
-					.filter-group__slider.slider-filter(id="price-slider")
-			.filter-group
+							input(type="number" data-value-end="10000").filter-group__input
+					.filter-group__slider.slider-filter(data-slider-filter)
+			.filter-group(data-filter-group)
 				.filter-group__title.content-title Вес
 				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
-							input(type="number" id="input-weight_1").filter-group__input
-							span г
+							input(type="number" data-value-start="0").filter-group__input
 						span.filter-group__line
 						label.filter-group__label
-							input(type="number" id="input-weight_2").filter-group__input
-							span г
-					.filter-group__slider.slider-filter(id="weight-slider")
+							input(type="number" data-value-end="5000").filter-group__input
+					.filter-group__slider.slider-filter(id="weight-slider" data-slider-filter)
 			.filter-group.filter-group__material
 				.filter-group__title.content-title Материал упаковки
 				.radiobutton-item

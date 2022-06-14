@@ -225,9 +225,9 @@ div.collect-tabs
 															.collect-table__value= child.value
 															case tabItem.key
 																when "goods"
-																	.collect-table__quantity.quantity-card
+																	.collect-table__quantity.quantity-card.collect-quantity
 																		button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
-																		input(type="text" value="1").quantity-card__input
+																		input(type="text" value="0" maxlength="5").quantity-card__input
 																		button.quantity-card__button.quantity-card__button--plus(data-plus)
 																when "package"
 																	.collect-table__radiobutton.radiobutton-item

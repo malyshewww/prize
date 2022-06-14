@@ -23,7 +23,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"gulp-cli": "^2.3.0",
-		"lightgallery": "^2.4.0",
+		"lightgallery": "^2.5.0",
 		"nouislider": "^15.6.0"
 	},
 	"devDependencies": {

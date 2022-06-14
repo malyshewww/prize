@@ -20,7 +20,7 @@
       },
    ]
 div.certificate.reviews
-   .certificate__body(id="gallery")
+   .certificate__body(data-gallery)
       each item in certificates
          a(href=`img/certificate/${item.img}.jpg`).certificate__item
             img(src=`img/certificate/${item.img}.jpg`, alt="")
