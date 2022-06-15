@@ -52,19 +52,6 @@
 		font-size: 16px;
 		line-height: math.div(22, 16) * 100%;
 		position: relative;
-		padding-right: 26px;
-		&::before{
-			content: "";
-			position: absolute;
-			display: block;
-			background: url('../img/icons/arrows-sorting.svg');
-			background-repeat: no-repeat;
-			background-size: 20px 20px;
-			top: 0;
-			right: 0;
-			width: 20px;
-			height: 20px;
-		}
 	}
 }
 .dropdown{

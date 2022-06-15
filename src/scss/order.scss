@@ -113,6 +113,11 @@
 }
 .order-data {
 	flex: 0 0 360px;
+	&__result.cart-result{
+		height: auto;
+		margin-bottom: 30px;
+		position: static;
+	}
 	&__body {
 		background: $whiteColor;
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);

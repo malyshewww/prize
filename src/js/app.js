@@ -62,13 +62,21 @@ lightGallery(document.querySelector('[data-gallery]'), {
 	thumbnail: true,
 	animateThumb: true,
 	showThumbByDefault: true,
-	// subHtmlSelectorRelative: true,
 	enableTouch: true,
 	zoom: true,
 	scale: 1,
 	showZoomInOutIcons: true,
 	actualSize: true,
 });
+
+// Кнопка "В корзину". Изменение текста
+const cartButton = document.querySelector('.cart-button');
+if (cartButton) {
+	cartButton.addEventListener('click', (e) => {
+		cartButton.style.maxWidth = "100%";
+		cartButton.innerHTML = 'Перейти в корзину';
+	})
+}
 
 // Menu burger
 const iconMenu = document.querySelector('.menu__icon');

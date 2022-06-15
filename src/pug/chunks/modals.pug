@@ -67,13 +67,56 @@ mixin modal(id, className)
 					input(type="checkbox" checked).real-checkbox
 					span.custom-checkbox 
 					span.checkbox-item__text
-						|Отправляя заявку, Вы соглашаетесь с
+						|Отправляя заявку, Вы соглашаетесь с&nbsp;
 						a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
 			button.form-modal__button(type="submit") Отправить
++modal("buy")
+	.modal__title Купить в 1 клик
+		form(action="#").modal__form.form-modal
+			.form-modal__items
+				.form-modal__item 
+					input(type="text" class="form-modal__input" placeholder="Ваше имя")
+				.form-modal__item 
+					input(type="number" class="form-modal__input" placeholder="Ваш телефон" required)
+				.form-modal__item 
+					textarea(class="form-modal__textarea" placeholder="Комментарий")
+			.checkbox-item
+				label
+					input(type="checkbox" checked).real-checkbox
+					span.custom-checkbox 
+					span.checkbox-item__text
+						|Я согласен на &nbsp;
+						a.form__link(href="#" target="_blank") обработку персональных данных
+						|&nbsp;и с
+						a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
+			button.form-modal__button(type="submit" data-modal-button="success-order" data-modal-close) Отправить
++modal("demonstration")
+	.modal__title Заказать демонстрацию
+		form(action="#").modal__form.form-modal
+			.form-modal__items
+				.form-modal__item 
+					input(type="text" class="form-modal__input" placeholder="Ваше имя" required)
+				.form-modal__item 
+					input(type="number" class="form-modal__input" placeholder="Ваш телефон" required)
+			.checkbox-item
+				label
+					input(type="checkbox" checked).real-checkbox
+					span.custom-checkbox 
+					span.checkbox-item__text
+						|Я согласен на &nbsp;
+						a.form__link(href="#" target="_blank") обработку персональных данных
+						|&nbsp;и с
+						a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
+			button.form-modal__button(type="submit" data-modal-button="success-demonstration" data-modal-close) Отправить
 +modal("success-order", "modal-message")
 	.modal__icon 
 		img(src="img/icons/order.svg", alt="")
 	.modal__title.modal-message__title Спасибо! Ваш заказ принят.
+	.modal__description В ближайшее время мы свяжемся с Вами.
++modal("success-demonstration", "modal-message modal-demonstration")
+	.modal__icon 
+		img(src="img/icons/order.svg", alt="")
+	.modal__title.modal-message__title Спасибо! Ваша заявка принята.
 	.modal__description В ближайшее время мы свяжемся с Вами.
 +modal("warning", "modal-message")
 	.modal__icon

@@ -4,13 +4,15 @@
 			"img": "slide-1",
 			"title": "При заказе от 1000 наборов доставку в&nbsp;любой город  <span>мы оплатим сами</span>",
 			"subtitle": "По Нижнему Новгороду <span>от 10 наборов</span>",
-			"button": "Бесплатная доставка"
+			"button": "Бесплатная доставка",
+			"link": "delivery-and-payment.html",
 		},
 		{
 			"img": "slide-2",
 			"title": "При заказе от 50 наборов <span>оформление вашими логотипами - в&nbsp;подарок</span>",
 			"subtitle": "",
-			"button": "Подробнее"
+			"button": "Подробнее",
+			"link": "clients.html",
 		}
 	];
 section.home-banner
@@ -23,7 +25,7 @@ section.home-banner
 							h2.home-banner__title!= item.title
 							if item.subtitle
 								p.home-banner__subtitle!= item.subtitle
-							a(href="#").home-banner__btn.btn(class=(index==1 ? "btn__zero" : ""))= item.button
+							a(href=item.link).home-banner__btn.btn(class=(index==1 ? "btn__zero" : ""))= item.button
 		.home-banner__navigation.container
 			button.home-banner-button.home-banner-button__prev.icon-arrow-prev
 			button.home-banner-button.home-banner-button__next.icon-arrow-next

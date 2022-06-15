@@ -18,28 +18,27 @@ each productItem, productIndex in product
 								li.reviews-rating__item
 					.card-product__compare.icon-prepare(class=productItem.selectedClass)
 				if !category
-					.choice-groups
+					.select.select-wrapper
 						if productItem.choice
 							each choiceItem, choiceIndex in productItem.choice
-								.choice-group__wrap(data-choice-wrap)
-									.card-product__choice.choice-group
-										label.choice-group__label
-											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="choice-group__input real-radio")
+								.select-group(data-select)
+									.select-group__header
+										label.select-group__label
+											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 											span.custom-radio
-											span.choice-group__text= choiceItem.title
+											span.select-group__text= choiceItem.title
 											if choiceItem.values
-												span.choice-group__value(data-value)= choiceItem.values[0]
-											span.choice-group__arrow
+												span.select-group__value(data-select-value)= choiceItem.values[0]
+											span.select-group__arrow
+											input(type="text" class="select-group__input-hidden")
 									if choiceItem.dropmenu
-										.choice-group__dropdown.dropdown-list
+										.select-group__dropdown.dropdown-list
 											each dropItem, dropIndex in choiceItem.dropmenu
-												.choice-group__wrap
-													.choice-group
-														label.choice-group__label
-															input(type="radio" name=`radio-${dropIndex}` class="choice-group__input real-radio")
-															span.custom-radio
-															span.choice-group__text= dropItem.title
-															span.choice-group__value(data-dropdown-value)= dropItem.value
+												.select-group
+													input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
+													span.custom-radio
+													span.select-group__text= dropItem.title
+													span.select-group__value(data-select-dropdown-value)= dropItem.value
 			.card-product__footer
 				.card-product__prices 
 					.card-product__price= productItem.price
