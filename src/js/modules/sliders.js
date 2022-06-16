@@ -37,16 +37,17 @@ function initSliders() {
 				slidesPerView: 4,
 				simulateTouch: false,
 				speed: 1000,
-				watchOverflow: true,
-				watchSlidesProgress: true,
 				observer: true,
-				observeSlideChildren: true,
+				watchOverflow: true,
+				watchSlidesVisibility: true,
+				watchSlidesProgress: true,
 				navigation: {
 					nextEl: el.querySelector('.slide-arrow.slide-arrow__next'),
 					prevEl: el.querySelector('.slide-arrow.slide-arrow__prev'),
 				},
 				breakpoints: {
-					991.98: {
+					320: {
+						watchSlidesVisibility: true,
 						watchSlidesProgress: true,
 					},
 				},

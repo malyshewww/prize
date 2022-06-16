@@ -17,3 +17,5 @@ fields.forEach(input => {
    input.addEventListener("focus", addfocus)
    input.addEventListener("blur", remfocus)
 })
+
+import "./maskphone.js";

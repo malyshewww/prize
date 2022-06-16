@@ -43,7 +43,7 @@ mixin modal(id, className)
 				.form-modal__item 
 					input(type="text" class="form-modal__input" placeholder="Ваше имя")
 				.form-modal__item 
-					input(type="number" class="form-modal__input" placeholder="Ваш телефон")
+					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
 			.checkbox-item
 				label
 					input(type="checkbox" checked).real-checkbox
@@ -59,8 +59,8 @@ mixin modal(id, className)
 				.form-modal__item 
 					input(type="text" class="form-modal__input" placeholder="Ваше имя")
 				.form-modal__item 
-					input(type="number" class="form-modal__input" placeholder="Ваш телефон")
-				.form-modal__item 
+					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
+				.form-modal__item
 					textarea(class="form-modal__textarea" placeholder="Комментарий")
 			.checkbox-item
 				label
@@ -77,7 +77,7 @@ mixin modal(id, className)
 				.form-modal__item 
 					input(type="text" class="form-modal__input" placeholder="Ваше имя")
 				.form-modal__item 
-					input(type="number" class="form-modal__input" placeholder="Ваш телефон" required)
+					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон" required)
 				.form-modal__item 
 					textarea(class="form-modal__textarea" placeholder="Комментарий")
 			.checkbox-item
@@ -97,7 +97,7 @@ mixin modal(id, className)
 				.form-modal__item 
 					input(type="text" class="form-modal__input" placeholder="Ваше имя" required)
 				.form-modal__item 
-					input(type="number" class="form-modal__input" placeholder="Ваш телефон" required)
+					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон" required)
 			.checkbox-item
 				label
 					input(type="checkbox" checked).real-checkbox
