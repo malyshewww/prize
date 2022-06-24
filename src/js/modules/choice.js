@@ -23,13 +23,13 @@ choiceGroup.forEach((item, i, arr) => {
          item.classList.remove('active');
       })
    })
-   // Клик снаружи [data-choice-wrap]. Закрыть [data-choice-wrap]
+   // Клик снаружи [data-choice-wrap]. Закрыть [data-select]
    document.addEventListener('click', function (e) {
       if (e.target != item) {
          item.classList.remove('active')
       }
    })
-   // Нажатие на Tab или Escape. Закрыть [data-choice-wrap]
+   // Нажатие на Tab или Escape. Закрыть [data-select]
    document.addEventListener('keydown', function (e) {
       if (e.key === 'Tab' || e.key === 'Escape') {
          item.classList.remove('active')

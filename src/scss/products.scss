@@ -216,7 +216,6 @@
       margin-top: auto;
       display: flex;
       justify-content: space-between;
-      flex-wrap: wrap;
       align-items: center;
       column-gap: 5px;
       row-gap: 10px;
@@ -224,6 +223,8 @@
    &__prices {
       display: flex;
       align-items: flex-end;
+      flex-wrap: wrap;
+      column-gap: 7px;
    }
    &__price {
       font-family: 'Montserrat', sans-serif;
@@ -231,7 +232,6 @@
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
       &-old{
-         margin-left: 7px;
          color: $grayColorBD;
          font-size: 10px;
          line-height: math.div(12, 10) * 100%;
