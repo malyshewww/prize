@@ -1,0 +1,23 @@
+extends layout.pug
+
+block vars 
+	- var pageTitle = "Категория Сладкие подарки";
+	- var currentTitle = "Сладкие подарки"
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item= currentTitle
+	.category-page 
+		.category-page__container 
+			h1.category-page__title.general__title= currentTitle
+		div.category 
+			.category__container 
+				include ./components/category/category-sorting
+				.category__body
+					include ./components/category/category-aside
+					include ./components/category/category-content
+		include ./components/consultation
+		include ./components/popular

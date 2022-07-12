@@ -1,0 +1,255 @@
+@use "sass:math";
+//<МИКСИНЫ>===============================================================================================
+@import "base/mixins";
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+//&display=swap&subset=cyrillic-ext
+@import "fonts";
+// @import url('https://fonts.googleapis.com/css2 ?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@500&family=Source+Sans+Pro:wght@400;600;700;900&display=swap');
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Roboto', sans-serif;
+// font-family: 'SourceCodePro', monospace;
+// font-family: 'SourceSansPro', sans-serif;
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+@import "iconfonts";
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: "Montserrat", sans-serif;
+$fontWeight: 400;
+$fontSize: 16px;
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<НАСТРОЙКИ/ПЕРЕМЕННЫЕ>==========================================================================================================
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1170;
+
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Тип адаптива:
+// 1 = отзывчивость (у контейнера нет брейкпоинтов),
+// 2 = по брейк-поинтам (контейнер меняет свою ширину по брейк-поинтам)
+$responsiveType: 1;
+
+// Ширина страбатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+// Брейкпоинты
+$pc: $containerWidth + px;
+$xs: 479.98px;
+$sm: 576px;
+$md: 767.98px;
+$lg: 991.98px;
+$xl: 1200px;
+$xxl: 1400px;
+
+// Основные цвета
+$mainColor: #282828;
+$mainBackground: #fff;
+$whiteColor: #ffffff;
+$greenColor: #5ecbad;
+$greenLightColor: #7cbd65;
+$greenColorDark: #46ad91;
+$greenLightColor-2: #a8e094;
+$redColor: #f04c41;
+$redColorLight: #ff8b84;
+$grayColor: #ababab;
+$grayColorBD: #bdbdbd;
+$grayColor82: #828282;
+$blackColor: #000;
+$grayColorF2: #f2f2f2;
+$pinkColor: #ff8b84;
+$pinkColorLight: #ffe3e3;
+$yellowColor: #feffd4;
+$yellowColorBold: #fff388;
+$redColorHover: #da443a;
+$greenColorHover: #46ad91;
+//<НАСТРОЙКИ/ПЕРЕМЕННЫЕ>==========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "base/nullstyle";
+
+body {
+	font-family: "SourceSansPro", sans-serif;
+	&.home {
+		font-family: "Montserrat", sans-serif;
+	}
+	// Скролл заблокирован
+	&.lock {
+		overflow: hidden;
+		touch-action: none;
+	}
+	// Сайт загружен
+	&.loaded {
+	}
+}
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	// Прижимаем footer
+	> main {
+		flex: 1 1 auto;
+	}
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+	max-width: $maxWidthContainer + px;
+	margin: 0 auto;
+	padding: 0 math.div($containerPadding, 2) + px;
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+// Ограничивающий контейнер ======================================================================================================================================================================================================================
+// (i) Стили будут применяться ко всем классам содержащим *__container. Например header__container, footer__container и т.д.
+
+@if ($responsiveType == 1) {
+	// Отзывчивая
+	[class*="__container"] {
+		@if ($maxWidthContainer > 0) {
+			max-width: $maxWidthContainer + px;
+			margin: 0 auto;
+		}
+		@if ($containerPadding > 0) {
+			padding: 0 math.div($containerPadding, 2) + px;
+		}
+	}
+} @else {
+	// По брейк-поинтам
+	[class*="__container"] {
+		margin: 0 auto;
+		@if ($maxWidthContainer>0) {
+			max-width: $maxWidthContainer + px;
+		} @else {
+			@if ($containerPadding>0) {
+				padding: 0 math.div($containerPadding, 2) + px;
+			}
+		}
+		@media (max-width: $pc) {
+			max-width: 970px;
+		}
+		@media (max-width: $lg) {
+			max-width: 750px;
+		}
+		@media (max-width: $md) {
+			max-width: none;
+			@if ($containerPadding > 0 and $maxWidthContainer > 0) {
+				padding: 0 math.div($containerPadding, 2) + px;
+			}
+		}
+	}
+}
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+// Базовые стили для элементов
+@import "base";
+
+@import "common";
+
+@import "range-slider";
+
+// Подключение стилей отдельных блоков и страниц
+@import "header";
+
+@import "banner";
+@import "advantages";
+@import "prizes";
+@import "package";
+@import "nuts";
+//Блок "delivery" на главной + Страница "Доставка и оплата"
+@import "delivery";
+
+@import "products";
+@import "factories";
+@import "steps";
+@import "sale";
+@import "retail";
+@import "consultation";
+
+@import "footer";
+// Подключение стилей отдельных страниц
+
+// Страница "Карточка товара"
+@import "card";
+
+// Страница "Сравнение товаров"
+@import "compare";
+
+// Страница "О компании"
+@import "about";
+
+// Страница "Сертификаты"
+@import "certificate";
+
+// Страница "FAQ"
+@import "faq";
+
+// Страница "Вакансии"
+@import "vacancy";
+
+// Страница "Отзывы"
+@import "reviews";
+
+// Страница "Отзывы"
+@import "reviews";
+
+// Страница "Корпоративные клиенты"
+@import "clients";
+
+// Страница "Контакты"
+@import "contacts";
+
+// Страница "Корзина"
+@import "cart";
+
+// Страница "Оформление заказа"
+@import "order";
+
+// Страница "Соберите подарок"
+@import "collect";
+
+// Страница "Категории"
+@import "category";
+
+// Страница "Избранное"
+@import "favorites";
+
+// Страница "Политика конфиденциальности"
+@import "politic";
+
+// Страница "Главная"
+@import "home";
+
+// Стили для хлебных крошек
+@import "breadcrumbs";
+
+// Стили для Пагинации
+@import "pagination";
+
+// Стили для модальных окон
+@import "modals";
+
+// Стили для галереи
+@import "lightgallery";
+
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================

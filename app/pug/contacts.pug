@@ -1,0 +1,19 @@
+extends layout.pug
+
+block vars 
+	- var pageTitle = "Контакты";
+
+block content
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item= pageTitle
+	.contacts-page 
+		.contacts-page__container 
+			h1.contacts-page__title.general__title= pageTitle
+		include ./components/contacts/contacts-block
+		include ./components/consultation
+	block scripts
+		script(src="scripts/app.min.js")
+		script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")

@@ -1,0 +1,17 @@
+extends layout.pug
+
+block vars 
+   - var pageTitle = "Сравнение товаров";
+
+
+block content
+   div.breadcrumbs.container
+      ul.breadcrumbs__list
+         li.breadcrumbs__item 
+            a(href="#").breadcrumbs__link Главная
+         li.breadcrumbs__item Сравнение товаров
+   .compare
+      .compare__body.container
+         .compare__title.general__title сравнение товаров <span class="compare__count">(2)</span>
+         include ./components/compare/compare-cards
+         include ./components/compare/compare-data

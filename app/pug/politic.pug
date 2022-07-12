@@ -1,0 +1,15 @@
+extends layout.pug
+
+block vars 
+   - var pageTitle = "Политика конфиденциальности";
+
+block content
+   div.breadcrumbs.container
+      ul.breadcrumbs__list
+         li.breadcrumbs__item
+            a(href="#").breadcrumbs__link Главная
+         li.breadcrumbs__item= pageTitle
+   .politic-page
+      .politic-page__container 
+         h1.politic-page__title.general__title= pageTitle
+         include ./components/politic
