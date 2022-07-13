@@ -89,7 +89,7 @@ body {
 	// Скролл заблокирован
 	&.lock {
 		overflow: hidden;
-		touch-action: none;
+		// touch-action: none;
 	}
 	// Сайт загружен
 	&.loaded {

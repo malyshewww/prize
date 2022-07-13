@@ -77,6 +77,34 @@ if (cartButton) {
 	})
 }
 
+// Составы и Веса в Карточке товара
+const mainCardForm = document.querySelector('.main-card__form');
+const allCompounds = document.querySelectorAll('[data-compound]');
+const allWeight = document.querySelectorAll('[data-weight]');
+if (mainCardForm) {
+	allCompounds.forEach((item) => {
+		item.addEventListener('change', function () {
+			const currentCompound = item;
+			const weightId = item.dataset.compound;
+			const currentWeight = document.getElementById(weightId);
+			console.log(currentWeight);
+			if (!currentCompound.classList.contains('active')) {
+				allWeight.forEach((el) => {
+					el.classList.remove('active');
+				})
+				allCompounds.forEach((el) => {
+					el.classList.remove('active');
+				})
+				currentCompound.classList.add('active');
+				currentWeight.classList.add('active');
+			}
+		})
+	})
+}
+// document.querySelector('[data-compound]').click();
+
+
+
 // Menu burger
 const iconMenu = document.querySelector('.menu__icon');
 const menuBody = document.querySelector('.menu');

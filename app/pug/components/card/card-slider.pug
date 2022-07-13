@@ -68,26 +68,48 @@ section.main-card
 							p.parameters__label Выберите состав:
 							.parameters__value
 								.parameters__buttons
-									.parameters-radiobutton
+									.parameters-radiobutton(data-compound="classic").active
 										label
 											input(type="radio" name="compound" checked class="real-radio")
 											span.parameters__button Классик
-									.parameters-radiobutton
+									.parameters-radiobutton(data-compound="premium")
+										label
+											input(type="radio" name="compound" class="real-radio")
+											span.parameters__button Премиум
+									.parameters-radiobutton(data-compound="vip")
 										label
 											input(type="radio" name="compound" class="real-radio")
 											span.parameters__button VIP
 						.parameters-group.parameters-group--weight
 							p.parameters__label Выберите вес:
 							.parameters__value
-								.parameters__buttons
+								.parameters__buttons(id="classic" data-weight).active
 									.parameters-radiobutton
 										label
-											input(type="radio" name="weight" checked class="real-radio")
+											input(type="radio" name="classic" checked class="real-radio")
 											span.parameters__button 290 г
 									.parameters-radiobutton
 										label
-											input(type="radio" name="weight" class="real-radio")
+											input(type="radio" name="classic" class="real-radio")
 											span.parameters__button 380 г
+								.parameters__buttons(id="premium" data-weight)
+									.parameters-radiobutton
+										label
+											input(type="radio" name="premium" checked class="real-radio")
+											span.parameters__button 400 г
+									.parameters-radiobutton
+										label
+											input(type="radio" name="premium" class="real-radio")
+											span.parameters__button 500 г
+								.parameters__buttons(id="vip" data-weight)
+									.parameters-radiobutton
+										label
+											input(type="radio" name="vip" checked class="real-radio")
+											span.parameters__button 600 г
+									.parameters-radiobutton
+										label
+											input(type="radio" name="vip" class="real-radio")
+											span.parameters__button 700 г
 								.parameters__warning Вес подарка указан без упаковки и дополнительных вложений
 						.parameters-group 
 							p.parameters__label Состав: 

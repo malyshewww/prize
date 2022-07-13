@@ -3,7 +3,6 @@
    &__wrapper {
       display: flex;
       column-gap: 51px;
-      max-width: 1073px;
       padding-bottom: 18px;
    }
 }
@@ -161,10 +160,13 @@
       color: $mainColor;
       display: flex;
       align-items: center;
+      gap: 10px 18px;
    }
    &__buttons {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
+      width: 100%;
       gap: 10px;
    }
    &__button {
@@ -189,7 +191,6 @@
       font-size: 11px;
       line-height: math.div(12, 11) * 100%;
       color: $pinkColor;
-      margin-left: 18px;
    }
    & a.parameters__watch {
       line-height: math.div(24, 16) * 100%;
@@ -204,6 +205,12 @@
    column-gap: 10px;
    font-size: 16px;
    &--weight {
+      & .parameters__buttons{
+         display: none;
+      }
+      & .parameters__buttons.active{
+         display: flex;
+      }
       & .parameters__button {
          min-width: 54px;
       }
