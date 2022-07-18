@@ -172,6 +172,7 @@
 }
 .social-header {
 	&__button {
+		background: none;
 		font-size: 15px;
 		line-height: math.div(18, 15) * 100%;
 		color: $greenColor;

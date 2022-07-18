@@ -32,7 +32,7 @@
       },
    ]
 .reviews__body 
-   a.reviews__button.btn.btn-green(data-modal-button="modal-reviews") Написать отзыв
+   button.reviews__button.btn.btn-green(type="button" data-modal-button="modal-reviews") Написать отзыв
    .reviews-items
       each item in reviews
          .reviews-item
@@ -49,4 +49,4 @@
                   li.reviews-rating__item 
                .reviews-item__text
                   p= item.text
-   a(href="#").reviews__button.reviews__show-more.btn.btn-green Показать ещё
+   button(type="button").reviews__button.reviews__show-more.btn.btn-green Показать ещё
