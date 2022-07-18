@@ -15,9 +15,8 @@ section.delivery-page__making.making-delivery
       .making-delivery__inner 
          .making-delivery__image 
             img(src="img/delivery-page/making.png", alt="")
-         .making-delivery__info
-            h2.making-delivery__title.content-title Получение заказа
-            ul.making-delivery__list.indicator-list
+         .making-delivery__info.info-body
+            h3.making-delivery__title.content-title Получение заказа
+            ul
                each item in deliveryMaking
                   li!= item.text
-                     <span class="indicator"></span>

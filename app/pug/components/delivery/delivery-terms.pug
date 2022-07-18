@@ -32,11 +32,9 @@ section.delivery-page__terms.terms-delivery
       .terms-delivery__wrapper
          .terms-delivery__inner 
             .terms-delivery__info
-               h2.terms-delivery__title.content-title Условия оформления заказа
-               ul.terms-delivery__list.indicator-list
-                  each item in terms
-                     li!= item.text
-                        <span class="indicator"></span>
+               h2 Условия оформления заказа
+               each item in terms
+                  p!= item.text
             .terms-delivery__image.ibg
                img(src="img/delivery-page/terms.jpg", alt="")
          .terms-delivery__payment.terms-payment

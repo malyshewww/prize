@@ -345,21 +345,38 @@
 	}
 }
 
-.indicator {
-   position: absolute;
-   top: 4px;
-   left: 0;
-   width: 14px;
-   height: 14px;
-   border-radius: 50%;
-   &::before {
+// Список с индикатором
+.info-body ul li {
+   font-size: 16px;
+   line-height: math.div(23, 16) * 100%;
+   color: $blackColor;
+   padding-left: 38px;
+   position: relative;
+   &:not(:last-child) {
+      margin-bottom: 31px;
+   }
+   &::before{
       content: "";
       position: absolute;
-      top: 0;
+      top: 4px;
       left: 0;
+      width: 14px;
+      height: 14px;
       border-radius: 50%;
-      width: 100%;
-      height: 100%;
-      filter: blur(14px);
    }
+   &:nth-child(odd)::before {
+      background: $greenColor;
+      box-shadow: 0 0 20px $greenColor;
+   }
+   &:nth-child(even)::before {
+      background: $pinkColor;
+      box-shadow: 0 0 20px $pinkColor;
+   }
+}
+.info-body h3 {
+   margin-bottom: 30px;
+   font-weight: 600;
+   font-size: 20px;
+   line-height: math.div(24, 20) * 100%;
+   font-family: "Montserrat", sans-serif;
 }

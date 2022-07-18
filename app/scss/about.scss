@@ -13,40 +13,14 @@
    }
 }
 .important-about {
-   &__label {
-      margin-bottom: 30px;
-      font-weight: 600;
-      font-size: 20px;
-      line-height: math.div(24, 20) * 100%;
-      font-family: "Montserrat", sans-serif;
-   }
-   &__list {
-      & li {
-         font-size: 16px;
-         line-height: math.div(23, 16) * 100%;
-         color: $blackColor;
-         padding-left: 38px;
-         &:not(:last-child) {
-            margin-bottom: 24px;
-         }
-      }
-   }
    &__image {
       margin-top: -70px;
       margin-right: -16px;
    }
-}
-.indicator-list {
-   & li {
-      position: relative;
-   }
-   & li:nth-child(odd) .indicator,
-   & li:nth-child(odd) .indicator::before {
-      background: $greenColor;
-   }
-   & li:nth-child(even) .indicator,
-   & li:nth-child(even) .indicator::before {
-      background: $pinkColor;
+   & .info-body ul li {
+      &:not(:last-child){
+         margin-bottom: 22px;
+      }
    }
 }
 
