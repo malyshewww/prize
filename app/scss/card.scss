@@ -5,12 +5,17 @@
       column-gap: 51px;
       padding-bottom: 18px;
    }
+   &__sold{
+      top: 13px;
+      right: 120px;
+   }
 }
 .main-card-slider {
    display: flex;
    flex: 0 0 math.div(602, 1140) * 100%;
    max-width: 602px;
    max-height: 446px;
+   position: relative;
 }
 .thumbs-slider {
    padding: 20px;
@@ -274,12 +279,25 @@
       height: 100%;
       font-family: "SourceSansPro", sans-serif;
    }
+   &__prices{
+      display: flex;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      column-gap: 7px;
+      font-family: "Montserrat", sans-serif;
+   }
    &__price {
       font-weight: 700;
       font-size: 30px;
       line-height: 45px;
-      font-family: "Montserrat", sans-serif;
+      
       margin-left: 10px;
+      &-old{
+         color: $grayColorBD;
+         font-size: 14px;
+         line-height: math.div(20, 14) * 100%;
+         text-decoration: line-through;
+      }
    }
 }
 .actions {

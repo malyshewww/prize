@@ -380,3 +380,14 @@
    line-height: math.div(24, 20) * 100%;
    font-family: "Montserrat", sans-serif;
 }
+
+// Продано
+.sold-product{
+   width: 195px;
+   height: 91px;
+   background: url('../img/icons/sold.svg');
+   background-repeat: no-repeat;
+   background-size: 195px 91px;
+   position: absolute;
+   z-index: 4;
+}

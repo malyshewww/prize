@@ -67,11 +67,16 @@
       flex-direction: column;
       padding: 23px 20px 18px;
       position: relative;
-      overflow: hidden;
-      border-radius: inherit;
+      border-radius: 10px;
+   }
+   &__sold{
+      top: 23px;
+      left: 50%;
+      transform: translateX(-50%);
    }
    &__header {
       margin-bottom: 12px;
+      position: relative;
    }
    &__favorite {
       position: absolute;
@@ -97,9 +102,11 @@
       left: 0px;
       background-position: -20px -10px;
       background-repeat: no-repeat;
-      background-size: auto 100%;
+      background-size: 100% 100%;
       width: 87px;
       height: 63px;
+      border-radius: 10px;
+      z-index: 4;
       &_hit {
          background-image: url("../img/icons/badge.svg");
          & span{
@@ -160,6 +167,9 @@
          max-width: 100%;
          width: auto;
          transition: all 0.5s ease 0s;
+      }
+      &.sold{
+         opacity: 0.5;
       }
    }
    &__article {

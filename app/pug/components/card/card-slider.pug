@@ -33,6 +33,7 @@ section.main-card
 	.container
 		.main-card__wrapper 
 			.main-card-slider
+				.main-card__sold.sold-product
 				.main-card-slider__thumbs.thumbs-slider._swiper
 					.thumbs-slider__wrapper._swiper-wrapper
 						each item in cardSliderThumbs
@@ -121,9 +122,11 @@ section.main-card
 					.main-card__quantity.quantity-card
 						.quantity-card__box
 							button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus type="button")
-							input(type="text" value="1" maxlength="3").quantity-card__input
+							input(type="text" value="1").quantity-card__input
 							button.quantity-card__button.quantity-card__button--plus(data-plus type="button")
-						.quantity-card__price 300 ₽
+						.quantity-card__prices 
+							.quantity-card__price 300 ₽
+							.quantity-card__price-old 500 ₽
 					.main-card__actions.actions__buttons
 						|
 						|

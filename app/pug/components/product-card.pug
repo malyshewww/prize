@@ -5,8 +5,10 @@ each productItem, productIndex in product
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
 			!=productItem.badge ? productItem.badge : ""
 			!=productItem.sale ? productItem.sale : ""
-			.card-product__header 
-				a(href="card.html").card-product__image.ibg
+			.card-product__header
+				if productItem.sold
+						.card-product__sold.sold-product
+				a(href="card.html").card-product__image.ibg(class=productItem.sold)
 					img(src=`img/${productItem.img}.png`, alt=productItem.name)
 				.card-product__article= productItem.article
 				a(href="card.html").card-product__title= productItem.name
