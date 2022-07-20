@@ -81,13 +81,14 @@ if (cartButton) {
 const mainCardForm = document.querySelector('.main-card__form');
 const allCompounds = document.querySelectorAll('[data-compound]');
 const allWeight = document.querySelectorAll('[data-weight]');
+let compoundInputValue;
+
 if (mainCardForm) {
 	allCompounds.forEach((item) => {
 		item.addEventListener('change', function () {
 			const currentCompound = item;
 			const weightId = item.dataset.compound;
 			const currentWeight = document.getElementById(weightId);
-			console.log(currentWeight);
 			if (!currentCompound.classList.contains('active')) {
 				allWeight.forEach((el) => {
 					el.classList.remove('active');
@@ -98,9 +99,41 @@ if (mainCardForm) {
 				currentCompound.classList.add('active');
 				currentWeight.classList.add('active');
 			}
+			const compoundInput = item.querySelector('input');
+			const compoundInputValue = compoundInput.value;
+			window.location.search = compoundInputValue;
+			// localStorage.getItem('compound');
+			localStorage.setItem('compound', compoundInputValue);
+			if (localStorage.getItem('compound') == 'active') {
+				localStorage.removeItem("compound", "active");
+			} else {
+				localStorage.setItem("compound", "active");
+			}
 		})
 	})
 }
+document.addEventListener('load', function () {
+	allCompounds.forEach((item) => {
+		item.addEventListener('change', function () {
+			if (localStorage.getItem('compound') == 'active' && !item.classList.contains('active')) {
+				allCompounds.forEach((el) => {
+					el.classList.remove('active');
+				})
+				item.classList.add('active');
+			}
+		})
+	})
+})
+
+
+allWeight.forEach((el) => {
+	el.addEventListener('change', function () {
+		const weight = el.querySelector('.parameters__button');
+		const weightInput = weight.querySelector('input');
+		const weightInputName = weight.getAttribute('name');
+		window.location.search = weightInputName;
+	})
+})
 // document.querySelector('[data-compound]').click();
 
 
