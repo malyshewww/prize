@@ -35,26 +35,17 @@
 		position: relative;
 		padding-bottom: 18.7%;
 		align-self: stretch;
+		& img{
+			height: auto;
+			width: auto;
+			max-height: 100%;
+		}
 	}
-	&__badges {
-		position: absolute;
+	&__sale {
 		top: 0;
 		right: -10px;
-	}
-	&__badge {
-		font-family: "Montserrat", sans-serif;
-		font-weight: 700;
-		line-height: math.div(20, 16) * 100%;
 		width: 54px;
 		height: 54px;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		&_sale {
-			background: $pinkColor;
-			color: $whiteColor;
-		}
 	}
 	&__body {
 		display: grid;

@@ -26,46 +26,35 @@ aside.category__aside
 					.filter-group__slider.slider-filter(id="weight-slider" data-slider-filter)
 			.filter-group.filter-group__material
 				.filter-group__title.content-title Материал упаковки
-				.radiobutton-item
-					label
-						input(type="radio" name="material" checked class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Картон
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Мягкая игрушка
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Мешки
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Жестяная упаковка
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Тубы
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Куклы
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Сундуки и шкатулки
-				.radiobutton-item
-					label
-						input(type="radio" name="material" class="real-radio")
-						span.custom-radio
-						span.radiobutton-item__text Керамика и фетр
+				mixin checkboxes(title, name, checked)
+					.checkbox-item
+						label
+							input(type="radio" name=name checked=checked class="real-checkbox")
+							span.custom-checkbox
+							span.checkbox-item__text= title
+				+checkboxes('Картон', "material", "checked")
+				+checkboxes('Мягкая игрушка', "material")
+				+checkboxes('Мешки', 'material')
+				+checkboxes('Жестяная упаковка', "material")
+				+checkboxes('Тубы', "material")
+				+checkboxes('Куклы', "material")
+				+checkboxes('Керамика и фетр', "material")
+			.filter-group.filter-group__compound
+				.filter-group__title.content-title Состав
+				mixin radiobuttons(title, name, checked)
+					.radiobutton-item
+						label
+							input(type="radio" name=name checked=checked class="real-radio")
+							span.custom-radio
+							span.radiobutton-item__text= title
+				+radiobuttons('Классик ', "compound", "checked")
+				+radiobuttons('Премиум ', "compound")
+				+radiobuttons('VIP ', "compound")
+			.filter-group.filter-group__addit
+				.filter-group__title.content-title Дополнительно
+				+checkboxes('Новинка', "badge", "checked")
+				+checkboxes('Хит', "badge")
+				+checkboxes('Скидка', "badge")
 			.filter-group.filter-group__buttons
 				button(type="button").filter-group__btn.btn-green Показать
 				button(type="button").filter-group__btn.btn-green.filter-group__btn-reset Сбросить

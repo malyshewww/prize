@@ -131,27 +131,10 @@
       }
    }
    &__sale {
-      position: absolute;
-      z-index: 5;
-      top: 60px;
+      top: 62px;
       left: 20px;
       width: 54px;
       height: 54px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: math.div(20, 16) * 100%;
-      font-family: 'Montserrat', sans-serif;
-      color: $whiteColor;
-      &.card-product__sale--pink {
-         background: $redColorLight;
-      }
-      &.card-product__sale--green {
-         background: $greenLightColor;
-      }
    }
    &__image {
       display: block;
@@ -165,6 +148,8 @@
          transform: scale(1);
          left: initial;
          max-width: 100%;
+         max-height: 100%;
+         height: auto;
          width: auto;
          transition: all 0.5s ease 0s;
       }

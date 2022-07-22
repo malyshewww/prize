@@ -28,7 +28,7 @@
 			currentPrice: "1325 ₽"
 		},
 	]
-	cartQuantity = 0;
+	cartQuantity = 1;
 section.cart
 	.cart__container
 		if cartQuantity == 0
@@ -46,8 +46,7 @@ section.cart
 							.cart-item__image.ibg
 								img(src=`img/cart/${item.img}.png`, alt=item.title)
 								if item.sale
-									.cart-item__badges
-										.cart-item__badge.cart-item__badge_sale= item.sale
+									.cart-item__sale.sale-product.sale-product__pink= item.sale
 							.cart-item__body
 								.cart-item__info
 									h2.cart-item__title= item.title

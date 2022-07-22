@@ -93,6 +93,7 @@ function initSliders() {
 			direction: 'vertical',
 			watchOverflow: true,
 			slidesPerView: 3,
+			slidesPerGroup: 1,
 			spaceBetween: 19,
 			grabCursor: true,
 			simulateTouch: true,
@@ -104,6 +105,7 @@ function initSliders() {
 			observer: true,
 			breakpoints: {
 				991.98: {
+					slidesPerGroup: 1,
 					slidesPerView: 3,
 					watchSlidesVisibility: true,
 					watchSlidesProgress: true,
@@ -116,6 +118,7 @@ function initSliders() {
 			modules: [Thumbs, Navigation],
 			watchOverflow: true,
 			slidesPerView: 1,
+			slidesPerGroup: 1,
 			grabCursor: true,
 			slideClass: "base-slider__item",
 			wrapperClass: "base-slider__wrapper",

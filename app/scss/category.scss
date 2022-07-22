@@ -138,10 +138,12 @@
 	margin: 0 -24px;
 	border-top: 1px solid $grayColorBD;
 	&__title {
-		margin-bottom: 26px;
+		margin-bottom: 23px;
 	}
-	&.filter-group__material{
-		padding-bottom: 22px;
+	&.filter-group__material,
+	&.filter-group__compound,
+	&.filter-group__addit{
+		padding-bottom: 33px;
 	}
 	&.filter-group__material .filter-group__title{
 		margin-bottom: 21px;
@@ -187,7 +189,7 @@
 		display: flex;
 		column-gap: 11px;
 		border-top: none;
-		padding-top: 10px;
+		padding-top: 0;
 	}
 	&__btn{
 		width: 100%;
@@ -204,10 +206,19 @@
 		padding: 8px;
 		border-radius: 20px;
 		border: 1px solid transparent;
+		transition: all .2s linear 0s;
+		&:hover{
+			background: $greenColorHover;
+		}
 		&-reset{
 			background: $whiteColor;
 			border: 1px solid $greenColor;
 			color: $greenColor;
+			transition: all .2s linear 0s;
+			&:hover{
+				background: $greenColor;
+				color: $whiteColor;
+			}
 		}
 	}
 	& .custom-radio {
@@ -219,7 +230,18 @@
 			height: 12px;
 		}
 	}
-	& .radiobutton-item:not(:last-child){
+	& .radiobutton-item:not(:last-child),
+	& .checkbox-item:not(:last-child){
 		margin-bottom: 14px;
 	}
+	& .custom-checkbox::before {
+		background-image: url("../img/icons/check-white.svg");
+		background-size: 12px 12px;
+		background-position: center;
+	}
+	& .real-checkbox:checked + .custom-checkbox {
+		background-color: $greenColor;
+		border: 1px solid transparent;
+	}
+
 }
