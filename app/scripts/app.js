@@ -104,6 +104,19 @@ if (mainCardForm) {
 }
 // document.querySelector('[data-compound]').click();
 
+// Отправка формы при change
+const parameters = document.querySelectorAll('.parameters-radiobutton');
+parameters.forEach((item) => {
+	item.addEventListener('change', (event) => {
+		const allWeight = document.querySelectorAll('[data-weight]');
+		const parentForm = item.closest('form');
+		allWeight.forEach((el) => {
+			if (parentForm && parentForm.length > 0) {
+				parentForm.submit();
+			}
+		})
+	})
+})
 
 
 // Menu burger

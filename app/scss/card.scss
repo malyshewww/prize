@@ -48,7 +48,8 @@
    &__image {
       & img {
          max-height: 100%;
-         width: auto;
+         width: 100%;
+         max-width: 100%;
       }
    }
 }
@@ -230,6 +231,11 @@
       & .parameters__value {
          margin-left: 2px;
       }
+   }
+   &__form{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
    }
 }
 .quantity-card {
