@@ -78,12 +78,12 @@ if (cartButton) {
 }
 
 // Составы и Веса в Карточке товара
-const mainCardForm = document.querySelector('.main-card__form');
+const mainCardInfo = document.querySelector('.main-card__info');
 const allCompounds = document.querySelectorAll('[data-compound]');
 const allWeight = document.querySelectorAll('[data-weight]');
 let compoundInputValue;
 
-if (mainCardForm) {
+if (mainCardInfo) {
 	allCompounds.forEach((item) => {
 		item.addEventListener('change', function () {
 			const currentCompound = item;
@@ -98,10 +98,18 @@ if (mainCardForm) {
 				})
 				currentCompound.classList.add('active');
 				currentWeight.classList.add('active');
+				let weightItemInputs = currentWeight.querySelectorAll('.parameters-radiobutton input');
+				for (let i = 0; i < weightItemInputs.length; i++) {
+					weightItemInputs[i].removeAttribute('checked');
+					if (currentWeight.classList.contains('active')) {
+						weightItemInputs[0].checked = true;
+					}
+				}
 			}
 		})
 	})
 }
+
 // document.querySelector('[data-compound]').click();
 
 // Отправка формы при change
@@ -112,11 +120,20 @@ parameters.forEach((item) => {
 		const parentForm = item.closest('form');
 		allWeight.forEach((el) => {
 			if (parentForm && parentForm.length > 0) {
-				parentForm.submit();
+				// parentForm.submit();
 			}
 		})
 	})
 })
+
+
+// const pathname = window.location.pathname;
+// // Указываем относительный путь файла
+// const url = new URL(window.location.href);
+// const urlParamCompound = url.searchParams.get('compound');
+// const urlParamWeight = url.searchParams.get('weight');
+// console.log(urlParamWeight);
+// console.log(urlParamCompound);
 
 
 // Menu burger

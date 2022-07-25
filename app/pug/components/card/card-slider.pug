@@ -70,55 +70,37 @@ section.main-card
 							p.parameters__label Размер (см): 
 							.parameters__value 11*5,5*18
 						form.parameters-group__form
+							input(type="hidden" name="compound" value="classic")
+							input(type="hidden" name="weight" value="300")
 							.parameters-group
 								p.parameters__label Выберите состав:
 								.parameters__value
 									.parameters__buttons
-										.parameters-radiobutton(data-compound="classic").active
-											label
-												input(type="radio" name="compound" value="classic" checked class="real-radio")
-												span.parameters__button Классик
-										.parameters-radiobutton(data-compound="premium")
-											label
-												input(type="radio" name="compound" value="premium" class="real-radio")
-												span.parameters__button Премиум
-										.parameters-radiobutton(data-compound="vip")
-											label
-												input(type="radio" name="compound" value="vip" class="real-radio")
-												span.parameters__button VIP
+										mixin compound(data, name, title, checked, classes)
+											.parameters-radiobutton(data-compound=data class=classes)
+												label
+													input(type="radio" name=name value=data checked=checked class="real-radio")
+													span.parameters__button= title
+										+compound("classic", "compound", "Классик", "checked", "active")
+										+compound("premium", "compound", "Премиум")
+										+compound("vip", "compound", "VIP")
 							.parameters-group.parameters-group--weight
 								p.parameters__label Выберите вес:
 								.parameters__value
-									.parameters__buttons(id="classic" data-weight).active
-										form 
+									.parameters__buttons(id="classic" data-weight="classic").active
+										mixin weight(name, value, title, checked)
 											.parameters-radiobutton
 												label
-													input(type="radio" name="weight-classic" value="290" checked class="real-radio")
-													span.parameters__button 290 г
-											.parameters-radiobutton
-												label
-													input(type="radio" name="weight-classic" value="380" class="real-radio")
-													span.parameters__button 380 г
-									.parameters__buttons(id="premium" data-weight)
-										form
-											.parameters-radiobutton
-												label
-													input(type="radio" name="weight-premium" value="400" checked class="real-radio")
-													span.parameters__button 400 г
-											.parameters-radiobutton
-												label
-													input(type="radio" name="weight-premium" value="500" class="real-radio")
-													span.parameters__button 500 г
-									.parameters__buttons(id="vip" data-weight)
-										form
-											.parameters-radiobutton
-												label
-													input(type="radio" name="weight-vip" value="600" checked class="real-radio")
-													span.parameters__button 600 г
-											.parameters-radiobutton
-												label
-													input(type="radio" name="weight-vip	" value="700" class="real-radio")
-													span.parameters__button 700 г
+													input(type="radio" name=name value=value checked=checked class="real-radio")
+													span.parameters__button= title
+										+weight("weight", "290", "290 г", "checked")
+										+weight("weight", "380", "380 г")
+									.parameters__buttons(id="premium" data-weight="premium")
+										+weight("weight", "400", "400 г")
+										+weight("weight", "500", "500 г")
+									.parameters__buttons(id="vip" data-weight="vip")
+										+weight("weight", "600", "600 г")
+										+weight("weight", "700", "700 г")
 									.parameters__warning Вес подарка указан без упаковки и дополнительных вложений
 						.parameters-group 
 							p.parameters__label Состав: 
