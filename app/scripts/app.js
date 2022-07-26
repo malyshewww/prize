@@ -81,7 +81,6 @@ if (cartButton) {
 const mainCardInfo = document.querySelector('.main-card__info');
 const allCompounds = document.querySelectorAll('[data-compound]');
 const allWeight = document.querySelectorAll('[data-weight]');
-let compoundInputValue;
 
 if (mainCardInfo) {
 	allCompounds.forEach((item) => {
@@ -89,27 +88,19 @@ if (mainCardInfo) {
 			const currentCompound = item;
 			const weightId = item.dataset.compound;
 			const currentWeight = document.getElementById(weightId);
-			if (!currentCompound.classList.contains('active')) {
-				allWeight.forEach((el) => {
-					el.classList.remove('active');
-				})
-				allCompounds.forEach((el) => {
-					el.classList.remove('active');
-				})
-				currentCompound.classList.add('active');
-				currentWeight.classList.add('active');
-				let weightItemInputs = currentWeight.querySelectorAll('.parameters-radiobutton input');
-				for (let i = 0; i < weightItemInputs.length; i++) {
-					weightItemInputs[i].removeAttribute('checked');
-					if (currentWeight.classList.contains('active')) {
-						weightItemInputs[0].checked = true;
-					}
-				}
-			}
+			allWeight.forEach((el) => {
+				el.classList.remove('active');
+			})
+			allCompounds.forEach((el) => {
+				el.classList.remove('active');
+			})
+			currentCompound.classList.add('active');
+			currentWeight.classList.add('active');
+			let weightItemInputs = currentWeight.querySelectorAll('.parameters-group--weight .real-radio');
+			weightItemInputs[0].checked = true;
 		})
 	})
 }
-
 // document.querySelector('[data-compound]').click();
 
 // Отправка формы при change
@@ -120,7 +111,7 @@ parameters.forEach((item) => {
 		const parentForm = item.closest('form');
 		allWeight.forEach((el) => {
 			if (parentForm && parentForm.length > 0) {
-				// parentForm.submit();
+				parentForm.submit();
 			}
 		})
 	})
