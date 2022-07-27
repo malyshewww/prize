@@ -24,19 +24,20 @@ each productItem, productIndex in product
 						if productItem.choice
 							each choiceItem, choiceIndex in productItem.choice
 								.select-group(data-select)
-									.select-group__header
+									.select-group__item(data-price="300")
 										label.select-group__label
 											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 											span.custom-radio
-											span.select-group__text= choiceItem.title
+											span.select-group__label-text= choiceItem.title
+										.select-group__choice
 											if choiceItem.values
 												span.select-group__value(data-select-value)= choiceItem.values[0]
-											span.select-group__arrow
-											input(type="text" class="select-group__input-hidden")
+												span.select-group__arrow
+										input(type="text" class="select-group__input-hidden")
 									if choiceItem.dropmenu
 										.select-group__dropdown.dropdown-list
 											each dropItem, dropIndex in choiceItem.dropmenu
-												.select-group
+												.select-group__item(data-price="600")
 													input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
 													span.custom-radio
 													span.select-group__text= dropItem.title
