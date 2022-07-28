@@ -344,6 +344,14 @@
          background: $pinkColorLight;
          border-left: 0.5px solid transparent;
       }
+      &.no-choice{
+         border: none;
+         width: auto;
+         &:hover{
+            border: none;
+            background: none;
+         }
+      }
    }
    &__value {
       flex: 1 1 auto;
@@ -356,7 +364,7 @@
    }
    &__arrow {
       margin-left: 8px;
-      display: none;
+      display: block;
       width: 0;
       height: 0;
       border-style: solid;

@@ -1,60 +1,54 @@
 // Переключение кнопок с превью карточки товара
-const choiceGroup = document.querySelectorAll('[data-select]');
-choiceGroup.forEach((item, i, arr) => {
-   const choiceItemHeader = item.querySelector('.select-group__item');
-   const choiceItem = item.querySelector('.select-group__choice');
-   const choiceList = item.querySelector('.dropdown-list');
-   const choiceArrow = item.querySelector('.select-group__arrow');
-   const choiceDropDownItems = item.querySelectorAll('.dropdown-list .select-group__item');
+const selectGroup = document.querySelectorAll('[data-select]');
+selectGroup.forEach((item, i, arr) => {
+   const selectGroupItem = item.querySelector('.select-group__item');
+   const selectGroupChoice = item.querySelector('.select-group__choice');
+   const selectGroupDropdown = item.querySelector('.dropdown-list');
+   const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
+   const selectGroupValue = item.querySelector('[data-select-value]');
 
-   const choiceValue = item.querySelector('[data-select-value]');
    const inputHidden = item.querySelector('.select-group__input-hidden');
-
-
 
    const product = item.closest('.card-product');
    const productPrice = product.querySelector('.card-product__price');
 
-   if (choiceList) {
-      choiceItem.addEventListener('click', (e) => {
+   if (selectGroupDropdown) {
+      selectGroupChoice.addEventListener('click', (e) => {
          e.stopPropagation();
          arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
       });
-      choiceArrow.classList.add('show');
    }
 
-   choiceItemHeader.addEventListener('click', (e) => {
-      const choiceItemHeaderPrice = choiceItemHeader.dataset.price;
-      productPrice.innerText = choiceItemHeaderPrice + " ₽";
+   selectGroupItem.addEventListener('click', (e) => {
+      const selectGroupItemPrice = selectGroupItem.dataset.price;
+      productPrice.innerText = selectGroupItemPrice + " ₽";
    })
 
-   choiceDropDownItems.forEach((dropdownItem) => {
-      const choiceDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
+   selectDropdownItems.forEach((dropdownItem) => {
+      let selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
+      if (selectGroupDropdownValue.innerText == selectGroupValue.innerText) {
+         selectGroupDropdownValue.closest('.select-group__item').style.display = "none";
+      }
+      if (selectGroupDropdownValue.innerText !== selectGroupValue.innerText) {
+         selectGroupDropdownValue.closest('.select-group__item').style.display = "flex";
+      }
       dropdownItem.addEventListener('click', (e) => {
          e.stopPropagation();
          const realInput = item.querySelector('.real-radio').checked = true;
          const priceValue = dropdownItem.dataset.price;
          productPrice.innerText = priceValue + " ₽";
-
-         choiceValue.innerText = choiceDropdownValue.innerText;
-         inputHidden.value = choiceDropdownValue.innerText.replace(/[a-zа-яё]/gi, '');
+         selectGroupValue.innerText = selectGroupDropdownValue.innerText;
          item.classList.remove('active');
-         if (choiceDropdownValue.innerText == choiceValue.innerText) {
-            dropdownItem.style.display = "none";
-         }
-         if (choiceDropdownValue.innerText !== choiceValue.innerText) {
-            dropdownItem.style.display = "flex";
-         } else {
-            return;
-         }
+
+         inputHidden.value = selectGroupDropdownValue.innerText.replace(/[a-zа-яё]/gi, '');
+
       })
    })
 });
 
-
 // Клик снаружи [data-select]. Закрыть [data-select]
 document.addEventListener('click', function (e) {
-   choiceGroup.forEach((item) => {
+   selectGroup.forEach((item) => {
       if (e.target != item) {
          item.classList.remove('active')
       }
@@ -62,7 +56,7 @@ document.addEventListener('click', function (e) {
 })
 // Нажатие на Tab или Escape. Закрыть [data-select]
 document.addEventListener('keydown', function (e) {
-   choiceGroup.forEach((item) => {
+   selectGroup.forEach((item) => {
       if (e.key === 'Tab' || e.key === 'Escape') {
          item.classList.remove('active')
       }

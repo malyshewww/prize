@@ -29,9 +29,10 @@ each productItem, productIndex in product
 											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 											span.custom-radio
 											span.select-group__label-text= choiceItem.title
-										.select-group__choice
+										.select-group__choice(class=choiceItem.dropmenu ? "" : "no-choice")
 											if choiceItem.values
 												span.select-group__value(data-select-value)= choiceItem.values[0]
+											if choiceItem.dropmenu
 												span.select-group__arrow
 										input(type="text" class="select-group__input-hidden")
 									if choiceItem.dropmenu
