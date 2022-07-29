@@ -7,8 +7,8 @@ selectGroup.forEach((item, i, arr) => {
    const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
    const selectGroupValue = item.querySelector('[data-select-value]');
 
+   const inputCurrentPrice = item.querySelector('.current-price');
    const inputHidden = item.querySelector('.select-group__input-hidden');
-
    const product = item.closest('.card-product');
    const productPrice = product.querySelector('.card-product__price');
 
@@ -18,30 +18,32 @@ selectGroup.forEach((item, i, arr) => {
          arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
       });
    }
-
-   selectGroupItem.addEventListener('click', (e) => {
-      const selectGroupItemPrice = selectGroupItem.dataset.price;
-      productPrice.innerText = selectGroupItemPrice + " ₽";
-   })
-
+   if (selectGroupItem) {
+      selectGroupItem.addEventListener('click', (e) => {
+         productPrice.innerText = inputCurrentPrice.value;
+      });
+   }
    selectDropdownItems.forEach((dropdownItem) => {
-      let selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
-      if (selectGroupDropdownValue.innerText == selectGroupValue.innerText) {
-         selectGroupDropdownValue.closest('.select-group__item').style.display = "none";
-      }
-      if (selectGroupDropdownValue.innerText !== selectGroupValue.innerText) {
-         selectGroupDropdownValue.closest('.select-group__item').style.display = "flex";
-      }
+      const selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
+      // Значение дата атрибута в выпадающем меню
+      const priceValue = dropdownItem.dataset.price;
       dropdownItem.addEventListener('click', (e) => {
          e.stopPropagation();
-         const realInput = item.querySelector('.real-radio').checked = true;
-         const priceValue = dropdownItem.dataset.price;
-         productPrice.innerText = priceValue + " ₽";
+         selectDropdownItems.forEach((el) => {
+            el.classList.remove('current');
+         })
+         dropdownItem.classList.add('current');
+         const realInput = item.querySelector('.real-radio');
+         realInput.checked = true;
+         const priceValueStr = priceValue + " ₽";
+         // Передача в value в input цены из дата атрибута цена в первью товара
+         inputCurrentPrice.value = priceValueStr;
+         // Итоговая цена в превью товара
+         productPrice.innerText = inputCurrentPrice.value;
+         // Присваивание веса из выпадающего списка в верхний select-group__item
          selectGroupValue.innerText = selectGroupDropdownValue.innerText;
          item.classList.remove('active');
-
          inputHidden.value = selectGroupDropdownValue.innerText.replace(/[a-zа-яё]/gi, '');
-
       })
    })
 });

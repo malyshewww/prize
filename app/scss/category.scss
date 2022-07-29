@@ -238,6 +238,7 @@
 		background-image: url("../img/icons/check-white.svg");
 		background-size: 12px 12px;
 		background-position: center;
+		left: 54%;
 	}
 	& .real-checkbox:checked + .custom-checkbox {
 		background-color: $greenColor;

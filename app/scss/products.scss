@@ -303,11 +303,13 @@
       background: $whiteColor;
       border: 0.5px solid $grayColorBD;
       border-radius: 19px;
-      padding: 0px 0px 0px 14px;
+      padding: 0px 0px 0px 0px;
       min-height: 30px;
    }
    &__label {
+      padding-left: 14px;
       width: 100%;
+      min-height: 30px;
       display: grid;
       grid-template-columns: auto 1fr;
       align-items: center;
@@ -317,9 +319,6 @@
       &:hover {
          & .custom-radio{
             border: 1px solid $redColor;
-            &::before{
-               transform: translate(-50%,-50%) scale(1);
-            }
          }
       }
    }
@@ -342,7 +341,6 @@
       transition: all .2s linear 0s;
       &:hover{
          background: $pinkColorLight;
-         border-left: 0.5px solid transparent;
       }
       &.no-choice{
          border: none;
@@ -389,8 +387,8 @@
       & .select-group__item {
          background: $whiteColor;
          border-radius: 19px;
-         display: flex;
          align-items: center;
+         display: flex;
          cursor: pointer;
          position: relative;
          transition: all .15s linear 0s;
@@ -399,6 +397,9 @@
          padding: 3px 30px 3px 14px;
          &:not(:last-child){
             margin: 0;
+         }
+         &.current{
+            display: none;
          }
       }
    }   
@@ -414,9 +415,6 @@
          border: 0.5px solid transparent;
          z-index: 4;
          position: relative;
-      }
-      & .select-group__choice{
-         border-left: 0.5px solid transparent;
       }
    }
    &__input-hidden{

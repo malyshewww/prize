@@ -299,6 +299,9 @@
 		transition: all 0.3s ease-out 0s;
 		position: relative;
 		cursor: pointer;
+		&.active .menu__link{
+			color: $redColor;
+		}
 		._pc &:hover .submenu__list {
 			opacity: 1;
 			visibility: visible;
@@ -356,6 +359,9 @@
 		&:last-child {
 			border-radius: 0px 0px 10px 10px;
 			padding-bottom: 11px;
+		}
+		&.active .submenu__link{
+			background: #ffe3e3;
 		}
 	}
 

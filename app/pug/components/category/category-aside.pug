@@ -29,7 +29,7 @@ aside.category__aside
 				mixin checkboxes(title, name, checked)
 					.checkbox-item
 						label
-							input(type="radio" name=name checked=checked class="real-checkbox")
+							input(type="checkbox" name=name checked=checked class="real-checkbox")
 							span.custom-checkbox
 							span.checkbox-item__text= title
 				+checkboxes('Картон', "material", "checked")
@@ -41,15 +41,9 @@ aside.category__aside
 				+checkboxes('Керамика и фетр', "material")
 			.filter-group.filter-group__compound
 				.filter-group__title.content-title Состав
-				mixin radiobuttons(title, name, checked)
-					.radiobutton-item
-						label
-							input(type="radio" name=name checked=checked class="real-radio")
-							span.custom-radio
-							span.radiobutton-item__text= title
-				+radiobuttons('Классик ', "compound", "checked")
-				+radiobuttons('Премиум ', "compound")
-				+radiobuttons('VIP ', "compound")
+				+checkboxes('Классик ', "compound", "checked")
+				+checkboxes('Премиум ', "compound")
+				+checkboxes('VIP ', "compound")
 			.filter-group.filter-group__addit
 				.filter-group__title.content-title Дополнительно
 				+checkboxes('Новинка', "badge", "checked")
