@@ -25,9 +25,11 @@
 	&__form {
 		display: flex;
 		align-items: center;
-		column-gap: 26px;
 	}
 	&__group {
+		&:not(:last-child){
+			margin-right: 26px;
+		}
 		& .custom-radio {
 			border: 1px solid $grayColorBD;
 			width: 18px;
@@ -51,9 +53,11 @@
 	&__form {
 		display: flex;
 		flex-direction: column;
-		row-gap: 14px;
 	}
 	&__group {
+		&:not(:last-child){
+			margin-bottom: 14px;
+		}
 		& .custom-radio {
 			border: 1px solid $grayColorBD;
 			width: 18px;
@@ -176,11 +180,11 @@
 		padding: 7px 20px;
 		line-height: math.div(24, 16) * 100%;
 		color: $mainColor;
-		cursor: pointer;
 	}
 	& .form__textarea {
 		min-height: 140px;
-		resize: none;
+		max-height: 240px;
+		resize: vertical;
 	}
 	& .form__text {
 		line-height: 24px;
