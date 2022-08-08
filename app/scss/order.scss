@@ -87,6 +87,18 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1.1fr;
 	gap: 15px;
+	&__header{
+		& .custom-radio{
+			border: 1px solid #bdbdbd;
+			flex: 0 0 18px;
+			height: 18px;
+			width: 18px;
+			&::before{
+				height: 12px;
+    			width: 12px;
+			}
+		}
+	}
 	&__item {
 		display: flex;
 		flex-direction: column;
@@ -95,9 +107,10 @@
 	}
 	&__logo {
 		min-height: 60px;
-		margin-bottom: 8px;
+		margin-left: 20px;
 	}
 	&__content {
+		padding-top: 8px;
 		text-align: center;
 	}
 	&__title {

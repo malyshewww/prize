@@ -1,3 +1,19 @@
+-
+	deliveries = [
+		{
+			"title": "Транспортная компания DPD",
+			"descr": "экспресс-доставка <br> в течение 2-4 дней",
+		},
+		{
+			"title": "Транспортная компания <br> «Деловые линии»",
+			"descr": "доставка в течение 2-14 дней",
+		},
+		{
+			"title": "Транспортная компания«СДЭК»",
+			"descr": "доставка в течение 2-4 дней",
+			"link": "Пункты выдачи"
+		}
+	];
 section.order 
 	.container 
 		.order__body 
@@ -5,59 +21,36 @@ section.order
 				.order__payment.payment-order
 					h2.payment-order__title.content-title Способ оплаты
 					form(action="#").payment-order__form
-						.payment-order__group.radiobutton-item
-							label
-								input(type="radio" name="payment" checked class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Наличными
-						.payment-order__group.radiobutton-item
-							label
-								input(type="radio" name="payment" class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Безналичный расчет
-						.payment-order__group.radiobutton-item
-							label
-								input(type="radio" name="payment" class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Постоплата (для корпоративных клиентов)
+						mixin radiobuttons(classname, title, name, checked)
+							.radiobutton-item(class=classname)
+								label
+									input(type="radio" name=name checked=checked class="real-radio")
+									span.custom-radio
+									span.radiobutton-item__text= title
+						+radiobuttons('payment-order__group', 'Наличными', 'payment', 'checked')
+						+radiobuttons('payment-order__group', 'Безналичный расчет', 'payment')
+						+radiobuttons('payment-order__group', 'Постоплата (для корпоративных клиентов)', 'payment')
 				.order__variant.variant-order
 					h2.variant-order__title.content-title Вариант доставки
 					form(action="#").variant-order__form
-						.variant-order__group.radiobutton-item
-							label
-								input(type="radio" name="variant" checked class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Самовывоз
-						.variant-order__group.radiobutton-item
-							label
-								input(type="radio" name="variant" class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Курьером
-						.variant-order__group.radiobutton-item
-							label
-								input(type="radio" name="variant" class="real-radio")
-								span.custom-radio
-								span.radiobutton-item__text Транспортной компанией по РФ
+						+radiobuttons('variant-order__group', 'Самовывоз', 'delivery', 'checked')
+						+radiobuttons('variant-order__group', 'Курьером', 'delivery')
+						+radiobuttons('variant-order__group', 'Транспортной компанией по РФ', 'delivery')
 					.variant-order__company.company-order
-						.company-order__item
-							.company-order__logo 
-								img(src="img/order/company-1.png", alt="")
-							.company-order__content 
-								h3.company-order__title Транспортная компания DPD 
-								.company-order__descr экспресс-доставка <br> в течение 2-4 дней
-						.company-order__item
-							.company-order__logo 
-								img(src="img/order/company-2.png", alt="")
-							.company-order__content 
-								h3.company-order__title Транспортная компания <br> «Деловые линии» 
-								.company-order__descr доставка в течение 2-14 дней
-						.company-order__item
-							.company-order__logo 
-								img(src="img/order/company-3.png", alt="")
-							.company-order__content 
-								h3.company-order__title Транспортная компания«СДЭК»
-								.company-order__descr доставка в течение 2-4 дней
-								a(href="#").company-order__link Пункты выдачи  
+						each item, i in deliveries
+							.company-order__item
+								.company-order__header 
+									.radiobutton-item
+										label
+											input(type="radio" name="company" checked=i==0 class="real-radio")
+											span.custom-radio
+											span.company-order__logo 
+												img(src=`img/order/company-${i+1}.png`, alt="")
+								.company-order__content 
+									h3.company-order__title!= item.title
+									.company-order__descr!= item.descr
+									if item.link
+										a(href="#" target="_blank").company-order__link= item.link 
 					.variant-order__info.
 						<span class="color-red">ВАЖНО:</span> стоимость доставки в регионы рассчитывается менеджером при согласовании 
 						заказа и зависит от объема заказа и тарифов выбранной транспортной компании
@@ -81,18 +74,14 @@ section.order
 					.order-data__title.content-title Контактные данные
 					form(action="#").order-data__form.form
 						.form__items
-							.form__item 
-								label.form__label.required Ваше имя
-								input(type="text" required data-field).form__input
-							.form__item 
-								label.form__label.required E-mail
-								input(type="email" required data-field).form__input
-							.form__item 
-								label.form__label.required Телефон 
-								input(type="tel" required data-field).form__input
-							.form__item 
-								label.form__label Адрес доставки 
-								input(type="text" data-field).form__input
+							mixin formInput(title, type, required)
+								.form__item 
+									label.form__label(class=required)= title
+									input(type=type, required=required, data-field).form__input
+							+formInput("Ваше имя", "text", "required")
+							+formInput("E-mail", "email", "required")
+							+formInput("Телефон", "tel", "required")
+							+formInput("Адрес доставки", "text")
 							.form__item 
 								label.form__label Сообщение
 								textarea(data-field).form__textarea
