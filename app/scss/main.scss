@@ -95,6 +95,16 @@ body {
 	&.loaded {
 	}
 }
+.workemail{
+	display: none;
+}
+input.error,
+textarea.error {
+	border-color: red;
+}
+input.error + .custom-checkbox{
+	border-color: red;
+}
 //<ОБОЛОЧКА>===========================================================================================================
 .wrapper {
 	width: 100%;
@@ -247,6 +257,8 @@ body {
 @import "pagination";
 
 // Стили для модальных окон
+@import "graph-modal.scss";
+
 @import "modals";
 
 // Стили для галереи

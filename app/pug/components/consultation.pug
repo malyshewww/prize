@@ -9,16 +9,17 @@ section.consultation
                         Остались вопросы? <br>
                         Получите бесплатную консультацию!
                form.form(action="#")
+                  input(class="workemail" type="text" name="workemail" value="Рабочий E-mail" required)
                   .form-group
-                     .form__item 
-                        input(type="text" placeholder="Ваше имя" autocomplete="off").form__input
-                     .form__item 
-                        input(type="text" placeholder="Ваш телефон" data-tel autocomplete="off").form__input
-                     .form__item 
+                     .form__item.form-group__item
+                        input(type="text" placeholder="Ваше имя" name="name" autocomplete="off" required).form__input
+                     .form__item.form-group__item
+                        input(type="text" placeholder="Ваш телефон" name="phone" autocomplete="off" required).form__input
+                     .form__item.form-group__item
                         button(type="submit").form__button.btn Отправить
                   .checkbox-item
                      label
-                        input(type="checkbox").real-checkbox
+                        input(type="checkbox" required).real-checkbox
                         span.custom-checkbox 
                         span.checkbox-item__text 
                         |Я согласен на

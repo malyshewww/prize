@@ -33,8 +33,8 @@
       width: 100%;
       padding: 50px 28px 40px 42px;
       position: relative;
-      opacity: 0;
-      transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+      // opacity: 0;
+      // transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
       transition: all 0.5s ease 0s;
       border-radius: 10px;
    }
@@ -160,6 +160,10 @@
       &:hover {
          color: $whiteColor;
          background: $redColor;
+      }
+      &.disabled{
+         opacity: 0.5;
+         pointer-events: none;
       }
    }
    & .checkbox-item {

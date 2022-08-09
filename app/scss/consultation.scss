@@ -35,8 +35,8 @@
       max-width: 100%;
       background: $whiteColor;
       border-radius: 19px;
-      min-height: 40px;
-      padding: 8px 20px;
+      min-height: 24px;
+      padding: 7px 20px;
       font-size: 16px;
       line-height: math.div(24, 16) * 100%;
       color: $mainColor;
@@ -66,6 +66,10 @@
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
       min-width: 161px;
+      &.disabled{
+         opacity: 0.5;
+         pointer-events: none;
+      }
    }
    & a.form__link {
       color: $redColor;

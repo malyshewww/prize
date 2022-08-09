@@ -3,93 +3,100 @@ mixin modal(id, className)
 		.modal__wrapper
 			.modal__content
 				.modal__close.icon-delete(data-modal-close)
-				if block
-					block
-+modal("modal-reviews")
-	.modal__title Написать отзыв
-		form(action="#").modal__form.form-modal
-			.form-modal__items
-				.form-modal__item 
-					input(type="text" class="form-modal__input" placeholder="Имя")
-				.form-modal__item 
-					input(type="email" class="form-modal__input" placeholder="E-mail")
-				.form-modal__item.estimate-modal
-					.estimate-modal__label Оценка
-					div.rating
-						input(type="radio" id="star-5" name="rating" value="5")
-						label(for="star-5" title="Оценка «5»")
-						input(type="radio" id="star-4" name="rating" value="4")
-						label(for="star-4" title="Оценка «4»")
-						input(type="radio" id="star-3" name="rating" value="3")
-						label(for="star-3" title="Оценка «3»")
-						input(type="radio" id="star-2" name="rating" value="2")
-						label(for="star-2" title="Оценка «2»")
-						input(type="radio" id="star-1" name="rating" value="1")
-						label(for="star-1" title="Оценка «1»")
-				.form-modal__item 
-					textarea(class="form-modal__textarea" placeholder="Ваш отзыв")
-			.checkbox-item
-				label
-					input(type="checkbox" checked).real-checkbox
-					span.custom-checkbox 
-					span.checkbox-item__text
-						|Отправляя заявку, Вы соглашаетесь с
-						a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
-			button.form-modal__button(type="submit") Отправить
+				.modal__body
+					if block
+						block
 +modal("modal-call")
 	.modal__title Заказать звонок
-		form(action="#").modal__form.form-modal
-			.form-modal__items
-				.form-modal__item 
-					input(type="text" class="form-modal__input" placeholder="Ваше имя")
-				.form-modal__item 
-					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
-			.checkbox-item
-				label
-					input(type="checkbox" checked).real-checkbox
-					span.custom-checkbox 
-					span.checkbox-item__text
-						|Отправляя заявку, Вы соглашаетесь с
-						a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
-			button.form-modal__button(type="submit") Отправить
-+modal("order")
-	.modal__title Сделать заказ
-		form(action="#").modal__form.form-modal
-			.form-modal__items
-				.form-modal__item 
-					input(type="text" class="form-modal__input" placeholder="Ваше имя")
-				.form-modal__item 
-					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
-				.form-modal__item
-					textarea(class="form-modal__textarea" placeholder="Комментарий")
-			.checkbox-item
-				label
-					input(type="checkbox" checked).real-checkbox
-					span.custom-checkbox 
-					span.checkbox-item__text
-						|Отправляя заявку, Вы соглашаетесь с&nbsp;
-						a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
-			button.form-modal__button(type="submit") Отправить
+	form(action="#").modal__form.form-modal
+		.form-modal__items
+			.form-modal__item 
+				input(type="text" class="form-modal__input" placeholder="Ваше имя")
+			.form-modal__item 
+				input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
+		.checkbox-item
+			label
+				input(type="checkbox" checked).real-checkbox
+				span.custom-checkbox 
+				span.checkbox-item__text
+					|Отправляя заявку, Вы соглашаетесь с
+					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
+		button.form-modal__button(type="submit") Отправить
++modal("modal-reviews")
+	.modal__title Написать отзыв
+	form(action="#").modal__form.form-modal
+		.form-modal__items
+			.form-modal__item 
+				input(type="text" class="form-modal__input" placeholder="Имя")
+			.form-modal__item 
+				input(type="email" class="form-modal__input" placeholder="E-mail")
+			.form-modal__item.estimate-modal
+				.estimate-modal__label Оценка
+				div.rating
+					input(type="radio" id="star-5" name="rating" value="5")
+					label(for="star-5" title="Оценка «5»")
+					input(type="radio" id="star-4" name="rating" value="4")
+					label(for="star-4" title="Оценка «4»")
+					input(type="radio" id="star-3" name="rating" value="3")
+					label(for="star-3" title="Оценка «3»")
+					input(type="radio" id="star-2" name="rating" value="2")
+					label(for="star-2" title="Оценка «2»")
+					input(type="radio" id="star-1" name="rating" value="1")
+					label(for="star-1" title="Оценка «1»")
+			.form-modal__item 
+				textarea(class="form-modal__textarea" placeholder="Ваш отзыв")
+		.checkbox-item
+			label
+				input(type="checkbox" checked).real-checkbox
+				span.custom-checkbox 
+				span.checkbox-item__text
+					|Отправляя заявку, Вы соглашаетесь с
+					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
+		button.form-modal__button(type="submit") Отправить
 +modal("buy")
 	.modal__title Купить в 1 клик
-		form(action="#").modal__form.form-modal
-			.form-modal__items
-				.form-modal__item 
-					input(type="text" class="form-modal__input" placeholder="Ваше имя")
-				.form-modal__item 
-					input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон" required)
-				.form-modal__item 
-					textarea(class="form-modal__textarea" placeholder="Комментарий")
-			.checkbox-item
-				label
-					input(type="checkbox" checked).real-checkbox
-					span.custom-checkbox 
-					span.checkbox-item__text
-						|Я согласен на &nbsp;
-						a.form__link(href="#" target="_blank") обработку персональных данных
-						|&nbsp;и с
-						a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
-			button.form-modal__button(type="submit" data-modal-button="success-order" data-modal-close) Отправить
+	form(action="#").modal__form.form-modal
+		.form-modal__items
+			.form-modal__item 
+				input(type="text" class="form-modal__input" placeholder="Ваше имя")
+			.form-modal__item 
+				input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон" required)
+			.form-modal__item 
+				textarea(class="form-modal__textarea" placeholder="Комментарий")
+		.checkbox-item
+			label
+				input(type="checkbox" checked).real-checkbox
+				span.custom-checkbox 
+				span.checkbox-item__text
+					|Я согласен на &nbsp;
+					a.form__link(href="#" target="_blank") обработку персональных данных
+					|&nbsp;и с
+					a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
+		button.form-modal__button(type="submit" data-modal-button="success-order" data-modal-close) Отправить
++modal("notice")
+	.modal__icon-check
+		img(src="img/icons/check-green.svg", alt="")
+	.modal__description
+		p Спасибо за вашу заявку. 
+		p Мы перезвоним вам в ближайшее время
++modal("order")
+	.modal__title Сделать заказ
+	form(action="#").modal__form.form-modal
+		.form-modal__items
+			.form-modal__item 
+				input(type="text" class="form-modal__input" placeholder="Ваше имя")
+			.form-modal__item 
+				input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон")
+			.form-modal__item
+				textarea(class="form-modal__textarea" placeholder="Комментарий")
+		.checkbox-item
+			label
+				input(type="checkbox" checked).real-checkbox
+				span.custom-checkbox 
+				span.checkbox-item__text
+					|Отправляя заявку, Вы соглашаетесь с&nbsp;
+					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
+		button.form-modal__button(type="submit") Отправить
 +modal("demonstration")
 	.modal__title Заказать демонстрацию
 		form(action="#").modal__form.form-modal
@@ -129,3 +136,11 @@ mixin modal(id, className)
 	.modal__description
 		p Спасибо за вашу заявку. 
 		p Мы перезвоним вам в ближайшее время
+	
+mixin graphModal(id, className)
+	.graph-modal__container.modal(role="dialog" aria-modal="true" data-graph-target=id class=className)
+		div(class="graph-modal__content modal__content")
+			button(class="graph-modal__close modal__close icon-delete" type="button" aria-label="Закрыть модальное окно")
+			.modal__body
+			if block 
+				block
