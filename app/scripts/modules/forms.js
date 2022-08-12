@@ -229,6 +229,7 @@ function formHandlerModal(formId, path) {
 }
 formHandler("form", "/formhandler");
 formHandlerModal("form-buy", "/formhandlerbuy");
+formHandlerModal("form-call", "/formhandlerbuy");
 
 formAllInputs.forEach((item) => {
    const removeErrorClass = (event) => {

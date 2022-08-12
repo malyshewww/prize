@@ -1,5 +1,7 @@
 each productItem, productIndex in product
 	.products__card.card-product(class=category)
+		input(type="hidden" class="result-card-price" value="100")
+		input(type="hidden" class="result-card-weight")
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)

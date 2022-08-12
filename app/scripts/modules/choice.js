@@ -1,7 +1,7 @@
 // Переключение кнопок с превью карточки товара
 const selectGroup = document.querySelectorAll('[data-select]');
 selectGroup.forEach((item, i, arr) => {
-   const selectGroupItem = item.querySelector('.select-group__item');
+   const selectGroupItem = item.querySelector('.select-group__item .select-group__label');
    const selectGroupChoice = item.querySelector('.select-group__choice');
    const selectGroupDropdown = item.querySelector('.dropdown-list');
    const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
@@ -12,6 +12,8 @@ selectGroup.forEach((item, i, arr) => {
    const product = item.closest('.card-product');
    const productPrice = product.querySelector('.card-product__price');
 
+   const inputResultPrice = item.querySelector('.result-card-price');
+   const inputResultWeight = item.querySelector('.result-card-weight');
    if (selectGroupDropdown) {
       selectGroupChoice.addEventListener('click', (e) => {
          e.stopPropagation();
@@ -19,8 +21,9 @@ selectGroup.forEach((item, i, arr) => {
       });
    }
    if (selectGroupItem) {
-      selectGroupItem.addEventListener('click', (e) => {
+      selectGroupItem.addEventListener('change', (e) => {
          productPrice.innerText = inputCurrentPrice.value;
+         // inputResultWeight.value = selectGroupValue.innerText;
       });
    }
    selectDropdownItems.forEach((dropdownItem) => {
