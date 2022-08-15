@@ -5,7 +5,7 @@
 			sale: "-20%",
 			title: "Cнежинка золотая",
 			category: "Классик",
-			weight: "290 гр.",
+			weight: "290",
 			oldPrice: "300 ₽",
 			currentPrice: "105 ₽"
 		},
@@ -14,7 +14,7 @@
 			sale: "",
 			title: "Почта-копилка",
 			category: "Классик",
-			weight: "290 гр.",
+			weight: "290",
 			oldPrice: "",
 			currentPrice: "300 ₽"
 		},
@@ -23,7 +23,7 @@
 			sale: "",
 			title: "Чемодан Фантазия маленький",
 			category: "Классик",
-			weight: "290 гр.",
+			weight: "290",
 			oldPrice: "",
 			currentPrice: "1325 ₽"
 		},
@@ -36,7 +36,8 @@ section.cart
 				h2.content-title Ваша корзина пока пуста
 				a.cart__button.btn.btn-green(href="#") Перейти на главную
 		else
-			.cart__inner 
+			.cart__inner
+				input(type="hidden" id="cart-total-weight")
 				.cart__items
 					each item in cartItems
 						.cart-item
@@ -55,7 +56,9 @@ section.cart
 										span.cart-item__value= item.category
 									.cart-item__group
 										span.cart-item__label Вес НЕТТО:
-										span.cart-item__value= item.weight
+										span.cart-item__value
+											span.cart-item-weight= item.weight 
+											| гр.
 								.cart-item__quantity.quantity-card
 									button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
 									input(type="text" value="1").quantity-card__input
@@ -68,7 +71,9 @@ section.cart
 						ul.cart-result__list
 							li 
 								.cart-result__name Вес заказа
-								.cart-result__value 870 гр.
+								.cart-result__value
+									span.total-weight  
+									|гр.
 							li 
 								.cart-result__name Товары - 3 шт.
 								.cart-result__value 1925 ₽

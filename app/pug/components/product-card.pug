@@ -27,6 +27,7 @@ each productItem, productIndex in product
 							each choiceItem, choiceIndex in productItem.choice
 								.select-group(data-select)
 									input(type="hidden" class="current-price" value="300")
+									input(type="hidden" class="sale-price" value="3000 ₽")
 									.select-group__item.select-group__header(data-current-price="300")
 										label.select-group__label
 											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
@@ -41,7 +42,7 @@ each productItem, productIndex in product
 									if choiceItem.dropmenu
 										.select-group__dropdown.dropdown-list
 											each dropItem, dropIndex in choiceItem.dropmenu
-												.select-group__item(data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
+												.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
 													input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
 													span.custom-radio
 													span.select-group__text= dropItem.title

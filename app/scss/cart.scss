@@ -199,3 +199,9 @@
 	font-weight: 600;
 	font-family: "Montserrat", sans-serif;
 }
+.cart-link{
+	max-width: max-content;
+	&.hidden{
+		display: none;
+	}
+}

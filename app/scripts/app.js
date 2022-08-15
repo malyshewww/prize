@@ -68,15 +68,6 @@ lightGallery(document.querySelector('[data-gallery]'), {
 	actualSize: true,
 });
 
-// Кнопка "В корзину". Изменение текста
-const cartButton = document.querySelector('.cart-button');
-if (cartButton) {
-	cartButton.addEventListener('click', (e) => {
-		cartButton.style.maxWidth = "100%";
-		cartButton.innerHTML = 'Перейти в корзину';
-	})
-}
-
 // Составы и Веса в Карточке товара
 const mainCardInfo = document.querySelector('.main-card__info');
 const allCompounds = document.querySelectorAll('[data-compound]');
@@ -116,6 +107,20 @@ parameters.forEach((item) => {
 		})
 	})
 })
+
+// Подсчет общего веса в корзине
+const cartItemWeights = document.querySelectorAll('.cart-item-weight');
+const cartInput = document.getElementById('cart-total-weight');
+const cartTotalWeight = document.querySelector('.total-weight');
+if (cartItemWeights) {
+	let count = 0;
+	cartItemWeights.forEach(function (value, index) {
+		const textValue = value.innerText;
+		Number(count += +textValue);
+		cartInput.value = count;
+		cartTotalWeight.innerHTML = cartInput.value;
+	});
+}
 
 
 // const pathname = window.location.pathname;

@@ -8,9 +8,11 @@ selectGroup.forEach((item, i, arr) => {
    const selectGroupValue = item.querySelector('[data-select-value]');
 
    const inputCurrentPrice = item.querySelector('.current-price');
+   const inputSalePrice = item.querySelector('.sale-price');
    const inputHidden = item.querySelector('.select-group__input-hidden');
    const product = item.closest('.card-product');
    const productPrice = product.querySelector('.card-product__price');
+   const productPriceOld = product.querySelector('.card-product__price-old');
 
    const inputResultPrice = item.querySelector('.result-card-price');
    const inputResultWeight = item.querySelector('.result-card-weight');
@@ -23,6 +25,7 @@ selectGroup.forEach((item, i, arr) => {
    if (selectGroupItem) {
       selectGroupItem.addEventListener('change', (e) => {
          productPrice.innerText = inputCurrentPrice.value;
+         productPriceOld.innerText = inputSalePrice.value;
          // inputResultWeight.value = selectGroupValue.innerText;
       });
    }
@@ -30,6 +33,7 @@ selectGroup.forEach((item, i, arr) => {
       const selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
       // Значение дата атрибута в выпадающем меню
       const priceValue = dropdownItem.dataset.price;
+      const priceSaleValue = dropdownItem.dataset.salePrice;
       dropdownItem.addEventListener('click', (e) => {
          e.stopPropagation();
          selectDropdownItems.forEach((el) => {
@@ -39,10 +43,13 @@ selectGroup.forEach((item, i, arr) => {
          const realInput = item.querySelector('.real-radio');
          realInput.checked = true;
          const priceValueStr = priceValue + " ₽";
+         const priceSaleValueStr = priceSaleValue + " ₽";
          // Передача в value в input цены из дата атрибута цена в первью товара
          inputCurrentPrice.value = priceValueStr;
+         inputSalePrice.value = priceSaleValueStr;
          // Итоговая цена в превью товара
          productPrice.innerText = inputCurrentPrice.value;
+         productPriceOld.innerText = inputSalePrice.value;
          // Присваивание веса из выпадающего списка в верхний select-group__item
          selectGroupValue.innerText = selectGroupDropdownValue.innerText;
          item.classList.remove('active');

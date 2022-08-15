@@ -256,17 +256,16 @@ div.collect-tabs
 																	if tabItem.key == "package"
 																		.collect-table__images.collect-table__images-package
 																			.collect-table__image
-																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.svg`, alt=child.title)
+																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
 																			.collect-table__tooltip
-																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/tooltip-${childIndex+1}.png`, alt=child.title)
+																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
 																	else
 																		.collect-table__images
 																			.collect-table__image
 																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
 																			.collect-table__tooltip.collect-table__tooltip-package
 																				img(src=`img/collect/nuts-fruits/${CategoriesIndex}/${childIndex+1}.png`, alt=child.title)
-																	if tabItem.key !== "package"
-																		h2.collect-table__title!= child.title
+																	h2.collect-table__title!= child.title
 																.collect-table__value= child.value
 																case tabItem.key
 																	when "goods"
