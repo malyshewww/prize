@@ -1,5 +1,5 @@
 /*===== FORM FOCUS =====*/
-const fields = document.querySelectorAll("[data-field]")
+const fields = document.querySelectorAll("[data-field]");
 /*=== Add focus ===*/
 function addfocus() {
    let parent = this.parentNode;
@@ -97,9 +97,11 @@ function formHandler(formId, path) {
             .then((response) => response.json())
             .then((result) => {
                const inputName = thisForm.querySelector('input[name="name"]');
+               const inputFullName = thisForm.querySelector('input[name="fullname"]');
                const inputPhone = thisForm.querySelector('input[name="phone"]');
                const inputEmail = thisForm.querySelector('input[name="email"]');
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
+               const inputAddress = thisForm.querySelector('input[name="address"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modal = document.getElementById('notice');
@@ -110,6 +112,9 @@ function formHandler(formId, path) {
                   if (inputName) {
                      inputName.value = '';
                   }
+                  if (inputFullName) {
+                     inputFullName.value = '';
+                  }
                   if (inputPhone) {
                      inputPhone.value = '';
                   }
@@ -119,9 +124,21 @@ function formHandler(formId, path) {
                   if (inputMessage) {
                      inputMessage.value = '';
                   }
+                  if (inputAddress) {
+                     inputAddress.value = '';
+                  }
+                  const fields = document.querySelectorAll("[data-field]");
+                  fields.forEach(input => {
+                     const parent = input.parentNode;
+                     parent.classList.remove('focus');
+                  })
                } else {
                   if (result.name) {
                      inputName.classList.add('error');
+                     // inputName.setAttribute('title', result.name.trim());
+                  }
+                  if (result.fullname) {
+                     inputFullName.classList.add('error');
                      // inputName.setAttribute('title', result.name.trim());
                   }
                   if (result.phone) {
@@ -133,6 +150,9 @@ function formHandler(formId, path) {
                      // inputEmail.setAttribute('title', result.email.trim());
                   }
                   if (result.message) {
+                     // inputMessage.setAttribute('title', result.message.trim());
+                  }
+                  if (result.address) {
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                }
@@ -228,7 +248,8 @@ function formHandlerModal(formId, path) {
    }
 }
 formHandler("form", "/formhandler");
-// formHandlerModal("form-buy", "/formhandlerbuy");
+// formHandler("shopOrderForm", "/formhandlerorder");
+formHandlerModal("form-buy", "/formhandlerbuy");
 formHandlerModal("formСall", "/formhandlerbuy");
 
 

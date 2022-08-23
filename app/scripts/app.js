@@ -108,19 +108,7 @@ parameters.forEach((item) => {
 	})
 })
 
-// Подсчет общего веса в корзине
-const cartItemWeights = document.querySelectorAll('.cart-item-weight');
-const cartInput = document.getElementById('cart-total-weight');
-const cartTotalWeight = document.querySelector('.total-weight');
-if (cartItemWeights) {
-	let count = 0;
-	cartItemWeights.forEach(function (value, index) {
-		const textValue = value.innerText;
-		Number(count += +textValue);
-		cartInput.value = count;
-		cartTotalWeight.innerHTML = cartInput.value;
-	});
-}
+
 
 
 // const pathname = window.location.pathname;

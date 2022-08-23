@@ -1,7 +1,8 @@
 each productItem, productIndex in product
 	.products__card.card-product(class=category)
-		input(type="hidden" class="result-card-price" value="100")
-		input(type="hidden" class="result-card-weight")
+		input(type="hidden" class="input-card-price" value="100")
+		input(type="hidden" class="input-card-sale-price" value="200")
+		input(type="hidden" class="input-card-weight")
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
@@ -26,9 +27,7 @@ each productItem, productIndex in product
 						if productItem.choice
 							each choiceItem, choiceIndex in productItem.choice
 								.select-group(data-select)
-									input(type="hidden" class="current-price" value="300")
-									input(type="hidden" class="sale-price" value="3000 ₽")
-									.select-group__item.select-group__header(data-current-price="300")
+									.select-group__item.select-group__header(data-current-price-header="300" data-sale-price-header="400")
 										label.select-group__label
 											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 											span.custom-radio
