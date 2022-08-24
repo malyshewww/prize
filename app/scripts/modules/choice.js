@@ -6,6 +6,7 @@ if (products) {
       const inputResultPrice = product.querySelector('.input-card-price');
       const inputResultSalePrice = product.querySelector('.input-card-sale-price');
       const inputResultWeight = product.querySelector('.input-card-weight');
+      const inputResultDiscount = product.querySelector('.input-card-discount');
       const productPrice = product.querySelector('.card-product__price');
       const productPriceOld = product.querySelector('.card-product__price-old');
       selectGroup.forEach((item, i, arr) => {
@@ -15,6 +16,7 @@ if (products) {
          const selectGroupDropdown = item.querySelector('.dropdown-list');
          const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
          const selectGroupValue = item.querySelector('[data-select-value]');
+         const selectGroupValueData = selectGroupValue.dataset.selectValue;
          if (selectGroupDropdown) {
             selectGroupChoice.addEventListener('click', (e) => {
                e.stopPropagation();
@@ -26,13 +28,18 @@ if (products) {
                const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
                const salePrice = selectGroupItemHeader.dataset.salePriceHeader;
                inputResultPrice.value = currentPrice;
+               const currentPriceStr = currentPrice + " ₽";
+               const salePriceStr = salePrice + " ₽";
                inputResultSalePrice.value = salePrice;
-               productPrice.innerText = inputResultPrice.value;
-               productPriceOld.innerText = inputResultSalePrice.value;
+               inputResultWeight.value = selectGroupValueData;
+               productPrice.innerText = currentPriceStr;
+               productPriceOld.innerText = salePriceStr;
+               inputResultDiscount.value = currentPrice - salePrice;
             });
          }
          selectDropdownItems.forEach((dropdownItem) => {
             const selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
+            const selectGroupDropdownValueData = selectGroupDropdownValue.dataset.selectDropdownValue;
             // Значение дата атрибута в выпадающем меню
             const priceValue = dropdownItem.dataset.price;
             const priceSaleValue = dropdownItem.dataset.salePrice;
@@ -54,7 +61,10 @@ if (products) {
                // productPriceOld.innerText = inputSalePrice.value;
                inputResultPrice.value = priceValue;
                inputResultSalePrice.value = priceSaleValue;
-               productPrice.innerText = inputResultPrice.value;
+               productPrice.innerText = priceValueStr;
+               productPriceOld.innerText = priceSaleValueStr;
+               inputResultWeight.value = selectGroupDropdownValueData;
+               inputResultDiscount.value = priceValue - priceSaleValue;
                // Присваивание веса из выпадающего списка в верхний select-group__item
                selectGroupValue.innerText = selectGroupDropdownValue.innerText;
                item.classList.remove('active');

@@ -1,0 +1,21 @@
+.text-page {
+   padding-bottom: 100px;
+   &__body {
+      color: $blackColor;
+      line-height: math.div(24, 16) * 100%;
+      & a {
+         font-weight: 700;
+         cursor: default;
+      }
+      & p {
+         margin-top: 25px;
+      }
+      & ul {
+         & li {
+            &:not(:last-child){
+               margin-bottom: 23px;
+            }
+         }
+      }
+   }
+}
