@@ -4,6 +4,7 @@ each productItem, productIndex in product
 		input(type="hidden" class="input-card-sale-price" value="200")
 		input(type="hidden" class="input-card-weight")
 		input(type="hidden" class="input-card-discount")
+		input(type="hidden" class="input-card-compound")
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
@@ -32,7 +33,7 @@ each productItem, productIndex in product
 										label.select-group__label
 											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 											span.custom-radio
-											span.select-group__label-text= choiceItem.title
+											span.select-group__label-text(data-text)= choiceItem.title
 										.select-group__choice(class=choiceItem.dropmenu ? "" : "no-choice")
 											if choiceItem.values
 												span.select-group__value(data-select-value=choiceItem.values[0])= choiceItem.values[0]
@@ -45,7 +46,7 @@ each productItem, productIndex in product
 												.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
 													input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
 													span.custom-radio
-													span.select-group__text= dropItem.title
+													span.select-group__text(data-text)= dropItem.title
 													span.select-group__value(data-select-dropdown-value=dropItem.value)= dropItem.value
 			.card-product__footer
 				.card-product__prices 

@@ -58,9 +58,12 @@
 		flex: 1 1 auto;
 	}
 	&__title {
+		display: inline-block;
 		line-height: math.div(22, 16) * 100%;
 		font-weight: 700;
-		margin-bottom: 12px;
+		&:not(:last-child){
+			margin-bottom: 12px;
+		}
 	}
 	&__group {
 		line-height: math.div(24, 16) * 100%;

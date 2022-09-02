@@ -1,99 +1,104 @@
-// Переключение кнопок с превью карточки товара
-const products = document.querySelectorAll('.card-product');
-if (products) {
-   products.forEach((product) => {
-      const selectGroup = product.querySelectorAll('[data-select]');
-      const inputResultPrice = product.querySelector('.input-card-price');
-      const inputResultSalePrice = product.querySelector('.input-card-sale-price');
-      const inputResultWeight = product.querySelector('.input-card-weight');
-      const inputResultDiscount = product.querySelector('.input-card-discount');
-      const productPrice = product.querySelector('.card-product__price');
-      const productPriceOld = product.querySelector('.card-product__price-old');
-      if (selectGroup !== null) {
-         selectGroup.forEach((item, i, arr) => {
-            const selectGroupItem = item.querySelector('.select-group__item .select-group__label');
-            const selectGroupItemHeader = item.querySelector('.select-group__item.select-group__header');
-            const selectGroupChoice = item.querySelector('.select-group__choice');
-            const selectGroupDropdown = item.querySelector('.dropdown-list');
-            const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
-            const selectGroupValue = item.querySelector('[data-select-value]');
-            const selectGroupValueData = selectGroupValue.dataset.selectValue;
-            if (selectGroupDropdown) {
-               selectGroupChoice.addEventListener('click', (e) => {
-                  e.stopPropagation();
-                  arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
-               });
-            }
-            selectGroupItem.addEventListener('change', (e) => {
-               const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
-               const salePrice = selectGroupItemHeader.dataset.salePriceHeader;
-               inputResultPrice.value = currentPrice;
-               const currentPriceStr = currentPrice + " ₽";
-               inputResultWeight.value = selectGroupValueData;
-               productPrice.innerText = currentPriceStr;
-               inputResultDiscount.value = currentPrice - salePrice;
-               if (productPriceOld) {
-                  const salePriceStr = salePrice + " ₽";
-                  inputResultSalePrice.value = salePrice;
-                  productPriceOld.innerText = salePriceStr;
+document.addEventListener('click', productActions);
+function productActions(event) {
+   const target = event.target;
+   if (target.closest('.card-product')) {
+
+      // Переключение кнопок с превью карточки товара
+      const products = document.querySelectorAll('.card-product');
+      if (products) {
+         products.forEach((product) => {
+            const selectGroup = product.querySelectorAll('[data-select]');
+            const inputResultPrice = product.querySelector('.input-card-price');
+            const inputResultSalePrice = product.querySelector('.input-card-sale-price');
+            const inputResultWeight = product.querySelector('.input-card-weight');
+            const inputResultDiscount = product.querySelector('.input-card-discount');
+            const inputResultCompound = product.querySelector('.input-card-compound');
+            const productPrice = product.querySelector('.card-product__price');
+            const productPriceOld = product.querySelector('.card-product__price-old');
+            selectGroup.forEach((item, i, arr) => {
+               const selectGroupItem = item.querySelector('.select-group__item .select-group__label');
+               const selectGroupItemHeader = item.querySelector('.select-group__item.select-group__header');
+               const selectGroupChoice = item.querySelector('.select-group__choice');
+               const selectGroupDropdown = item.querySelector('.dropdown-list');
+               const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
+               const selectGroupValue = item.querySelector('[data-select-value]');
+               const selectGroupValueData = selectGroupValue.dataset.selectValue;
+               const selectGroupCompoundText = item.querySelector('[data-text]');
+               if (selectGroupDropdown) {
+                  selectGroupChoice.addEventListener('click', (e) => {
+                     e.stopPropagation();
+                     arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
+                  });
                }
-            });
-            selectDropdownItems.forEach((dropdownItem) => {
-               const selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
-               const selectGroupDropdownValueData = selectGroupDropdownValue.dataset.selectDropdownValue;
-               // Значение дата атрибута в выпадающем меню
-               const priceValue = dropdownItem.dataset.price;
-               const priceSaleValue = dropdownItem.dataset.salePrice;
-               dropdownItem.addEventListener('click', (e) => {
-                  e.stopPropagation();
-                  selectDropdownItems.forEach((el) => {
-                     el.classList.remove('current');
+               selectGroupItem.addEventListener('change', (e) => {
+                  const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
+                  const salePrice = selectGroupItemHeader.dataset.salePriceHeader;
+                  inputResultPrice.value = currentPrice;
+                  const currentPriceStr = currentPrice + " ₽";
+                  inputResultWeight.value = selectGroupValueData;
+                  productPrice.innerText = currentPriceStr;
+                  inputResultDiscount.value = currentPrice - salePrice;
+                  inputResultCompound.value = selectGroupCompoundText.innerText;
+                  if (productPriceOld) {
+                     const salePriceStr = salePrice + " ₽";
+                     inputResultSalePrice.value = salePrice;
+                     productPriceOld.innerText = salePriceStr;
+                  }
+               });
+               selectDropdownItems.forEach((dropdownItem) => {
+                  const selectGroupDropdownValue = dropdownItem.querySelector('[data-select-dropdown-value]');
+                  const selectGroupDropdownValueData = selectGroupDropdownValue.dataset.selectDropdownValue;
+                  // Значение дата атрибута в выпадающем меню
+                  const priceValue = dropdownItem.dataset.price;
+                  const priceSaleValue = dropdownItem.dataset.salePrice;
+                  dropdownItem.addEventListener('click', (e) => {
+                     e.stopPropagation();
+                     selectDropdownItems.forEach((el) => {
+                        el.classList.remove('current');
+                     })
+                     dropdownItem.classList.add('current');
+                     const realInput = item.querySelector('.real-radio');
+                     realInput.checked = true;
+                     const priceValueStr = priceValue + " ₽";
+                     const priceSaleValueStr = priceSaleValue + " ₽";
+
+                     inputResultPrice.value = priceValue;
+                     inputResultSalePrice.value = priceSaleValue;
+                     productPrice.innerText = priceValueStr;
+                     productPriceOld.innerText = priceSaleValueStr;
+                     inputResultWeight.value = selectGroupDropdownValueData;
+                     inputResultDiscount.value = priceValue - priceSaleValue;
+
+                     inputResultCompound.value = selectGroupCompoundText.innerText;
+                     // Присваивание веса из выпадающего списка в верхний select-group__item
+                     selectGroupValue.innerText = selectGroupDropdownValue.innerText;
+                     item.classList.remove('active');
                   })
-                  dropdownItem.classList.add('current');
-                  const realInput = item.querySelector('.real-radio');
-                  realInput.checked = true;
-                  const priceValueStr = priceValue + " ₽";
-                  const priceSaleValueStr = priceSaleValue + " ₽";
-                  // Передача в value в input цены из дата атрибута цена в первью товара
-                  // inputResultPrice.value = priceValueStr;
-                  // inputSalePrice.value = priceSaleValueStr;
-                  // Итоговая цена в превью товара
-                  // productPrice.innerText = inputResultPrice.value;
-                  // productPriceOld.innerText = inputSalePrice.value;
-                  inputResultPrice.value = priceValue;
-                  inputResultSalePrice.value = priceSaleValue;
-                  productPrice.innerText = priceValueStr;
-                  productPriceOld.innerText = priceSaleValueStr;
-                  inputResultWeight.value = selectGroupDropdownValueData;
-                  inputResultDiscount.value = priceValue - priceSaleValue;
-                  // Присваивание веса из выпадающего списка в верхний select-group__item
-                  selectGroupValue.innerText = selectGroupDropdownValue.innerText;
-                  item.classList.remove('active');
                })
-            })
+            });
+         })
+         // Клик снаружи [data-select]. Закрыть [data-select]
+         document.addEventListener('click', function (e) {
+            const selectGroup = document.querySelectorAll('[data-select]');
+            if (selectGroup) {
+               selectGroup.forEach((item) => {
+                  if (e.target != item) {
+                     item.classList.remove('active')
+                  }
+               })
+            }
+         })
+         // Нажатие на Tab или Escape. Закрыть [data-select]
+         document.addEventListener('keydown', function (e) {
+            const selectGroup = document.querySelectorAll('[data-select]');
+            if (selectGroup) {
+               selectGroup.forEach((item) => {
+                  if (e.key === 'Tab' || e.key === 'Escape') {
+                     item.classList.remove('active')
+                  }
+               })
+            }
          });
       }
-   })
-   // Клик снаружи [data-select]. Закрыть [data-select]
-   document.addEventListener('click', function (e) {
-      const selectGroup = document.querySelectorAll('[data-select]');
-      if (selectGroup) {
-         selectGroup.forEach((item) => {
-            if (e.target != item) {
-               item.classList.remove('active')
-            }
-         })
-      }
-   })
-   // Нажатие на Tab или Escape. Закрыть [data-select]
-   document.addEventListener('keydown', function (e) {
-      const selectGroup = document.querySelectorAll('[data-select]');
-      if (selectGroup) {
-         selectGroup.forEach((item) => {
-            if (e.key === 'Tab' || e.key === 'Escape') {
-               item.classList.remove('active')
-            }
-         })
-      }
-   });
+   }
 }

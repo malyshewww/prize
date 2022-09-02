@@ -132,6 +132,9 @@
 	&__value {
 		line-height: math.div(24, 16) * 100%;
 		color: $blackColor;
+		& span::after{
+			content: attr(data-type);
+		}
 	}
 	&__radiobutton {
 		padding-right: 120px;
@@ -147,6 +150,9 @@
 	& .radiobutton-item {
 		& .radiobutton-item__text {
 			margin: 0 16px 0 0;
+			&::after{
+				content: attr(data-type);
+			}
 		}
 		& .custom-radio {
 			width: 18px;

@@ -1,9 +1,11 @@
 aside.category__aside
-	form(action="#").filter
-		.filter__body 
+	form(action="#").filter#filters
+		input(type="hidden" name="sortby" value="menuindex")
+		input(type="hidden" class="filter-input__sortdir" name="sortdir" value="asc")
+		.filter__body
 			.filter__header 
 				h2.filter__title.content-title Фильтры
-				button(type="button" disabled).filter__button.filter-reset Сбросить всё
+				button(type="reset" disabled).filter__button.filter-reset Сбросить всё
 			.filter-group(data-filter-group)
 				.filter-group__title.content-title Цена
 				.filter-group__item

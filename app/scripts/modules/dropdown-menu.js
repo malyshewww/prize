@@ -39,3 +39,21 @@ document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
       }
    });
 });
+// Сортировка
+const listItemDataSortAsc = document.querySelector('[data-sort-asc]');
+const listItemDataSortDesc = document.querySelector('[data-sort-desc]');
+const filterInputSortdir = document.querySelector('.filter-input__sortdir');
+if (listItemDataSortAsc) {
+   const listItemDataSortAscValue = listItemDataSortAsc.dataset.sortAsc;
+   listItemDataSortAsc.addEventListener('click', () => {
+      filterInputSortdir.value = listItemDataSortAscValue;
+      filterInputSortdir.closest('form').submit();
+   })
+}
+if (listItemDataSortDesc) {
+   const listItemDataSortDescValue = listItemDataSortDesc.dataset.sortDesc;
+   listItemDataSortDesc.addEventListener('click', () => {
+      filterInputSortdir.value = listItemDataSortDescValue;
+      filterInputSortdir.closest('form').submit();
+   })
+}

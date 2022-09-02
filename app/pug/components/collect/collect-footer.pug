@@ -5,10 +5,10 @@
 				.footer-collect__item-wrap
 					.footer-collect__actions
 						.footer-collect__buttons 
-							a(href="#").footer-collect__button.btn.btn-red Заказать
+							a(href="#").footer-collect__button.btn.btn-red#calcMakeOrder Заказать
 							a(href="#").footer-collect__button.btn.btn__zero Добавить в корзину
 						.footer-collect__exports
-							a(href="#").footer-collect__export.icon-photo
+							a(href="#").footer-collect__export.icon-photo#print
 							a(href="#").footer-collect__export.icon-download
 					.footer-collect__info
 						p Вес подарка и соответственно стоимость могут отличаться от заявленных значений, но&nbsp;не более/менее <strong>3%</strong>
@@ -17,19 +17,19 @@
 						li.result-collect__item
 							.result-collect__name
 								span Уникальных позиций
-							.result-collect__value 18
+							.result-collect__value(data-calc-position)#calc_totalUniq 18
 						li.result-collect__item
 							.result-collect__name
 								span Количество
-							.result-collect__value 20 шт.
+							.result-collect__value(data-calc-count)#calc_totalQuan 20 шт.
 						li.result-collect__item
 							.result-collect__name
 								span(class="important") Вес
-							.result-collect__value 870 гр.
+							.result-collect__value(data-calc-weight)#calc_totalWeight 870 гр.
 						li.result-collect__item
 							.result-collect__name
 								span Упаковка
-							.result-collect__value 195 ₽
+							.result-collect__value(data-calc-package)#calc_totalPack 195 ₽
 					.result-collect__total
 						.result-collect__name <span class="important">Итого</span>
-						.result-collect__value 0 ₽
+						.result-collect__value(data-calc-total)#calc_totalPrice 0 ₽

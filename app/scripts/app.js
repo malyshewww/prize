@@ -16,11 +16,11 @@ import "./modules/range-slider.js";
 // Подключение модуля выпадающего меню
 import "./modules/dropdown-menu.js";
 
-// Подключение модуля Spollers
-import "./modules/spollers.js";
-
 // Подключение модуля Табы
 import "./modules/tabs.js";
+
+// Подключение модуля Spollers
+import "./modules/spollers.js";
 
 // Подключение модуля Choice (в первью карточки товара)
 import "./modules/choice.js";
@@ -30,6 +30,9 @@ import "./modules/observer.js";
 
 // Подключение модуля Формы
 import "./modules/forms.js";
+
+// Подключение скрипта калькулятора
+import "./modules/calc.js";
 
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
