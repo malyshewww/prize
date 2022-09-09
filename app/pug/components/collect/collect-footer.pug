@@ -5,11 +5,11 @@
 				.footer-collect__item-wrap
 					.footer-collect__actions
 						.footer-collect__buttons 
-							a(href="#").footer-collect__button.btn.btn-red#calcMakeOrder Заказать
-							a(href="#").footer-collect__button.btn.btn__zero Добавить в корзину
+							button(type="button" data-modal-button="order" disabled).footer-collect__button.btn.btn-red#calcMakeOrder Заказать
+							button(type="button").footer-collect__button.btn.btn__zero#calcAddToCart Добавить в корзину
 						.footer-collect__exports
-							a(href="#").footer-collect__export.icon-photo#print
-							a(href="#").footer-collect__export.icon-download
+							button(type="button" disabled).footer-collect__export.icon-photo#print
+							button(type="button").footer-collect__export.icon-download#download
 					.footer-collect__info
 						p Вес подарка и соответственно стоимость могут отличаться от заявленных значений, но&nbsp;не более/менее <strong>3%</strong>
 				.footer-collect__result.result-collect

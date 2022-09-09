@@ -160,9 +160,11 @@ function formHandler(formId, path) {
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
             }).catch((error) => {
-               const modal = document.getElementById('notice');
-               const notice = modal.querySelector('.modal__body');
-               notice.textContent = 'При отправке произошла ошибка, попробуйте еще раз';
+               const modal = document.getElementById('notice-error');
+               modal.classList.add('open-modal')
+               setTimeout(() => {
+                  modal.classList.remove("open-modal");
+               }, 5000)
                buttonSubmit.removeAttribute('disabled');
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
@@ -195,6 +197,7 @@ function formHandlerModal(formId, path) {
                const inputPhone = thisForm.querySelector('input[name="phone"]');
                const inputEmail = thisForm.querySelector('input[name="email"]');
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
+               const inputComment = thisForm.querySelector('textarea[name="comment"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modals = document.querySelectorAll('[data-modal]');
@@ -202,11 +205,34 @@ function formHandlerModal(formId, path) {
                      item.classList.remove('open-modal');
                   })
                   document.body.classList.remove('lock');
-                  const modal = document.getElementById('notice');
-                  modal.classList.add('open-modal');
-                  setTimeout(() => {
-                     modal.classList.remove("open-modal");
-                  }, 5000)
+                  if (formId == "form-demonstration") {
+                     const modal = document.getElementById('success-demonstration');
+                     modal.classList.add('open-modal');
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 5000)
+                  }
+                  if (formId == "form-buy" || formId == "form-order") {
+                     const modal = document.getElementById('success-order');
+                     modal.classList.add('open-modal');
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 5000)
+                  }
+                  if (formId == "form-call") {
+                     const modal = document.getElementById('notice');
+                     modal.classList.add('open-modal');
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 5000)
+                  }
+                  if (formId == "form-request") {
+                     const modal = document.getElementById('notice');
+                     modal.classList.add('open-modal')
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 5000)
+                  }
                   if (inputName) {
                      inputName.value = '';
                   }
@@ -218,6 +244,9 @@ function formHandlerModal(formId, path) {
                   }
                   if (inputMessage) {
                      inputMessage.value = '';
+                  }
+                  if (inputComment) {
+                     inputComment.value = '';
                   }
                } else {
                   if (result.name) {
@@ -235,6 +264,9 @@ function formHandlerModal(formId, path) {
                   if (result.message) {
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
+                  if (result.comment) {
+                     // inputMessage.setAttribute('title', result.message.trim());
+                  }
                }
                buttonSubmit.removeAttribute('disabled');
                buttonSubmit.classList.remove('disabled');
@@ -249,8 +281,11 @@ function formHandlerModal(formId, path) {
 }
 formHandler("form", "/formhandler");
 // formHandler("shopOrderForm", "/formhandlerorder");
-formHandlerModal("form-buy", "/formhandlerbuy");
-formHandlerModal("formСall", "/formhandlerbuy");
+formHandlerModal("form-demonstration", "/formhandler");
+formHandlerModal("form-buy", "/formhandler");
+formHandlerModal("form-call", "/formhandler");
+formHandlerModal("form-order", "/formhandlercalcorder");
+formHandlerModal("form-request", "/formhandler");
 
 
 formAllInputs.forEach((item) => {

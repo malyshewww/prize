@@ -34,6 +34,11 @@ import "./modules/forms.js";
 // Подключение скрипта калькулятора
 import "./modules/calc.js";
 
+// Подключение скрипта jspdf
+// import "./modules/jspdf.js";
+// import { JSDOM } from "jsdom";
+// let dom = new JSDOM();
+
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 /* Добавление класса touch для Body если браузер мобильный */
