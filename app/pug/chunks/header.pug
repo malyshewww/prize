@@ -49,7 +49,9 @@ header.header
 						button(type="button").search-header__button
 						form(action="/").search-header__form
 							input.search-header__input(type="search", autocomplete="off", placeholder="Поиск по сайту")
-							button(type="button").search-header__icon
+							.search-header__actions
+								button(type="button").search-header__icon
+								input(type="submit" value="Поиск")
 					.main-header__actions.actions-header
 						a(href="favorites.html").actions-header__link.icon-favorites
 							span.actions-header__count 1

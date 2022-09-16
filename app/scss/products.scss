@@ -4,12 +4,12 @@
    }
    &__slider {
       position: relative;
-      overflow: hidden;
       margin: -30px;
-      padding: 30px;
    }
    &__wrapper {
-      width: 100%;
+      overflow: hidden;
+      padding: 30px;
+      position: relative;
       &.disabled .card-product {
          opacity: 1;
          visibility: visible;
@@ -29,8 +29,6 @@
    &__body {
       display: flex;
       flex-flow: row nowrap;
-      width: 100%;
-      height: 100%;
    }
    &__card {
       flex-shrink: 0;
@@ -144,6 +142,7 @@
       align-items: center;
       overflow: hidden;
       margin-bottom: 6px;
+      min-height: 176px;
       & img {
          transform: scale(1);
          left: initial;
@@ -266,6 +265,14 @@
             color: $redColor;
          }
       }
+   }
+   &__image-wrap{
+      position: relative;
+   }
+   &__games{
+      position: absolute;
+      left: 0;
+      bottom: 0;
    }
 }
    .reviews-rating__list {

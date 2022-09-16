@@ -41,31 +41,38 @@ section.cart
 				.cart__items
 					each item in cartItems
 						.cart-item
-							.cart-item__actions.actions-cart
-								button.actions-cart__favorite.icon-favorites
-								button.actions-cart__delete.icon-delete
-							.cart-item__image.ibg
-								img(src=`img/cart/${item.img}.png`, alt=item.title)
-								if item.sale
-									.cart-item__sale.sale-product.sale-product__pink= item.sale
-							.cart-item__body
-								.cart-item__info
-									h2.cart-item__title= item.title
-									.cart-item__group
-										span.cart-item__label Категория:
-										span.cart-item__value= item.category
-									.cart-item__group
-										span.cart-item__label Вес НЕТТО:
-										span.cart-item__value
-											span.cart-item-weight= item.weight 
-											| гр.
-								.cart-item__quantity.quantity-card
-									button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
-									input(type="text" value="1").quantity-card__input
-									button.quantity-card__button.quantity-card__button--plus(data-plus)
-								.cart-item__prices 
-									.cart-item__price.cart-item__price_old= item.oldPrice 
-									.cart-item__price= item.currentPrice 
+							.cart-item__main
+								.cart-item__actions.actions-cart
+									button.actions-cart__favorite.icon-favorites
+									button.actions-cart__delete.icon-delete
+								.cart-item__image.ibg
+									img(src=`img/cart/${item.img}.png`, alt=item.title)
+									if item.sale
+										.cart-item__sale.sale-product.sale-product__pink= item.sale
+								.cart-item__body
+									.cart-item__info
+										h2.cart-item__title= item.title
+										.cart-item__group
+											span.cart-item__label Категория:
+											span.cart-item__value= item.category
+										.cart-item__group
+											span.cart-item__label Вес НЕТТО:
+											span.cart-item__value
+												span.cart-item-weight= item.weight 
+												| гр.
+									.cart-item__quantity.quantity-card
+										button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
+										input(type="text" value="1").quantity-card__input
+										button.quantity-card__button.quantity-card__button--plus(data-plus)
+									.cart-item__prices 
+										.cart-item__price.cart-item__price_old= item.oldPrice 
+										.cart-item__price= item.currentPrice 
+							.cart-item__footer
+								.cart-item__label-compound Состав
+								ul.cart-item__list
+									li
+										span "Шоколашки" Эссен
+										span 2
 				aside.cart-result
 					.cart-result__body
 						ul.cart-result__list

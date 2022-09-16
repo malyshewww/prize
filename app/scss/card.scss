@@ -134,6 +134,11 @@
          color: $redColor;
       }
    }
+   &__games{
+      position: absolute;
+      left: 32px;
+      bottom: 0;
+   }
 }
 .reviews-rating {
    display: flex;
@@ -258,13 +263,14 @@
       max-width: 86px;
       height: 25px;
    }
-   &__button {
+   &__button, 
+   & button {
       height: 100%;
       padding: 10px;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 24px;
+      font-size: 0;
       background: none;
       position: relative;
       &--minus::before,
@@ -323,8 +329,7 @@
 .actions {
    &__button {
       font-family: "Montserrat", sans-serif;
-      flex: 1 1 auto;
-      max-width: 161px;
+      min-width: 161px;
       min-height: 40px;
       padding: 9px 10px;
       border-radius: 20px;

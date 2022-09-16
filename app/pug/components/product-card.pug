@@ -13,8 +13,14 @@ each productItem, productIndex in product
 			.card-product__header
 				if productItem.sold
 						.card-product__sold.sold-product
-				a(href="card.html").card-product__image.ibg(class=productItem.sold)
-					img(src=`img/${productItem.img}.png`, alt=productItem.name)
+				.card-product__image-wrap
+					a(href="card.html").card-product__image.ibg(class=productItem.sold)
+						img(src=`img/${productItem.img}.png`, alt=productItem.name)
+					.card-product__games.games-product
+						.games-product__item.games-product__item_1
+						.games-product__item.games-product__item_2
+						.games-product__item.games-product__item_3
+						.games-product__item.games-product__item_4
 				.card-product__article= productItem.article
 				a(href="card.html").card-product__title= productItem.name
 			.card-product__body 

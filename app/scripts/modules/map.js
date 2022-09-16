@@ -13,7 +13,7 @@
 				balloonContent: 'Силикатная улица, 4'
 			}, {
 				iconLayout: 'default#image',
-				iconImageHref: 'img/icons/location.svg',
+				iconImageHref: '/assets/template/img/icons/location.svg',
 				iconImageSize: [40, 40],
 				iconImageOffset: [-30, -50]
 			});
