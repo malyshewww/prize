@@ -9,7 +9,7 @@
    visibility: hidden;
    overflow-y: auto;
    overflow-x: hidden;
-   transition: all 0.5s ease 0s;
+   transition: all 0.3s ease 0s;
    z-index: 30;
    &.open-modal {
       opacity: 1;
@@ -35,7 +35,7 @@
       position: relative;
       // opacity: 0;
       // transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
-      transition: all 0.5s ease 0s;
+      // transition: all 0.5s ease 0s;
       border-radius: 10px;
    }
    &__close {

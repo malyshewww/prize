@@ -5,6 +5,13 @@
 		grid-template-columns: 264px 1fr;
 		gap: 30px;
 		align-items: flex-start;
+		&.search-body{
+			grid-template-columns: 1fr;
+			gap: 0;
+			& .category__cards {
+				grid-template-columns: repeat(4, 1fr);
+			}
+		}
 	}
 	&__cards{
 		display: grid;
@@ -90,8 +97,12 @@
 			border-radius: 19px 19px 19px 19px;
 		}
 	}
-	& li:hover {
+	& li:hover,
+	& li.current {
 		background: $pinkColorLight;
+	}
+	& li.current{
+		pointer-events: none;
 	}
 }
 .dropdown__input-hidden {

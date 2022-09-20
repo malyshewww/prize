@@ -181,6 +181,10 @@ input.error + .custom-checkbox{
 // Подключение стилей отдельных блоков и страниц
 @import "header";
 
+// Стили для модальных окон
+@import "graph-modal.scss";
+@import "modals";
+
 @import "banner";
 @import "advantages";
 @import "prizes";
@@ -256,10 +260,6 @@ input.error + .custom-checkbox{
 // Стили для Пагинации
 @import "pagination";
 
-// Стили для модальных окон
-@import "graph-modal.scss";
-
-@import "modals";
 
 // Стили для галереи
 @import "lightgallery";

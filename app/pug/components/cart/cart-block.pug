@@ -60,6 +60,9 @@ section.cart
 											span.cart-item__value
 												span.cart-item-weight= item.weight 
 												| гр.
+										.cart-item__group
+											span.cart-item__label-compound Состав:
+											span.cart-item__value.cart-item__value-compound раскрыть
 									.cart-item__quantity.quantity-card
 										button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
 										input(type="text" value="1").quantity-card__input
@@ -68,8 +71,7 @@ section.cart
 										.cart-item__price.cart-item__price_old= item.oldPrice 
 										.cart-item__price= item.currentPrice 
 							.cart-item__footer
-								.cart-item__label-compound Состав
-								ul.cart-item__list
+								ul
 									li
 										span "Шоколашки" Эссен
 										span 2

@@ -133,6 +133,7 @@
 - let selected = pageTitle;
 - let menuActive = "";
 nav.menu
+	button.menu__close(type="button").icon-delete
 	ul.menu__list
 		each menuItem, i in menu
 			if selected === menuItem.title

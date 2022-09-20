@@ -34,20 +34,31 @@ import "./modules/forms.js";
 // Подключение скрипта калькулятора
 import "./modules/calc.js";
 
+// Увеличенные изображения в карточке товара
+import "./modules/fslightbox.js";
+
+// Ленивая загрузка изображений
+import "./modules/lazysizes.min.js";
+
 // Подключение скрипта jspdf
 // import "./modules/jspdf.js";
 // import { JSDOM } from "jsdom";
 // let dom = new JSDOM();
 
 // Cart compound
-// document.addEventListener('click', cartActions);
-// function cartActions(event) {
-// 	const target = event.target;
-// 	if (target.closest('.cart-item__label-compound')) {
-// 		let parent = target.parentNode;
-// 		parent.classList.toggle('active');
-// 	}
-// }
+document.addEventListener('click', cartActions);
+function cartActions(event) {
+	const target = event.target;
+	if (target.closest('.cart-item__value-compound')) {
+		let parent = target.closest('.cart-item');
+		parent.classList.toggle('active');
+		if (parent.classList.contains('active')) {
+			target.innerHTML = "свернуть";
+		} else {
+			target.innerHTML = "раскрыть";
+		}
+	}
+}
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 /* Добавление класса touch для Body если браузер мобильный */

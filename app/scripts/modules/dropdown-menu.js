@@ -1,4 +1,5 @@
 // DROP-MENU
+const filterInputSortdir = document.querySelector('.filter-input__sortdir');
 document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
    const dropMenuBtn = document.querySelector('.dropdown__button');
    const dropMenuList = dropDownWrapper.querySelector('.dropdown-list');
@@ -20,6 +21,19 @@ document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
          dropMenuList.classList.remove('show');
          dropMenuBtn.classList.remove('active');
          dropDownWrapper.classList.remove('active');
+         const itemSortAsc = listItem.dataset.sortAsc;
+         const itemSortDesc = listItem.dataset.sortDesc;
+         if (itemSortAsc) {
+            filterInputSortdir.value = itemSortAsc;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (itemSortDesc) {
+            filterInputSortdir.value = itemSortDesc;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (listItem.innerHTML == dropMenuBtn.innerHTML) {
+            listItem.classList.add('current');
+         }
       });
    });
    // Клик снаружи дропдауна. Закрыть дропдаун
@@ -40,20 +54,19 @@ document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
    });
 });
 // Сортировка
-const listItemDataSortAsc = document.querySelector('[data-sort-asc]');
-const listItemDataSortDesc = document.querySelector('[data-sort-desc]');
-const filterInputSortdir = document.querySelector('.filter-input__sortdir');
-if (listItemDataSortAsc) {
-   const listItemDataSortAscValue = listItemDataSortAsc.dataset.sortAsc;
-   listItemDataSortAsc.addEventListener('click', () => {
-      filterInputSortdir.value = listItemDataSortAscValue;
-      filterInputSortdir.closest('form').submit();
-   })
-}
-if (listItemDataSortDesc) {
-   const listItemDataSortDescValue = listItemDataSortDesc.dataset.sortDesc;
-   listItemDataSortDesc.addEventListener('click', () => {
-      filterInputSortdir.value = listItemDataSortDescValue;
-      filterInputSortdir.closest('form').submit();
-   })
-}
+// const listItemDataSortAsc = document.querySelector('[data-sort-asc]');
+// const listItemDataSortDesc = document.querySelector('[data-sort-desc]');
+// if (listItemDataSortAsc) {
+//    const listItemDataSortAscValue = listItemDataSortAsc.dataset.sortAsc;
+//    listItemDataSortAsc.addEventListener('click', () => {
+//       filterInputSortdir.value = listItemDataSortAscValue;
+//       filterInputSortdir.closest('form').submit();
+//    })
+// }
+// if (listItemDataSortDesc) {
+//    const listItemDataSortDescValue = listItemDataSortDesc.dataset.sortDesc;
+//    listItemDataSortDesc.addEventListener('click', () => {
+//       filterInputSortdir.value = listItemDataSortDescValue;
+//       filterInputSortdir.closest('form').submit();
+//    })
+// }

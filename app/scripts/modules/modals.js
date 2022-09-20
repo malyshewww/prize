@@ -1,4 +1,5 @@
 /*================== MODALS ====================*/
+
 const modalButtons = document.querySelectorAll('[data-modal-button]');
 const modalClosebuttons = document.querySelectorAll('[data-modal-close]');
 const allModals = document.querySelectorAll('[data-modal]');
@@ -38,9 +39,15 @@ modalClosebuttons.forEach(item => {
 })
 // Закрытие модалок по фейду
 allModals.forEach(item => {
+	item.style.display = 'none';
 	item.addEventListener('click', (e) => {
 		e.preventDefault();
 		item.classList.remove('open-modal');
 		bodyUnLock();
 	});
+})
+document.addEventListener('DOMContentLoaded', (event) => {
+	allModals.forEach(item => {
+		item.style.display = 'block';
+	})
 })

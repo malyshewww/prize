@@ -79,11 +79,11 @@
 		margin-right: 14px;
 		cursor: pointer;
 		position: relative;
-		&:hover .collect-table__tooltip {
-			transform: scale(1) translate(0, -50%);
-			opacity: 1;
-			visibility: visible;
-		}
+		// &:hover .collect-table__tooltip {
+		// 	transform: scale(1) translate(0, -50%);
+		// 	opacity: 1;
+		// 	visibility: visible;
+		// }
 		&-package {
 			& .collect-table__image {
 				width: 210px;
@@ -106,7 +106,7 @@
 		}
 	}
 	&__tooltip {
-		position: absolute;
+		position: fixed;
 		top: 50%;
 		left: calc(100% + 3px);
 		width: 350px;
@@ -124,6 +124,11 @@
 		transform-origin: 0 0;
 		transition: all 0.3s ease 0s;
 		z-index: 5;
+		&.show{
+			transform: scale(1) translate(0, -50%);
+			opacity: 1;
+			visibility: visible;
+		}
 	}
 	&__title {
 		text-align: left;

@@ -7,7 +7,7 @@ function initSliders() {
 		if (bannerSlides > 1) {
 			let bannerSwiper = new Swiper(bannerSlider, {
 				autoHeight: true,
-				modules: [Navigation],
+				modules: [Navigation, Pagination],
 				wrapperClass: "home-banner__wrapper",
 				slideClass: "home-banner__item",
 				loop: false,
@@ -17,6 +17,9 @@ function initSliders() {
 				navigation: {
 					nextEl: '.home-banner-button.home-banner-button__next',
 					prevEl: '.home-banner-button.home-banner-button__prev',
+				},
+				pagination: {
+					el: ".home-banner__pagination",
 				},
 			})
 		} else {

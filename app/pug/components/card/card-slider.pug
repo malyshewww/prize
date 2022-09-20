@@ -53,7 +53,7 @@ section.main-card
 					.base-slider__wrapper._swiper-wrapper
 						each item in cardSliderBase
 							.base-slider__item._swiper-slide 
-								.base-slider__image 
+								a.base-slider__image(data-fslightbox href=`img/card/${item.img}-1.png`)
 									img(src=`img/card/${item.img}-1.png`, alt="")
 					.base-slider__controls 
 						button.slide-arrow.slide-arrow__prev.icon-arrow-prev

@@ -27,6 +27,16 @@
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 	border-radius: 10px;
 	position: relative;
+	&.active{
+		& .cart-item__footer {
+			display: block;
+		}
+		& .cart-item__value-compound{
+			&::after{
+				transform: rotate(-180deg);
+			}
+		}
+	}
 	&__main{
 		display: flex;
 	}
@@ -51,7 +61,7 @@
 	}
 	&__body {
 		display: grid;
-		grid-template-columns: 1fr auto minmax(60px, 100px);
+		grid-template-columns: 1fr auto minmax(60px, 115px);
 		align-items: center;
 		width: 100%;
 		gap: 30px;
@@ -69,56 +79,29 @@
 	}
 	&__footer{
 		margin-top: 10px;
+		display: none;
 		& ul { 
-			border: 1px solid $grayColor82;
+			border: 1px solid #c9c9c9;
 			border-bottom: none;
-			display: none;
 			& li {
 				display: grid;
 				grid-template-columns: 1fr 50px;
 				align-items: flex-start;
-				border-bottom: 1px solid $grayColor82;
+				border-bottom: 1px solid #c9c9c9;
 				& > *:not(:last-child){
-					border-right: 1px solid $grayColor82;
+					border-right: 1px solid #c9c9c9;
 				}
 				& > * {
 					padding: 5px 10px 5px 10px;
 				}
 			}
 		}
-		&.active{
-			& .cart-item__label-compound{
-				color: $redColor;
-				&::after{
-					transform: rotate(-180deg);
-				}
-			}
-			& ul {
-				display: block;
-			}
-		}
 	}
 	&__label-compound{
-		margin-bottom: 10px;
-		font-weight: 700;
 		line-height: math.div(22, 16) * 100%;
 		display: inline-flex;
 		align-items: center;
 		position: relative;
-		transition: color .3s ease 0s;
-		cursor: pointer;
-		&::after{
-			content: "";
-			display: block;
-			width: 0;
-			height: 0;
-			margin-left: 5px;
-			transition: all 0.3s ease 0s;
-			border-left: 5px solid transparent;
-			border-right: 5px solid transparent;
-			border-top: 7px solid currentColor;
-			transition: transform .3s ease 0s;
-		}
 	}
 	&__group {
 		line-height: math.div(24, 16) * 100%;
@@ -133,6 +116,26 @@
 		display: inline-block;
 	}
 	&__value {
+		&-compound{
+			display: inline-flex;
+			align-items: center;
+			user-select: none;
+			cursor: pointer;
+			position: relative;
+			&::after{
+				content: "";
+				display: block;
+				width: 0;
+				height: 0;
+				margin-left: 5px;
+				margin-top: 2px;
+				transition: all 0.3s ease 0s;
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-top: 7px solid currentColor;
+				transition: transform .3s ease 0s;
+			}
+		}
 	}
 	&__quantity {
 		margin-left: auto;
