@@ -1,5 +1,8 @@
 .home-banner {
    padding-bottom: 46px;
+   @media screen and (max-width: $md) {
+      padding-bottom: 30px;
+   }
    &__body {
       position: relative;
    }

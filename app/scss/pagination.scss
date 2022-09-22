@@ -5,6 +5,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
+      width: 100%;
+      overflow-x: auto;
+      ::-webkit-scrollbar{
+         width: 0;
+         height: 0;
+      }
+      ::-webkit-scrollbar-track{
+         width: 0;
+         height: 0;
+         background: none;
+      }
+      ::-webkit-scrollbar-thumb{
+         background: none;
+         border: none;
+         width: 0;
+      }
+      scrollbar-width: 0;          /* "auto" или "thin"  */
+      scrollbar-color: transparent;   /* плашка скролла и дорожка */ 
    }
    &__item {
       &.current .pagination__link {
@@ -33,6 +52,11 @@
       font-weight: 500;
       &::before{
          color: #333;
+      }
+	   @media screen and (max-width: $md) {
+         width: 30px;
+         height: 30px;
+         flex: 0 0 35px;
       }
    }
 }

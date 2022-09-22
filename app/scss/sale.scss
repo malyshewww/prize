@@ -1,7 +1,13 @@
 .sale {
 	padding: 65px 0 72px;
+	@media screen and (max-width: $md) {
+		padding: 30px 0 30px;
+	}
 	& .container {
 		max-width: 1354px;
+		@media screen and (max-width: $md) {
+			padding: 0;
+		}
 	}
 	&__body {
 		padding: 55px 88px 67px;
@@ -21,9 +27,17 @@
 			background: linear-gradient(90.24deg, #f2f2f2 0.23%, rgba(242, 242, 242, 0) 61.33%);
 			z-index: -1;
 		}
+		@media screen and (max-width: $md) {
+			padding: 40px 20px 40px;
+			border-radius: 30px;
+			background-position: 30% 0;
+		}
 	}
 	&__content {
 		max-width: 668px;
+		@media screen and (max-width: $md) {
+			max-width: 100%;
+		}
 	}
 	&__text {
 		margin-bottom: 34px;
@@ -40,5 +54,8 @@
 	}
 	&__button {
 		max-width: 203px;
+		@media screen and (max-width: $md) {
+			max-width: 100%;
+		}
 	}
 }

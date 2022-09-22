@@ -1,25 +1,23 @@
 .advantages {
    padding: 46px 0 64px;
+	overflow: hidden;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 30px;
+   }
    &__body {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       justify-content: space-between;
-      column-gap: 47px;
+      gap: 20px 47px;
+      @media screen and (max-width: 1100px) {
+         grid-template-columns: 1fr;
+         gap: 28px;
+      }
    }
 }
 .item-advantages {
    display: flex;
-   &--price{
-      flex: 0 1 33%;
-   }
-   &--individual{
-      flex: 0 1 31%;
-      & .item-advantages__title{
-         margin-bottom: 12px;
-      }
-   }
-   &--quality{
-      flex: 0 1 34%;
-   }
+   flex: 1 1 auto;
    &__icon {
       width: 110px;
       height: 110px;
@@ -34,6 +32,10 @@
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
       margin-bottom: 10px;
+      @media screen and (max-width: $md) {
+         font-size: 18px;
+         line-height: math.div(20, 18) * 100%;
+      }
    }
    &__text {
       & p {

@@ -1,9 +1,30 @@
 .breadcrumbs {
    padding: 31px 15px 29px;
+   @media screen and (max-width: $lg) {
+      padding: 15px;
+   }
    &__list {
       display: flex;
+      white-space: nowrap;
+      overflow-x: auto;
       align-items: center;
       column-gap: 10px;
+      ::-webkit-scrollbar{
+         width: 0;
+         height: 0;
+      }
+      ::-webkit-scrollbar-track{
+         width: 0;
+         height: 0;
+         background: none;
+      }
+      ::-webkit-scrollbar-thumb{
+         background: none;
+         border: none;
+         width: 0;
+      }
+      scrollbar-width: 0;          /* "auto" или "thin"  */
+      scrollbar-color: transparent;   /* плашка скролла и дорожка */ 
    }
    &__item {
       font-size: 16px;

@@ -1,12 +1,83 @@
 .steps {
 	padding: 60px 0 63px;
+	@media screen and (max-width: $md) {
+		padding: 30px 0 30px;
+	}
 	&__body {
 		margin: 0 auto 0 46px;
+		@media screen and (max-width: $pc) {
+			margin: 0 auto;
+		}
 		& svg {
 			max-width: 100%;
 			font-family: "Montserrat", sans-serif;
 			font-weight: 600;
 			font-size: 20px;
+		}
+		@media screen and (max-width: $lg) {
+			& .steps-scheme {
+				display: none;
+			}
+		}
+	}
+	&__items{
+		grid-template-columns: 1fr;
+		gap: 20px;
+		display: none;
+		@media screen and (max-width: $lg) {
+			display: grid;
+		}
+	}
+}
+.step-item{
+	display: grid;
+	grid-template-columns: 85px 1fr;
+	align-items: center;
+	gap: 20px;
+	&__icon{
+		width: 85px;
+		height: 85px;
+		flex: 0 0 85px;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $greenColorDark;
+		background-position: center;
+		background-repeat: no-repeat;
+		box-shadow: 0px 0px 10px 10px #FEFFD4;
+	}
+	&__text{
+		font-size: 18px;
+		line-height: math.div(24, 18) * 100%;
+		color: $mainColor;
+		font-weight: 600;
+	}
+	&__1{
+		& .step-item__icon{
+			background-image: url('../img/steps/icon-1.svg');
+
+		}
+	}
+	&__2{
+		& .step-item__icon{
+			background-image: url('../img/steps/icon-2.svg');
+		}
+	}
+	&__3{
+		& .step-item__icon{
+			background-image: url('../img/steps/icon-3.svg');
+		}
+	}
+	&__4{
+		& .step-item__icon{
+			background-image: url('../img/steps/icon-4.svg');
+		}
+	}
+	&__5{
+		& .step-item__icon{
+			background-color: $redColor;
+			background-image: url('../img/steps/icon-5.svg');
 		}
 	}
 }

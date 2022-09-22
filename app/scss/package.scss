@@ -1,7 +1,13 @@
 .package{
    padding: 61px 0 61px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 30px;
+   }
    & .container {
       max-width: 1354px;
+      @media screen and (max-width: $md) {
+         padding: 0;
+      }
    }
    &__wrapper {
       position: relative;
@@ -20,9 +26,24 @@
       padding: 60px 159px 68px 0;
       border-radius: 62px;
       overflow: hidden;
+      @media screen and (max-width: $pc) {
+         padding: 60px 20px 50px 0;
+      }
+      @media screen and (max-width: $lg) {
+         padding: 40px 30px;
+      }
+      @media screen and (max-width: $md) {
+         background-image: none;
+         border-radius: 30px;
+      }
    }
    &__content{
       max-width: 390px;
+      position: relative;
+      z-index: 2;
+      @media screen and (max-width: $lg) {
+         max-width: 100%;
+      }
    }
    &__text{
       & p {
@@ -44,6 +65,9 @@
       border-radius: 0 0 0 62px;
       & img{
          border-radius: inherit;
+      }
+      @media screen and (max-width: $lg) {
+         display: none;
       } 
    }
 }

@@ -13,8 +13,14 @@
 .header-block {
    margin-bottom: 54px;
    font-family: "Montserrat", sans-serif;
+   @media screen and (max-width: $md) {
+      margin-bottom: 30px;
+   } 
    &__advantages {
       margin-bottom: 43px;
+      @media screen and (max-width: $md) {
+         margin-bottom: 35px;
+      }
    }
    &__prize {
    }
@@ -30,6 +36,9 @@
       margin-right: auto;
       margin-bottom: 59px;
       text-align: center;
+      @media screen and (max-width: $md) {
+         text-align: left;
+      }
       & .header-block__text {
          padding-left: 90px;
          &::before {
@@ -41,12 +50,21 @@
             width: 70px;
             height: 3px;
             background: $redColor;
+         }
+         @media screen and (max-width: $md) {
+            padding-left: 0;
+            &::before{
+               content: none;
+            }
          }
       }
    }
    &__steps {
       text-align: center;
       margin-bottom: 42px;
+      @media screen and (max-width: $md) {
+         text-align: left;
+      }
       & .header-block__text {
          padding-left: 90px;
          &::before {
@@ -59,11 +77,21 @@
             height: 3px;
             background: $redColor;
          }
+         @media screen and (max-width: $md) {
+            padding-left: 0;
+            &::before{
+               content: none;
+            }
+         }
       }
    }
    &__sale {
       margin-bottom: 51px;
       max-width: 470px;
+      @media screen and (max-width: $md) {
+         margin-bottom: 30px;
+         max-width: 100%;
+      }
       & .header-block__text {
          padding: 0;
          &::after {
@@ -74,6 +102,10 @@
    &__retail {
       max-width: 600px;
       margin-bottom: 50px;
+      @media screen and (max-width: $md) {
+         margin-bottom: 30px;
+         max-width: 100%;
+      }
       & .header-block__text {
          padding: 0;
          &::after {
@@ -99,6 +131,14 @@
       line-height: math.div(45, 30) * 100%;
       font-weight: 700;
       text-transform: uppercase;
+      @media screen and (max-width: $md) {
+         font-size: 24px;
+         line-height: math.div(35, 24) * 100%;
+      }
+      @media screen and (max-width: $sm) {
+         font-size: 22px;
+         line-height: math.div(35, 22) * 100%;
+      }
    }
    &__text {
       position: relative;
@@ -113,6 +153,17 @@
          width: 70px;
          height: 3px;
          background: $redColor;
+      }
+      @media screen and (max-width: $md) {
+         padding-bottom: 10px;
+         padding-right: 0;
+         &::after{
+            top: auto;
+            transform: none;
+            right: auto;
+            bottom: 0;
+            left: 0;
+         }
       }
    }
    &__popular-section {
@@ -150,7 +201,16 @@
    }
 }
 .general {
-   &__title {
+   // &__title {
+   //    font-family: "Montserrat", sans-serif;
+   //    font-size: 30px;
+   //    line-height: math.div(45, 30) * 100%;
+   //    font-weight: 700;
+   //    color: $blackColor;
+   //    text-transform: uppercase;
+   //    margin-bottom: 50px;
+   // }
+   &-title {
       font-family: "Montserrat", sans-serif;
       font-size: 30px;
       line-height: math.div(45, 30) * 100%;
@@ -158,6 +218,16 @@
       color: $blackColor;
       text-transform: uppercase;
       margin-bottom: 50px;
+      @media screen and (max-width: $md) {
+         font-size: 26px;
+         line-height: math.div(35, 26) * 100%;
+         margin-bottom: 35px;
+      }
+      @media screen and (max-width: $sm) {
+         font-size: 24px;
+         line-height: math.div(35, 24) * 100%;
+         margin-bottom: 30px;
+      }
    }
 }
 .content-title {
@@ -192,9 +262,15 @@
    }
    &__prev {
       left: 0;
+      @media screen and (max-width: $lg) {
+         left: 15px;
+      }
    }
    &__next {
       right: 0;
+      @media screen and (max-width: $lg) {
+         right: 15px;
+      }
    }
 }
 .btn.btn-green {
@@ -356,6 +432,11 @@
    &:not(:last-child) {
       margin-bottom: 31px;
    }
+   @media screen and (max-width: $md) {
+      &:not(:last-child) {
+         margin-bottom: 20px;
+      }
+   }
    &::before{
       content: "";
       position: absolute;
@@ -392,6 +473,11 @@
    position: absolute;
    z-index: 4;
    pointer-events: none;
+   @media screen and (max-width: $md) {
+      width: 140px;
+      height: 70px;
+      background-size: 100% 100%;
+   }
 }
 .badge-product{
    position: absolute;
@@ -402,6 +488,13 @@
    background-repeat: no-repeat;
    background-size: 100% 100%;
    background-position: 0 0;
+   @media screen and (max-width: $md) {
+      height: 70px;
+      width: 70px;
+   }
+   @media screen and (max-width: $xs) {
+      left: 0;
+   }
    &__hit{
       background-image: url('../img/card/badge-hit.svg');
    }
@@ -419,7 +512,7 @@
    font-family: 'Montserrat', sans-serif;
    color: $whiteColor;
    position: absolute;
-   z-index: 4;
+   z-index: 3;
    border-radius: 50%;
    pointer-events: none;
    &__pink{
@@ -454,6 +547,10 @@
       }
       &_4{
          background-image: url('../img/icons/game-4.png');
+      }
+      @media screen and (max-width: $md) {
+         height: 40px;
+         width: 40px;
       }
    }
 }

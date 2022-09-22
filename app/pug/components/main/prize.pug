@@ -1,64 +1,68 @@
 -
-   goods = [
-      {
-         text: "Символ года",
-         classes: 'item-prize--symbol item-prize--big',
-      },
-      {
-         text: "В картоне",
-         classes: 'item-prize--cardboard item-prize--min',
-      },
-      {
-         text: "В мешочке",
-         classes: 'item-prize--bag item-prize--min',
-      },
-      {
-         text: "В мешочке",
-         classes: 'item-prize--toy item-prize--long',
-      },
-      {
-         text: "Жестяные",
-         classes: 'item-prize--tin item-prize--long',
-      },
-      {
-         text: "Куклы",
-         classes: 'item-prize--dolls item-prize--big',
-      },
-      {
-         text: "Сундуки и шкатулки",
-         classes: 'item-prize--chests item-prize--min',
-      },
-      {
-         text: "В тубе",
-         classes: 'item-prize--tuba item-prize--min',
-      },
-      {
-         text: "VIP подарки",
-         classes: 'item-prize--vip item-prize--big',
-      },
-      {
-         text: "Керамика и фетр",
-         classes: 'item-prize--ceramics item-prize--min',
-      },
-      {
-         text: "Конфеты в коробках",
-         classes: 'item-prize--candies item-prize--min',
-      },
-      {
-         text: "Новинки",
-         classes: 'item-prize--new item-prize--long',
-      },
-   ]
+	goods = [
+		{
+			text: "Символ года",
+			classes: 'item-prize--symbol item-prize--big',
+		},
+		{
+			text: "В картоне",
+			classes: 'item-prize--cardboard item-prize--min',
+		},
+		{
+			text: "В мешочке",
+			classes: 'item-prize--bag item-prize--min',
+		},
+		{
+			text: "В мягкой игрушке",
+			classes: 'item-prize--toy item-prize--long',
+		},
+		{
+			text: "Жестяные",
+			classes: 'item-prize--tin item-prize--long',
+		},
+		{
+			text: "Куклы",
+			classes: 'item-prize--dolls item-prize--big',
+		},
+		{
+			text: "Сундуки и шкатулки",
+			classes: 'item-prize--chests item-prize--min',
+		},
+		{
+			text: "В тубе",
+			classes: 'item-prize--tuba item-prize--min',
+		},
+		{
+			text: "VIP подарки",
+			classes: 'item-prize--vip item-prize--big',
+		},
+		{
+			text: "Керамика и фетр",
+			classes: 'item-prize--ceramics item-prize--min',
+		},
+		{
+			text: "Конфеты в коробках",
+			classes: 'item-prize--candies item-prize--min',
+		},
+		{
+			text: "Новинки",
+			classes: 'item-prize--new item-prize--long',
+		},
+	]
 section.prize
-   .container
-      .header-block.header-block__prize
-         h2.header-block__title
-            span.header-block__text cладкие подарки
-      .prize__body
-         .prize-inner
-            each item, index in goods
-               a(href="").prize__item.item-prize(class=item.classes)
-                  .item-prize__image
-                     img(src=`img/prize/${index+1}.png`, alt=item.text)
-                  .item-prize__content
-                     .item-prize__text.icon-arrow-link!= item.text
+	.container
+		.header-block.header-block__prize
+			h2.header-block__title
+				span.header-block__text cладкие подарки
+		.prize__body
+			.prize-inner
+				each item, index in goods
+					a(href="").prize__item.item-prize(class=item.classes)
+						.item-prize__image
+							img(src=`img/prize/${index+1}.png`, alt=item.text)
+							//- picture
+							//- 	source(srcset=`img/prize/${index+1}.png`, media="(min-width: 767.98px)")
+							//- 	source(srcset=`img/prize/${index+1}_touch.png`, media="(min-width: 320px)")
+							//- 	img(src=`img/prize/${index+1}.png` alt=item.text)
+						.item-prize__content
+							.item-prize__text.icon-arrow-link!= item.text

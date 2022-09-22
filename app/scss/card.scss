@@ -4,17 +4,36 @@
       display: flex;
       column-gap: 51px;
       padding-bottom: 18px;
+      @media screen and (max-width: $pc) {
+         column-gap: 20px;
+      }
+      @media screen and (max-width: $lg) {
+         flex-direction: column;
+         gap: 20px;
+      }
    }
-   &__sold{
+   &__sold {
       top: 13px;
       right: 120px;
+      @media screen and (max-width: $md) {
+         right: auto;
+         left: 50%;
+         transform: translateX(-50%);
+      }
    }
-   &__sale{
+   &__sale {
       font-size: 20px;
       right: 50px;
       top: 20px;
       width: 70px;
       height: 70px;
+      @media screen and (max-width: $md) {
+         font-size: 16px;
+         height: 50px;
+         right: 0px;
+         top: 13px;
+         width: 50px;
+      }
    }
 }
 .main-card-slider {
@@ -23,6 +42,15 @@
    max-width: 602px;
    max-height: 446px;
    position: relative;
+   @media screen and (max-width: $lg) {
+      flex: 0;
+      align-self: center;
+   }
+   @media screen and (max-width: $md) {
+      max-width: initial;
+      width: 100%;
+      max-height: 312px;
+   }
 }
 .thumbs-slider {
    padding: 20px;
@@ -39,10 +67,15 @@
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      background: $whiteColor;
       transition: box-shadow 0.2s ease 0s;
       &.swiper-slide-thumb-active {
          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+         background: $whiteColor;
+      }
+      @media screen and (max-width: $md) {
+         width: 93px;
+         height: 93px;
+         flex: 0 0 93px;
       }
    }
    &__image {
@@ -51,6 +84,9 @@
          width: 100%;
          max-width: 100%;
       }
+      @media screen and (max-width: $md) {
+         padding: 10px;
+      }
    }
 }
 .base-slider {
@@ -58,6 +94,10 @@
    width: 100%;
    margin-left: 20px;
    position: relative;
+   @media screen and (max-width: $md) {
+      height: auto;
+      margin-left: 13px;
+   }
    &.disabled {
       & .base-slider__controls {
          display: none;
@@ -70,6 +110,12 @@
       justify-content: center;
       align-items: center;
       padding: 78px 55px;
+      @media screen and (max-width: $md) {
+         padding: 53px 37px;
+      }
+      @media screen and (max-width: $xs) {
+         padding: 30px 5px;
+      }
    }
    &__image {
       padding-bottom: math.div(291, 335) * 100%;
@@ -84,13 +130,34 @@
          object-fit: cover;
          max-width: 100%;
       }
+      @media screen and (max-width: $md) {
+         padding-bottom: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         & img {
+            position: static;
+         }
+      }
    }
    &__controls {
       & .slide-arrow__prev {
          left: 14px;
+         @media screen and (max-width: $md) {
+            left: 9px;
+         }
+         @media screen and (max-width: $xs) {
+            left: 0;
+         }
       }
       & .slide-arrow__next {
          right: 14px;
+         @media screen and (max-width: $md) {
+            right: 9px;
+         }
+         @media screen and (max-width: $xs) {
+            right: 0;
+         }
       }
    }
 }
@@ -101,23 +168,37 @@
       gap: 12px;
    }
    &__title {
-      margin-bottom: 2px;
+      margin-bottom: 3px;
+
    }
    &__actions {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 18px;
       margin: 9px 0 9px;
+      @media screen and (max-width: $md) {
+         margin: 6px 0;
+      }
    }
    &__bottom {
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 23px;
       font-weight: 500;
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       padding: 0 0 0 5px;
+      @media screen and (max-width: $lg) {
+         padding: 0;
+      }
+      @media screen and (max-width: $md) {
+         gap: 12px;
+         font-size: 15px;
+         line-height: math.div(20, 15) * 100%;
+      }
    }
    &__favorite,
    &__compare {
@@ -126,6 +207,9 @@
       gap: 9px;
       cursor: pointer;
       background: none;
+      @media screen and (max-width: $md) {
+         gap: 5px;
+      }
       &::before {
          font-size: 21px;
          color: inherit;
@@ -134,10 +218,14 @@
          color: $redColor;
       }
    }
-   &__games{
+   &__games {
       position: absolute;
       left: 32px;
       bottom: 0;
+      z-index: 3;
+      @media screen and (max-width: $xs) {
+         left: 0;
+      }
    }
 }
 .reviews-rating {
@@ -161,8 +249,9 @@
       margin-left: 8px;
       color: $grayColor82;
       text-decoration: underline;
-   }
-   &__count {
+      @media screen and (max-width: $md) {
+         margin-left: 3px;
+      }
    }
 }
 .parameters {
@@ -187,11 +276,14 @@
       align-items: center;
       width: 100%;
       gap: 10px;
-      & form{
+      & form {
          display: flex;
          align-items: center;
          flex-wrap: wrap;
          gap: 10px;
+      }
+      @media screen and (max-width: $lg) {
+         width: auto;
       }
    }
    &__button {
@@ -208,7 +300,7 @@
       font-weight: 500;
       font-size: 12px;
       line-height: math.div(15, 12) * 100%;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       cursor: pointer;
    }
    &__warning {
@@ -229,11 +321,14 @@
    align-items: center;
    column-gap: 10px;
    font-size: 16px;
+   @media screen and (max-width: $md) {
+      column-gap: 7px;
+   }
    &--weight {
-      & .parameters__buttons{
+      & .parameters__buttons {
          display: none;
       }
-      & .parameters__buttons.active{
+      & .parameters__buttons.active {
          display: flex;
       }
       & .parameters__button {
@@ -241,9 +336,12 @@
       }
       & .parameters__value {
          margin-left: 2px;
+         @media screen and (max-width: $md) {
+            flex-wrap: wrap;
+         }
       }
    }
-   &__form{
+   &__form {
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -263,7 +361,7 @@
       max-width: 86px;
       height: 25px;
    }
-   &__button, 
+   &__button,
    & button {
       height: 100%;
       padding: 10px;
@@ -276,7 +374,7 @@
       &--minus::before,
       &--plus::before,
       &--plus::after {
-         content: "";
+         content: '';
          width: 11px;
          position: absolute;
          top: 50%;
@@ -303,22 +401,25 @@
       text-align: center;
       font-size: 16px;
       height: 100%;
-      font-family: "SourceSansPro", sans-serif;
+      font-family: 'SourceSansPro', sans-serif;
    }
-   &__prices{
+   &__prices {
       display: flex;
       align-items: flex-end;
       flex-wrap: wrap;
       column-gap: 7px;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
+      @media screen and (max-width: $md) {
+         column-gap: 4px;         
+      }
    }
    &__price {
       font-weight: 700;
       font-size: 30px;
       line-height: 45px;
-      
+
       margin-left: 10px;
-      &-old{
+      &-old {
          color: $grayColorBD;
          font-size: 14px;
          line-height: math.div(20, 14) * 100%;
@@ -328,7 +429,7 @@
 }
 .actions {
    &__button {
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       min-width: 161px;
       min-height: 40px;
       padding: 9px 10px;
@@ -340,12 +441,19 @@
          max-width: 161px;
          border: 1px solid $redColor;
       }
+      @media screen and (max-width: $sm) {
+         width: 100%;
+         min-width: 100%;
+      }
    }
 }
 
 // ================ CARD-FEATURES ================================
 .features {
    padding: 32px 0 100px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 50px;
+   }
    &__body {
       padding: 13px 36px 13px 16px;
       border: 1px solid $grayColorBD;
@@ -353,6 +461,14 @@
       display: grid;
       grid-template-columns: 1fr 1.2fr 1fr 1.2fr;
       gap: 48px;
+      @media screen and (max-width: $lg) {
+         grid-template-columns: 1fr 1fr;
+         gap: 10px;
+         padding: 15px;
+      }
+      @media screen and (max-width: $md) {
+         grid-template-columns: 1fr;
+      }
    }
 }
 .item-features {
@@ -374,10 +490,13 @@
 .tabs {
    padding: 0 0 65px;
    overflow: hidden;
-   &__top{
+   @media screen and (max-width: $md) {
+      padding: 0 0 40px;
+   }
+   &__top {
       position: relative;
-      &::before{
-         content: "";
+      &::before {
+         content: '';
          position: absolute;
          left: 0;
          bottom: 0;
@@ -391,19 +510,26 @@
       align-items: center;
       column-gap: 67px;
       position: relative;
+      @media screen and (max-width: $md) {
+         column-gap: 20px;
+      }
    }
    &__link {
       display: block;
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
       padding-bottom: 18px;
       position: relative;
       cursor: pointer;
+      @media screen and (max-width: $md) {
+         font-size: 18px;
+         line-height: math.div(20, 18  ) * 100%;
+      }
       &::before {
-         content: "";
+         content: '';
          position: absolute;
          border-bottom: 4px solid $redColor;
          width: 100%;
@@ -423,18 +549,30 @@
    &__content {
       display: none;
       padding-top: 70px;
+      @media screen and (max-width: $md) {
+      padding-top: 40px;
+
+      }
       &.show {
          display: block;
       }
    }
    &__content--description {
-      padding-top: 51px;
+      padding-top: 51px;   
+      @media screen and (max-width: $md) {
+         padding-top: 40px;
+      }
    }
 }
 .card-compound {
    &__box {
       &:not(:last-child) {
          margin-bottom: 46px;
+      }
+      @media screen and (max-width: $md) {
+         &:not(:last-child) {
+            margin-bottom: 25px;
+         }
       }
    }
    &__label {
@@ -449,12 +587,22 @@
    &__body {
       padding: 35px 0 0;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      justify-content: flex-start;
+      justify-items: start;
       gap: 20px 30px;
+      @media screen and (max-width: $md) {
+         padding: 20px 0 0;
+      }
+      @media screen and (max-width: $sm) {
+         grid-template-columns: 1fr 1fr;
+         gap: 20px;
+      }
    }
    &__item {
       display: flex;
       flex-direction: column;
+      align-items: center;
       text-align: center;
       min-height: 235px;
       position: relative;
@@ -478,16 +626,16 @@
       color: $whiteColor;
    }
    &__image {
-      max-width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 7px;
-      padding-bottom: math.div(134, 165) * 100%;
+      // padding-bottom: math.div(134, 165) * 100%;
       max-height: 134px;
+      min-height: 134px;
       & img {
-         position: absolute;
-         top: 0;
+         // position: absolute;
+         // top: 0;
          height: auto;
          max-width: 100%;
       }
@@ -505,7 +653,7 @@
       color: $blackColor;
    }
 }
-.item-compound__content{
+.item-compound__content {
    position: relative;
    z-index: 2;
 }
@@ -525,26 +673,38 @@
       align-items: center;
       column-gap: 30px;
       margin-right: -90px;
+      @media screen and (max-width: $xxl) {
+         margin-right: 0;
+      }
+      @media screen and (max-width: $lg) {
+         margin: 0 -20px;
+      }
    }
    &__image {
       & img {
          height: auto;
       }
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
    &__content {
       background-color: $grayColorF2;
       border-radius: 30px;
-      background-image: url("../img/card/descr-bg.svg");
+      background-image: url('../img/card/descr-bg.svg');
       background-repeat: no-repeat;
       background-position: 100% 0;
       background-size: auto auto;
       padding: 43px 72px 43px 63px;
       flex: 1 1 auto;
       & p {
-         font-family: "SourceSansPro", sans-serif;
+         font-family: 'SourceSansPro', sans-serif;
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
          color: $blackColor;
+      }
+      @media screen and (max-width: $lg) {
+         padding: 30px 40px 30px 20px;
       }
    }
 }
@@ -576,6 +736,9 @@
    display: flex;
    flex-direction: column;
    padding: 50px 0 32px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 30px;
+   }
 }
 .reviews-item {
    padding: 24px 0;
@@ -583,6 +746,10 @@
    align-items: flex-start;
    column-gap: 39px;
    border-top: 1px solid $grayColorF2;
+   @media screen and (max-width: $md) {
+      column-gap: 20px;
+      padding: 20px 0;
+   }
    &:last-child {
       border-bottom: 1px solid $grayColorF2;
    }
@@ -613,7 +780,7 @@
       font-weight: 500;
       font-size: 30px;
       line-height: math.div(45, 30) * 100%;
-      font-family: "Montserrat", sans-serif;
+      font-family: 'Montserrat', sans-serif;
       margin-bottom: 6px;
    }
    &__name {
@@ -630,8 +797,14 @@
 // ================ CARD-SIMILAR ================================
 .products.similar {
    padding: 65px 0 65px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 30px;
+   }
 }
 // ================ CARD-VIEWED ================================
 .products.viewed {
    padding: 65px 0 130px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 65px;
+   }
 }

@@ -1,26 +1,36 @@
 .products {
    &.popular {
       padding: 89px 0 65px;
+      @media screen and (max-width: $md) {
+         padding: 40px 0 40px;
+      }
    }
    &__slider {
       position: relative;
-      margin: -30px;
    }
    &__wrapper {
       overflow: hidden;
-      padding: 30px;
+      padding: 20px;
+      margin: -20px;
       position: relative;
+      @media screen and (max-width: $lg) {
+         padding: 20px;
+         margin: -20px;
+      }
       &.disabled .card-product {
          opacity: 1;
          visibility: visible;
          flex-grow: 1;
          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+         max-width: 100%;
          & img {
             transform: scale(1);
          }
       }
       &.disabled .products__body {
          gap: 30px;
+         display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
       }
       &.disabled .products__controls {
          display: none;
@@ -37,6 +47,9 @@
 .slider-container.container {
    max-width: 1260px;
    padding: 0 60px;
+   @media screen and (max-width: $lg) {
+      padding: 0 20px;
+   }
 }
 .swiper-initialized .card-product{
    opacity: 0;
@@ -47,11 +60,14 @@
 }
 .card-product {
    background: $whiteColor;
-   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.17);
    border-radius: 10px;
    position: relative;
    max-width: 263px;
    transition: all 0.3s ease 0s;
+   @media screen and (max-width: $pc) {
+      max-width: initial;
+   }
    &.swiper-slide-visible {
       opacity: 1;
       visibility: visible;
@@ -149,6 +165,11 @@
          height: initial;
          width: initial;
          transition: all 0.5s ease 0s;
+         max-width: 100%;
+         max-height: 100%;
+      }
+      @media screen and (max-width: $lg) {
+         padding: 0 0 50%;
       }
       &.sold{
          opacity: 0.5;
@@ -275,15 +296,17 @@
       bottom: 0;
    }
 }
-   .reviews-rating__list {
-      & li {
+.reviews-rating__list {
+   & li {
       display: block;
-      margin-right: 3px;
       background-image: url("../img/icons/star-t.svg");
       background-size: 21px 20px;
       background-position: center;
       background-repeat: no-repeat;
       transition:  all .3s ease;
+      &:not(:last-child){
+         margin-right: 3px;
+      }
    }
    @for $i from 1 to 6{
       &.r-#{$i}{

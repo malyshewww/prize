@@ -248,7 +248,7 @@ section.tabs
 									.card-compound__item.item-compound
 										.card-compound__count 1
 										.card-compound__image
-											img(src=`img/compound/${i}/${i}-${index+1}.png`, alt=childrenItem.title)
+											img(class="lazyload" src=`img/compound/${i}/${i}-${index+1}.png`, alt=childrenItem.title)
 										.item-compound__content
 											.card-compound__company-name= childrenItem.companyName
 											.card-compound__title!= childrenItem.title

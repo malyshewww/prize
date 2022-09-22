@@ -1,4 +1,50 @@
 import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
+// PRODUCT SLIDERS
+const productSliders = document.querySelectorAll('.products__wrapper');
+productSliders.forEach((el) => {
+	const productSlides = el.querySelectorAll('.products__card').length;
+	if (productSlides > 4) {
+		const productSwiper = new Swiper(el, {
+			modules: [Navigation],
+			wrapperClass: 'products__body',
+			slideClass: 'products__card',
+			loop: false,
+			spaceBetween: 30,
+			slidesPerGroup: 1,
+			simulateTouch: false,
+			speed: 600,
+			// observer: true,
+			watchOverflow: true,
+			watchSlidesVisibility: true,
+			watchSlidesProgress: true,
+			observer: true,
+			loopPreventsSlide: true,
+			navigation: {
+				nextEl: el.querySelector('.slide-arrow.slide-arrow__next'),
+				prevEl: el.querySelector('.slide-arrow.slide-arrow__prev'),
+			},
+			breakpoints: {
+				580: {
+					watchSlidesVisibility: true,
+					watchSlidesProgress: true,
+					slidesPerView: 2,
+					slidesPerGroup: 1,
+				},
+				991.98: {
+					slidesPerView: 3,
+					slidesPerGroup: 1,
+
+				},
+				1200: {
+					slidesPerView: 4,
+					slidesPerGroup: 1,
+				},
+			},
+		})
+	} else {
+		el.classList.add('disabled');
+	}
+})
 function initSliders() {
 	// HOME-BANNER SLIDER
 	const bannerSlider = document.querySelector('.home-banner__body');
@@ -26,41 +72,7 @@ function initSliders() {
 			bannerSlider.classList.add('disabled');
 		}
 	}
-	// PRODUCT SLIDERS
-	const productSliders = document.querySelectorAll('.products__wrapper');
-	productSliders.forEach((el) => {
-		const productSlides = el.querySelectorAll('.products__card').length;
-		if (productSlides > 4) {
-			const productSwiper = new Swiper(el, {
-				modules: [Navigation],
-				wrapperClass: 'products__body',
-				slideClass: 'products__card',
-				loop: false,
-				spaceBetween: 30,
-				slidesPerView: 4,
-				simulateTouch: false,
-				speed: 600,
-				// observer: true,
-				watchOverflow: true,
-				watchSlidesVisibility: true,
-				watchSlidesProgress: true,
-				observer: true,
-				loopPreventsSlide: true,
-				navigation: {
-					nextEl: el.querySelector('.slide-arrow.slide-arrow__next'),
-					prevEl: el.querySelector('.slide-arrow.slide-arrow__prev'),
-				},
-				breakpoints: {
-					320: {
-						watchSlidesVisibility: true,
-						watchSlidesProgress: true,
-					},
-				},
-			})
-		} else {
-			el.classList.add('disabled');
-		}
-	})
+
 	// FACTORIES SLIDER
 	const factoriesSlider = document.querySelector('.factories-slider');
 	if (factoriesSlider) {
@@ -70,6 +82,7 @@ function initSliders() {
 				modules: [Navigation],
 				loop: false,
 				slidesPerView: 5,
+				slidesPerGroup: 1,
 				spaceBetween: 49,
 				wrapperClass: "factories__wrapper",
 				slideClass: "factories__item",
@@ -77,6 +90,24 @@ function initSliders() {
 				navigation: {
 					nextEl: '.factories__controls .slide-arrow__next',
 					prevEl: '.factories__controls .slide-arrow__prev',
+				},
+				breakpoints: {
+					320: {
+						slidesPerView: 1,
+						slidesPerGroup: 1,
+					},
+					479.98: {
+						slidesPerView: 2,
+					},
+					767.98: {
+						slidesPerView: 3,
+					},
+					991.98: {
+						slidesPerView: 4,
+					},
+					1200: {
+						slidesPerView: 5,
+					},
 				},
 			});
 		} else {
@@ -109,7 +140,12 @@ function initSliders() {
 			speed: 600,
 			observer: true,
 			breakpoints: {
-				991.98: {
+				320: {
+					slidesPerGroup: 1,
+					slidesPerView: 3,
+					spaceBetween: 13,
+				},
+				576: {
 					slidesPerGroup: 1,
 					slidesPerView: 3,
 					watchSlidesVisibility: true,

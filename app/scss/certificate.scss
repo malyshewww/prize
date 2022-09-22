@@ -1,5 +1,8 @@
 .certificate {
 	padding: 0 0 62px;
+	@media screen and (max-width: $md) {
+		padding: 0 0 35px;
+	}
 	&.reviews {
 		padding-bottom: 50px;
 	}
@@ -10,10 +13,25 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 30px;
+		@media screen and (max-width: $lg) {
+			gap: 20px;
+		}
+		@media screen and (max-width: $md) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 15px;
+		}
+		@media screen and (max-width: $xs) {
+			grid-template-columns: 1fr;
+		}
 	}
 	&__item {
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 		border-radius: 10px;
+		width: 100%;
 		overflow: hidden;
+		& img{
+			width: 100%;
+			max-height: 100%;
+		}
 	}
 }

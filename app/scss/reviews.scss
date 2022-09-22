@@ -1,5 +1,8 @@
 .reviews{
    padding-bottom: 64px;
+   @media screen and (max-width: $md) {
+      padding-bottom: 35px;      
+   }
    &__title {
       margin-bottom: 45px;
    }

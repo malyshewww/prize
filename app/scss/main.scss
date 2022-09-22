@@ -173,9 +173,9 @@ input.error + .custom-checkbox{
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
 // Базовые стили для элементов
 @import "base";
-
 @import "common";
 
+// Стили для диапазон Цены и Веса на странице "Категории"
 @import "range-slider";
 
 // Подключение стилей отдельных блоков и страниц
@@ -185,20 +185,28 @@ input.error + .custom-checkbox{
 @import "graph-modal.scss";
 @import "modals";
 
+// Стили для Аккордеона
+@import "accordeon";
+
+// Стили отдельных секций на "Главной странице"
 @import "banner";
 @import "advantages";
 @import "prizes";
 @import "package";
 @import "nuts";
-//Блок "delivery" на главной + Страница "Доставка и оплата"
-@import "delivery";
-
 @import "products";
 @import "factories";
 @import "steps";
 @import "sale";
 @import "retail";
+
+//Блок "delivery" на главной + Страница "Доставка и оплата"
+@import "delivery";
+
+// Секция "Получить консультацию"
 @import "consultation";
+// Секция "Популярные товары
+@import "popular";
 
 @import "footer";
 // Подключение стилей отдельных страниц
@@ -259,7 +267,6 @@ input.error + .custom-checkbox{
 
 // Стили для Пагинации
 @import "pagination";
-
 
 // Стили для галереи
 @import "lightgallery";

@@ -1,5 +1,6 @@
 // ============= ABOUT IMPORTANT ================
 .about {
+   overflow: hidden;
    &__container {
       display: flex;
       align-items: flex-start;
@@ -10,16 +11,30 @@
    }
    &__important {
       padding: 0 0 53px;
+      @media screen and (max-width: $md) {
+         padding: 0 0 35px;
+      }
    }
 }
 .important-about {
    &__image {
       margin-top: -70px;
       margin-right: -16px;
+      @media screen and (max-width: $pc) {
+         margin-right: -70px;
+      }
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
    & .info-body ul li {
       &:not(:last-child){
          margin-bottom: 22px;
+      }
+      @media screen and (max-width: $md) {
+         &:not(:last-child){
+            margin-bottom: 15px;
+         }
       }
    }
 }
@@ -27,12 +42,19 @@
 // =========== ABOUT GUARANTEES =================
 .about-guarantees {
    padding: 55px 0 64px;
+   @media screen and (max-width: $md) {
+      padding: 35px 0 60px;
+   }
    &__container {
       max-width: 1324px;
       background: $greenLightColor-2;
       border-radius: 60px;
       padding: 41px 0 0;
       position: relative;
+      @media screen and (max-width: $lg) {
+         border-radius: 30px;
+         padding: 30px 0 0;
+      }
    }
    & .container {
       display: flex;
@@ -43,6 +65,9 @@
       top: 50%;
       transform: translateY(-50%);
       left: 18px;
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
    &__items {
       width: 50%;
@@ -51,6 +76,13 @@
       row-gap: 30px;
       margin-bottom: -60px;
       padding-left: 16px;
+      position: relative;
+      z-index: 2;
+      @media screen and (max-width: $lg) {
+         width: 100%;
+         gap: 20px;
+         padding-left: 0;
+      }
    }
    &__item {
       display: flex;
@@ -64,6 +96,14 @@
          column-gap: 30px;
          padding: 31px 24px;
       }
+      @media screen and (max-width: $lg) {
+         padding: 20px;
+         column-gap: 20px;
+      }
+      @media screen and (max-width: $md) {
+         padding: 20px 15px;
+         display: block;
+      }
    }
    &__icon {
       margin: 2px 0 0;
@@ -72,6 +112,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      @media screen and (max-width: $md) {
+         float: left;
+         margin-right: 15px;
+      }
    }
    &__text {
       & p {
@@ -83,6 +127,9 @@
 // =========== ABOUT ADVANTAGES =================
 .about-advantages {
    padding: 55px 0 30px;
+   @media screen and (max-width: $md) {
+      padding: 50px 0 30px;
+   }
    &__container {
    }
    &__header {
@@ -90,6 +137,9 @@
       font-size: 16px;
       line-height: math.div(24, 20) * 100%;
       margin: 0 auto 88px;
+      @media screen and (max-width: $md) {
+         margin: 0 auto 50px;
+      }
    }
    &__title {
       font-size: 20px;
@@ -109,6 +159,14 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 82px 30px;
+      @media screen and (max-width: $lg) {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 60px 30px;
+      }
+      @media screen and (max-width: $md) {
+         grid-template-columns: 1fr;
+         gap: 50px 0px;
+      }
    }
    &__item {
       background: $whiteColor;
@@ -124,6 +182,9 @@
       top: calc(-42.5px);
       left: calc(50% - 42.5px);
       transform-style: preserve-3d;
+      @media screen and (max-width: $lg) {
+         top: -30px;
+      }
       &::before {
          content: "";
          position: absolute;
@@ -161,6 +222,9 @@
 // ========== ABOUT-DELIVERY ==============
 .about-delivery {
    padding: 31px 0 65px;
+   @media screen and (max-width: $md) {
+      padding: 30px 0 35px;
+   }
    &__container {
       text-align: center;
    }
@@ -183,48 +247,3 @@
    }
 }
 
-// ========== POPULAR-SECTION ==============
-.popular-section {
-   padding-bottom: 127px;
-   &__body {
-      grid-template-rows: repeat(3, 1fr 30px) 1fr;
-   }
-   &__item {
-      background-repeat: no-repeat;
-   }
-}
-.item-prize--candies-prize {
-   background-image: url("../img/popular/popular-1-bg.svg");
-   & .item-prize__text::before {
-      color: $greenColor;
-   }
-}
-.item-prize--nuts-fruits {
-   background: $yellowColor;
-   &::before {
-      content: "";
-      background-image: url("../img/popular/popular-3-bg.svg");
-      background-repeat: no-repeat;
-      background-position: 0 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-      border-radius: inherit;
-   }
-   & .item-prize__text {
-      color: $mainColor;
-      max-width: 90%;
-      &::before {
-         color: inherit;
-      }
-   }
-}
-.item-prize--sale {
-   background-image: url("../img/popular/popular-4-bg.svg");
-   & .item-prize__text::before {
-      color: $redColor;
-   }
-}

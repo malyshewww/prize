@@ -2,7 +2,7 @@ extends layout.pug
 
 block vars 
 	- var pageTitle = "Категория Сладкие подарки";
-	- var currentTitle = "Сладкие подарки"
+	- var currentTitle = "Сладкие подарки";
 
 block content
 	div.breadcrumbs.container
@@ -12,11 +12,12 @@ block content
 			li.breadcrumbs__item= currentTitle
 	.category-page 
 		.category-page__container 
-			h1.category-page__title.general__title= currentTitle
+			h1.category-page__title.general-title= currentTitle
 		div.category 
 			.category__container 
 				include ./components/category/category-sorting
 				.category__body
+					- let categoryPrizes = true;
 					include ./components/category/category-aside
 					include ./components/category/category-content
 		include ./components/consultation

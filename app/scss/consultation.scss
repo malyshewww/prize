@@ -1,7 +1,13 @@
 .consultation {
    padding: 65px 0 130px;
+   @media screen and (max-width: $lg) {
+      padding: 30px 0 60px;
+   }
    & > .container {
       max-width: 1354px;
+      @media screen and (max-width: $lg) {
+         padding: 0;
+      }
    }
    &__body {
       border-radius: 60px;
@@ -12,9 +18,24 @@
       background-color: $greenLightColor-2;
       padding: 55px 0 61px;
       position: relative;
+      @media screen and (max-width: $lg) {
+         border-radius: 30px;
+         padding: 40px 0 40px;
+      }
    }
    &__content {
       max-width: 730px;
+      position: relative;
+      z-index: 2;
+      & .checkbox-item label{
+         display: block;
+      }
+      & .custom-checkbox {
+         top: 2px;
+      }
+      @media screen and (max-width: $lg) {
+         max-width: 100%;
+      }
    }
    &__image{
       position: absolute;
@@ -24,12 +45,19 @@
       & img {
          height: auto;
       }
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
 }
 .form {
    &__item {
       max-width: 195px;
       flex: 1 1 auto;
+      @media screen and (max-width: $md) {
+         max-width: 100%;
+         width: 100%;
+      }
    }
    &__input {
       max-width: 100%;
@@ -59,6 +87,9 @@
 				opacity: 0;
 			}
 		}
+      @media screen and (max-width: $md) {
+         width: 100%;
+      }
    }
    &__button {
       flex: 1;
@@ -69,6 +100,9 @@
       &.disabled{
          opacity: 0.5;
          pointer-events: none;
+      }
+      @media screen and (max-width: $md) {
+         min-width: 100%;
       }
    }
    & a.form__link {
@@ -83,5 +117,10 @@
    flex-wrap: wrap;
    column-gap: 28px;
    margin-bottom: 27px;
+   @media screen and (max-width: $md) {
+      flex-direction: column;
+      row-gap: 20px;
+      column-gap: 0;
+   }
 }
 

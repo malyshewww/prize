@@ -9,6 +9,9 @@ block content
 			li.breadcrumbs__item
 				a(href="#").breadcrumbs__link Главная
 			li.breadcrumbs__item= pageTitle
-	include ./components/certificate/certificate-images
+	section.certificate 
+		.certificate__container 
+			h1.certificate__title.general-title= pageTitle
+		include ./components/certificate/certificate-images
 	include ./components/consultation
 	include ./components/popular

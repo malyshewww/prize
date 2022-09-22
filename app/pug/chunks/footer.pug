@@ -92,8 +92,8 @@ footer.footer
 						img(src="img/footer/logo-text.svg", alt="")
 				a(href="collect.html").footer__button.btn Соберите подарок
 			.footer__menu.menu-footer
-				each item in footerMenu
-					.menu-footer__column
+				each item, i in footerMenu
+					.menu-footer__column(class=`footer-column_${i+1}`)
 							p.menu-footer__label !{item.label} 
 							ul.menu-footer__list
 								each childItem in item.children

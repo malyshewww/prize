@@ -1,7 +1,14 @@
 .delivery {
    padding: 85px 0 91px;
+	overflow: hidden;
+   @media screen and (max-width: $md) {
+      padding: 40px 0 50px;
+   }
    & .container {
       max-width: 1354px;
+      @media screen and (max-width: $md) {
+         padding: 0;
+      }
    }
    &__body{
       position: relative;
@@ -12,12 +19,21 @@
       background-image: url("../img/delivery/bg-road.svg");
       background-repeat: no-repeat;
       background-size: cover;
+      @media screen and (max-width: $md) {
+         border-radius: 30px;
+      }
    }
    &__content {
       box-sizing: content-box;
       padding: 60px 88px 0 38px;
       margin-bottom: -60px;
       max-width: 460px;
+      position: relative;
+      z-index: 2;
+      @media screen and (max-width: $lg) {
+         max-width: 100%;
+         padding: 50px 20px;
+      }
    }
    &__title {
       font-size: 20px;
@@ -25,18 +41,32 @@
       font-weight: 600;
       color: $whiteColor;
       margin-bottom: 44px;
+      @media screen and (max-width: $md) {
+         margin-bottom: 30px;
+      }
    }
    &__image {
       position: absolute;
       height: auto;
       left: 84px;
       top: -102px;
+      @media screen and (max-width: $pc) {
+         left: -60px;
+         top: 50%;
+         transform: scale(0.8) translateY(-50%);
+      }
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
-
    &__items {
       display: grid;
 		grid-template-columns: repeat(2, 1fr);
       gap: 30px 26px;
+      @media screen and (max-width: $md) {
+         grid-template-columns: 1fr;
+         gap: 20px;   
+      }
    }
 }
 
@@ -52,6 +82,9 @@
    border-radius: 10px;
    padding: 36px 4px 29px;
    width: 100%;
+   @media screen and (max-width: $lg) {
+      max-width: 100%;
+   }
    &__icon {
       min-width: 70px;
       max-width: 75px;
@@ -83,22 +116,37 @@
 
 // ============ DELIVERY-PAGE ==============
 .delivery-page {
+   overflow: hidden;
    &__terms {
       padding-bottom: 60px;
+      @media screen and (max-width: $md) {
+         padding-bottom: 30px;
+      }
    }
 }
 .terms-delivery {
    & .container {
       max-width: 1354px;
+      @media screen and (max-width: $xxl) {
+         max-width: 1170px;
+         padding: 0 15px;
+      }
    }
    &__wrapper {
       padding-left: 90px;
+      @media screen and (max-width: $xxl) {
+         padding-left: 0px;
+      }
    }
    &__inner {
       display: flex;
       align-items: flex-start;
       column-gap: 36px;
       padding-bottom: 37px;
+      @media screen and (max-width: $lg) {
+         flex-direction: column;
+         gap: 20px;
+      }
    }
    &__info {
       position: relative;
@@ -107,6 +155,9 @@
          font-size: 20px;
          line-height: math.div(24, 20) * 100%;
          font-weight: 600;
+         @media screen and (max-width: $md) {
+            margin-bottom: 30px;
+         }
       }
       & p {
          padding-left: 47px;
@@ -114,6 +165,12 @@
          font-weight: 400;
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
+         @media screen and (max-width: $pc) {
+            padding-left: 0;
+         }
+         @media screen and (max-width: $md) {
+            margin-top: 15px;
+         }
       }
       &::before{
          content: "";
@@ -122,9 +179,14 @@
          left: -25px;
          background-image: url(../img/delivery-page/garland.svg);
          background-repeat: no-repeat;
-         background-size: 63px 580px;
-         width: 63px;
-         height: 580px;
+         background-size: 65px 100%;
+         width: 65px;
+         height: 100%;
+      }
+      @media screen and (max-width: $pc) {
+         &::before{
+            content: none;
+         }
       }
    }
    &__image {
@@ -133,6 +195,11 @@
       border-radius: 60px;
       overflow: hidden;
       align-self: flex-start;
+      @media screen and (max-width: $lg) {
+         width: 100%;
+         max-height: 200px;
+         border-radius: 30px;
+      }
    }
 }
 
@@ -142,10 +209,14 @@
    }
    &__inner {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      column-gap: 25px;
+      gap: 10px 25px;
       font-size: 16px;
       line-height: math.div(24, 16) * 100%;
+      @media screen and (max-width: $md) {
+         padding-bottom: 15px;
+      }
    }
    &__item {
       display: flex;
@@ -175,12 +246,23 @@
       margin: 0 auto;
       background: $yellowColor;
       border-radius: 60px;
+      @media screen and (max-width: $lg) {
+         padding-bottom: 35px;
+         background: none;
+         border-radius: 0px;
+      }
    }
 }
 .variants-delivery {
    &__container {
       padding-top: 60px;
       padding-bottom: 60px;
+      @media screen and (max-width: $lg) {
+         background: $yellowColor;
+         border-radius: 30px;
+         padding-top: 30px;
+         padding-bottom: 30px;
+      }  
    }
    &__title {
       margin-bottom: 30px;
@@ -190,6 +272,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 31px;
+      @media screen and (max-width: $lg) {
+         gap: 15px;
+         grid-template-columns: 1fr 1fr;
+      }
+      @media screen and (max-width: $md) {
+         grid-template-columns: 1fr;
+      }
    }
    &__info {
       padding-top: 30px;
@@ -216,6 +305,17 @@
    display: flex;
    flex-direction: column;
    align-items: center;
+   @media screen and (max-width: $lg) {
+      &:last-child{
+         grid-column: span 2;
+      }
+   }
+   @media screen and (max-width: $md) {
+      &:last-child{
+         grid-column: auto;
+      }
+      padding: 25px 20px;
+   }
    &__icon {
       width: 85px;
       height: 85px;
@@ -261,6 +361,9 @@
 .delivery-page {
    &__making {
       padding: 60px 0 64px;
+      @media screen and (max-width: $md) {
+         padding: 30px 0 35px;
+      }
    }
 }
 .making-delivery {
@@ -268,6 +371,17 @@
       display: flex;
       align-items: center;
       column-gap: 91px;
+      @media screen and (max-width: $lg) {
+         gap: 30px;
+      }
+   }
+   &__image{
+      @media screen and (max-width: $lg) {
+         margin: 0 0 0 -90px;
+      }
+      @media screen and (max-width: $md) {
+         display: none;
+      }
    }
    &__info {
       & h2, h3, h4 {
@@ -279,6 +393,9 @@
       }
       &.info-body ul li:not(:last-child) {
          margin-bottom: 22px;
+         @media screen and (max-width: $md) {
+            margin-bottom: 15px;
+         }
       }
    }
 }

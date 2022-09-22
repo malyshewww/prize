@@ -22,6 +22,7 @@
 		display: flex;
 		justify-content: center;
 		display: none;
+		z-index: 10;
 		& span,
 		&::after,
 		&::before {
@@ -713,6 +714,15 @@ body._touch .menu__list > li.open .menu__link {
 	// 		right: 0;
 	// 	}
 	// }
+	.social-header__link{
+		width: auto;
+		height: auto;
+		min-width: 30px;
+		max-width: 33px;
+	}
+	.social-header__list {
+		gap: 12px;
+	}
 }
 @media screen and (max-width: $md) {
 	.main-header__body{
@@ -730,13 +740,6 @@ body._touch .menu__list > li.open .menu__link {
 	}
 	.actions-header{
 		gap: 31px;
-	}
-	.social-header__link{
-		width: auto;
-		height: auto;
-		min-width: 30px;
-		max-width: 33px;
-
 	}
 	.main-header{
 		& .container {
