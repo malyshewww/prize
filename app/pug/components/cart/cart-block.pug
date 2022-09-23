@@ -67,8 +67,9 @@ section.cart
 										button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus)
 										input(type="text" value="1").quantity-card__input
 										button.quantity-card__button.quantity-card__button--plus(data-plus)
-									.cart-item__prices 
-										.cart-item__price.cart-item__price_old= item.oldPrice 
+									.cart-item__prices
+										if item.oldPrice 
+											.cart-item__price.cart-item__price_old= item.oldPrice 
 										.cart-item__price= item.currentPrice 
 							.cart-item__footer
 								ul
@@ -92,4 +93,4 @@ section.cart
 						.cart-result__sum.cart-sum
 							.cart-sum__label Итого
 							.cart-sum__value 1730 ₽
-						a(href="#").cart-result__button.btn Перейти к оформлению
+						a(href="order.html").cart-result__button.btn Перейти к оформлению

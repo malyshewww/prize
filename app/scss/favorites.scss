@@ -1,8 +1,11 @@
 .favorites {
    padding-bottom: 130px;
+   @media screen and (max-width: $md) {
+      padding-bottom: 65px;
+   }
    &__body {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
       grid-template-rows: auto;
       gap: 30px 29px;
    }

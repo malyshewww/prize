@@ -1,3 +1,6 @@
+.clients-page {
+   overflow: hidden;
+}
 // ========== CLIENTS-BANNER ==============
 .clients-banner {
    color: $whiteColor;
@@ -77,21 +80,42 @@
    &__inner {
       display: flex;
       column-gap: 33px;
+      @media screen and (max-width: $pc) {
+         column-gap: 20px;
+      }
    }
    &__info {
       padding: 97px 0 0;
       min-width: 570px;
+      @media screen and (max-width: $pc) {
+         min-width: initial;
+         max-width: 100%;
+         padding: 30px 0 0;
+      }
+      @media screen and (max-width: $lg) {
+         padding: 15px 0 0;
+      }
    }
    &__title {
       max-width: 428px;
       &.clients-title {
          margin-bottom: 38px;
+         @media screen and (max-width: $md) {
+            margin-bottom: 30px;
+         }
+      }
+      @media screen and (max-width: $pc) {
+         max-width: 100%;
       }
    }
    &__items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 43px 12px;
+      @media screen and (max-width: $pc) {
+         grid-template-columns: 1fr;
+         gap: 20px;
+      }
    }
    &__item {
       display: flex;
@@ -108,6 +132,14 @@
    &__text {
       line-height: math.div(24, 16) * 100%;
       color: $blackColor;
+   }
+   &__image {
+      @media screen and (max-width: $pc) {
+         margin-left: -70px;
+      }
+      @media screen and (max-width: $lg) {
+         display: none;
+      }
    }
 }
 .clients-title {
@@ -129,6 +161,10 @@
       border-radius: 60px;
       padding-top: 50px;
       padding-bottom: 58px;
+      @media screen and (max-width: $lg) {
+         padding: 40px 10px 40px;
+         border-radius: 30px;
+      }
    }
    &__title {
       text-align: center;
@@ -136,19 +172,29 @@
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 45px;
+      @media screen and (max-width: $md) {
+         max-width: 100%;
+         margin-bottom: 30px;
+      }
    }
    &__inner {
       padding: 0 7px;
       display: grid;
-      grid-template-columns: 1.1fr 1.3fr 1.1fr 1.1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px 20px;
       counter-reset: item;
+      @media screen and (max-width: $md) {
+         padding: 0;
+      }
    }
    &__item {
       display: flex;
       align-items: center;
       gap: 23px;
       counter-increment: item;
+      @media screen and (max-width: $md) {
+         gap: 18px;
+      }
    }
    &__icon {
       position: relative;
@@ -191,10 +237,18 @@
 // ========== CLIENTS-STAGES ==============
 .clients-order {
    padding: 25px 0 65px;
+   @media screen and (max-width: $md) {
+      padding: 25px 0 35px;
+   }
    &__title {
       max-width: 590px;
       margin: 0 auto 50px;
       text-align: center;
+      @media screen and (max-width: $md) {
+         max-width: 100%;
+         margin-bottom: 30px;
+         padding-top: 0;
+      }
    }
    &__button {
       margin: 0 auto;
@@ -203,5 +257,9 @@
       padding: 14px 25px;
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
+      @media screen and (max-width: $md) {
+         max-width: 100%;
+         padding: 10px 20px;
+      }
    }
 }

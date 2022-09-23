@@ -1,12 +1,26 @@
 .collect {
 	padding-bottom: 64px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 35px;
+	}
 	&__body {
 		display: flex;
+		gap: 30px;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+		}
 	}
 	&__item {
 		flex: 0 0 40.2%;
-		&:not(:last-child){
-			margin-right: 30px;
+		@media screen and (max-width: $pc) {
+			flex: 1 1 auto;
+		}
+		@media screen and (max-width: $md) {
+			display: flex;
+			align-items: flex-end;
+			& .item-prize__content {
+				width: 100%;
+			}
 		}
 		&:nth-child(1) {
 			grid-area: none;
@@ -16,31 +30,46 @@
 		}
 		.item-prize__text {
 			max-width: 95%;
+			@media screen and (max-width: $lg) {
+				font-size: 24px;
+			}
 		}
 	}
 }
 .collect__item.item-prize--nuts-fruits::before {
-	background-image: url(../img/collect/collect-nuts-bg.svg);
+	background-image: url("../img/collect/collect-nuts-bg.svg");
 	background-position: 0 100%;
 	top: auto;
 	bottom: 0px;
 	border-radius: 10px;
 	box-shadow: none;
+	@media screen and (max-width: $md) {
+		background-size: cover;
+	}
 }
 // COLLECT TABS
 .collect-tabs {
 	padding-bottom: 45px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 20px;
+	}
 	& .tabs__list {
 		justify-content: center;
 	}
 	& .tabs__content {
 		padding-top: 40px;
+		@media screen and (max-width: $md) {
+			padding-top: 30px;
+		}
 	}
 }
 
 .collect {
 	&__table {
 		margin-bottom: 30px;
+		@media screen and (max-width: $lg) {
+			margin-bottom: 0;
+		}
 	}
 }
 .collect-table {
@@ -49,6 +78,24 @@
 		grid-template-columns: 1.4fr 1fr 1fr;
 		gap: 6px;
 		margin-bottom: 26px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr minmax(50px, 0.5fr) 1fr;
+			gap: 3px;
+		}
+	}
+	&__package {
+		@media screen and (max-width: $md) {
+			& .collect-table__header {
+				grid-template-columns: 1fr minmax(100px, 0.5fr) inmax(100px, 0.5fr);
+			}
+		}
+		@media screen and (max-width: $md) {
+			& .collect-table__th {
+				&:nth-child(2) {
+					word-break: break-all;
+				}
+			}
+		}
 	}
 	&__th {
 		background: $greenLightColor;
@@ -62,6 +109,12 @@
 		font-weight: 600;
 		line-height: math.div(20, 16) * 100%;
 		border-radius: 6px;
+		@media screen and (max-width: $md) {
+			font-size: 13px;
+			line-height: math.div(16, 13) * 100%;
+			padding: 12px 4px;
+			text-align: center;
+		}
 	}
 	&__td {
 		min-height: 95px;
@@ -70,20 +123,39 @@
 		align-items: center;
 		text-align: center;
 		padding: 0 3px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr minmax(50px, 0.5fr) 1fr;
+			padding: 0;
+		}
+	}
+	&__row {
+		@media screen and (max-width: $md) {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
 	}
 	&__name {
 		display: flex;
 		align-items: center;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+			gap: 10px;
+			align-items: flex-start;
+		}
 	}
 	&__images {
 		margin-right: 14px;
 		cursor: pointer;
 		position: relative;
-		// &:hover .collect-table__tooltip {
-		// 	transform: scale(1) translate(0, -50%);
-		// 	opacity: 1;
-		// 	visibility: visible;
-		// }
+		@media screen and (max-width: $md) {
+			margin-right: 0;
+		}
+		&:hover .collect-table__tooltip {
+			transform: scale(1) translate(0, -50%);
+			opacity: 1;
+			visibility: visible;
+		}
 		&-package {
 			& .collect-table__image {
 				width: 210px;
@@ -124,7 +196,7 @@
 		transform-origin: 0 0;
 		transition: all 0.3s ease 0s;
 		z-index: 5;
-		&.show{
+		&.show {
 			transform: scale(1) translate(0, -50%);
 			opacity: 1;
 			visibility: visible;
@@ -138,14 +210,20 @@
 	&__value {
 		line-height: math.div(24, 16) * 100%;
 		color: $blackColor;
-		& span::after{
+		& span::after {
 			content: attr(data-type);
+		}
+		@media screen and (max-width: $md) {
+			padding: 0 7px;
 		}
 	}
 	&__radiobutton {
-		padding-right: 120px;
 		display: flex;
 		justify-content: flex-end;
+		max-width: 60%;
+		@media screen and (max-width: $lg) {
+			max-width: 90%;
+		}
 	}
 	&__sub-header {
 		margin: 0px 0 26px;
@@ -156,7 +234,7 @@
 	& .radiobutton-item {
 		& .radiobutton-item__text {
 			margin: 0 16px 0 0;
-			&::after{
+			&::after {
 				content: attr(data-type);
 			}
 		}
@@ -247,13 +325,18 @@
 	height: 94px;
 	display: flex;
 	flex-direction: column-reverse;
-	&.show{
+	&.show {
 		max-height: 100%;
 		transition: max-height 1s ease-in-out 0s;
 	}
-	&:hover{
+	&:hover {
 		max-height: 100%;
 		transition: max-height 1s ease-in-out 0s;
+	}
+	@media screen and (max-width: $lg) {
+		max-height: 100%;
+		position: static;
+		height: auto;
 	}
 }
 .footer-collect {
@@ -269,6 +352,20 @@
 		&:not(:last-child) {
 			margin-bottom: 30px;
 		}
+		@media screen and (max-width: $pc) {
+			display: grid;
+			grid-template-columns: 1fr 300px;
+			grid-template-rows: auto;
+			gap: 20px;
+			align-items: flex-start;
+		}
+		@media screen and (max-width: $lg) {
+			align-items: flex-end;
+		}
+		@media screen and (max-width: $md) {
+			grid-template-columns: 100px 1fr;
+			padding: 26px 16px;
+		}
 		&_2 .result-collect__item-total {
 			margin-top: 14px;
 		}
@@ -280,6 +377,14 @@
 		display: flex;
 		flex: 1 1 auto;
 		margin-right: 58px;
+		@media screen and (max-width: $lg) {
+			margin-right: 0;
+			grid-column: span 2;
+		}
+		@media screen and (max-width: $xs) {
+			flex-wrap: wrap;
+			gap: 14px;
+		}
 	}
 	&__button {
 		width: 100%;
@@ -289,10 +394,28 @@
 		line-height: math.div(20, 16) * 100%;
 		&:not(:last-child) {
 			margin-right: 24px;
+			@media screen and (max-width: $md) {
+				margin-right: 14px;
+			}
+			@media screen and (max-width: $xs) {
+				margin: 0;
+			}
 		}
 		&.btn.btn__zero {
 			border: 1px solid $redColor;
 			max-width: 246px;
+			@media screen and (max-width: $lg) {
+				max-width: 100%;
+			}
+		}
+		@media screen and (max-width: $lg) {
+			max-width: 100%;
+		}
+		@media screen and (max-width: $md) {
+			min-height: 38px;
+			padding: 8px 10px;
+			font-size: 15px;
+			line-height: math.div(18, 15) * 100%;
 		}
 	}
 	&__exports {
@@ -317,6 +440,9 @@
 		}
 		&:not(:last-child) {
 			margin-right: 20px;
+			@media screen and (max-width: $md) {
+				margin-right: 12px;
+			}
 		}
 	}
 	&__delete {
@@ -339,20 +465,28 @@
 		flex: 1 1 auto;
 		display: flex;
 		max-width: 674px;
-		& button:disabled{
-			background: rgba($grayColorBD, .7);
+		@media screen and (max-width: $lg) {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+		& button:disabled {
+			background: rgba($grayColorBD, 0.7);
 			cursor: default;
 			pointer-events: none;
 			border-color: transparent;
 			color: $whiteColor;
 		}
-		& .footer-collect__button.btn.btn__zero:disabled{
+		& .footer-collect__button.btn.btn__zero:disabled {
 			border-color: transparent;
 		}
 	}
 	&__item-wrap {
 		max-width: 674px;
 		flex: 1 1 auto;
+		@media screen and (max-width: $md) {
+			grid-column: span 2;
+		}
 	}
 	&__info {
 		display: none;
@@ -362,6 +496,33 @@
 		border-radius: 16px;
 		line-height: math.div(24, 16) * 100%;
 		color: $blackColor;
+		&-adapt {
+			padding: 22px 27px;
+			background: $grayColorF2;
+			margin-top: 0px;
+			border-radius: 16px;
+			line-height: math.div(24, 16) * 100%;
+			color: $blackColor;
+			display: none;
+			grid-column: span 2;
+			& p {
+				position: relative;
+				padding-left: 19px;
+				&::before {
+					content: "*";
+					position: absolute;
+					color: $redColor;
+					top: 0;
+					left: 0;
+					font-size: 24px;
+					width: 9px;
+				}
+			}
+		}
+		@media screen and (max-width: $lg) {
+			margin-top: 24px;
+			display: none;
+		}
 		& p {
 			position: relative;
 			padding-left: 19px;
@@ -385,6 +546,18 @@
 	margin-right: 35px;
 	margin-left: 51px;
 	color: $blackColor;
+	@media screen and (max-width: $pc) {
+		margin-right: 0;
+		margin-left: 0;
+	}
+	@media screen and (max-width: $lg) {
+		align-self: start;
+	}
+	@media screen and (max-width: $md) {
+		max-width: 100%;
+		width: 100%;
+		grid-column: span 2;
+	}
 	&__list {
 		margin-bottom: 8px;
 		display: none;
@@ -399,7 +572,7 @@
 			margin-bottom: 6px;
 		}
 	}
-	&__total{
+	&__total {
 		display: flex;
 		align-items: flex-end;
 		width: 100%;
@@ -449,12 +622,23 @@
 		padding-left: 6px;
 	}
 }
-.collect-footer:hover .result-collect__list, 
-.collect-footer:hover .footer-collect__info {
-	display: block;
+@media screen and (min-width: $lg) {
+	.collect-footer:hover .result-collect__list,
+	.collect-footer:hover .footer-collect__info {
+		display: block;
+	}
+	.collect-footer.show .result-collect__list,
+	.collect-footer.show .footer-collect__info {
+		display: block;
+	}
 }
-.collect-footer.show .result-collect__list,
-.collect-footer.show .footer-collect__info{
-	display: block;
+@media screen and (max-width: $lg) {
+	.collect-footer:hover .result-collect__list,
+	.collect-footer:hover .footer-collect__info-adapt {
+		display: block;
+	}
+	.collect-footer.show .result-collect__list,
+	.collect-footer.show .footer-collect__info-adapt {
+		display: block;
+	}
 }
-

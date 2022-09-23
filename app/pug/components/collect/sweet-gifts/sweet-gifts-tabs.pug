@@ -3,7 +3,7 @@
 		{
 			title: "Товары",
 			key: "goods",
-			arrayHeaders: ["Наименование", "Вес 1 шт.", "Количество"],
+			arrayHeaders: ["Наименование", "Вес 1&nbsp;шт.", "Количество"],
 			objectCategories: {
 				chocolate: {
 					title: "Шоколад",
@@ -206,10 +206,10 @@ div.collect-tabs
 		.tabs__content-wrapper.container
 			each tabItem, tabIndex in arrayTabs
 				div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
-					form.collect__table.collect-table(id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm")
+					form.collect__table.collect-table(id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm", class=tabItem.key=="package" ? "collect-table__package" : 0)
 						.collect-table__header.collect-table__thead
 							each itemHeader in tabItem.arrayHeaders
-								.collect-table__th=itemHeader
+								.collect-table__th!= itemHeader
 						if tabItem.key == "package"
 							.collect-table__sub-header.sub-header-table
 								.collect-table__tr 

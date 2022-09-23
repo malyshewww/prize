@@ -1,16 +1,26 @@
 .cart {
 	padding-bottom: 130px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 65px;
+	}
 	&__container {
 	}
 	&__inner {
 		display: flex;
 		gap: 30px;
+		@media screen and (max-width: $lg) {
+			flex-direction: column;
+			gap: 20px;
+		}
 	}
 	&__items {
 		flex: 1 1 auto;
 		display: flex;
 		flex-direction: column;
 		row-gap: 30px;
+		@media screen and (max-width: $lg) {
+			gap: 20px;
+		}
 	}
 	&__empty {
 		& .content-title {
@@ -27,18 +37,22 @@
 	box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 	border-radius: 10px;
 	position: relative;
-	&.active{
+	&.active {
 		& .cart-item__footer {
 			display: block;
 		}
-		& .cart-item__value-compound{
-			&::after{
+		& .cart-item__value-compound {
+			&::after {
 				transform: rotate(-180deg);
 			}
 		}
 	}
-	&__main{
+	&__main {
 		display: flex;
+		@media screen and (max-width: $md) {
+			flex-direction: column;
+			gap: 20px;
+		}
 	}
 	&__image {
 		margin-right: 30px;
@@ -47,10 +61,15 @@
 		position: relative;
 		padding-bottom: 18.7%;
 		align-self: stretch;
-		& img{
+		& img {
 			height: auto;
 			width: auto;
 			max-height: 100%;
+		}
+		@media screen and (max-width: $md) {
+			align-self: center;
+			width: 126px;
+			margin-right: 0;
 		}
 	}
 	&__sale {
@@ -65,22 +84,39 @@
 		align-items: center;
 		width: 100%;
 		gap: 30px;
+		@media screen and (max-width: $md) {
+			grid-template-columns: 1fr auto auto;
+		}
+		@media screen and (max-width: $sm) {
+			grid-template-columns: 1fr;
+			gap: 25px;
+		}
 	}
 	&__info {
 		flex: 1 1 auto;
+		@media screen and (max-width: $md) {
+			grid-column: span 3;
+		}
+		@media screen and (max-width: $sm) {
+			grid-column: auto;
+		}
 	}
 	&__title {
 		display: inline-block;
 		line-height: math.div(22, 16) * 100%;
 		font-weight: 700;
-		&:not(:last-child){
+		&:not(:last-child) {
 			margin-bottom: 12px;
 		}
+		@media screen and (max-width: $md) {
+			text-align: center;
+			width: 100%;
+		}
 	}
-	&__footer{
+	&__footer {
 		margin-top: 10px;
 		display: none;
-		& ul { 
+		& ul {
 			border: 1px solid #c9c9c9;
 			border-bottom: none;
 			& li {
@@ -88,7 +124,7 @@
 				grid-template-columns: 1fr 50px;
 				align-items: flex-start;
 				border-bottom: 1px solid #c9c9c9;
-				& > *:not(:last-child){
+				& > *:not(:last-child) {
 					border-right: 1px solid #c9c9c9;
 				}
 				& > * {
@@ -97,7 +133,7 @@
 			}
 		}
 	}
-	&__label-compound{
+	&__label-compound {
 		line-height: math.div(22, 16) * 100%;
 		display: inline-flex;
 		align-items: center;
@@ -116,13 +152,13 @@
 		display: inline-block;
 	}
 	&__value {
-		&-compound{
+		&-compound {
 			display: inline-flex;
 			align-items: center;
 			user-select: none;
 			cursor: pointer;
 			position: relative;
-			&::after{
+			&::after {
 				content: "";
 				display: block;
 				width: 0;
@@ -133,7 +169,7 @@
 				border-left: 5px solid transparent;
 				border-right: 5px solid transparent;
 				border-top: 7px solid currentColor;
-				transition: transform .3s ease 0s;
+				transition: transform 0.3s ease 0s;
 			}
 		}
 	}
@@ -146,6 +182,10 @@
 		border-radius: 30px;
 		column-gap: 5px;
 		padding: 0 12px;
+		@media screen and (max-width: $md) {
+			margin-right: auto;
+			margin-left: 0;
+		}
 	}
 	&__prices {
 		display: flex;
@@ -153,6 +193,9 @@
 		justify-content: flex-end;
 		flex-wrap: wrap;
 		gap: 10px;
+		@media screen and (max-width: $sm) {
+			justify-content: flex-start;
+		}
 	}
 	&__price {
 		font-family: "Montserrat", sans-serif;
@@ -175,13 +218,13 @@
 		background: transparent;
 	}
 }
-.cart-item__quantity{
-	& button{
+.cart-item__quantity {
+	& button {
 		width: 11px;
 		margin: 0;
 	}
 	& button::before,
-	& button::after{
+	& button::after {
 		content: "";
 		width: 11px;
 		position: absolute;
@@ -190,7 +233,7 @@
 		height: 1px;
 		background: $blackColor;
 	}
-	& button:last-child::after{
+	& button:last-child::after {
 		transform: rotate(-90deg);
 	}
 }
@@ -231,14 +274,21 @@
 	position: sticky;
 	top: 20px;
 	right: 0;
-	flex: 0 0 360px;
+	flex: 0 1 360px;
 	height: 100%;
 	transition: top 0.3s ease 0s;
+	@media screen and (max-width: $lg) {
+		position: static;
+		flex: 1 1 auto;
+	}
 	&__body {
 		background: $whiteColor;
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 		border-radius: 10px;
 		padding: 32px 21px 30px 24px;
+		@media screen and (max-width: $md) {
+			padding: 24px;
+		}
 	}
 	&__list {
 		margin-bottom: 18px;
@@ -279,9 +329,9 @@
 	font-weight: 600;
 	font-family: "Montserrat", sans-serif;
 }
-.cart-link{
+.cart-link {
 	max-width: max-content;
-	&.hidden{
+	&.hidden {
 		display: none;
 	}
 }

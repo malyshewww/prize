@@ -1,8 +1,14 @@
 .order {
 	padding-bottom: 130px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 65px;
+	}
 	&__body {
 		display: flex;
 		gap: 30px;
+		@media screen and (max-width: $lg) {
+			flex-direction: column;
+		}
 	}
 	&__payment,
 	&__variant {
@@ -10,6 +16,9 @@
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 		border-radius: 10px;
 		padding: 30px 31px 30px 24px;
+		@media screen and (max-width: $md) {
+			padding: 24px;
+		}
 	}
 }
 .order-content {
@@ -24,12 +33,11 @@
 	}
 	&__form {
 		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 26px;
 		align-items: center;
 	}
 	&__group {
-		&:not(:last-child){
-			margin-right: 26px;
-		}
 		& .custom-radio {
 			border: 1px solid $grayColorBD;
 			width: 18px;
@@ -55,7 +63,7 @@
 		flex-direction: column;
 	}
 	&__group {
-		&:not(:last-child){
+		&:not(:last-child) {
 			margin-bottom: 14px;
 		}
 		& .custom-radio {
@@ -83,19 +91,25 @@
 	}
 }
 .company-order {
-	padding: 22px 4px 24px 0px;
+	padding: 22px 0px 24px 0px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1.1fr;
 	gap: 15px;
-	&__header{
-		& .custom-radio{
+	@media screen and (max-width: $md) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media screen and (max-width: $sm) {
+		grid-template-columns: 1fr;
+	}
+	&__header {
+		& .custom-radio {
 			border: 1px solid #bdbdbd;
 			flex: 0 0 18px;
 			height: 18px;
 			width: 18px;
-			&::before{
+			&::before {
 				height: 12px;
-    			width: 12px;
+				width: 12px;
 			}
 		}
 	}
@@ -104,6 +118,16 @@
 		flex-direction: column;
 		align-items: center;
 		height: 100%;
+		@media screen and (max-width: $md) {
+			&:last-child {
+				grid-column: span 2;
+			}
+		}
+		@media screen and (max-width: $sm) {
+			&:last-child {
+				grid-column: auto;
+			}
+		}
 	}
 	&__logo {
 		min-height: 60px;
@@ -130,19 +154,28 @@
 }
 .order-data {
 	flex: 0 0 360px;
-	&__result.cart-result{
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	&__result.cart-result {
 		height: auto;
-		margin-bottom: 30px;
 		position: static;
+		flex: 1 1 auto;
 	}
 	&__body {
 		background: $whiteColor;
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
 		border-radius: 10px;
 		padding: 30px 24px;
+		@media screen and (max-width: $md) {
+			padding: 24px;
+		}
 	}
 	&__title {
 		margin-bottom: 26px;
+		@media screen and (max-width: $md) {
+			margin-bottom: 22px;
+		}
 	}
 	&__form {
 		& .form__button {
@@ -160,6 +193,11 @@
 		position: relative;
 		&:not(:last-child) {
 			margin-bottom: 20px;
+		}
+		@media screen and (max-width: $md) {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
 		}
 		&.focus .form__label {
 			transform: translate(16px, -10px);

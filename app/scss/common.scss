@@ -15,7 +15,7 @@
    font-family: "Montserrat", sans-serif;
    @media screen and (max-width: $md) {
       margin-bottom: 30px;
-   } 
+   }
    &__advantages {
       margin-bottom: 43px;
       @media screen and (max-width: $md) {
@@ -53,7 +53,7 @@
          }
          @media screen and (max-width: $md) {
             padding-left: 0;
-            &::before{
+            &::before {
                content: none;
             }
          }
@@ -79,7 +79,7 @@
          }
          @media screen and (max-width: $md) {
             padding-left: 0;
-            &::before{
+            &::before {
                content: none;
             }
          }
@@ -157,7 +157,7 @@
       @media screen and (max-width: $md) {
          padding-bottom: 10px;
          padding-right: 0;
-         &::after{
+         &::after {
             top: auto;
             transform: none;
             right: auto;
@@ -181,6 +181,10 @@
          line-height: math.div(30, 20) * 100%;
          font-weight: 700;
          text-transform: none;
+         @media screen and (max-width: $md) {
+            font-size: 18px;
+            line-height: math.div(30, 18) * 100%;
+         }
       }
       & .header-block__text {
          padding-left: 90px;
@@ -196,6 +200,16 @@
             width: 70px;
             height: 3px;
             background: $greenLightColor-2;
+         }
+         @media screen and (max-width: $md) {
+            padding-left: 0;
+            &::before {
+               content: none;
+            }
+            &::after {
+               left: 50%;
+               transform: translateX(-50%);
+            }
          }
       }
    }
@@ -332,7 +346,7 @@
    border: 1px solid $redColor;
 }
 
-.real-radio:checked + .parameters__button{
+.real-radio:checked + .parameters__button {
    background: $greenColor;
    color: $whiteColor;
 }
@@ -409,17 +423,17 @@
    border: 1px solid transparent;
 }
 .radiobutton-item {
-	& label {
-		cursor: pointer;
-		display: inline-flex;
-		align-items: center;
-	}
-	&__text {
-		display: inline-block;
-		margin-left: 16px;
-		line-height: math.div(24, 16) * 100%;
-		color: $blackColor;
-	}
+   & label {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+   }
+   &__text {
+      display: inline-block;
+      margin-left: 16px;
+      line-height: math.div(24, 16) * 100%;
+      color: $blackColor;
+   }
 }
 
 // Список с индикатором
@@ -437,7 +451,7 @@
          margin-bottom: 20px;
       }
    }
-   &::before{
+   &::before {
       content: "";
       position: absolute;
       top: 4px;
@@ -464,10 +478,10 @@
 }
 
 // Продано
-.sold-product{
+.sold-product {
    width: 195px;
    height: 91px;
-   background: url('../img/icons/sold.svg');
+   background: url("../img/icons/sold.svg");
    background-repeat: no-repeat;
    background-size: 195px 91px;
    position: absolute;
@@ -479,7 +493,7 @@
       background-size: 100% 100%;
    }
 }
-.badge-product{
+.badge-product {
    position: absolute;
    top: 0;
    left: 32px;
@@ -495,58 +509,58 @@
    @media screen and (max-width: $xs) {
       left: 0;
    }
-   &__hit{
-      background-image: url('../img/card/badge-hit.svg');
+   &__hit {
+      background-image: url("../img/card/badge-hit.svg");
    }
-   &__new{
-      background-image: url('../img/card/badge-new.svg');
+   &__new {
+      background-image: url("../img/card/badge-new.svg");
    }
 }
-.sale-product{
+.sale-product {
    display: flex;
    justify-content: center;
    align-items: center;
    font-weight: 700;
    font-size: 16px;
    line-height: math.div(20, 16) * 100%;
-   font-family: 'Montserrat', sans-serif;
+   font-family: "Montserrat", sans-serif;
    color: $whiteColor;
    position: absolute;
    z-index: 3;
    border-radius: 50%;
    pointer-events: none;
-   &__pink{
+   &__pink {
       background: $redColorLight;
    }
-   &__green{
+   &__green {
       background: $greenLightColor;
    }
 }
-.games-product{
+.games-product {
    display: flex;
    align-items: center;
    pointer-events: none;
-   &__item{
+   &__item {
       width: 50px;
       height: 50px;
       border-radius: 50%;
       background-repeat: no-repeat;
       background-position: center;
       background-size: contain;
-      &:not(:last-child){
+      &:not(:last-child) {
          margin-right: 7px;
       }
-      &_1{
-         background-image: url('../img/icons/game-1.png');
+      &_1 {
+         background-image: url("../img/icons/game-1.png");
       }
-      &_2{
-         background-image: url('../img/icons/game-2.png');
+      &_2 {
+         background-image: url("../img/icons/game-2.png");
       }
-      &_3{
-         background-image: url('../img/icons/game-3.png');
+      &_3 {
+         background-image: url("../img/icons/game-3.png");
       }
-      &_4{
-         background-image: url('../img/icons/game-4.png');
+      &_4 {
+         background-image: url("../img/icons/game-4.png");
       }
       @media screen and (max-width: $md) {
          height: 40px;
@@ -554,14 +568,14 @@
       }
    }
 }
-.calc-yellow{
-   background: #FEFFD4;
+.calc-yellow {
+   background: #feffd4;
 }
 .lazyload,
 .lazyloading {
-	opacity: 0;
+   opacity: 0;
 }
 .lazyloaded {
-	opacity: 1;
-	transition: opacity 0.3;
+   opacity: 1;
+   transition: opacity 0.3;
 }
