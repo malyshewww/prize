@@ -95,14 +95,14 @@ body {
 	&.loaded {
 	}
 }
-.workemail{
+.workemail {
 	display: none;
 }
 input.error,
 textarea.error {
 	border-color: red;
 }
-input.error + .custom-checkbox{
+input.error + .custom-checkbox {
 	border-color: red;
 }
 //<ОБОЛОЧКА>===========================================================================================================
@@ -270,5 +270,8 @@ input.error + .custom-checkbox{
 
 // Стили для галереи
 @import "lightgallery";
+
+// Стили для Страницы "Карта сайта"
+@import "sitemap";
 
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================

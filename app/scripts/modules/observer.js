@@ -4,32 +4,32 @@
    options - объект опций, если они необходимы (необязательный параметр)
 */
 // Указываем элемент для «наблюдения»
-window.addEventListener('resize', observer);
+let mediaQuery = window.matchMedia('(min-width: 991.98px)');
+if (mediaQuery.matches) {
+   observer();
+}
 function observer() {
    const collect = document.getElementById('collect-footer');
-   if (window.innerWidth > 991.98) {
-      if (collect) {
-         const collectItem = collect.querySelector('.footer-collect__item');
-         const callback = ([entry]) => {
-            const targetInfo = entry.boundingClientRect;
-            const rootBoundsInfo = entry.rootBounds;
-            if (targetInfo.bottom < rootBoundsInfo.bottom) {
-               collect.classList.add('show');
-            } else {
-               collect.classList.remove('show');
-            }
-         };
-         // Задаем опции для «наблюдателя»
-         const options = {
-            rootMargin: '0px 0px -1px 0px',
-            // Когда будет срабатывать callback функция
-            threshold: [1]
+   if (collect) {
+      const collectItem = collect.querySelector('.footer-collect__item');
+      const callback = ([entry]) => {
+         const targetInfo = entry.boundingClientRect;
+         const rootBoundsInfo = entry.rootBounds;
+         if (targetInfo.bottom < rootBoundsInfo.bottom) {
+            collect.classList.add('show');
+         } else {
+            collect.classList.remove('show');
          }
-         // Создаем новый «наблюдатель»
-         const observer = new IntersectionObserver(callback, options);
-         // Прикрепляем «наблюдателя» к элементу
-         observer.observe(collect);
+      };
+      // Задаем опции для «наблюдателя»
+      const options = {
+         rootMargin: '0px 0px -1px 0px',
+         // Когда будет срабатывать callback функция
+         threshold: [1]
       }
+      // Создаем новый «наблюдатель»
+      const observer = new IntersectionObserver(callback, options);
+      // Прикрепляем «наблюдателя» к элементу
+      observer.observe(collect);
    }
 }
-observer();

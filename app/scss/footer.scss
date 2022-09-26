@@ -1,6 +1,6 @@
 .footer {
    background: $greenColorDark;
-   font-family: 'SourceSansPro', sans-serif;
+   font-family: "SourceSansPro", sans-serif;
    color: $whiteColor;
    &__main {
       padding: 50px 0 50px;
@@ -45,26 +45,24 @@
    margin-left: auto;
    @media screen and (max-width: $md) {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-left: 0;
-   }
-   @media screen and (max-width: $xs) {
       grid-template-columns: 1fr;
+      gap: 10px;
+      margin-left: 0;
+      width: 100%;
    }
    &__column {
       display: flex;
       flex-direction: column;
-      &:not(:last-child){
+      &:not(:last-child) {
          margin-right: 37px;
       }
       @media screen and (max-width: $lg) {
-         &:not(:last-child){
+         &:not(:last-child) {
             margin-right: 20px;
          }
       }
       @media screen and (max-width: $md) {
-         &:not(:last-child){
+         &:not(:last-child) {
             margin-right: 0;
          }
       }
@@ -75,6 +73,32 @@
       line-height: math.div(22, 16) * 100%;
       text-transform: uppercase;
       margin-bottom: 12px;
+      &::after {
+         content: "";
+         display: none;
+         width: 0;
+         height: 0;
+         margin: 0px 0px 0px 5px;
+         transition: all 0.3s ease 0s;
+         border-left: 7px solid transparent;
+         border-right: 7px solid transparent;
+         border-top: 10px solid $whiteColor;
+      }
+      &._active {
+         &::after {
+            transform: rotate(-180deg);
+         }
+      }
+      @media screen and (max-width: $md) {
+         &::after {
+            display: block;
+         }
+         margin-bottom: 10px;
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+      }
    }
    &__list {
       display: flex;
@@ -84,7 +108,7 @@
    &__link {
       font-size: 16px;
       line-height: math.div(24, 16) * 100%;
-      transition: color .2s ease 0s;
+      transition: color 0.2s ease 0s;
       &:hover {
          color: $redColorHover;
       }
@@ -97,7 +121,7 @@
       &:not(:last-child) {
          margin-bottom: 8px;
       }
-      &::before{
+      &::before {
          width: 16px;
          height: 20px;
          display: flex;
@@ -112,12 +136,12 @@
       line-height: math.div(24, 16) * 100%;
    }
 }
-.icon-email::before{
+.icon-email::before {
    font-size: 12px;
 }
-.icon-location.footer-contacts__item{
+.icon-location.footer-contacts__item {
    align-items: flex-start;
-   line-height: math.div(20 , 16) * 100%;
+   line-height: math.div(20, 16) * 100%;
 }
 .bottom-footer {
    border-top: 1px solid rgba($whiteColor, 0.5);
@@ -145,7 +169,7 @@
       }
    }
    &__map {
-      &::before{
+      &::before {
          width: 24px;
          height: 24px;
          display: flex;
@@ -159,4 +183,3 @@
       text-decoration: underline;
    }
 }
-

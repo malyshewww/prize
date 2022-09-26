@@ -40,6 +40,9 @@ import "./modules/fslightbox.js";
 // Ленивая загрузка изображений
 import "./modules/lazysizes.min.js";
 
+// Динамический адаптив
+import "./modules/dynamic_adapt.js";
+
 // Подключение скрипта jspdf
 // import "./modules/jspdf.js";
 // import { JSDOM } from "jsdom";
@@ -59,18 +62,18 @@ function cartActions(event) {
 		}
 	}
 }
-window.addEventListener("resize", collectAppend)
-function collectAppend() {
-	const collectItem = document.querySelector('.footer-collect__item');
-	const collectButtons = document.querySelector('.footer-collect__buttons');
-	if (window.innerWidth < 991.98) {
-		collectItem.insertAdjacentElement("afterbegin", collectButtons)
-		// collectItem.appendChild(collectButtons);
-	} else {
-		return false;
-	}
-}
-collectAppend();
+// window.addEventListener("resize", collectAppend)
+// function collectAppend() {
+// 	const collectItem = document.querySelector('.footer-collect__item');
+// 	const collectButtons = document.querySelector('.footer-collect__buttons');
+// 	if (window.innerWidth < 991.98) {
+// 		collectItem.insertAdjacentElement("afterbegin", collectButtons)
+// 		// collectItem.appendChild(collectButtons);
+// 	} else {
+// 		return false;
+// 	}
+// }
+// collectAppend();
 /* Проверка мобильного браузера */
 let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
 /* Добавление класса touch для Body если браузер мобильный */
@@ -149,8 +152,6 @@ parameters.forEach((item) => {
 })
 
 
-
-
 // const pathname = window.location.pathname;
 // // Указываем относительный путь файла
 // const url = new URL(window.location.href);
@@ -159,9 +160,28 @@ parameters.forEach((item) => {
 // console.log(urlParamWeight);
 // console.log(urlParamCompound);
 
-
+// Top header menu
+const iconMenuTop = document.querySelector('.top-header__icon');
+const menuHeaderTop = document.querySelector('.top-header__menu');
+if (iconMenuTop) {
+	iconMenuTop.addEventListener("click", (event) => {
+		event.target.classList.toggle('active');
+		menuHeaderTop.classList.toggle('show-menu');
+		document.body.classList.toggle('lock');
+	});
+}
+const menuClose = document.querySelectorAll('.menu-close');
+if (menuClose) {
+	for (let i = 0; i < menuClose.length; i++) {
+		const elemClose = menuClose[i];
+		elemClose.addEventListener('click', (event) => {
+			event.target.parentNode.classList.remove('show-menu');
+			document.body.classList.remove('lock');
+		})
+	}
+}
 // Menu burger
-const iconMenu = document.querySelector('.menu__icon');
+const iconMenu = document.querySelector('.burger-icon');
 const menuBody = document.querySelector('.menu');
 if (iconMenu) {
 	iconMenu.addEventListener("click", (event) => {
@@ -169,4 +189,59 @@ if (iconMenu) {
 		menuBody.classList.toggle('show-menu');
 		document.body.classList.toggle('lock');
 	});
+}
+
+// Filter
+const pageCategory = document.querySelector('.category-page');
+const overlay = document.querySelector('.overlay');
+if (pageCategory) {
+	const filterBtn = pageCategory.querySelector('#filter-btn');
+	const sidebar = pageCategory.querySelector('.category__aside');
+	const filterClose = pageCategory.querySelectorAll('[data-filter-close]');
+	function showFilter() {
+		sidebar.classList.toggle('show');
+		overlay.classList.toggle('show-overlay');
+		document.body.classList.toggle('lock');
+	};
+	if (filterBtn) {
+		filterBtn.addEventListener('click', function (e) {
+			e.stopPropagation();
+			showFilter();
+		});
+	}
+	for (let i = 0; i < filterClose.length; i++) {
+		const elemClose = filterClose[i];
+		elemClose.addEventListener('click', (e) => {
+			sidebar.classList.remove('show');
+			overlay.classList.remove('show-overlay');
+			document.body.classList.remove('lock');
+		});
+	}
+	document.addEventListener('click', (event) => {
+		let target = event.target;
+		let asideMenu = target == sidebar;
+		let filterButton = target == filterBtn;
+		let menu_is_show = sidebar.classList.contains('show');
+		if (!asideMenu && !filterButton && menu_is_show) {
+			showFilter();
+		}
+	});
+}
+
+// Search header
+const mainHeaderSearch = document.querySelector('.main-header__search');
+document.addEventListener('click', showSearch);
+function showSearch(event) {
+	const target = event.target;
+	if (target.closest('.actions-header__search')) {
+		mainHeaderSearch.classList.add('show-search');
+		overlay.classList.add('show-overlay');
+	}
+	if (target.closest('.main-header__search')) {
+		target.stopPropagation();
+	}
+	if (!target.closest('.actions-header__search')) {
+		mainHeaderSearch.classList.remove('show-search');
+		overlay.classList.remove('show-overlay');
+	}
 }

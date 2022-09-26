@@ -11,7 +11,7 @@
 		@media screen and (max-width: $lg) {
 			grid-template-columns: 1fr;
 		}
-		&.search-body{
+		&.search-body {
 			grid-template-columns: 1fr;
 			gap: 0;
 			& .category__cards {
@@ -19,7 +19,7 @@
 			}
 		}
 	}
-	&__cards{
+	&__cards {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
 		gap: 30px;
@@ -27,21 +27,21 @@
 			gap: 15px;
 		}
 	}
-	&__aside{
-		&-close{
+	&__aside {
+		&-close {
 			position: absolute;
 			top: 0;
 			right: 0;
 			padding: 15px;
 			background: none;
 			display: none;
-			&::before{
+			&::before {
 				font-size: 18px;
 				color: $redColor;
 			}
-		@media screen and (max-width: $lg) {
-			display: block;
-		}
+			@media screen and (max-width: $lg) {
+				display: block;
+			}
 		}
 		@media screen and (max-width: $lg) {
 			position: fixed;
@@ -51,11 +51,14 @@
 			min-height: 100vh;
 			overflow-x: hidden;
 			overflow-y: auto;
-			z-index: 20;
-			transition: right .3s linear 0s;
+			z-index: 30;
+			transition: right 0.3s ease 0s;
+			&.show {
+				right: 0;
+			}
 		}
 	}
-	&__button{
+	&__button {
 		margin: 30px 0 0;
 		width: 100%;
 		min-height: 40px;
@@ -71,8 +74,8 @@
 		border: 1px solid $greenColor;
 		background: transparent;
 		border-radius: 20px;
-		transition: all .2s linear 0s;
-		&:hover{
+		transition: all 0.2s linear 0s;
+		&:hover {
 			background: $greenColor;
 			color: $whiteColor;
 		}
@@ -84,7 +87,7 @@
 	align-items: center;
 	margin-bottom: 28px;
 	position: relative;
-	&__wrapper{
+	&__wrapper {
 		display: flex;
 		align-items: center;
 	}
@@ -107,7 +110,7 @@
 		position: relative;
 	}
 }
-.dropdown{
+.dropdown {
 	position: relative;
 	&__button {
 		cursor: pointer;
@@ -137,9 +140,9 @@
 		min-height: 30px;
 		border-radius: 19px;
 		padding: 3px 16px;
-		transition: all .2s linear 0s;
+		transition: all 0.2s linear 0s;
 		cursor: pointer;
-		&:last-child{
+		&:last-child {
 			border-radius: 19px 19px 19px 19px;
 		}
 	}
@@ -147,7 +150,7 @@
 	& li.current {
 		background: $pinkColorLight;
 	}
-	& li.current{
+	& li.current {
 		pointer-events: none;
 	}
 }
@@ -174,7 +177,7 @@
 			border-radius: 0px;
 			box-shadow: 0;
 			padding: 50px 20px 20px;
-		}	
+		}
 	}
 	&__header {
 		display: flex;
@@ -190,7 +193,7 @@
 	line-height: math.div(22, 14) * 100%;
 	color: $redColor;
 	background: none;
-	&[disabled]{
+	&[disabled] {
 		pointer-events: none;
 		color: $grayColorBD;
 	}
@@ -208,10 +211,10 @@
 	}
 	&.filter-group__material,
 	&.filter-group__compound,
-	&.filter-group__addit{
+	&.filter-group__addit {
 		padding-bottom: 33px;
 	}
-	&.filter-group__material .filter-group__title{
+	&.filter-group__material .filter-group__title {
 		margin-bottom: 21px;
 	}
 	&__item {
@@ -251,7 +254,7 @@
 		display: inline-block;
 		margin: 0 5px;
 	}
-	&__buttons{
+	&__buttons {
 		display: flex;
 		column-gap: 11px;
 		border-top: none;
@@ -262,7 +265,7 @@
 		z-index: 2;
 		background: $whiteColor;
 	}
-	&__btn{
+	&__btn {
 		width: 100%;
 		min-height: 40px;
 		display: flex;
@@ -272,21 +275,21 @@
 		color: $whiteColor;
 		font-size: 16px;
 		line-height: math.div(20, 16) * 100%;
-		font-family: 'Montserrat', sans-serif;
+		font-family: "Montserrat", sans-serif;
 		font-weight: 500;
 		padding: 8px;
 		border-radius: 20px;
 		border: 1px solid transparent;
-		transition: all .2s linear 0s;
-		&:hover{
+		transition: all 0.2s linear 0s;
+		&:hover {
 			background: $greenColorHover;
 		}
-		&-reset{
+		&-reset {
 			background: $whiteColor;
 			border: 1px solid $greenColor;
 			color: $greenColor;
-			transition: all .2s linear 0s;
-			&:hover{
+			transition: all 0.2s linear 0s;
+			&:hover {
 				background: $greenColor;
 				color: $whiteColor;
 			}
@@ -296,13 +299,13 @@
 		width: 18px;
 		height: 18px;
 		flex: 0 0 18px;
-		&::before{
+		&::before {
 			width: 12px;
 			height: 12px;
 		}
 	}
 	& .radiobutton-item:not(:last-child),
-	& .checkbox-item:not(:last-child){
+	& .checkbox-item:not(:last-child) {
 		margin-bottom: 14px;
 	}
 	& .custom-checkbox::before {
@@ -316,7 +319,7 @@
 		border: 1px solid transparent;
 	}
 }
-.category-filter{
+.category-filter {
 	position: relative;
 	background-color: transparent;
 	align-items: center;
@@ -325,10 +328,10 @@
 	@media screen and (max-width: $lg) {
 		display: flex;
 	}
-	&::after{
+	&::after {
 		content: "";
 		display: block;
-		background-image: url('../img/icons/filter-icon.svg');
+		background-image: url("../img/icons/filter-icon.svg");
 		width: 30px;
 		height: 30px;
 	}

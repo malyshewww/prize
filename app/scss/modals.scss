@@ -33,6 +33,9 @@
       width: 100%;
       padding: 50px 28px 40px 42px;
       position: relative;
+      @media screen and (max-width: $md) {
+         padding: 40px 15px 40px 15px;
+      }
       // opacity: 0;
       // transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
       // transition: all 0.5s ease 0s;
@@ -57,6 +60,9 @@
       }
       &:hover::before {
          color: $redColor;
+      }
+      @media screen and (max-width: $md) {
+         padding: 25px;
       }
    }
    &__title {
@@ -90,6 +96,19 @@
       max-width: 400px;
       margin: 0 auto;
    }
+   &__buttons {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 30px;
+      max-width: 300px;
+      margin: 30px auto 0;
+   }
+   &__btn {
+      padding: 8px;
+      max-width: 200px;
+      flex: 1 1 auto;
+   }
 }
 
 .form-modal {
@@ -102,11 +121,19 @@
       display: flex;
       flex-direction: column;
       padding: 40px 0;
+      @media screen and (max-width: $md) {
+         padding: 25px 0;
+      }
    }
    &__item {
       width: 100%;
       &:not(:last-child) {
          margin-bottom: 30px;
+      }
+      @media screen and (max-width: $md) {
+         &:not(:last-child) {
+            margin-bottom: 15px;
+         }
       }
    }
    &__input,
@@ -120,25 +147,29 @@
       font-family: "SourceSansPro", sans-serif;
       color: $mainColor;
       border-radius: 20px;
-		transition: all .2s ease 0s;
+      transition: border 0.2s ease 0s, color 0.2s ease 0s;
       cursor: auto;
       &::placeholder {
          font-size: 16px;
          line-height: math.div(22, 16) * 100%;
          font-family: "SourceSansPro", sans-serif;
          color: $grayColor82;
-		   transition: opacity .2s ease 0s;
+         transition: opacity 0.2s ease 0s;
       }
       &:focus {
-			border: 1px solid $greenColor;
-			&::placeholder{
-				opacity: 0;
-			}
-		}
+         border: 1px solid $greenColor;
+         &::placeholder {
+            opacity: 0;
+         }
+      }
    }
    &__textarea {
       min-height: 225px;
-      resize: none;
+      max-height: 300px;
+      resize: vertical;
+      @media screen and (max-width: $md) {
+         min-height: 180px;
+      }
    }
    &__button {
       border: 1px solid $redColor;
@@ -161,9 +192,14 @@
          color: $whiteColor;
          background: $redColor;
       }
-      &.disabled{
+      &.disabled {
          opacity: 0.5;
          pointer-events: none;
+      }
+      @media screen and (max-width: $md) {
+         max-width: 100%;
+         min-width: 100%;
+         padding: 8px 16px;
       }
    }
    & .checkbox-item {
@@ -182,7 +218,6 @@
          width: 100%;
       }
       & .form__link {
-         display: inline-block;
          text-decoration: underline;
       }
    }
@@ -193,12 +228,18 @@
 }
 .modal-message .modal__content {
    padding: 40px 40px 50px;
+   @media screen and (max-width: $md) {
+      padding: 40px 15px 40px 15px;
+   }
 }
 .modal-consultation .modal__content {
    padding: 50px 48px;
    max-width: 448px;
    font-family: "Montserrat", sans-serif;
    font-weight: 500;
+   @media screen and (max-width: $md) {
+      padding: 40px 15px 40px 15px;
+   }
 }
 .estimate-modal {
    padding-left: 17px;

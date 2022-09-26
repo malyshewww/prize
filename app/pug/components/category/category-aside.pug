@@ -1,5 +1,5 @@
 aside.category__aside
-	button(type="button" class="category__aside-close icon-delete")
+	button(type="button" class="category__aside-close icon-delete" data-filter-close)
 	form(action="#").filter#filters
 		input(type="hidden" name="sortby" value="menuindex")
 		input(type="hidden" class="filter-input__sortdir" name="sortdir" value="asc")
@@ -77,5 +77,5 @@ aside.category__aside
 				+checkboxes('Хит', "badge")
 				+checkboxes('Скидка', "badge")
 			.filter-group.filter-group__buttons
-				button(type="button").filter-group__btn.btn-green Показать
+				button(type="button" data-filter-close).filter-group__btn.btn-green Показать
 				button(type="button").filter-group__btn.btn-green.filter-group__btn-reset Сбросить

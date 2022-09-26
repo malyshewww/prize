@@ -228,7 +228,7 @@ div.collect-tabs
 		.tabs__content-wrapper.container
 			each tabItem, tabIndex in arrayTabs
 				div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
-					.collect__table.collect-table
+					form.collect__table.collect-table(id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm", class=tabItem.key=="package" ? "collect-table__package" : 0)
 							.collect-table__header.collect-table__thead
 								each itemHeader in tabItem.arrayHeaders
 									.collect-table__th=itemHeader
@@ -247,8 +247,8 @@ div.collect-tabs
 								.accordeon(data-spollers)
 									each itemCategories, CategoriesIndex in tabItem.objectCategories
 										.accordeon__item.item-accordeon
-												.item-accordeon__header.icon-arrow-next._active(data-spollers)= itemCategories.title
-												.item-accordeon__content.open
+												.item-accordeon__header.icon-arrow-next._active(data-spoller)= itemCategories.title
+												.item-accordeon__content
 													each child, childIndex in itemCategories.children
 														.collect-table__row.collect-table__tr
 															.collect-table__td

@@ -50,7 +50,7 @@ mixin modal(id, className)
 				input(type="checkbox" checked).real-checkbox
 				span.custom-checkbox 
 				span.checkbox-item__text
-					|Отправляя заявку, Вы соглашаетесь с
+					|Отправляя заявку, Вы соглашаетесь с&nbsp;
 					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
 		button.form-modal__button(type="submit") Отправить
 +modal("buy")
@@ -70,7 +70,7 @@ mixin modal(id, className)
 				span.checkbox-item__text
 					|Я согласен на &nbsp;
 					a.form__link(href="#" target="_blank") обработку персональных данных
-					|&nbsp;и с
+					|&nbsp;и с&nbsp;
 					a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
 		button.form-modal__button(type="submit" data-modal-button="success-order" data-modal-close) Отправить
 +modal("notice")
@@ -112,7 +112,7 @@ mixin modal(id, className)
 					span.checkbox-item__text
 						|Я согласен на &nbsp;
 						a.form__link(href="#" target="_blank") обработку персональных данных
-						|&nbsp;и с
+						|&nbsp;и с&nbsp;
 						a.form__link(href="politic.html" target="_blank") политикой конфиденциальности
 			button.form-modal__button(type="submit" data-modal-button="success-demonstration" data-modal-close) Отправить
 +modal("success-order", "modal-message")
@@ -141,7 +141,11 @@ mixin modal(id, className)
 	.modal__description
 		p Спасибо за вашу заявку. 
 		p Мы перезвоним вам в ближайшее время
-	
++modal("reset-calc-modal")
+	.modal__title.modal-message__title Вы действительно хотите очистить калькулятор?
+	.modal__buttons 
+		.modal__btn.btn#calc-btn-reset Да
+		.modal__btn.btn(data-modal-close) Нет
 mixin graphModal(id, className)
 	.graph-modal__container.modal(role="dialog" aria-modal="true" data-graph-target=id class=className)
 		div(class="graph-modal__content modal__content")

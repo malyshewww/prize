@@ -76,7 +76,7 @@
 			font-size: 15px;
 			line-height: math.div(16, 15) * 100%;
 			row-gap: 12px;
-			&::before{
+			&::before {
 				width: 23px;
 				height: 23px;
 				flex: 0 0 23px;
@@ -92,7 +92,7 @@
 			order: 1;
 		}
 		@media screen and (max-width: $sm) {
-			.item-prize__image{
+			.item-prize__image {
 				right: -60px;
 				transform: translateY(-50%) scale(0.6);
 			}
@@ -126,7 +126,7 @@
 			order: 4;
 		}
 		@media screen and (max-width: $sm) {
-			.item-prize__image{
+			.item-prize__image {
 				right: -80px;
 				transform: translateY(-50%) scale(0.6);
 			}
@@ -140,7 +140,7 @@
 			order: 5;
 		}
 		@media screen and (max-width: $sm) {
-			.item-prize__image{
+			.item-prize__image {
 				right: -80px;
 				transform: translateY(-50%) scale(0.6);
 			}
@@ -188,7 +188,7 @@
 			grid-area: auto;
 			order: 9;
 		}
-		@media screen and (max-width: $lg) {
+		@media screen and (max-width: $sm) {
 			grid-column: span 2;
 		}
 	}
@@ -198,7 +198,7 @@
 			grid-area: auto;
 			order: 10;
 		}
-		@media screen and (max-width: $lg) {
+		@media screen and (max-width: $sm) {
 			grid-column: span 2;
 		}
 	}
@@ -210,7 +210,7 @@
 			grid-column: span 2;
 		}
 		@media screen and (max-width: $sm) {
-			.item-prize__image{
+			.item-prize__image {
 				right: -90px;
 				transform: translateY(-50%) scale(0.6);
 			}
@@ -298,7 +298,7 @@
 		@media screen and (max-width: $md) {
 			font-size: 22px;
 			line-height: math.div(30, 26) * 100%;
-			&::before{
+			&::before {
 				width: 32px;
 				height: 32px;
 				flex: 0 0 32px;

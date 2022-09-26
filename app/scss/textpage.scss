@@ -1,5 +1,15 @@
 .text-page {
    padding-bottom: 100px;
+   @media screen and (max-width: $md) {
+      padding-bottom: 65px;
+   }
+   &-politic {
+      @media screen and (max-width: $sm) {
+         & .general-title {
+            font-size: 20px;
+         }
+      }
+   }
    &__body {
       color: $blackColor;
       line-height: math.div(24, 16) * 100%;
@@ -12,8 +22,13 @@
       }
       & ul {
          & li {
-            &:not(:last-child){
+            &:not(:last-child) {
                margin-bottom: 23px;
+            }
+            @media screen and (max-width: $md) {
+               &:not(:last-child) {
+                  margin-bottom: 15px;
+               }
             }
          }
       }

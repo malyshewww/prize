@@ -91,16 +91,17 @@ footer.footer
 					.footer-logo__text 
 						img(src="img/footer/logo-text.svg", alt="")
 				a(href="collect.html").footer__button.btn Соберите подарок
-			.footer__menu.menu-footer
+			.footer__menu.menu-footer(data-spollers="767.98,max")
 				each item, i in footerMenu
 					.menu-footer__column(class=`footer-column_${i+1}`)
-							p.menu-footer__label !{item.label} 
-							ul.menu-footer__list
-								each childItem in item.children
-									li.menu-footer__item 
-										a(href=childItem.link).menu-footer__link= childItem.title
+							p.menu-footer__label(data-spoller) !{item.label}
+							.menu-footer__list-wrap
+								ul.menu-footer__list.open
+									each childItem in item.children
+										li.menu-footer__item 
+											a(href=childItem.link).menu-footer__link= childItem.title
 				.menu-footer__column.footer-contacts
-					p.menu-footer__label Контакты
+					p.menu-footer__label(data-spoller) Контакты
 					ul.footer-contacts__list 
 						li.icon-phone-white.footer-contacts__item
 							a(href="tel:88312239969").footer-contacts__link 8 (831) 223-99-69
