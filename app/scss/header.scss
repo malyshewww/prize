@@ -34,7 +34,7 @@
 			background: $whiteColor;
 		}
 		& span {
-			top: 50%;
+			top: 49%;
 			transform: translateY(-50%);
 		}
 		&::before,
@@ -92,7 +92,7 @@
 		position: relative;
 		cursor: pointer;
 		display: inline-block;
-		@media (any-hover: hover) {
+		@media screen and (min-width: $lg) {
 			&::before {
 				content: "";
 				position: absolute;
@@ -186,7 +186,7 @@
 	}
 }
 .logo {
-	display: flex;
+	display: inline-flex;
 	flex-shrink: 0;
 	&__image {
 		position: absolute;
@@ -525,7 +525,7 @@ body._touch .menu__list > li.open .menu__link {
 		top: -16px;
 	}
 	.search-header {
-		flex: 0 1 230px;
+		flex: 0 1 200px;
 	}
 	.actions-header {
 		gap: 15px;
@@ -534,6 +534,9 @@ body._touch .menu__list > li.open .menu__link {
 		padding-bottom: 38px;
 	}
 	.menu__link {
+		font-size: 13px;
+	}
+	.main-header__link {
 		font-size: 13px;
 	}
 }
@@ -583,6 +586,7 @@ body._touch .menu__list > li.open .menu__link {
 				background: $greenColor;
 				opacity: 0;
 				visibility: hidden;
+				z-index: -1;
 				transition: opacity 0.2s linear 0s, visibility 0.2s linear 0s;
 			}
 			&.show-menu {
@@ -590,6 +594,7 @@ body._touch .menu__list > li.open .menu__link {
 				&::before {
 					opacity: 1;
 					visibility: visible;
+					z-index: 25;
 				}
 			}
 		}
@@ -804,9 +809,6 @@ body._touch .menu__list > li.open .menu__link {
 	.top-header__body {
 		column-gap: 5px;
 	}
-	.top-header {
-		padding: 14px 0 15px;
-	}
 	.logo__text {
 		padding-top: 0;
 		padding-right: 0;
@@ -820,10 +822,9 @@ body._touch .menu__list > li.open .menu__link {
 		}
 	}
 	.main-header__social {
-		margin-left: 10px;
+		margin-left: auto;
+		margin-right: 0;
 	}
-}
-@media screen and (max-width: 650px) {
 	.main-header__body {
 		flex-wrap: wrap;
 	}
@@ -834,9 +835,6 @@ body._touch .menu__list > li.open .menu__link {
 	.main-header__phones {
 		margin-left: 0;
 		margin-right: auto;
-	}
-	.main-header__social {
-		margin-right: 0;
 	}
 }
 @media screen and (max-width: $sm) {
@@ -854,6 +852,14 @@ body._touch .menu__list > li.open .menu__link {
 	.actions-top-header__link.download {
 		padding: 8px 16px;
 		min-height: 33px;
+	}
+	.main-header {
+		&__phone {
+			font-size: 14px;
+		}
+		&__link {
+			font-size: 12px;
+		}
 	}
 }
 @media screen and (max-width: $xs) {

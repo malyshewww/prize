@@ -75,7 +75,19 @@ function cartActions(event) {
 // }
 // collectAppend();
 /* Проверка мобильного браузера */
-let isMobile = { Android: function () { return navigator.userAgent.match(/Android/i); }, BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); }, iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); }, Opera: function () { return navigator.userAgent.match(/Opera Mini/i); }, Windows: function () { return navigator.userAgent.match(/IEMobile/i); }, any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); } };
+let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+let isMobile = {
+	Android: function () {
+		return navigator.userAgent.match(/Android/i);
+	},
+	BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+	iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+	Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+	Mozilla: function () { return navigator.userAgent.match(/Mozilla/i); },
+	Firefox: function () { return navigator.userAgent.match(/Firefox/i); },
+	Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+	any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+};
 /* Добавление класса touch для Body если браузер мобильный */
 function addTouchClass() {
 	if (isMobile.any()) {
@@ -180,7 +192,7 @@ if (menuClose) {
 		})
 	}
 }
-// Menu burger
+// Menu header category
 const iconMenu = document.querySelector('.burger-icon');
 const menuBody = document.querySelector('.menu');
 if (iconMenu) {
@@ -237,10 +249,7 @@ function showSearch(event) {
 		mainHeaderSearch.classList.add('show-search');
 		overlay.classList.add('show-overlay');
 	}
-	if (target.closest('.main-header__search')) {
-		target.stopPropagation();
-	}
-	if (!target.closest('.actions-header__search')) {
+	if (target.closest('.overlay')) {
 		mainHeaderSearch.classList.remove('show-search');
 		overlay.classList.remove('show-overlay');
 	}

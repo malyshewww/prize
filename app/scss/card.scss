@@ -169,7 +169,13 @@
    }
    &__title {
       margin-bottom: 3px;
-
+      &.general-title {
+         margin-bottom: 3px;
+         @media screen and (max-width: $md) {
+            font-size: 20px;
+            line-height: math.div(30, 20) * 100%;
+         }
+      }
    }
    &__actions {
       display: flex;
@@ -189,7 +195,7 @@
       font-weight: 500;
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       padding: 0 0 0 5px;
       @media screen and (max-width: $lg) {
          padding: 0;
@@ -300,7 +306,7 @@
       font-weight: 500;
       font-size: 12px;
       line-height: math.div(15, 12) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       cursor: pointer;
    }
    &__warning {
@@ -374,7 +380,7 @@
       &--minus::before,
       &--plus::before,
       &--plus::after {
-         content: '';
+         content: "";
          width: 11px;
          position: absolute;
          top: 50%;
@@ -401,16 +407,16 @@
       text-align: center;
       font-size: 16px;
       height: 100%;
-      font-family: 'SourceSansPro', sans-serif;
+      font-family: "SourceSansPro", sans-serif;
    }
    &__prices {
       display: flex;
       align-items: flex-end;
       flex-wrap: wrap;
       column-gap: 7px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       @media screen and (max-width: $md) {
-         column-gap: 4px;         
+         column-gap: 4px;
       }
    }
    &__price {
@@ -429,7 +435,7 @@
 }
 .actions {
    &__button {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       min-width: 161px;
       min-height: 40px;
       padding: 9px 10px;
@@ -496,7 +502,7 @@
    &__top {
       position: relative;
       &::before {
-         content: '';
+         content: "";
          position: absolute;
          left: 0;
          bottom: 0;
@@ -519,17 +525,17 @@
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 600;
       padding-bottom: 18px;
       position: relative;
       cursor: pointer;
       @media screen and (max-width: $md) {
          font-size: 18px;
-         line-height: math.div(20, 18  ) * 100%;
+         line-height: math.div(20, 18) * 100%;
       }
       &::before {
-         content: '';
+         content: "";
          position: absolute;
          border-bottom: 4px solid $redColor;
          width: 100%;
@@ -550,15 +556,14 @@
       display: none;
       padding-top: 70px;
       @media screen and (max-width: $md) {
-      padding-top: 40px;
-
+         padding-top: 40px;
       }
       &.show {
          display: block;
       }
    }
    &__content--description {
-      padding-top: 51px;   
+      padding-top: 51px;
       @media screen and (max-width: $md) {
          padding-top: 40px;
       }
@@ -587,14 +592,18 @@
    &__body {
       padding: 35px 0 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      grid-template-columns: repeat(6, 1fr);
       justify-content: flex-start;
       justify-items: start;
       gap: 20px 30px;
+      @media screen and (max-width: $lg) {
+         grid-template-columns: repeat(4, 1fr);
+      }
       @media screen and (max-width: $md) {
          padding: 20px 0 0;
+         grid-template-columns: repeat(3, 1fr);
       }
-      @media screen and (max-width: $sm) {
+      @media screen and (max-width: $xs) {
          grid-template-columns: 1fr 1fr;
          gap: 20px;
       }
@@ -691,14 +700,14 @@
    &__content {
       background-color: $grayColorF2;
       border-radius: 30px;
-      background-image: url('../img/card/descr-bg.svg');
+      background-image: url("../img/card/descr-bg.svg");
       background-repeat: no-repeat;
       background-position: 100% 0;
       background-size: auto auto;
       padding: 43px 72px 43px 63px;
       flex: 1 1 auto;
       & p {
-         font-family: 'SourceSansPro', sans-serif;
+         font-family: "SourceSansPro", sans-serif;
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
          color: $blackColor;
@@ -780,7 +789,7 @@
       font-weight: 500;
       font-size: 30px;
       line-height: math.div(45, 30) * 100%;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       margin-bottom: 6px;
    }
    &__name {
@@ -798,7 +807,7 @@
 .products.similar {
    padding: 65px 0 65px;
    @media screen and (max-width: $md) {
-      padding: 30px 0 30px;
+      padding: 30px 0 50px;
    }
 }
 // ================ CARD-VIEWED ================================

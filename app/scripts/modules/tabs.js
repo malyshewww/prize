@@ -13,10 +13,12 @@ window.addEventListener('hashchange', (event) => {
       hashLInk.classList.add('active');
       hashElement.classList.add('show');
       const hashElementParent = hashElement.closest('.tabs__body');
-      const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
-      const viewportHeight = window.innerHeight;
-      if (hashElementParentPosition > (viewportHeight / 2)) {
-         window.scrollTo({ top: hashElementParent.offsetTop, behavior: "smooth" });
+      if (hashElementParent) {
+         const hashElementParentPosition = hashElementParent.getBoundingClientRect().top;
+         const viewportHeight = window.innerHeight;
+         if (hashElementParentPosition > (viewportHeight / 2)) {
+            window.scrollTo({ top: hashElementParent.offsetTop, behavior: "smooth" });
+         }
       }
    }, 100)
 })

@@ -14,8 +14,14 @@
       margin: -20px;
       position: relative;
       @media screen and (max-width: $lg) {
-         padding: 20px;
-         margin: -20px;
+         padding: 15px;
+         margin: -15px;
+      }
+      @media screen and (max-width: $lg) {
+         &.disabled {
+            padding: 15px;
+            margin: -15px;
+         }
       }
       &.disabled .card-product {
          opacity: 1;
@@ -30,7 +36,17 @@
       &.disabled .products__body {
          gap: 30px;
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(262px, 1fr));
+         grid-template-columns: repeat(4, 1fr);
+         @media screen and (max-width: $pc) {
+            grid-template-columns: repeat(3, 1fr);
+         }
+         @media screen and (max-width: $lg) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 15px;
+         }
+         @media screen and (max-width: $sm) {
+            grid-template-columns: 1fr;
+         }
       }
       &.disabled .products__controls {
          display: none;
@@ -48,13 +64,13 @@
    max-width: 1260px;
    padding: 0 60px;
    @media screen and (max-width: $lg) {
-      padding: 0 20px;
+      padding: 0 15px;
    }
 }
-.swiper-initialized .card-product{
+.swiper-initialized .card-product {
    opacity: 0;
    visibility: hidden;
-   & .card-product__image img{
+   & .card-product__image img {
       transform: scale(0);
    }
 }
@@ -83,7 +99,7 @@
       position: relative;
       border-radius: 10px;
    }
-   &__sold{
+   &__sold {
       top: 23px;
       left: 50%;
       transform: translateX(-50%);
@@ -106,7 +122,7 @@
       &:hover::before {
          color: $redColor;
       }
-      &.selected::before{
+      &.selected::before {
          color: $redColor;
       }
    }
@@ -123,7 +139,7 @@
       z-index: 4;
       &_hit {
          background-image: url("../img/icons/badge.svg");
-         & span{
+         & span {
             color: $whiteColor;
             text-indent: 0%;
             transform: rotate(-45deg) translate(9px, -12px);
@@ -131,7 +147,7 @@
       }
       &_new {
          background-image: url("../img/icons/badge-new.svg");
-         & span{
+         & span {
             color: $mainColor;
             transform: rotate(-45deg) translate(5px, -12px);
          }
@@ -165,13 +181,11 @@
          height: initial;
          width: initial;
          transition: all 0.5s ease 0s;
-         max-width: 100%;
-         max-height: 100%;
       }
       @media screen and (max-width: $lg) {
          padding: 0 0 50%;
       }
-      &.sold{
+      &.sold {
          opacity: 0.5;
       }
    }
@@ -203,6 +217,7 @@
       flex-wrap: wrap;
       column-gap: 15px;
       row-gap: 10px;
+      margin-bottom: 14px;
    }
    &__compare {
       color: $grayColorBD;
@@ -214,12 +229,12 @@
       cursor: pointer;
       &::before {
          font-size: 20px;
-         transition: all .2s ease 0s;
+         transition: all 0.2s ease 0s;
       }
-      &:hover::before{
+      &:hover::before {
          color: $redColor;
       }
-      &.selected::before{
+      &.selected::before {
          color: $redColor;
       }
    }
@@ -241,11 +256,11 @@
       column-gap: 7px;
    }
    &__price {
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-weight: 600;
       font-size: 20px;
       line-height: math.div(24, 20) * 100%;
-      &-old{
+      &-old {
          color: $grayColorBD;
          font-size: 10px;
          line-height: math.div(12, 10) * 100%;
@@ -259,7 +274,7 @@
       min-height: 40px;
       font-weight: 500;
    }
-   &__delete{
+   &__delete {
       position: absolute;
       z-index: 5;
       top: 0;
@@ -273,24 +288,25 @@
       border: 1.3px solid $grayColorBD;
       color: $grayColorBD;
       border-radius: 50%;
-      transition: all .2s ease 0s;
+      transition: all 0.2s ease 0s;
       cursor: pointer;
-      &::before{
+      &::before {
          color: inherit;
          font-size: 14px;
-         transition: all .2s ease 0s;
+         transition: all 0.2s ease 0s;
       }
-      &:hover{
+      &:hover {
          border: 1.3px solid $redColor;
-         &::before{
+         &::before {
             color: $redColor;
          }
       }
    }
-   &__image-wrap{
+   &__image-wrap {
       position: relative;
+      z-index: 0;
    }
-   &__games{
+   &__games {
       position: absolute;
       left: 0;
       bottom: 0;
@@ -303,22 +319,19 @@
       background-size: 21px 20px;
       background-position: center;
       background-repeat: no-repeat;
-      transition:  all .3s ease;
-      &:not(:last-child){
+      transition: all 0.3s ease;
+      &:not(:last-child) {
          margin-right: 3px;
       }
    }
-   @for $i from 1 to 6{
-      &.r-#{$i}{
-         & li:nth-last-child(-n+#{$i}){
+   @for $i from 1 to 6 {
+      &.r-#{$i} {
+         & li:nth-last-child(-n + #{$i}) {
             background-image: url("../img/icons/star.svg");
             background-repeat: no-repeat;
          }
       }
    }
-}
-.select-wrapper{
-   margin-top: 14px;
 }
 .select-group {
    position: relative;
@@ -326,7 +339,7 @@
    &:not(:last-child) {
       margin-bottom: 10px;
    }
-   &__item{
+   &__item {
       display: flex;
       align-items: center;
       background: $whiteColor;
@@ -343,10 +356,10 @@
       grid-template-columns: auto 1fr;
       align-items: center;
       gap: 8px;
-      transition: all .15s linear 0s;
+      transition: all 0.15s linear 0s;
       cursor: pointer;
       &:hover {
-         & .custom-radio{
+         & .custom-radio {
             border: 1px solid $redColor;
          }
       }
@@ -356,7 +369,7 @@
       font-size: 16px;
       line-height: math.div(24, 16) * 100%;
    }
-   &__choice{
+   &__choice {
       min-height: 30px;
       display: flex;
       align-items: center;
@@ -367,14 +380,14 @@
       padding-left: 10px;
       width: 42%;
       padding-right: 11px;
-      transition: all .2s linear 0s;
-      &:hover{
+      transition: all 0.2s linear 0s;
+      &:hover {
          background: $pinkColorLight;
       }
-      &.no-choice{
+      &.no-choice {
          border: none;
          width: auto;
-         &:hover{
+         &:hover {
             border: none;
             background: none;
          }
@@ -397,8 +410,8 @@
       border-style: solid;
       border-width: 8px 5px 0 5px;
       border-color: $greenColor transparent transparent transparent;
-      transition: all .15s ease 0s;
-      &.show{
+      transition: all 0.15s ease 0s;
+      &.show {
          display: block;
       }
    }
@@ -420,37 +433,37 @@
          display: flex;
          cursor: pointer;
          position: relative;
-         transition: all .15s linear 0s;
+         transition: all 0.15s linear 0s;
          border: none;
          column-gap: 8px;
          padding: 3px 30px 3px 14px;
-         &:not(:last-child){
+         &:not(:last-child) {
             margin: 0;
          }
-         &.current{
+         &.current {
             display: none;
          }
       }
-   }   
-   &.active{
-      .select-group__arrow{
+   }
+   &.active {
+      .select-group__arrow {
          transform: rotate(-180deg);
       }
-      & .dropdown-list{
+      & .dropdown-list {
          display: block;
       }
-      & > .select-group__item{
+      & > .select-group__item {
          background: $pinkColorLight;
          border: 0.5px solid transparent;
          z-index: 4;
          position: relative;
       }
    }
-   &__input-hidden{
+   &__input-hidden {
       display: none;
    }
 }
-.select-wrapper > .select-group.active{
+.select-wrapper > .select-group.active {
    & > .custom-radio::before {
       transform: translate(-50%, -50%) scale(1);
    }

@@ -213,8 +213,10 @@
 	}
 	&__title {
 		text-align: left;
+		font-size: 16px;
 		line-height: math.div(24, 16) * 100%;
 		color: $blackColor;
+		font-weight: 400;
 	}
 	&__value {
 		line-height: math.div(24, 16) * 100%;
@@ -644,6 +646,9 @@
 			width: 100%;
 			border-bottom: 2px dotted #e0e0e0;
 			z-index: -1;
+		}
+		@media screen and (max-width: $md) {
+			width: 50%;
 		}
 	}
 	&__value {
