@@ -22,15 +22,15 @@
          justify-content: flex-start;
          width: 100%;
       }
-      &::before{
+      &::before {
          content: "";
          position: absolute;
          top: 0;
          left: 0;
          width: 100%;
          height: 100%;
-         background: rgb(94,203,173);
-         background: radial-gradient(circle, rgba(94,203,173,1) 35%, rgba(255,250,203,1) 100%);
+         background: rgb(94, 203, 173);
+         background: radial-gradient(circle, rgba(94, 203, 173, 1) 35%, rgba(255, 250, 203, 1) 100%);
          z-index: -1;
       }
    }
@@ -45,7 +45,7 @@
       line-height: math.div(40, 24) * 100%;
       text-transform: uppercase;
       font-weight: 400;
-      & span{
+      & span {
          font-weight: 700;
       }
    }
@@ -55,7 +55,7 @@
       font-size: 24px;
       line-height: math.div(45, 24) * 100%;
       font-weight: 400;
-      & span{
+      & span {
          font-weight: 700;
       }
    }
@@ -65,7 +65,7 @@
       min-height: 52px;
    }
    &__navigation {
-      &.container{
+      &.container {
          max-width: 1390px;
          margin: 0 auto;
          position: absolute;
@@ -91,10 +91,10 @@
    cursor: pointer;
    font-size: 20px;
    line-height: math.div(24, 20) * 100%;
-   transition: all .2s ease 0s;
-   font-family: 'Montserrat', sans-serif;
+   transition: all 0.2s ease 0s;
+   font-family: "Montserrat", sans-serif;
    @media (any-hover: hover) {
-      &:hover{
+      &:hover {
          background-color: $redColorHover;
       }
    }
@@ -104,7 +104,7 @@
    color: $redColor;
    max-width: 217px;
    @media (any-hover: hover) {
-      &:hover{
+      &:hover {
          background-color: $redColorHover;
          color: $whiteColor;
       }
@@ -120,26 +120,26 @@
    align-items: center;
    background: none;
    display: none;
-   &::before{
+   &::before {
       font-size: 25px;
       color: $whiteColor;
-      transition: all .2s ease-in 0s;
+      transition: all 0.2s ease-in 0s;
    }
-   &:hover{
-      &::before{
+   &:hover {
+      &::before {
          color: $redColor;
       }
    }
-   &.swiper-button-disabled{
+   &.swiper-button-disabled {
       cursor: default;
       opacity: 0.4;
       pointer-events: none;
-      &:hover::before{
+      &:hover::before {
          color: $whiteColor;
       }
    }
 }
-.home-banner__pagination{
+.home-banner__pagination {
    position: absolute;
    width: 100%;
    bottom: 10px;
@@ -147,27 +147,27 @@
    justify-content: center;
    align-items: center;
    display: none;
-   & .swiper-pagination-bullet{
+   & .swiper-pagination-bullet {
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: $whiteColor;
-      opacity: .4;
-      &:not(:last-child){
+      opacity: 0.4;
+      &:not(:last-child) {
          margin-right: 10px;
       }
    }
-   & .swiper-pagination-bullet-active{
+   & .swiper-pagination-bullet-active {
       opacity: 1;
    }
 }
 
-@media screen and (max-width: $lg){
+@media screen and (max-width: $lg) {
    .home-banner__title,
-   .home-banner__subtitle{
+   .home-banner__subtitle {
       font-size: 20px;
    }
-   .home-banner__btn{
+   .home-banner__btn {
       margin-top: 20px;
    }
    .home-banner__item {
@@ -175,35 +175,35 @@
       min-height: 150px;
       background-position: 52%;
    }
-   .home-banner__info{
+   .home-banner__info {
       max-width: 75%;
    }
-   .home-banner__item{
-      &::after{
+   .home-banner__item {
+      &::after {
          content: "";
          position: absolute;
          top: 0;
          left: 0;
          width: 100%;
          height: 100%;
-         background: rgba($mainColor, 0.05);
+         background: rgba($blackColor, 0.1);
       }
    }
-   .home-banner__pagination{
+   .home-banner__pagination {
       display: flex;
    }
-   .home-banner__navigation{
-      & .home-banner-button{
+   .home-banner__navigation {
+      & .home-banner-button {
          display: none;
       }
    }
 }
-@media screen and (max-width: $sm){
+@media screen and (max-width: $sm) {
    .home-banner__title,
-   .home-banner__subtitle{
+   .home-banner__subtitle {
       font-size: 15px;
    }
-   .home-banner__btn{
+   .home-banner__btn {
       padding: 10px 12px;
       min-height: 30px;
       max-width: 250px;

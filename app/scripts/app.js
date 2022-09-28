@@ -229,14 +229,10 @@ if (pageCategory) {
 			document.body.classList.remove('lock');
 		});
 	}
-	document.addEventListener('click', (event) => {
-		let target = event.target;
-		let asideMenu = target == sidebar;
-		let filterButton = target == filterBtn;
-		let menu_is_show = sidebar.classList.contains('show');
-		if (!asideMenu && !filterButton && menu_is_show) {
-			showFilter();
-		}
+	overlay.addEventListener('click', (event) => {
+		sidebar.classList.remove('show');
+		overlay.classList.remove('show-overlay');
+		document.body.classList.remove('lock');
 	});
 }
 

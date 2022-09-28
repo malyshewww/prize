@@ -45,7 +45,10 @@
             gap: 20px 15px;
          }
          @media screen and (max-width: $sm) {
-            grid-template-columns: 1fr;
+            display: block;
+            & > *:not(:last-child) {
+               margin-bottom: 20px;
+            }
          }
       }
       &.disabled .products__controls {

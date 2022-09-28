@@ -9,32 +9,33 @@
       overflow-x: auto;
       align-items: center;
       column-gap: 10px;
-      ::-webkit-scrollbar{
-         width: 0;
-         height: 0;
-      }
-      ::-webkit-scrollbar-track{
+      ::-webkit-scrollbar {
          width: 0;
          height: 0;
          background: none;
       }
-      ::-webkit-scrollbar-thumb{
+      ::-webkit-scrollbar-track {
+         width: 0;
+         height: 0;
+         background: none;
+      }
+      ::-webkit-scrollbar-thumb {
          background: none;
          border: none;
          width: 0;
       }
-      scrollbar-width: 0;          /* "auto" или "thin"  */
-      scrollbar-color: transparent;   /* плашка скролла и дорожка */ 
+      scrollbar-width: 0; /* "auto" или "thin"  */
+      scrollbar-color: transparent; /* плашка скролла и дорожка */
    }
    &__item {
       font-size: 16px;
       line-height: math.div(24, 16) * 100%;
       color: $grayColor82;
-      font-family: 'SourceSansPro', sans-serif;
+      font-family: "SourceSansPro", sans-serif;
       position: relative;
       & + .breadcrumbs__item {
          padding-left: 17px;
-         &::before{
+         &::before {
             content: ">";
             position: absolute;
             top: 50%;
@@ -54,4 +55,3 @@
       font-family: inherit;
    }
 }
-

@@ -124,6 +124,9 @@
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 7px solid $whiteColor;
+		&.icon-arrow-next::before {
+			display: none;
+		}
 	}
 
 	&__actions {
@@ -397,13 +400,16 @@
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 6px solid $mainColor;
+		&.icon-arrow-next::before {
+			display: none;
+		}
 	}
 	&-close {
 		position: fixed;
 		top: 0;
 		right: 0;
 		background: none;
-		padding: 12px;
+		padding: 15px;
 		z-index: 30;
 		opacity: 0;
 		visibility: hidden;
@@ -475,12 +481,13 @@ body._touch .top-header__list > li.open .submenu__list {
 	padding: 10px 0;
 }
 body._touch .menu__list > li.open .menu__arrow {
-	border-top: 10px solid $redColor;
-	transform: rotate(-180deg) translateY(1px);
+	transform: rotate(-90deg) translateY(1px);
+	&::before {
+		color: $redColor;
+	}
 }
 body._touch .top-header__list > li.open .menu__arrow {
-	border-top: 10px solid $whiteColor;
-	transform: rotate(-180deg) translateY(0px);
+	transform: rotate(-90deg) translateY(0px);
 }
 body._touch .menu__list > li.open .menu__link {
 	color: $redColor;
@@ -543,9 +550,18 @@ body._touch .menu__list > li.open .menu__link {
 
 @media screen and (max-width: $lg) {
 	.menu__arrow {
-		border-left: 7px solid transparent;
-		border-right: 7px solid transparent;
-		border-top: 10px solid $mainColor;
+		border: none;
+		margin: 0;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transform: rotate(90deg);
+		&.icon-arrow-next::before {
+			display: block;
+			color: $blackColor;
+		}
 	}
 	.header__catalog {
 		padding: 0;
@@ -556,9 +572,17 @@ body._touch .menu__list > li.open .menu__link {
 			padding-left: 5px;
 		}
 		& .menu__arrow {
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-top: 10px solid #fff;
+			border: none;
+			margin: 0;
+			height: 30px;
+			width: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			&.icon-arrow-next::before {
+				display: block;
+				color: $whiteColor;
+			}
 		}
 		&__menu {
 			position: fixed;
@@ -567,35 +591,36 @@ body._touch .menu__list > li.open .menu__link {
 			width: 100%;
 			height: 100%;
 			min-height: 100vh;
-			background: #333;
-			padding: 50px 20px 70px;
+			padding: 50px 15px 70px;
 			background: $greenColor;
 			overflow-x: hidden;
 			overflow-y: auto;
 			z-index: 25;
 			transition: top 0.2s ease 0s;
 			&::before {
-				content: "";
-				display: block;
+				content: none;
 				position: fixed;
 				top: 0;
 				left: 0;
 				height: 50px;
 				width: 100%;
-				z-index: 25;
-				background: $greenColor;
+				transform: translateY(-100%);
+				background: transparent;
 				opacity: 0;
 				visibility: hidden;
-				z-index: -1;
-				transition: opacity 0.2s linear 0s, visibility 0.2s linear 0s;
+				transition: transform 0.2s linear 0s, opacity 0.2s linear 0s, visibility 0.2s linear 0s;
 			}
 			&.show-menu {
 				top: 0;
 				&::before {
+					transform: translateY(0);
 					opacity: 1;
 					visibility: visible;
-					z-index: 25;
+					background: $greenColor;
 				}
+			}
+			& .menu-close {
+				background: $greenColor;
 			}
 		}
 		&__icon {
@@ -765,7 +790,7 @@ body._touch .menu__list > li.open .menu__link {
 		overflow-y: auto;
 		z-index: 20;
 		&::before {
-			content: "";
+			content: none;
 			position: fixed;
 			top: 0;
 			right: -100%;
@@ -781,6 +806,9 @@ body._touch .menu__list > li.open .menu__link {
 		&::before {
 			right: 0;
 		}
+	}
+	.menu .menu-close {
+		background: $whiteColor;
 	}
 	.show-menu .menu-close {
 		opacity: 1;

@@ -30,7 +30,10 @@
 		@media screen and (max-width: $md) {
 			padding: 40px 20px 40px;
 			border-radius: 30px;
-			background-position: 30% 0;
+			background: none;
+			&::before {
+				background: linear-gradient(90.24deg, #f2f2f2 100%, hsla(0, 0%, 95%, 0) 61.33%);
+			}
 		}
 	}
 	&__content {

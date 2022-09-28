@@ -66,6 +66,7 @@ function initSliders() {
 				},
 				pagination: {
 					el: ".home-banner__pagination",
+					clickable: true,
 				},
 			})
 		} else {

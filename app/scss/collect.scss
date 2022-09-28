@@ -66,9 +66,9 @@
 
 .collect {
 	&__table {
-		margin-bottom: 30px;
+		margin-bottom: 60px;
 		@media screen and (max-width: $lg) {
-			margin-bottom: 0;
+			margin-bottom: 20px;
 		}
 	}
 }
@@ -274,6 +274,14 @@
 		line-height: math.div(22, 16) * 100%;
 		border-radius: 6px;
 		text-transform: uppercase;
+		@media screen and (max-width: $md) {
+			padding: 10px 15px;
+			font-size: 14px;
+			line-height: math.div(20, 16) * 100%;
+			&::before {
+				font-size: 18px;
+			}
+		}
 	}
 	&__content {
 		padding: 10px 0 0;
@@ -281,6 +289,9 @@
 	}
 	&:not(:last-child) {
 		margin-bottom: 26px;
+		@media screen and (max-width: $md) {
+			margin-bottom: 20px;
+		}
 	}
 }
 .collect-table .quantity-card {
