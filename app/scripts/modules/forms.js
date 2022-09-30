@@ -298,3 +298,5 @@ formAllInputs.forEach((item) => {
    item.addEventListener('input', removeErrorClass);
    item.addEventListener('change', removeErrorClass);
 });
+
+

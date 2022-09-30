@@ -18,11 +18,11 @@
 		grid-template-rows: auto;
 		gap: 25px;
 	}
-	@media screen and (max-width: $sm) {
-		display: block;
-	}
 	@media screen and (max-width: $md) {
 		gap: 20px;
+	}
+	@media screen and (max-width: $sm) {
+		grid-template-columns: 1fr;
 	}
 }
 .item-prize {
@@ -34,9 +34,6 @@
 	@media screen and (max-width: $sm) {
 		display: flex;
 		align-items: flex-end;
-		&:not(:last-child) {
-			margin-bottom: 20px;
-		}
 	}
 	&:hover {
 		box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);

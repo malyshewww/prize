@@ -197,7 +197,7 @@ const iconMenu = document.querySelector('.burger-icon');
 const menuBody = document.querySelector('.menu');
 if (iconMenu) {
 	iconMenu.addEventListener("click", (event) => {
-		iconMenu.classList.toggle('active');
+		event.currentTarget.classList.toggle('active');
 		menuBody.classList.toggle('show-menu');
 		document.body.classList.toggle('lock');
 	});
