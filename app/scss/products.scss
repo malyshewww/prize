@@ -248,7 +248,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      column-gap: 5px;
+      column-gap: 2px;
       row-gap: 10px;
       flex-wrap: wrap;
    }
@@ -256,7 +256,7 @@
       display: flex;
       align-items: flex-end;
       flex-wrap: wrap;
-      column-gap: 7px;
+      column-gap: 2px;
    }
    &__price {
       font-family: "Montserrat", sans-serif;
