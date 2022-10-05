@@ -404,6 +404,7 @@
       font-size: 16px;
       line-height: math.div(22, 16) * 100%;
       width: 100%;
+      pointer-events: none;
    }
    &__arrow {
       margin-left: 8px;
@@ -414,6 +415,7 @@
       border-width: 8px 5px 0 5px;
       border-color: $greenColor transparent transparent transparent;
       transition: all 0.15s ease 0s;
+      pointer-events: none;
       &.show {
          display: block;
       }

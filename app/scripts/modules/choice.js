@@ -1,6 +1,11 @@
 document.addEventListener('click', productActions);
+
 function productActions(event) {
-   const target = event.target;
+   let target = event.target;
+   let parent = target.closest('[data-select]');
+   if (target.closest('.select-group__choice')) {
+      parent.classList.toggle('active');
+   }
    // Переключение кнопок с превью карточки товара
    const products = document.querySelectorAll('.card-product');
    products.forEach((product) => {
@@ -21,12 +26,13 @@ function productActions(event) {
          const selectGroupValue = item.querySelector('[data-select-value]');
          const selectGroupValueData = selectGroupValue.dataset.selectValue;
          const selectGroupCompoundText = item.querySelector('[data-text]');
-         if (selectGroupDropdown) {
-            selectGroupChoice.addEventListener('click', (e) => {
-               e.stopPropagation();
-               arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
-            });
-         }
+         // if (selectGroupDropdown) {
+
+         //    // selectGroupChoice.addEventListener('click', (e) => {
+         //    //    e.stopPropagation();
+         //    //    arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
+         //    // });
+         // }
          selectGroupItem.addEventListener('change', (e) => {
             const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
             const salePrice = selectGroupItemHeader.dataset.salePriceHeader;
@@ -74,29 +80,30 @@ function productActions(event) {
          })
       });
    })
-   // Клик снаружи [data-select]. Закрыть [data-select]
-   document.addEventListener('click', function (e) {
-      const selectGroup = document.querySelectorAll('[data-select]');
-      if (selectGroup) {
-         selectGroup.forEach((item) => {
-            if (e.target != item) {
-               item.classList.remove('active')
-            }
-         })
-      }
-   })
-   // Нажатие на Tab или Escape. Закрыть [data-select]
-   document.addEventListener('keydown', function (e) {
-      const selectGroup = document.querySelectorAll('[data-select]');
-      if (selectGroup) {
-         selectGroup.forEach((item) => {
-            if (e.key === 'Tab' || e.key === 'Escape') {
-               item.classList.remove('active')
-            }
-         })
-      }
-   });
 }
+// Клик снаружи [data-select]. Закрыть [data-select]
+// }
+// document.addEventListener('click', function (e) {
+//    const selectGroup = document.querySelectorAll('[data-select]');
+//    if (selectGroup) {
+//       selectGroup.forEach((item) => {
+//          if (e.target != item) {
+//             item.classList.remove('active')
+//          }
+//       })
+//    }
+// })
+// Нажатие на Tab или Escape. Закрыть [data-select]
+document.addEventListener('keydown', function (e) {
+   const selectGroup = document.querySelectorAll('[data-select]');
+   if (selectGroup) {
+      selectGroup.forEach((item) => {
+         if (e.key === 'Tab' || e.key === 'Escape') {
+            item.classList.remove('active')
+         }
+      })
+   }
+});
 function getChoice(button) {
    button.classList.toggle('active')
 }

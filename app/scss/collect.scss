@@ -129,6 +129,9 @@
 		}
 	}
 	&__row {
+		&.disabled {
+			order: 1;
+		}
 		@media screen and (max-width: $md) {
 			&:not(:last-child) {
 				margin-bottom: 15px;
@@ -209,6 +212,7 @@
 			transform: scale(1) translate(0, -50%);
 			opacity: 1;
 			visibility: visible;
+			transition: all 0.3s ease 0s;
 		}
 		@media screen and (max-width: $md) {
 			width: 200px;

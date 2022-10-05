@@ -227,30 +227,31 @@ div.collect-tabs
 									.accordeon__item.item-accordeon
 											.item-accordeon__header.icon-arrow-next._active(data-spoller)= itemCategories.title
 											.item-accordeon__content
-												each child, childIndex in itemCategories.children
-													.collect-table__row.collect-table__tr
-														.collect-table__td
-															.collect-table__name
-																.collect-table__images
-																	.collect-table__image 
-																		img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
-																		.collect-table__tooltip
+												.item-accordeon__content-inner
+													each child, childIndex in itemCategories.children
+														.collect-table__row.collect-table__tr
+															.collect-table__td
+																.collect-table__name
+																	.collect-table__images
+																		.collect-table__image 
 																			img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
-																h2.collect-table__title!= child.title
-															.collect-table__value
-																span(data-type=" г")= child.value
-																if tabItem.key == "goods"
-																	input(type="hidden" class="goods-weight-input" value=child.value)
-																	input(type="hidden" class="goods-price-input" value=child.price)
-															case tabItem.key
-																when "goods"
-																	.collect-table__quantity.quantity-card.collect-quantity
-																		button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus type="button")
-																		input(type="text" value="0").quantity-card__input.calc-number
-																		button.quantity-card__button.quantity-card__button--plus(data-plus type="button")
-																when "package"
-																	.collect-table__radiobutton.radiobutton-item
-																		label
-																			span.radiobutton-item__text(data-type=" ₽")= child.price
-																			input(type="radio" name="package" class="real-radio package-price-input" value=child.price)
-																			span.custom-radio
+																			.collect-table__tooltip
+																				img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
+																	h2.collect-table__title!= child.title
+																.collect-table__value
+																	span(data-type=" г")= child.value
+																	if tabItem.key == "goods"
+																		input(type="hidden" class="goods-weight-input" value=child.value)
+																		input(type="hidden" class="goods-price-input" value=child.price)
+																case tabItem.key
+																	when "goods"
+																		.collect-table__quantity.quantity-card.collect-quantity
+																			button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus type="button")
+																			input(type="text" value="0").quantity-card__input.calc-number
+																			button.quantity-card__button.quantity-card__button--plus(data-plus type="button")
+																	when "package"
+																		.collect-table__radiobutton.radiobutton-item
+																			label
+																				span.radiobutton-item__text(data-type=" ₽")= child.price
+																				input(type="radio" name="package" class="real-radio package-price-input" value=child.price)
+																				span.custom-radio

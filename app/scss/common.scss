@@ -609,4 +609,11 @@
          margin: 15px 0;
       }
    }
+   & ul {
+      padding-left: 20px;
+      & li {
+         list-style: initial;
+         padding: initial;
+      }
+   }
 }
