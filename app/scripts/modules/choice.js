@@ -3,8 +3,17 @@ document.addEventListener('click', productActions);
 function productActions(event) {
    let target = event.target;
    let parent = target.closest('[data-select]');
-   if (target.closest('.select-group__choice')) {
-      parent.classList.toggle('active');
+   const selectDropdown = parent.querySelector('.dropdown-list');
+   if (selectDropdown) {
+      if (target.closest('.select-group__choice') && parent != null && !parent.classList.contains('active')) {
+         // event.stopPropagation();
+         parent.classList.add('active');
+      } else {
+         const selectGroup = document.querySelectorAll('[data-select]');
+         selectGroup.forEach((item) => {
+            item.classList.remove('active')
+         })
+      }
    }
    // Переключение кнопок с превью карточки товара
    const products = document.querySelectorAll('.card-product');
@@ -28,10 +37,10 @@ function productActions(event) {
          const selectGroupCompoundText = item.querySelector('[data-text]');
          // if (selectGroupDropdown) {
 
-         //    // selectGroupChoice.addEventListener('click', (e) => {
-         //    //    e.stopPropagation();
-         //    //    arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
-         //    // });
+         // selectGroupChoice.addEventListener('click', (e) => {
+         //    e.stopPropagation();
+         //    arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
+         // });
          // }
          selectGroupItem.addEventListener('change', (e) => {
             const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
