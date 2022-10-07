@@ -3,17 +3,17 @@ document.addEventListener('click', productActions);
 function productActions(event) {
    let target = event.target;
    let parent = target.closest('[data-select]');
-   const selectDropdown = parent.querySelector('.dropdown-list');
-   if (selectDropdown) {
-      if (target.closest('.select-group__choice') && parent != null && !parent.classList.contains('active')) {
-         // event.stopPropagation();
-         parent.classList.add('active');
-      } else {
-         const selectGroup = document.querySelectorAll('[data-select]');
-         selectGroup.forEach((item) => {
-            item.classList.remove('active')
-         })
-      }
+   if (target.classList.contains('no-choice') && parent != null) {
+      return;
+   }
+   if (target.closest('.select-group__choice') && parent != null && !parent.classList.contains('active')) {
+      // event.stopPropagation();
+      parent.classList.add('active');
+   } else {
+      const selectGroup = document.querySelectorAll('[data-select]');
+      selectGroup.forEach((item) => {
+         item.classList.remove('active')
+      })
    }
    // Переключение кнопок с превью карточки товара
    const products = document.querySelectorAll('.card-product');

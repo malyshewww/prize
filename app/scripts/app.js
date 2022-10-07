@@ -38,7 +38,7 @@ import "./modules/calc.js";
 import "./modules/fslightbox.js";
 
 // Ленивая загрузка изображений
-import "./modules/lazysizes.min.js";
+// import "./modules/lazysizes.min.js";
 
 // Динамический адаптив
 import "./modules/dynamic_adapt.js";

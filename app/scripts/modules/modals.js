@@ -1,8 +1,8 @@
 /*================== MODALS ====================*/
-
-const modalButtons = document.querySelectorAll('[data-modal-button]');
-const modalClosebuttons = document.querySelectorAll('[data-modal-close]');
-const allModals = document.querySelectorAll('[data-modal]');
+let wrapper = document.querySelector('.wrapper');
+const modalButtons = wrapper.querySelectorAll('[data-modal-button]');
+const modalClosebuttons = wrapper.querySelectorAll('[data-modal-close]');
+const allModals = wrapper.querySelectorAll('[data-modal]');
 function bodyLock() {
 	setTimeout(() => {
 		document.body.classList.add('lock');
