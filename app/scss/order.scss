@@ -95,6 +95,10 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1.1fr;
 	gap: 15px;
+	&.hidden {
+		opacity: 0.5;
+		pointer-events: none;
+	}
 	@media screen and (max-width: $md) {
 		grid-template-columns: 1fr 1fr;
 	}

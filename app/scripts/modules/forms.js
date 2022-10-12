@@ -300,3 +300,36 @@ formAllInputs.forEach((item) => {
 });
 
 
+// Order page
+const radioBtnTransport = document.getElementById('transport');
+const radioBtnPickup = document.getElementById('pickup');
+const radioBtnCourier = document.getElementById('courier');
+const companyList = document.getElementById('company-order');
+if (radioBtnTransport) {
+   radioBtnTransport.addEventListener('change', (event) => {
+      companyList.classList.remove('hidden');
+   })
+}
+if (radioBtnPickup) {
+   radioBtnPickup.addEventListener('change', (event) => {
+      companyList.classList.add('hidden');
+   })
+}
+if (radioBtnCourier) {
+   radioBtnCourier.addEventListener('change', (event) => {
+      companyList.classList.add('hidden');
+   })
+}
+
+const companyItems = document.querySelectorAll('.company-order__item')
+const companyNameInput = document.querySelector('input[name="namecompany"]');
+if (companyItems) {
+   companyItems.forEach((item) => {
+      const companyInput = item.querySelector('input[name="company"]');
+      const radioButtonItem = item.querySelector('.radiobutton-item');
+      companyInput.addEventListener('change', (event) => {
+         radioBtnTransport.value = companyInput.value;
+         companyNameInput.value = companyInput.value;
+      })
+   })
+}

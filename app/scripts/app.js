@@ -250,3 +250,33 @@ function showSearch(event) {
 		overlay.classList.remove('show-overlay');
 	}
 }
+
+// Search parameters
+// const textBlock = document.querySelector('.text-block');
+const textBlock = document.querySelector('.text-block');
+if (textBlock) {
+	function getSearchParameters() {
+		var prmstr = window.location.search.substr(1);
+		return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
+	}
+
+	function transformToAssocArray(prmstr) {
+		var params = {};
+		var prmarr = prmstr.split("&");
+		for (var i = 0; i < prmarr.length; i++) {
+			var tmparr = prmarr[i].split("=");
+			params[tmparr[0]] = tmparr[1];
+		}
+		return params;
+	}
+	var params = getSearchParameters();
+	// console.log(params.page);
+
+	if (params.page != null) {
+		textBlock.style.display = 'none';
+	} else {
+		textBlock.style.display = 'block';
+	}
+	// const paramsString = 'page=2';
+	// let searchParams = new URLSearchParams(paramsString);
+}

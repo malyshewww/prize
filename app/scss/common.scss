@@ -609,11 +609,20 @@
          margin: 15px 0;
       }
    }
-   & ul {
+   & ul,
+   & ol {
       padding-left: 20px;
       & li {
          list-style: initial;
          padding: initial;
+         font-size: 16px;
+         line-height: math.div(20, 16) * 100%;
+      }
+   }
+   & ol {
+      padding-left: 15px;
+      & li {
+         list-style: auto;
       }
    }
 }

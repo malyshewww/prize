@@ -2,14 +2,14 @@
 	deliveries = [
 		{
 			"title": "Транспортная компания DPD",
-			"descr": "экспресс-доставка <br> в течение 2-4 дней",
+			"descr": "экспресс-доставка в течение 2-4 дней",
 		},
 		{
-			"title": "Транспортная компания <br> «Деловые линии»",
+			"title": "Транспортная компания «Деловые линии»",
 			"descr": "доставка в течение 2-14 дней",
 		},
 		{
-			"title": "Транспортная компания«СДЭК»",
+			"title": "Транспортная компания «СДЭК»",
 			"descr": "доставка в течение 2-4 дней",
 			"link": "Пункты выдачи"
 		}
@@ -21,28 +21,28 @@ section.order
 				.order__payment.payment-order
 					h2.payment-order__title.content-title Способ оплаты
 					form(action="#").payment-order__form
-						mixin radiobuttons(classname, title, name, checked)
+						mixin radiobuttons(classname, title, name, checked, id)
 							.radiobutton-item(class=classname)
 								label
-									input(type="radio" name=name checked=checked class="real-radio")
+									input(type="radio" name=name class="real-radio" id=id)
 									span.custom-radio
 									span.radiobutton-item__text= title
-						+radiobuttons('payment-order__group', 'Наличными', 'payment', 'checked')
+						+radiobuttons('payment-order__group', 'Наличными', 'payment', '')
 						+radiobuttons('payment-order__group', 'Безналичный расчет', 'payment')
 						+radiobuttons('payment-order__group', 'Постоплата (для корпоративных клиентов)', 'payment')
 				.order__variant.variant-order
 					h2.variant-order__title.content-title Вариант доставки
 					form(action="#").variant-order__form
-						+radiobuttons('variant-order__group', 'Самовывоз', 'delivery', 'checked')
-						+radiobuttons('variant-order__group', 'Курьером', 'delivery')
-						+radiobuttons('variant-order__group', 'Транспортной компанией по РФ', 'delivery')
-					.variant-order__company.company-order
+						+radiobuttons('variant-order__group', 'Самовывоз', 'delivery', '', 'pickup')
+						+radiobuttons('variant-order__group', 'Курьером', 'delivery', '', 'courier')
+						+radiobuttons('variant-order__group', 'Транспортной компанией по РФ', 'delivery', '', 'transport')
+					.variant-order__company.company-order.hidden#company-order
 						each item, i in deliveries
 							.company-order__item
 								.company-order__header 
 									.radiobutton-item
 										label
-											input(type="radio" name="company" checked=i==0 class="real-radio")
+											input(type="radio" name="company" class="real-radio" value=item.title)
 											span.custom-radio
 											span.company-order__logo 
 												img(src=`img/order/company-${i+1}.png`, alt="")
@@ -73,6 +73,7 @@ section.order
 				.order-data__body 
 					.order-data__title.content-title Контактные данные
 					form(action="#").order-data__form.form
+						input(type="hidden" name="namecompany" value)
 						.form__items
 							mixin formInput(title, type, required)
 								.form__item 
