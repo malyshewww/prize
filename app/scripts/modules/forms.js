@@ -198,6 +198,7 @@ function formHandlerModal(formId, path) {
                const inputEmail = thisForm.querySelector('input[name="email"]');
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
                const inputComment = thisForm.querySelector('textarea[name="comment"]');
+               const inputProductTitle = thisForm.querySelector('input[name="product-title"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modals = document.querySelectorAll('[data-modal]');
@@ -248,6 +249,9 @@ function formHandlerModal(formId, path) {
                   if (inputComment) {
                      inputComment.value = '';
                   }
+                  if (inputProductTitle) {
+                     inputProductTitle.value = '';
+                  }
                } else {
                   if (result.name) {
                      inputName.classList.add('error');
@@ -284,8 +288,8 @@ formHandler("form", "/formhandler");
 formHandlerModal("form-demonstration", "/formhandler");
 formHandlerModal("form-buy", "/formhandler");
 formHandlerModal("form-call", "/formhandler");
-formHandlerModal("form-order", "/formhandlercalcorder");
 formHandlerModal("form-request", "/formhandler");
+formHandlerModal("form-order", "/formhandlercalcorder");
 
 
 formAllInputs.forEach((item) => {

@@ -33,8 +33,19 @@ function openModal(event) {
 			}
 		})
 	}
+	if (target.closest('[data-modal-button="modal-request"]')) {
+		const parent = target.closest('.card-product');
+		const productInputName = parent.querySelector('input[name="shk-name"]');
+		const formRequest = document.getElementById('form-request');
+		const formRequestInput = formRequest.querySelector('input[name="product-title"]');
+		formRequestInput.value = productInputName.value;
+	}
 }
-
+function clearInput() {
+	const formRequest = document.getElementById('form-request');
+	const formRequestInput = formRequest.querySelector('input[name="product-title"]');
+	formRequestInput.value = '';
+}
 // Кнопки - Открыть Модалку
 // modalButtons.forEach(item => {
 // 	item.addEventListener('click', (e) => {
@@ -51,6 +62,7 @@ function openModal(event) {
 // Кнопки - Закрыть Модалку
 modalClosebuttons.forEach(item => {
 	item.addEventListener('click', () => {
+		clearInput();
 		let currentModal = item.closest('.modal');
 		closeModal(currentModal);
 	})
@@ -60,6 +72,7 @@ allModals.forEach(item => {
 	item.style.display = 'none';
 	item.addEventListener('click', (e) => {
 		e.preventDefault();
+		clearInput();
 		item.classList.remove('open-modal');
 		bodyUnLock();
 	});

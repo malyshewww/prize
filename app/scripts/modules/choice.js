@@ -24,6 +24,7 @@ function productActions(event) {
       const inputResultWeight = product.querySelector('.input-card-weight');
       const inputResultDiscount = product.querySelector('.input-card-discount');
       const inputResultCompound = product.querySelector('.input-card-compound');
+      const inputResultCompoundGet = product.querySelector('.input-card-compound-get');
       const productPrice = product.querySelector('.card-product__price');
       const productPriceOld = product.querySelector('.card-product__price-old');
       selectGroup.forEach((item, i, arr) => {
@@ -35,6 +36,7 @@ function productActions(event) {
          const selectGroupValue = item.querySelector('[data-select-value]');
          const selectGroupValueData = selectGroupValue.dataset.selectValue;
          const selectGroupCompoundText = item.querySelector('[data-text]');
+         const selectGroupCompoundTextData = selectGroupCompoundText.dataset.text;
          // if (selectGroupDropdown) {
 
          // selectGroupChoice.addEventListener('click', (e) => {
@@ -51,6 +53,7 @@ function productActions(event) {
             productPrice.innerText = currentPriceStr;
             inputResultDiscount.value = currentPrice - salePrice;
             inputResultCompound.value = selectGroupCompoundText.innerText;
+            inputResultCompoundGet.value = selectGroupCompoundTextData;
             if (productPriceOld) {
                const salePriceStr = salePrice + " ₽";
                inputResultSalePrice.value = salePrice;
@@ -82,6 +85,7 @@ function productActions(event) {
                inputResultWeight.value = selectGroupDropdownValueData;
                inputResultDiscount.value = priceValue - priceSaleValue;
                inputResultCompound.value = selectGroupCompoundText.innerText;
+               inputResultCompoundGet.value = selectGroupCompoundTextData;
                // Присваивание веса из выпадающего списка в верхний select-group__item
                selectGroupValue.innerText = selectGroupDropdownValue.innerText;
                item.classList.remove('active');
