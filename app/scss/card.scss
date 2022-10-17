@@ -640,6 +640,15 @@
       line-height: math.div(22, 16) * 100%;
       color: $whiteColor;
    }
+   &__images {
+      position: relative;
+      // &:hover .card-compound__image-tooltip {
+      //    transform: scale(1) translate(0, -50%);
+      //    opacity: 1;
+      //    visibility: visible;
+      //    transition: all 0.3s ease 0s;
+      // }
+   }
    &__image {
       display: flex;
       justify-content: center;
@@ -653,6 +662,41 @@
          // top: 0;
          height: auto;
          max-width: 100%;
+      }
+   }
+   &__image-tooltip {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
+      background: $whiteColor;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      transform: scale(0) translate3d(-50%, -50%, 0);
+      opacity: 0;
+      visibility: hidden;
+      transform-origin: 0 0;
+      transition: all 0.3s ease 0s;
+      z-index: 5;
+      &.show {
+         transform: scale(1) translate3d(-50%, -50%, 0);
+         opacity: 1;
+         visibility: visible;
+         transition: all 0.3s ease 0s;
+      }
+      @media screen and (max-width: $md) {
+         width: 200px;
+         height: 200px;
+         padding: 15px;
+         left: 100%;
+         & img {
+            height: 100%;
+         }
       }
    }
    &__company-name {

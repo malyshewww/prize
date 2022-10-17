@@ -626,3 +626,29 @@
       }
    }
 }
+
+// Стилизация всплывающего сообщения от Shopkeeper3 MODX
+#shk_prodHelper {
+   min-width: 170px;
+   box-shadow: 0 4px 20px rgb(0 0 0 / 17%) !important;
+   background: $whiteColor !important;
+   border: none !important;
+   border-radius: 10px !important;
+   padding: 10px;
+   & .shk-but {
+      padding: 8px;
+      background-color: $redColor;
+      color: $whiteColor;
+      font-size: 16px;
+      line-height: math.div(18, 16) * 100%;
+      border-radius: 10px;
+      transition: background 0.2s ease 0s;
+      font-weight: 500;
+      &:hover {
+         background-color: $redColorHover;
+      }
+   }
+}
+#shk_prodHelperName {
+   font-size: 18px;
+}

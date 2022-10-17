@@ -73,7 +73,7 @@ const modals = new GraphModal();
 // Отправка формы
 const modalForm = document.querySelectorAll('.form');
 const closeModalBtn = document.querySelector('.js-modal-close');
-const formAllInputs = document.querySelectorAll('.form__input, .form__textarea, .form-modal__input, .form-modal__textarea');
+const formAllInputs = document.querySelectorAll('.form__input, .form__textarea, .form-modal__input, .form-modal__textarea, input[name="agreement"]');
 
 function formHandler(formId, path) {
    const formElement = document.getElementById(formId);
@@ -102,6 +102,7 @@ function formHandler(formId, path) {
                const inputEmail = thisForm.querySelector('input[name="email"]');
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
                const inputAddress = thisForm.querySelector('input[name="address"]');
+               const inputAgreement = thisForm.querySelector('input[name="agreement"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modal = document.getElementById('notice');
@@ -126,6 +127,9 @@ function formHandler(formId, path) {
                   }
                   if (inputAddress) {
                      inputAddress.value = '';
+                  }
+                  if (inputAgreement) {
+                     inputAgreement.value = '';
                   }
                   const fields = document.querySelectorAll("[data-field]");
                   fields.forEach(input => {
@@ -153,6 +157,10 @@ function formHandler(formId, path) {
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                   if (result.address) {
+                     // inputMessage.setAttribute('title', result.message.trim());
+                  }
+                  if (result.agreement) {
+                     inputAgreement.classList.add('error');
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                }
@@ -199,6 +207,7 @@ function formHandlerModal(formId, path) {
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
                const inputComment = thisForm.querySelector('textarea[name="comment"]');
                const inputProductTitle = thisForm.querySelector('input[name="product-title"]');
+               const inputAgreement = thisForm.querySelector('input[name="agreement"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modals = document.querySelectorAll('[data-modal]');
@@ -252,6 +261,9 @@ function formHandlerModal(formId, path) {
                   if (inputProductTitle) {
                      inputProductTitle.value = '';
                   }
+                  if (inputAgreement) {
+                     inputAgreement.value = '';
+                  }
                } else {
                   if (result.name) {
                      inputName.classList.add('error');
@@ -269,6 +281,10 @@ function formHandlerModal(formId, path) {
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                   if (result.comment) {
+                     // inputMessage.setAttribute('title', result.message.trim());
+                  }
+                  if (result.agreement) {
+                     inputAgreement.classList.add('error');
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                }

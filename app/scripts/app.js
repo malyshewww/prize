@@ -283,3 +283,31 @@ function showSearch(event) {
 // 		})
 // 	})
 // }
+
+
+// Card-compound image-tooltip
+function createImageCompoundTooltip() {
+	const picwrap = document.createElement('div');
+	const bigpic = document.createElement('img');
+	picwrap.appendChild(bigpic);
+	picwrap.className = "card-compound__image-tooltip";
+	const compoundImages = document.querySelectorAll('.card-compound__images');
+	if (compoundImages) {
+		compoundImages.forEach((item) => {
+			const currentImage = item.querySelector('.card-compound__image img');
+			// const imgParent = item.closest('.card-compound__images');
+			item.addEventListener("mouseover", (e) => {
+				item.appendChild(picwrap);
+				bigpic.src = currentImage.src;
+				bigpic.alt = currentImage.alt;
+				picwrap.classList.add('show');
+			})
+			item.addEventListener("mouseout", (e) => {
+				picwrap.classList.remove('show');
+			})
+		})
+	}
+}
+if (document.body.classList.contains('_pc')) {
+	createImageCompoundTooltip();
+}
