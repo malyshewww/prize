@@ -1,4 +1,22 @@
 /*===== FORM FOCUS =====*/
+// document.addEventListener('blur', removeFocus);
+// document.addEventListener('focus', addFocus);
+// function removeFocus(event) {
+//    let target = event.target;
+//    if (target.closest('[data-field]')) {
+//       let parent = target.parentNode;
+//       if (target.value == "") {
+//          parent.classList.remove("focus");
+//       }
+//    }
+// }
+// function addFocus(event) {
+//    let target = event.target;
+//    if (target.closest('[data-field]')) {
+//       let parent = this.parentNode;
+//       parent.classList.add("focus");
+//    }
+// }
 const fields = document.querySelectorAll("[data-field]");
 /*=== Add focus ===*/
 function addfocus() {
@@ -12,8 +30,24 @@ function remfocus() {
       parent.classList.remove("focus");
    }
 }
+const shopOrderForm = document.getElementById('shopOrderForm');
+if (shopOrderForm) {
+   shopOrderForm.addEventListener('submit', (event) => {
+      fields.forEach((item) => {
+         if (item.value != "") {
+            let parent = item.parentNode;
+            parent.classList.add("focus");
+         }
+      })
+   })
+}
 /*=== To call function===*/
 fields.forEach(input => {
+   const errorBlock = input.nextElementSibling;
+   if (errorBlock || input.value != "") {
+      let parent = input.parentNode;
+      parent.classList.add('focus');
+   }
    input.addEventListener("focus", addfocus)
    input.addEventListener("blur", remfocus)
 })
@@ -73,7 +107,8 @@ const modals = new GraphModal();
 // Отправка формы
 const modalForm = document.querySelectorAll('.form');
 const closeModalBtn = document.querySelector('.js-modal-close');
-const formAllInputs = document.querySelectorAll('.form__input, .form__textarea, .form-modal__input, .form-modal__textarea, input[name="agreement"]');
+const formAllInputs = document.querySelectorAll('.form__input, .form__textarea, .form-modal__input, .form-modal__textarea, input[name="agreement"], [data-field]');
+const formAllInputsRating = document.querySelectorAll('input[name="rating"]');
 
 function formHandler(formId, path) {
    const formElement = document.getElementById(formId);
@@ -105,11 +140,16 @@ function formHandler(formId, path) {
                const inputAgreement = thisForm.querySelector('input[name="agreement"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
-                  const modal = document.getElementById('notice');
-                  modal.classList.add('open-modal')
-                  setTimeout(() => {
-                     modal.classList.remove("open-modal");
-                  }, 5000)
+                  // if (formId == 'shopOrderForm') {
+                  //    window.location.href = "http://test3.komplex-info.ru/spasibo-za-zakaz.html";
+                  // }
+                  if (formId != 'shopOrderForm') {
+                     const modal = document.getElementById('notice');
+                     modal.classList.add('open-modal')
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 5000)
+                  }
                   if (inputName) {
                      inputName.value = '';
                   }
@@ -136,6 +176,7 @@ function formHandler(formId, path) {
                      const parent = input.parentNode;
                      parent.classList.remove('focus');
                   })
+
                } else {
                   if (result.name) {
                      inputName.classList.add('error');
@@ -168,11 +209,13 @@ function formHandler(formId, path) {
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
             }).catch((error) => {
-               const modal = document.getElementById('notice-error');
-               modal.classList.add('open-modal')
-               setTimeout(() => {
-                  modal.classList.remove("open-modal");
-               }, 5000)
+               if (formId != 'shopOrderForm') {
+                  const modal = document.getElementById('notice-error');
+                  modal.classList.add('open-modal')
+                  setTimeout(() => {
+                     modal.classList.remove("open-modal");
+                  }, 5000)
+               }
                buttonSubmit.removeAttribute('disabled');
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
@@ -208,6 +251,7 @@ function formHandlerModal(formId, path) {
                const inputComment = thisForm.querySelector('textarea[name="comment"]');
                const inputProductTitle = thisForm.querySelector('input[name="product-title"]');
                const inputAgreement = thisForm.querySelector('input[name="agreement"]');
+               const inputRating = thisForm.querySelectorAll('input[name="rating"]');
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   const modals = document.querySelectorAll('[data-modal]');
@@ -243,6 +287,13 @@ function formHandlerModal(formId, path) {
                         modal.classList.remove("open-modal");
                      }, 5000)
                   }
+                  if (formId == "form-reviews") {
+                     const modal = document.getElementById('success-reviews');
+                     modal.classList.add('open-modal')
+                     setTimeout(() => {
+                        modal.classList.remove("open-modal");
+                     }, 2000)
+                  }
                   if (inputName) {
                      inputName.value = '';
                   }
@@ -264,6 +315,14 @@ function formHandlerModal(formId, path) {
                   if (inputAgreement) {
                      inputAgreement.value = '';
                   }
+                  if (inputRating) {
+                     inputRating.forEach((item) => {
+                        if (item.checked) {
+                           const estimateWrapper = item.closest('.estimate-modal');
+                           estimateWrapper.classList.remove('error');
+                        }
+                     })
+                  }
                } else {
                   if (result.name) {
                      inputName.classList.add('error');
@@ -281,11 +340,20 @@ function formHandlerModal(formId, path) {
                      // inputMessage.setAttribute('title', result.message.trim());
                   }
                   if (result.comment) {
-                     // inputMessage.setAttribute('title', result.message.trim());
+                     // inputComment.setAttribute('title', result.message.trim());
                   }
                   if (result.agreement) {
                      inputAgreement.classList.add('error');
-                     // inputMessage.setAttribute('title', result.message.trim());
+                     // inputAgreement.setAttribute('title', result.message.trim());
+                  }
+                  if (result.rating) {
+                     inputRating.forEach((item) => {
+                        if (!item.checked) {
+                           const estimateWrapper = item.closest('.estimate-modal');
+                           estimateWrapper.classList.add('error');
+                        }
+                     })
+                     // inputRating.setAttribute('title', result.message.trim());
                   }
                }
                buttonSubmit.removeAttribute('disabled');
@@ -301,13 +369,24 @@ function formHandlerModal(formId, path) {
 }
 formHandler("form", "/formhandler");
 // formHandler("shopOrderForm", "/formhandlerorder");
+
 formHandlerModal("form-demonstration", "/formhandler");
 formHandlerModal("form-buy", "/formhandler");
 formHandlerModal("form-call", "/formhandler");
 formHandlerModal("form-request", "/formhandler");
+formHandlerModal("form-reviews", "/formhandlerreviews");
 formHandlerModal("form-order", "/formhandlercalcorder");
 
-
+formAllInputsRating.forEach((item) => {
+   const removeErrorClass = (event) => {
+      const estimateWrapper = item.closest('.estimate-modal');
+      if (item.checked && estimateWrapper.classList.contains('error')) {
+         estimateWrapper.classList.remove('error');
+      }
+   }
+   item.addEventListener('input', removeErrorClass);
+   item.addEventListener('change', removeErrorClass);
+});
 formAllInputs.forEach((item) => {
    const removeErrorClass = (event) => {
       if (!event.target.classList.contains('error')) {

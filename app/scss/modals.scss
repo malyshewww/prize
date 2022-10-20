@@ -237,11 +237,38 @@
       padding: 40px 15px 40px 15px;
    }
 }
+.modal-reviews {
+   & .modal__content {
+      background: $greenColor;
+      max-width: 538px;
+      padding: 45px 50px;
+      border-radius: 16px;
+      @media screen and (max-width: $md) {
+         padding: 25px 15px;
+      }
+   }
+   & .modal__close {
+      display: none;
+   }
+   & .modal__title {
+      font-family: "Montserrat";
+      font-weight: 700;
+      color: $whiteColor;
+      text-transform: uppercase;
+      font-size: 30px;
+      line-height: math.div(45, 30) * 100%;
+      @media screen and (max-width: $md) {
+         font-size: 18px;
+      }
+   }
+}
 .estimate-modal {
+   position: relative;
    padding-left: 17px;
    display: flex;
    align-items: center;
-   gap: 23px;
+   flex-wrap: wrap;
+   gap: 10px 23px;
    &__label {
       color: $grayColor82;
    }
@@ -255,6 +282,15 @@
          display: flex;
          justify-content: center;
          align-items: center;
+      }
+   }
+   .error-text {
+      width: 100%;
+      display: none;
+   }
+   &.error {
+      .error-text {
+         display: block;
       }
    }
 }

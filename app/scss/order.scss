@@ -236,6 +236,9 @@
 		padding: 7px 20px;
 		line-height: math.div(24, 16) * 100%;
 		color: $mainColor;
+		&.error {
+			border: 1px solid $redColor;
+		}
 	}
 	& .form__textarea {
 		min-height: 140px;

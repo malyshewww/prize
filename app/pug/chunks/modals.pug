@@ -43,6 +43,7 @@ mixin modal(id, className)
 					label(for="star-2" title="Оценка «2»")
 					input(type="radio" id="star-1" name="rating" value="1")
 					label(for="star-1" title="Оценка «1»")
+				p(class="error-text red") Поле "Оценка" обязательно для заполнения
 			.form-modal__item 
 				textarea(class="form-modal__textarea" placeholder="Ваш отзыв")
 		.checkbox-item
@@ -141,6 +142,9 @@ mixin modal(id, className)
 	.modal__description
 		p Спасибо за вашу заявку. 
 		p Мы перезвоним вам в ближайшее время
++modal("success-reviews", "modal-reviews")
+	.modal__title.
+		Спасибо за ваш отзыв!
 +modal("reset-calc-modal")
 	.modal__title.modal-message__title Вы действительно хотите очистить калькулятор?
 	.modal__buttons 

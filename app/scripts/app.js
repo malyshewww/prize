@@ -110,18 +110,30 @@ addTouchClass();
 
 // Подключаем Галерею LightGallery
 import './libs/lightgallery.min.js';
+// Plugins
+// import lgZoom from 'lightgallery/plugins/zoom/lg-zoom.min.js';
+// import lgThumbnail from 'lightgallery/plugins/thumbnail'
+// import lgZoom from './lightgallery/plugins/zoom';
 
-lightGallery(document.querySelector('[data-gallery]'), {
-	// plugins: [lgZoom, lgThumbnail],
-	thumbnail: true,
-	animateThumb: true,
-	showThumbByDefault: true,
-	enableTouch: true,
-	zoom: true,
-	scale: 1,
-	showZoomInOutIcons: true,
-	actualSize: true,
-});
+let gallery = document.querySelectorAll('[data-gallery]');
+if (gallery) {
+	gallery_init();
+}
+function gallery_init() {
+	for (let index = 0; index < gallery.length; index++) {
+		const el = gallery[index];
+		lightGallery(el, {
+			// plugins: [lgZoom],
+			zoom: true,
+			enableTouch: true,
+			enableZoomAfter: 50,
+			showZoomInOutIcons: true,
+			// scale: 1,
+			actualSize: true,
+			actualSizeIcons: { zoomIn: 'lg-zoom-in', zoomOut: 'lg-zoom-out' },
+		});
+	}
+}
 
 // Составы и Веса в Карточке товара
 const mainCardInfo = document.querySelector('.main-card__info');
