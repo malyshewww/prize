@@ -12,6 +12,11 @@ function observer() {
    const collect = document.getElementById('collect-footer');
    if (collect) {
       const collectItem = collect.querySelector('.footer-collect__item');
+      const collectShowBtn = document.querySelector('.show-btn');
+      collectShowBtn.addEventListener('click', (event) => {
+         event.target.classList.toggle('active');
+         collect.classList.toggle('active');
+      })
       const callback = ([entry]) => {
          const targetInfo = entry.boundingClientRect;
          const rootBoundsInfo = entry.rootBounds;

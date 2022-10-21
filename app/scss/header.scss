@@ -3,6 +3,9 @@
 	&__catalog {
 		padding-bottom: 18px;
 	}
+	&-menu {
+		display: none;
+	}
 }
 .top-header {
 	background: $greenColor;
@@ -92,6 +95,7 @@
 		position: relative;
 		cursor: pointer;
 		display: inline-block;
+		transition: color 0.2s linear 0s;
 		@media screen and (min-width: $lg) {
 			&::before {
 				content: "";
@@ -479,7 +483,7 @@ body._touch .top-header__list > li.open .submenu__list {
 	transform: translate(0px, 0px);
 	pointer-events: all;
 	display: block;
-	padding: 10px 0;
+	padding: 0px 0;
 }
 body._touch .menu__list > li.open .menu__arrow {
 	transform: rotate(-90deg) translateY(1px);
@@ -489,8 +493,12 @@ body._touch .menu__list > li.open .menu__arrow {
 }
 body._touch .top-header__list > li.open .menu__arrow {
 	transform: rotate(-90deg) translateY(0px);
+	&::before {
+		color: $redColor;
+	}
 }
-body._touch .menu__list > li.open .menu__link {
+body._touch .menu__list > li.open .menu__link,
+body._touch .top-header__list > li.open .top-header__link {
 	color: $redColor;
 }
 
@@ -583,47 +591,12 @@ body._touch .menu__list > li.open .menu__link {
 			align-items: center;
 			&.icon-arrow-next::before {
 				display: block;
-				color: $whiteColor;
+				color: $mainColor;
+				font-size: 22px;
 			}
 		}
 		&__menu {
-			position: fixed;
-			top: -150%;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			min-height: 100vh;
-			padding: 50px 15px 70px;
-			background: $greenColor;
-			overflow-x: hidden;
-			overflow-y: auto;
-			z-index: 25;
-			transition: top 0.2s ease 0s;
-			&::before {
-				content: none;
-				position: fixed;
-				top: 0;
-				left: 0;
-				height: 50px;
-				width: 100%;
-				transform: translateY(-100%);
-				background: transparent;
-				opacity: 0;
-				visibility: hidden;
-				transition: transform 0.2s linear 0s, opacity 0.2s linear 0s, visibility 0.2s linear 0s;
-			}
-			&.show-menu {
-				top: 0;
-				&::before {
-					transform: translateY(0);
-					opacity: 1;
-					visibility: visible;
-					background: $greenColor;
-				}
-			}
-			& .menu-close {
-				background: $greenColor;
-			}
+			padding: 0 28px 0 22px;
 		}
 		&__icon {
 			display: flex;
@@ -643,12 +616,17 @@ body._touch .menu__list > li.open .menu__link {
 		}
 		&__link {
 			flex: 1 1 auto;
-			font-size: 20px;
+			font-size: 23px;
 			line-height: 150%;
+			color: $mainColor;
+			text-transform: uppercase;
+			font-weight: 600;
+			padding-top: 5px;
+			padding-bottom: 5px;
 		}
 	}
 	.logo__image {
-		top: -34px;
+		top: -15px;
 	}
 	.actions-header__search {
 		display: flex;
@@ -708,11 +686,78 @@ body._touch .menu__list > li.open .menu__link {
 		padding-bottom: 0;
 	}
 	.submenu__link {
-		font-size: 16px;
+		font-size: 20px;
 	}
 }
 
 @media screen and (max-width: $lg) {
+	.header-menu {
+		display: block;
+		position: fixed;
+		left: -120%;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		min-height: 100vh;
+		padding: 62px 0px 70px;
+		background: $whiteColor;
+		overflow-x: hidden;
+		overflow-y: auto;
+		z-index: 25;
+		transition: left 0.4s ease-in-out 0s;
+		&::before {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 48px;
+			width: 100%;
+			background-color: $whiteColor;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.2s linear 0s, visibility 0.2s linear 0s;
+			z-index: 25;
+		}
+		&.show-menu {
+			left: 0;
+			&::before {
+				opacity: 1;
+				visibility: visible;
+				transition: opacity 0.2s linear 0s, visibility 0.2s linear 0s;
+			}
+		}
+	}
+	.category-menu__button {
+		color: $whiteColor;
+		font-size: 23px;
+		line-height: math.div(45, 23) * 100%;
+		font-family: "Montserrat", sans-serif;
+		background-color: $greenColor;
+		width: 100%;
+		min-height: 56px;
+		padding: 5px 28px 5px 22px;
+		text-transform: uppercase;
+		font-weight: 500;
+		text-align: left;
+		display: flex;
+		align-items: center;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		gap: 10px;
+		&::before {
+			font-size: 22px;
+			width: 30px;
+			height: 30px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transform: rotate(90deg);
+			transition: transform 0.2s ease 0s;
+		}
+		&._active::before {
+			transform: rotate(-90deg);
+		}
+	}
 	.actions-header {
 		position: fixed;
 		left: 0;
@@ -732,106 +777,80 @@ body._touch .menu__list > li.open .menu__link {
 	.actions-header__link:before {
 		font-size: 32px;
 	}
-	.burger-icon {
-		background: none;
+	.burger-icon-wrap {
+		padding: 10px 21px;
+		background: transparent;
 		position: absolute;
-		left: 20px;
-		width: 37px;
-		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		z-index: 25;
+		transition: backgorund 0.15s ease 0s;
+		&.active {
+			background-color: $greenColor;
+		}
+	}
+	.burger-icon {
+		position: relative;
+		background: none;
+		width: 32px;
+		height: 28px;
 		cursor: pointer;
-		margin-right: auto;
-		display: block;
+		display: flex;
+		justify-content: center;
 		z-index: 31;
 	}
 	.burger-icon span,
-	.burger-icon span::before,
-	.burger-icon span::after {
+	.burger-icon::before,
+	.burger-icon::after {
 		position: absolute;
 		left: 0;
-		height: 2px;
+		height: 3px;
 		width: 100%;
 		transition: all 0.3s ease 0s;
-		background-color: $mainColor;
+		background-color: $whiteColor;
 	}
-	.burger-icon span::before,
-	.burger-icon span::after {
+	.burger-icon::before,
+	.burger-icon::after {
 		content: "";
 	}
-	.burger-icon span::before {
-		transform: translateY(-10px);
+	.burger-icon::before {
+		top: 0;
+		// transform: translateY(-10px);
 	}
-	.burger-icon span::after {
-		transform: translateY(10px);
+	.burger-icon::after {
+		// transform: translateY(10px);
+		bottom: 0;
 	}
-	.burger-icon.active span::before {
-		transform: rotate(-35deg);
-		width: 10px;
-		transform-origin: left bottom;
-		background-color: $redColor;
+	.burger-icon-wrap.active .burger-icon::before {
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg);
 	}
-	.burger-icon.active span::after {
-		transform: rotate(35deg);
-		width: 10px;
-		transform-origin: left top;
-		background-color: $redColor;
+	.burger-icon-wrap.active .burger-icon::after {
+		bottom: 50%;
+		transform: translateY(50%) rotate(-45deg);
 	}
 	.burger-icon span {
 		top: 50%;
 		transform: scale(1) translate(0%, -50%);
 	}
-	.burger-icon.active span {
-		background-color: $redColor;
+	.burger-icon-wrap.active span {
+		transform: scale(0) translate(0%, -50%);
 	}
-	// .burger-icon.active span {
-	// 	transform: scale(0) translate(0px, -50%);
-	// }
-	// .burger-icon.active::before {
-	// 	top: 10px;
-	// 	transform: rotate(45deg) translate(0%, -50%);
-	// }
-	// .burger-icon.active::after {
-	// 	bottom: 9px;
-	// 	transform: rotate(-45deg) translate(0%, 50%);
-	// }
 	.menu {
-		position: fixed;
-		top: 0;
-		right: -100%;
-		width: 100%;
-		height: 100%;
-		min-height: 100vh;
-		padding: 60px 20px 75px 20px;
-		transition: right 0.3s ease 0s;
-		background: $whiteColor;
-		display: flex;
-		flex-direction: column;
-		overflow-y: auto;
-		z-index: 20;
-		&::before {
-			content: none;
-			position: fixed;
-			top: 0;
-			right: -100%;
-			height: 60px;
-			width: 100%;
-			background: $whiteColor;
-			transition: right 0.3s ease 0s;
-			z-index: 20;
+		padding: 0 28px 0 22px;
+		&__link {
+			font-size: 20px;
+			line-height: 150%;
+			padding: 5px 0;
+			font-weight: 600;
+			font-family: "Montserrat", sans-serif;
 		}
-	}
-	.menu.show-menu {
-		right: 0;
-		&::before {
-			right: 0;
+		&__list > li:not(:last-child) {
+			margin-bottom: 5px;
 		}
-	}
-	.menu .menu-close {
-		background: $whiteColor;
-	}
-	.show-menu .menu-close {
-		opacity: 1;
-		visibility: visible;
-		pointer-events: all;
 	}
 	.main-header__phones {
 		display: inline-flex;
@@ -846,6 +865,9 @@ body._touch .menu__list > li.open .menu__link {
 	}
 	.social-header__list {
 		gap: 12px;
+	}
+	.top-header__body {
+		justify-content: flex-end;
 	}
 }
 @media screen and (max-width: $md) {
@@ -907,6 +929,24 @@ body._touch .menu__list > li.open .menu__link {
 			font-size: 12px;
 		}
 	}
+	.category-menu__button {
+		font-size: 18px;
+		line-height: 150%;
+		min-height: 40px;
+		padding: 5px 15px;
+	}
+	.menu,
+	.top-header__menu {
+		padding: 0 15px;
+	}
+	.menu__link,
+	.top-header__link {
+		font-size: 18px;
+		line-height: 150%;
+	}
+	.submenu__link {
+		font-size: 16px;
+	}
 }
 @media screen and (max-width: $xs) {
 	.actions-top-header__link {
@@ -921,12 +961,11 @@ body._touch .menu__list > li.open .menu__link {
 		padding: 8px 13px;
 		min-height: 28px;
 	}
+	.burger-icon-wrap {
+		padding: 10px 6px;
+	}
 	.logo__image {
 		top: -12px;
-	}
-	.burger-icon {
-		width: 27px;
-		height: 21px;
 	}
 	.actions-header__search svg {
 		width: 25px;

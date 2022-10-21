@@ -303,7 +303,9 @@
    justify-content: flex-end;
 }
 .rating:not(:checked) > input {
-   display: none;
+   position: absolute;
+   opacity: 0;
+   visibility: hidden;
 }
 .rating:not(:checked) > label {
    display: flex;

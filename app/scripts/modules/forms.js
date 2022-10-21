@@ -316,12 +316,12 @@ function formHandlerModal(formId, path) {
                      inputAgreement.value = '';
                   }
                   if (inputRating) {
-                     inputRating.forEach((item) => {
-                        if (item.checked) {
-                           const estimateWrapper = item.closest('.estimate-modal');
-                           estimateWrapper.classList.remove('error');
-                        }
-                     })
+                     // inputRating.forEach((item) => {
+                     //    if (item.checked) {
+                     //       const estimateWrapper = item.closest('.estimate-modal');
+                     //       estimateWrapper.classList.remove('error');
+                     //    }
+                     // })
                   }
                } else {
                   if (result.name) {
@@ -347,12 +347,12 @@ function formHandlerModal(formId, path) {
                      // inputAgreement.setAttribute('title', result.message.trim());
                   }
                   if (result.rating) {
-                     inputRating.forEach((item) => {
-                        if (!item.checked) {
-                           const estimateWrapper = item.closest('.estimate-modal');
-                           estimateWrapper.classList.add('error');
-                        }
-                     })
+                     // inputRating.forEach((item) => {
+                     //    if (!item.checked) {
+                     //       const estimateWrapper = item.closest('.estimate-modal');
+                     //       estimateWrapper.classList.add('error');
+                     //    }
+                     // })
                      // inputRating.setAttribute('title', result.message.trim());
                   }
                }

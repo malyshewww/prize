@@ -185,28 +185,28 @@ parameters.forEach((item) => {
 // console.log(urlParamCompound);
 
 // Top header menu
-const iconMenuTop = document.querySelector('.top-header__icon');
-const menuHeaderTop = document.querySelector('.top-header__menu');
-if (iconMenuTop) {
-	iconMenuTop.addEventListener("click", (event) => {
-		event.target.classList.toggle('active');
-		menuHeaderTop.classList.toggle('show-menu');
-		document.body.classList.toggle('lock');
-	});
-}
-const menuClose = document.querySelectorAll('.menu-close');
-if (menuClose) {
-	for (let i = 0; i < menuClose.length; i++) {
-		const elemClose = menuClose[i];
-		elemClose.addEventListener('click', (event) => {
-			event.target.parentNode.classList.remove('show-menu');
-			document.body.classList.remove('lock');
-		})
-	}
-}
+// const iconMenuTop = document.querySelector('.top-header__icon');
+// const menuHeaderTop = document.querySelector('.top-header__menu');
+// if (iconMenuTop) {
+// 	iconMenuTop.addEventListener("click", (event) => {
+// 		event.target.classList.toggle('active');
+// 		menuHeaderTop.classList.toggle('show-menu');
+// 		document.body.classList.toggle('lock');
+// 	});
+// }
+// const menuClose = document.querySelectorAll('.menu-close');
+// if (menuClose) {
+// 	for (let i = 0; i < menuClose.length; i++) {
+// 		const elemClose = menuClose[i];
+// 		elemClose.addEventListener('click', (event) => {
+// 			event.target.parentNode.classList.remove('show-menu');
+// 			document.body.classList.remove('lock');
+// 		})
+// 	}
+// }
 // Menu header category
-const iconMenu = document.querySelector('.burger-icon');
-const menuBody = document.querySelector('.menu');
+const iconMenu = document.querySelector('.burger-icon-wrap');
+const menuBody = document.querySelector('.header-menu');
 if (iconMenu) {
 	iconMenu.addEventListener("click", (event) => {
 		event.currentTarget.classList.toggle('active');

@@ -1,12 +1,16 @@
 header.header 
 	.header__body
 		.header__top.top-header
+			.header-menu
+				.header-menu__category.category-menu(data-spollers="991.98,max")
+					button(type="button" data-spoller).category-menu__button.icon-arrow-next Каталог товаров
+					.category-menu__navigation
 			.container
 				.top-header__body
-					button.top-header__icon(type="button")
-						span
-					nav.top-header__menu
-						button.menu-close(type="button").icon-delete
+					.burger-icon-wrap
+						button.burger-icon(type="button")
+							span
+					nav.top-header__menu(data-da=".header-menu, 991.98, 1")
 						ul.top-header__list
 							li.top-header__list-item
 								a.top-header__link(href="about.html") О компании
@@ -72,8 +76,6 @@ header.header
 								button(type="button").search-header__icon
 								input(type="submit" value="Поиск")
 					.main-header__actions.actions-header
-						button.actions-header__burger.burger-icon(type="button")
-							span
 						button.actions-header__search(type="button")
 							<svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<circle cx="15.0387" cy="15.0966" r="13.2403" stroke="#282828" stroke-width="2"/>
