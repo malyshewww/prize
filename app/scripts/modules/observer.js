@@ -14,6 +14,12 @@ function observer() {
       const collectItem = collect.querySelector('.footer-collect__item');
       const collectShowBtn = document.querySelector('.show-btn');
       collectShowBtn.addEventListener('click', (event) => {
+         // const parent = event.target.closest('.footer-collect__item');
+         const parentHeight = collectItem.offsetHeight;
+         // if (parentHeight > 200 && collect.classList.contains('active')) {
+         //    collectItem.style.height = '250px';
+         //    collectItem.style.overflowY = 'auto';
+         // }
          event.target.classList.toggle('active');
          collect.classList.toggle('active');
       })
@@ -22,8 +28,12 @@ function observer() {
          const rootBoundsInfo = entry.rootBounds;
          if (targetInfo.bottom < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
             collect.classList.add('show');
+            collectShowBtn.classList.add('active');
+            collect.classList.add('active');
          } else {
             collect.classList.remove('show');
+            collectShowBtn.classList.remove('active');
+            collect.classList.remove('active');
          }
       };
       // Задаем опции для «наблюдателя»

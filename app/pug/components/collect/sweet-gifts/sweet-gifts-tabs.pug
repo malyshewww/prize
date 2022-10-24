@@ -6,6 +6,7 @@
 			arrayHeaders: ["Наименование", "Вес 1&nbsp;шт.", "Количество"],
 			objectCategories: {
 				chocolate: {
+					tvname: "calc_chocolate",
 					title: "Шоколад",
 					children: [
 						{
@@ -41,6 +42,7 @@
 					]
 				},
 				candies: {
+					tvname: "calc_candies",
 					title: "Конфеты",
 					children: [
 						{
@@ -98,6 +100,7 @@
 			arrayHeaders: ["Наименование", "Вместимость", "Цена 1 шт."],
 			objectCategories: {
 				paperboard: {
+					tvname: "calc_paperboard",
 					title: "Картон",
 					children: [
 						{
@@ -128,6 +131,7 @@
 					]
 				},
 				tin: {
+					tvname: "calc_tin",
 					title: "Жестяные",
 					children: [
 						{
@@ -148,6 +152,7 @@
 					]
 				},
 				tuba: {
+					tvname: "calc_tuba",
 					title: "Туба",
 					children: [
 						{
@@ -163,6 +168,7 @@
 					]
 				},
 				bags: {
+					tvname: "calc_bags",
 					title: "Мешки",
 					children: [
 						{
@@ -182,7 +188,8 @@
 						},
 					]
 				},
-				textile: { 
+				textile: {
+					tvname: "calc_textile",
 					title: "Текстиль",
 					children: [
 						{
@@ -206,7 +213,8 @@ div.collect-tabs
 		.tabs__content-wrapper.container
 			each tabItem, tabIndex in arrayTabs
 				div.tabs__content.tabs-content(id=tabItem.key class=(tabIndex==0 ? "show" : ""))
-					form.collect__table.collect-table(id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm", class=tabItem.key=="package" ? "collect-table__package" : 0)
+					form.collect__table.collect-table(id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm", class=tabItem.key=="package" ? "collect-table__package" : 0
+					class=id=tabItem.key=="package" ? "collectPackageForm" : "collectProdForm", class=tabItem.key=="package" ? "collect-table__package" : 0)
 						.collect-table__header.collect-table__thead
 							each itemHeader in tabItem.arrayHeaders
 								.collect-table__th!= itemHeader
@@ -214,12 +222,12 @@ div.collect-tabs
 							.collect-table__sub-header.sub-header-table
 								.collect-table__tr 
 									.collect-table__td.no-pacakge
-										.collect-table__title Без упаковки
+										.collect-table__title(id='calc-package-null') Без упаковки
 										.collect-table__value
 										.collect-table__radiobutton.radiobutton-item
 											label
 												span.radiobutton-item__text 0 ₽
-												input(type="radio" name="package" checked class="real-radio package-price-input")
+												input(type="radio" name="package" checked class="real-radio package-price-input" id='calc-package-null')
 												span.custom-radio
 						.collect-table__body.collect-table__tbody
 							.accordeon(data-spollers)
@@ -237,21 +245,27 @@ div.collect-tabs
 																			img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
 																			.collect-table__tooltip
 																				img(src=`img/collect/sweet-gifts/${CategorieIndex}/${childIndex+1}.png`, alt=child.title)
-																	h2.collect-table__title!= child.title
+																	h2.collect-table__title(id=`title_`+itemCategories.tvname+`${childIndex+1}`)!= child.title
 																.collect-table__value
 																	span(data-type=" г")= child.value
 																	if tabItem.key == "goods"
-																		input(type="hidden" class="goods-weight-input" value=child.value)
-																		input(type="hidden" class="goods-price-input" value=child.price)
+																		input(type="hidden" class="goods-weight-input" value=child.value id=`weight_`+`${itemCategories.tvname}`+`${childIndex+1}`)
+																		input(type="hidden" class="goods-price-input" value=child.price id=`price_`+`${itemCategories.tvname}`+`${childIndex+1}`)
 																case tabItem.key
 																	when "goods"
 																		.collect-table__quantity.quantity-card.collect-quantity
-																			button.quantity-card__button.quantity-card__button--minus.quantity-card__button--disabled(data-minus type="button")
-																			input(type="text" value="0").quantity-card__input.calc-number
-																			button.quantity-card__button.quantity-card__button--plus(data-plus type="button")
+																			button.btnDec.disabled(type="button")
+																			input(type="text" value="0" 
+																			id=itemCategories.tvname+`${childIndex+1}` 
+																			data-name=itemCategories.tvname+`${childIndex+1}`).quantity-card__input.calc-number.goods-count-input
+																			button.btnInc(type="button")
 																	when "package"
 																		.collect-table__radiobutton.radiobutton-item
 																			label
 																				span.radiobutton-item__text(data-type=" ₽")= child.price
-																				input(type="radio" name="package" class="real-radio package-price-input" value=child.price)
+																				input(type="radio" name="package" 
+																				class="real-radio package-price-input" 
+																				value=child.price
+																				data-name=itemCategories.tvname+`${childIndex+1}`
+																				id=itemCategories.tvname+`${childIndex+1}`)
 																				span.custom-radio

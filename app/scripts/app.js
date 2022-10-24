@@ -32,7 +32,7 @@ import "./modules/observer.js";
 import "./modules/forms.js";
 
 // Подключение скрипта калькулятора
-import "./modules/calc.js";
+// import "./modules/calc.js";
 
 // Увеличенные изображения в карточке товара
 import "./modules/fslightbox.js";
@@ -110,10 +110,8 @@ addTouchClass();
 
 // Подключаем Галерею LightGallery
 import './libs/lightgallery.min.js';
-// Plugins
-// import lgZoom from 'lightgallery/plugins/zoom/lg-zoom.min.js';
-// import lgThumbnail from 'lightgallery/plugins/thumbnail'
-// import lgZoom from './lightgallery/plugins/zoom';
+import './libs/lg-zoom.min.js';
+
 
 let gallery = document.querySelectorAll('[data-gallery]');
 if (gallery) {
@@ -124,13 +122,21 @@ function gallery_init() {
 		const el = gallery[index];
 		lightGallery(el, {
 			// plugins: [lgZoom],
-			zoom: true,
 			enableTouch: true,
-			enableZoomAfter: 50,
-			showZoomInOutIcons: true,
-			// scale: 1,
+			zoom: true,
+			showZoomInOutIcons: false,
+			scale: 2,
 			actualSize: true,
 			actualSizeIcons: { zoomIn: 'lg-zoom-in', zoomOut: 'lg-zoom-out' },
+			enableZoomAfter: 1000,
+			zoomPluginStrings: {
+				zoomIn: 'Zoom in',
+				zoomOut: 'Zoom out',
+				viewActualSize: 'View actual size',
+			},
+			mobileSettings: {
+				controls: false,
+			},
 		});
 	}
 }

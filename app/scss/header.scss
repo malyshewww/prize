@@ -295,11 +295,14 @@
 		background-color: transparent;
 	}
 	&__actions {
-		width: 16px;
-		height: 16px;
 		position: absolute;
-		right: 17px;
-		top: 14px;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		padding: 14px;
+		right: 0;
+		height: auto;
+		width: auto;
 		cursor: pointer;
 		& input {
 			position: absolute;
@@ -580,6 +583,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		min-height: 50px;
 		& .container {
 			padding-left: 5px;
+			padding-right: 5px;
 		}
 		& .menu__arrow {
 			border: none;
@@ -659,10 +663,6 @@ body._touch .top-header__list > li.open .top-header__link {
 		border: 1px solid transparent;
 		min-height: 55px;
 	}
-	.search-header__actions {
-		top: 50%;
-		transform: translateY(-50%);
-	}
 	.actions-header {
 		gap: 15px;
 		flex: 1 1 auto;
@@ -710,7 +710,7 @@ body._touch .top-header__list > li.open .top-header__link {
 			position: fixed;
 			top: 0;
 			left: 0;
-			height: 48px;
+			height: 50px;
 			width: 100%;
 			background-color: $whiteColor;
 			opacity: 0;

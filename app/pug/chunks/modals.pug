@@ -22,6 +22,25 @@ mixin modal(id, className)
 					|Отправляя заявку, Вы соглашаетесь с
 					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
 		button.form-modal__button(type="submit") Отправить
++modal("modal-request")
+	.modal__title Оставить заявку
+	form(action="#" id="form-request").modal__form.form-modal
+		input(class="workemail" type="text" name="workemail" value="Рабочий E-mail" required)
+		input(type="hidden" name="name-page" value="[[*pagetitle]] ([[*id]])")
+		input(type="hidden" name="product-title")
+		.form-modal__items
+			.form-modal__item 
+				input(type="text" class="form-modal__input" placeholder="Ваше имя" name=name required)
+			.form-modal__item 
+				input(type="text" class="form-modal__input" data-tel placeholder="Ваш телефон" name=phone required)
+		.checkbox-item
+			label
+				input(type="checkbox" checked).real-checkbox
+				span.custom-checkbox 
+				span.checkbox-item__text
+					|Отправляя заявку, Вы соглашаетесь с
+					a.form__link(href="politic.html" target="_blank") Политикой конфиденциальности
+		button.form-modal__button(type="submit") Отправить
 +modal("modal-reviews")
 	.modal__title Написать отзыв
 	form(action="#").modal__form.form-modal
@@ -82,7 +101,7 @@ mixin modal(id, className)
 		p Мы перезвоним вам в ближайшее время
 +modal("order")
 	.modal__title Сделать заказ
-	form(action="#").modal__form.form-modal
+	form(action="#" id='form-order').modal__form.form-modal
 		.form-modal__items
 			.form-modal__item 
 				input(type="text" class="form-modal__input" placeholder="Ваше имя")

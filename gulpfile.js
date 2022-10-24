@@ -162,6 +162,8 @@ function scripts() {
       module: {
         rules: [
           {
+            // test: /\.(js)$/,
+            // exclude: /node_modules/,
             test: /\.m?js$/,
             exclude: /(node_modules)/,
             use: {

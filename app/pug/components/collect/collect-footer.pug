@@ -1,7 +1,10 @@
 .collect-footer.footer-collect.container(id="collect-footer")
 	div.collect-wrapper
 		.footer-collect__items
-			.footer-collect__item
+			form.footer-collect__item.form(method="post" id="calcResultForm")
+				input(type="hidden" name="weight" data-name="weight")
+				input(type="hidden" name="price" data-name="price")
+				input(type="hidden" data-name="data")
 				.footer-collect__item-wrap
 					.footer-collect__actions
 						.footer-collect__buttons(data-da=".footer-collect__item,991.98,0") 

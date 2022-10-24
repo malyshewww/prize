@@ -6,6 +6,7 @@ each productItem, productIndex in product
 		input(type="hidden" class="input-card-discount")
 		input(type="hidden" class="input-card-compound")
 		input(type="hidden" class="input-card-compound-get")
+		input(type="hidden" name='shk-name' value=productItem.name)
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
 			.card-product__favorite.icon-favorites(class=productItem.favoriteSelected)
