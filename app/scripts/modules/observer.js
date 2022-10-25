@@ -11,34 +11,26 @@
 function observer() {
    const collect = document.getElementById('collect-footer');
    if (collect) {
+      const windowHeight = window.innerHeight;
+      if (windowHeight < 600) {
+         collect.classList.add('limit-height');
+      } else {
+         collect.classList.remove('limit-height');
+      }
       const collectItem = collect.querySelector('.footer-collect__item');
-      const collectShowBtn = document.querySelector('.show-btn');
-      collectShowBtn.addEventListener('click', (event) => {
-         // const parent = event.target.closest('.footer-collect__item');
-         const parentHeight = collectItem.offsetHeight;
-         // if (parentHeight > 200 && collect.classList.contains('active')) {
-         //    collectItem.style.height = '250px';
-         //    collectItem.style.overflowY = 'auto';
-         // }
-         event.target.classList.toggle('active');
-         collect.classList.toggle('active');
-      })
+      let collectShowBtn = collect.querySelector('.show-btn');
       const callback = ([entry]) => {
          const targetInfo = entry.boundingClientRect;
          const rootBoundsInfo = entry.rootBounds;
          if (targetInfo.bottom < rootBoundsInfo.bottom || targetInfo.isIntersecting) {
             collect.classList.add('show');
-            collectShowBtn.classList.add('active');
-            collect.classList.add('active');
          } else {
             collect.classList.remove('show');
-            collectShowBtn.classList.remove('active');
-            collect.classList.remove('active');
          }
       };
       // Задаем опции для «наблюдателя»
       const options = {
-         rootMargin: '0px 0px -1px 0px',
+         rootMargin: '65px 0px -1px 0px',
          // Когда будет срабатывать callback функция
          threshold: [1]
       }
@@ -49,3 +41,20 @@ function observer() {
    }
 }
 observer();
+
+let collectShowBtn = document.querySelector('.show-btn');
+if (collectShowBtn) {
+   collectShowBtn.addEventListener('click', (event) => {
+      const parent = event.target.closest('#collect-footer');
+      const parentHeight = parent.offsetHeight;
+      // if (parentHeight > 200 && collect.classList.contains('active')) {
+      //    collectItem.style.height = '250px';
+      //    collectItem.style.overflowY = 'auto';
+      // }
+      event.target.classList.toggle('active');
+      parent.classList.toggle('active');
+   })
+}
+function limitClass() {
+   collect.classList.toggle('limit-height');
+}

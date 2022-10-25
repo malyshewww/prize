@@ -117,6 +117,7 @@
       top: 19px;
       right: 20px;
       cursor: pointer;
+      font-size: 0;
       &::before {
          font-size: 20px;
          color: $grayColorBD;
@@ -126,6 +127,9 @@
          color: $redColor;
       }
       &.selected::before {
+         color: $redColor;
+      }
+      &.add-favorite--active::before {
          color: $redColor;
       }
    }

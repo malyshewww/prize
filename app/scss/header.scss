@@ -578,6 +578,7 @@ body._touch .top-header__list > li.open .top-header__link {
 	}
 	.header__catalog {
 		padding: 0;
+		display: none;
 	}
 	.top-header {
 		min-height: 50px;
@@ -691,6 +692,18 @@ body._touch .top-header__list > li.open .top-header__link {
 }
 
 @media screen and (max-width: $lg) {
+	.top-header__menu {
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+	.header-menu.show-menu {
+		& .top-header__menu {
+			height: 100%;
+			opacity: 1;
+			visibility: visible;
+		}
+	}
 	.header-menu {
 		display: block;
 		position: fixed;

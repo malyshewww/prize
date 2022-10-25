@@ -368,6 +368,10 @@
 	&.active {
 		max-height: 100%;
 	}
+	&.limit-height .footer-collect__item {
+		max-height: 250px;
+		overflow-y: auto;
+	}
 	@media screen and (max-width: $lg) {
 		// max-height: 100%;
 		// position: static;
@@ -634,6 +638,7 @@
 			transform: rotate(-90deg);
 			color: $grayColorBD;
 			transition: transform 0.2s ease 0s;
+			pointer-events: none;
 		}
 		&.active::before {
 			color: $greenColor;
@@ -659,11 +664,16 @@
 	@media screen and (max-width: $pc) {
 		margin-right: 20px;
 		margin-left: 20px;
+		flex: 0 0 294px;
+	}
+	@media screen and (max-width: 1100px) {
+		flex: 0 0 240px;
 	}
 	@media screen and (max-width: $lg) {
 		align-self: start;
 		margin-left: 0;
 		margin-right: 0;
+		flex: 0;
 	}
 	@media screen and (max-width: $md) {
 		max-width: 100%;
@@ -752,6 +762,10 @@
 	.collect-footer.active .result-collect__list,
 	.collect-footer.active .footer-collect__info {
 		display: block;
+	}
+	.collect-footer.show .show-btn::before {
+		color: $greenColor;
+		transform: rotate(90deg);
 	}
 }
 @media screen and (max-width: $lg) {
