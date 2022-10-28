@@ -1,0 +1,20 @@
+.sitemap {
+	padding-bottom: 100px;
+	@media screen and (max-width: $md) {
+		padding-bottom: 60px;
+	}
+	& ul {
+		padding-left: 20px;
+	}
+	& ul li {
+		list-style: unset;
+		font-size: 17px;
+		line-height: math.div(24, 17) * 100%;
+		& a {
+			transition: color 0.2s ease 0s;
+			&:hover {
+				color: $redColorHover;
+			}
+		}
+	}
+}
