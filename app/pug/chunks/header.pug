@@ -1,3 +1,11 @@
+mixin picture(srcPc, srcTouch, medicPc, mediaTouch, srcDefault = srcPc)
+	picture
+		source(srcset=srcPc, media=`(min-width: ${medicPc}px)`)
+		source(srcset=srcTouch, media=`(min-width: ${mediaTouch}px)`)
+		img(src=srcDefault alt='')
+mixin actionsLink(path, count, iconClass)
+		.actions-header__link&attributes({'href': path, 'class' : iconClass})
+			span.actions-header__count= count
 header.header 
 	.header-menu
 		.header-menu__category.category-menu(data-spollers="991.98,max")
@@ -34,15 +42,9 @@ header.header
 					.main-header__logo
 						a(href="/").logo
 							.logo__image
-								picture
-									source(srcset="img/icons/logo.png", media="(min-width: 650px)")
-									source(srcset="img/icons/logo_touch.png", media="(min-width: 320px)")
-									img(src="img/icons/logo.png" alt='')
+								+picture("img/icons/logo.png", "img/icons/logo_touch.png", 650, 320, "img/icons/logo.png")
 							div.logo__text
-								picture
-									source(srcset="img/icons/logo.svg", media="(min-width: 650px)")
-									source(srcset="img/icons/textlogo_touch.svg", media="(min-width: 320px)")
-									img(src="img/icons/logo.svg" alt="")
+								+picture("img/icons/logo.svg", "img/icons/textlogo_touch.svg", 650, 320, "img/icons/logo.svg")
 					.main-header__phones 
 						a.main-header__phone(href="tel:88312239969") 8 (831) 223-99-69
 						a.main-header__phone(href="tel:88312239969") +7 (903) 604-92-10
@@ -52,22 +54,13 @@ header.header
 						ul.social-header__list
 							li 
 								a(href="/", target="_blank").social-header__link
-									picture
-										source(srcset="img/icons/whatsapp.svg", media="(min-width: 991.98px)")
-										source(srcset="img/icons/whatsapp_touch.svg", media="(min-width: 320px)")
-										img(src="img/icons/whatsapp.svg" alt="")
+									+picture("img/icons/whatsapp.svg", "img/icons/whatsapp_touch.svg", 991.98, 320, "img/icons/whatsapp.svg")
 							li 
 								a(href="/", target="_blank").social-header__link
-									picture
-										source(srcset="img/icons/viber.svg", media="(min-width: 991.98px)")
-										source(srcset="img/icons/viber_touch.svg", media="(min-width: 320px)")
-										img(src="img/icons/viber.svg" alt="")
+									+picture("img/icons/viber.svg", "img/icons/viber_touch.svg", 991.98, 320, "img/icons/viber.svg")
 							li 
 								a(href="/", target="_blank").social-header__link
-									picture
-										source(srcset="img/icons/vk.svg", media="(min-width: 991.98px)")
-										source(srcset="img/icons/vk_touch.svg", media="(min-width: 320px)")
-										img(src="img/icons/vk.svg" alt="")
+									+picture("img/icons/vk.svg", "img/icons/vk_touch.svg", 991.98, 320, "img/icons/vk.svg")
 					.main-header__search.search-header
 						button(type="button").search-header__button
 						form(action="/").search-header__form
@@ -81,12 +74,9 @@ header.header
 								<circle cx="15.0387" cy="15.0966" r="13.2403" stroke="#282828" stroke-width="2"/>
 								<line x1="23.8007" y1="23.8093" x2="33.9724" y2="31.9466" stroke="#282828" stroke-width="2"/>
 							</svg>
-						a(href="favorites.html").actions-header__link.icon-favorites
-							span.actions-header__count 1
-						a.actions-header__link.icon-prepare
-							span.actions-header__count 1
-						a(href="cart.html").actions-header__link.icon-cart
-							span.actions-header__count 1
+						+actionsLink("favorites.html", 1, "icon-favorites")
+						+actionsLink("/", 1, "icon-prepare")
+						+actionsLink("cart.html", 1, "icon-cart")
 		.header__catalog
 			.container
 				include ./menu

@@ -66,15 +66,17 @@
 			align-items: center;
 			cursor: pointer;
 			position: relative;
-			._pc &:hover .submenu__list {
-				opacity: 1;
-				visibility: visible;
-				transform: translate(0px, -2px);
-				pointer-events: all;
-			}
-			._pc &:hover .menu__arrow {
-				border-top: 6px solid $whiteColor;
-				transform: rotate(-180deg) translateY(0px);
+			@media screen and (min-width: $lg) {
+				&:hover .submenu__list {
+					opacity: 1;
+					visibility: visible;
+					transform: translate(0px, -2px);
+					pointer-events: all;
+				}
+				&:hover .menu__arrow {
+					border-top: 6px solid $whiteColor;
+					transform: rotate(-180deg) translateY(0px);
+				}
 			}
 			&.active .submenu__list .submenu__link {
 				background: #ffe3e3;
@@ -376,18 +378,20 @@
 		&.active .menu__link {
 			color: $redColor;
 		}
-		._pc &:hover .submenu__list {
-			opacity: 1;
-			visibility: visible;
-			transform: translate(0px, -2px);
-			pointer-events: all;
-		}
-		._pc &:hover .menu__arrow {
-			border-top: 6px solid $redColor;
-			transform: rotate(-180deg) translateY(1px);
-		}
-		._pc &:hover .menu__link {
-			color: $redColor;
+		@media screen and (min-width: $lg) {
+			&:hover .submenu__list {
+				opacity: 1;
+				visibility: visible;
+				transform: translate(0px, -2px);
+				pointer-events: all;
+			}
+			&:hover .menu__arrow {
+				border-top: 6px solid $redColor;
+				transform: rotate(-180deg) translateY(1px);
+			}
+			&:hover .menu__link {
+				color: $redColor;
+			}
 		}
 	}
 	&__link {
@@ -408,8 +412,12 @@
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 6px solid $mainColor;
+		pointer-events: none;
 		&.icon-arrow-next::before {
 			display: none;
+		}
+		@media screen and (max-width: $lg) {
+			pointer-events: all;
 		}
 	}
 	&-close {
@@ -479,30 +487,32 @@
 	}
 }
 
-body._touch .menu__list > li.open .submenu__list,
-body._touch .top-header__list > li.open .submenu__list {
-	opacity: 1;
-	visibility: visible;
-	transform: translate(0px, 0px);
-	pointer-events: all;
-	display: block;
-	padding: 0px 0;
-}
-body._touch .menu__list > li.open .menu__arrow {
-	transform: rotate(-90deg) translateY(1px);
-	&::before {
+@media screen and (max-width: $lg) {
+	.menu__list > li.open .submenu__list,
+	.top-header__list > li.open .submenu__list {
+		opacity: 1;
+		visibility: visible;
+		transform: translate(0px, 0px);
+		pointer-events: all;
+		display: block;
+		padding: 0px 0;
+	}
+	.menu__list > li.open .menu__arrow {
+		transform: rotate(-90deg) translateY(1px);
+		&::before {
+			color: $redColor;
+		}
+	}
+	.top-header__list > li.open .menu__arrow {
+		transform: rotate(-90deg) translateY(0px);
+		&::before {
+			color: $redColor;
+		}
+	}
+	.menu__list > li.open .menu__link,
+	.top-header__list > li.open .top-header__link {
 		color: $redColor;
 	}
-}
-body._touch .top-header__list > li.open .menu__arrow {
-	transform: rotate(-90deg) translateY(0px);
-	&::before {
-		color: $redColor;
-	}
-}
-body._touch .menu__list > li.open .menu__link,
-body._touch .top-header__list > li.open .top-header__link {
-	color: $redColor;
 }
 
 @media screen and (min-width: $lg) {
@@ -536,6 +546,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		display: block;
 	}
 }
+
 @media screen and (max-width: 1100px) {
 	.top-header__menu {
 		padding-left: 0px;
@@ -574,6 +585,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		&.icon-arrow-next::before {
 			display: block;
 			color: $blackColor;
+			font-size: 22px;
 		}
 	}
 	.header__catalog {
@@ -801,6 +813,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		top: 0;
 		z-index: 28;
 		transition: backgorund 0.15s ease 0s;
+		cursor: pointer;
 		&.active {
 			background-color: $greenColor;
 		}
@@ -810,7 +823,6 @@ body._touch .top-header__list > li.open .top-header__link {
 		background: none;
 		width: 32px;
 		height: 28px;
-		cursor: pointer;
 		display: flex;
 		justify-content: center;
 		z-index: 31;

@@ -64,23 +64,22 @@ let isMobile = {
 	any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
 };
 /* Добавление класса touch для Body если браузер мобильный */
+let menuArrows = document.querySelectorAll('.menu__arrow');
+if (menuArrows.length > 0) {
+	for (let index = 0; index < menuArrows.length; index++) {
+		let menuArrow = menuArrows[index];
+		const menuParent = menuArrow.parentElement;
+		menuArrow.addEventListener("click", function (e) {
+			menuParent.classList.toggle('open');
+		});
+	}
+}
+
 function addTouchClass() {
 	if (isMobile.any()) {
 		document.body.classList.add('_touch');
-		let menuArrows = document.querySelectorAll('.menu__arrow');
-		if (menuArrows.length > 0) {
-			for (let index = 0; index < menuArrows.length; index++) {
-				let menuArrow = menuArrows[index];
-				const menuParent = menuArrow.parentElement;
-				menuArrow.addEventListener("click", function (e) {
-					menuParent.classList.toggle('open');
-				});
-			}
-		}
 	} else {
 		document.body.classList.add('_pc');
 	}
 }
 addTouchClass();
-
-
