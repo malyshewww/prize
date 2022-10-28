@@ -101,8 +101,8 @@ workemailList.forEach((item) => {
 })();
 
 // Подключение библиотеки для модальных окон
-import "./graph-modal.min.js";
-const modals = new GraphModal();
+// import "./graph-modal.min.js";
+// const modals = new GraphModal();
 
 // Отправка формы
 const modalForm = document.querySelectorAll('.form');
@@ -176,7 +176,6 @@ function formHandler(formId, path) {
                      const parent = input.parentNode;
                      parent.classList.remove('focus');
                   })
-
                } else {
                   if (result.name) {
                      inputName.classList.add('error');

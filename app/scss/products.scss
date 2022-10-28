@@ -73,9 +73,6 @@
 .swiper-initialized .card-product {
    opacity: 0;
    visibility: hidden;
-   & .card-product__image img {
-      transform: scale(0);
-   }
 }
 .card-product {
    background: $whiteColor;
@@ -90,9 +87,6 @@
    &.swiper-slide-visible {
       opacity: 1;
       visibility: visible;
-   }
-   &.swiper-slide-visible .card-product__image img {
-      transform: scale(1);
    }
    &__box {
       height: 100%;
@@ -183,7 +177,6 @@
       margin-bottom: 6px;
       min-height: 176px;
       & img {
-         transform: scale(1);
          left: initial;
          height: initial;
          width: initial;

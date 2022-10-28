@@ -716,7 +716,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		background: $whiteColor;
 		overflow-x: hidden;
 		overflow-y: auto;
-		z-index: 25;
+		z-index: 28;
 		transition: left 0.4s ease-in-out 0s;
 		&::before {
 			content: "";
@@ -781,7 +781,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		min-height: 65px;
 		padding: 10px 20px;
 		gap: 44px;
-		z-index: 21;
+		z-index: 26;
 	}
 	.actions-header__search svg {
 		width: 32px;
@@ -799,7 +799,7 @@ body._touch .top-header__list > li.open .top-header__link {
 		align-items: center;
 		left: 0;
 		top: 0;
-		z-index: 25;
+		z-index: 28;
 		transition: backgorund 0.15s ease 0s;
 		&.active {
 			background-color: $greenColor;

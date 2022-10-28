@@ -1,3 +1,4 @@
+import { matches } from './matches.js';
 /**
    Создаем intersection observer
    callback - callback-функция
@@ -8,17 +9,16 @@
 // if (mediaQuery.matches) {
 //    observer();
 // }
+
+// Orientation portrait / horizontal
+let mql = window.matchMedia("(orientation: portrait)");
+// Прослушка события изменения ориентации
+mql.addEventListener('resize', matches);
+
 function observer() {
    const collect = document.getElementById('collect-footer');
    if (collect) {
-      const windowHeight = window.innerHeight;
-      if (windowHeight < 600) {
-         collect.classList.add('limit-height');
-      } else {
-         collect.classList.remove('limit-height');
-      }
-      const collectItem = collect.querySelector('.footer-collect__item');
-      let collectShowBtn = collect.querySelector('.show-btn');
+      matches(mql);
       const callback = ([entry]) => {
          const targetInfo = entry.boundingClientRect;
          const rootBoundsInfo = entry.rootBounds;
@@ -42,19 +42,12 @@ function observer() {
 }
 observer();
 
-let collectShowBtn = document.querySelector('.show-btn');
+const collectShowBtn = document.querySelector('.show-btn');
 if (collectShowBtn) {
    collectShowBtn.addEventListener('click', (event) => {
       const parent = event.target.closest('#collect-footer');
-      const parentHeight = parent.offsetHeight;
-      // if (parentHeight > 200 && collect.classList.contains('active')) {
-      //    collectItem.style.height = '250px';
-      //    collectItem.style.overflowY = 'auto';
-      // }
       event.target.classList.toggle('active');
       parent.classList.toggle('active');
    })
 }
-function limitClass() {
-   collect.classList.toggle('limit-height');
-}
+

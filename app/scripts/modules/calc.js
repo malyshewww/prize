@@ -13,7 +13,7 @@ const resetBtn = d.getElementById('calc-btn-reset');
 function ready() {
 	if (resetBtn) {
 		resetBtn.addEventListener('click', function (e) {
-			console.log('click !');
+			// console.log('click !');
 			e.preventDefault();
 			resetForms();
 			if (collectProdForm !== null) {
@@ -165,7 +165,7 @@ function ready() {
 			for (const [key, value] of entries) {
 				const calcNumber = document.querySelectorAll(`.calc-number[data-name='${key}']`);
 				const inputsPackage = document.querySelectorAll(`input[name="package"][type="radio"][id='${value}']`);
-				console.log(inputsPackage);
+				// console.log(inputsPackage);
 				if (key !== 'package') {
 					[...calcNumber].forEach((item) => {
 						item.setAttribute('value', value);
@@ -393,15 +393,10 @@ if (pdfButton) {
 			.then((response) => {
 				let todayDate = new Date().toISOString().slice(0, 10);
 				// console.log(response);
-				// const blob = new Blob([response.data], { type: 'application/pdf' });
-				// const URL = window.URL || window.webkitURL;
-				// const downloadUrl = URL.createObjectURL(blob);
 				const link = document.createElement('a');
 				link.href = URL.createObjectURL(response);
 				link.target = "_blank";
 				link.setAttribute('download', `calculate-${todayDate}.pdf`);
-				// calcResultForm.appendChild(link);
-				// link.innerHTML = "Ссылка";
 				link.click();
 				link.remove();
 				setTimeout(() => {
