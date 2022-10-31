@@ -25,6 +25,9 @@ function productActions(event) {
       const currentPriceStr = currentPrice + " ₽";
       inputResultWeight.value = selectGroupValueData;
       productPrice.innerText = currentPriceStr;
+      const selectGroupValueDataStr = selectGroupValueData + " г";
+      selectGroupValue.innerText = selectGroupValueDataStr;
+      inputResultWeight.value = selectGroupValueData;
       // inputResultDiscount.value = currentPrice - salePrice;
       inputResultCompound.value = selectGroupCompoundText.innerText;
       inputResultCompoundGet.value = selectGroupCompoundTextData;
@@ -69,7 +72,7 @@ function productActions(event) {
          const selectGroupDropdown = item.querySelector('.dropdown-list');
          const selectDropdownItems = item.querySelectorAll('.dropdown-list .select-group__item');
          const selectGroupValue = item.querySelector('[data-select-value]');
-         const selectGroupValueData = selectGroupValue.dataset.selectValue;
+         let selectGroupValueData = selectGroupValue.dataset.selectValue;
          const selectGroupCompoundText = item.querySelector('[data-text]');
          const selectGroupCompoundTextData = selectGroupCompoundText.dataset.text;
          // if (selectGroupDropdown) {
@@ -86,9 +89,13 @@ function productActions(event) {
             const currentPriceStr = currentPrice + " ₽";
             inputResultWeight.value = selectGroupValueData;
             productPrice.innerText = currentPriceStr;
+            let selectGroupValueData = selectGroupValue.dataset.selectValue;
+            const selectGroupValueDataStr = selectGroupValueData + " г";
+            selectGroupValue.innerText = selectGroupValueDataStr;
             // inputResultDiscount.value = currentPrice - salePrice;
             inputResultCompound.value = selectGroupCompoundText.innerText;
             inputResultCompoundGet.value = selectGroupCompoundTextData;
+            inputResultWeight.value = selectGroupValueData;
             if (productPriceOld) {
                const salePriceStr = salePrice + " ₽";
                inputResultSalePrice.value = salePrice;
