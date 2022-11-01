@@ -334,6 +334,43 @@
    }
 }
 
+// Rating
+:root {
+   --star-size: 21px;
+   --star-color: #fff;
+   --star-background: #fff388;
+   --star-height: 27px;
+}
+.stars {
+   --percent: calc(var(--rating) / 5 * 100%);
+   display: inline-block;
+   position: relative;
+   top: 2px;
+   font-size: var(--star-size);
+   height: var(--star-height);
+   &::before {
+      content: "\e900 \e900 \e900 \e900 \e900";
+      height: var(--star-height);
+      font-family: "icomoon";
+      color: var(--star-background);
+      background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+   }
+   &::after {
+      content: "\e901 \e901 \e901 \e901 \e901";
+      font-family: "icomoon";
+      height: var(--star-height);
+      color: var(--star-background);
+      left: 0;
+      top: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+   }
+}
+// Rating
+
 .select-group {
    position: relative;
    font-family: "SourceSansPro", sans-serif;

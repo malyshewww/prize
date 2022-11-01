@@ -23,6 +23,6 @@ window.addEventListener('hashchange', (event) => {
       }
    }, 100)
 })
-if (window.location.hash && !galleryHash) {
+if (window.location.hash) {
    window.dispatchEvent(new Event("hashchange"))
 }

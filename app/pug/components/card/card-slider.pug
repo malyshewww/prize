@@ -62,12 +62,13 @@ section.main-card
 				.main-card__info
 					h1.main-card__title.general-title Почта-копилка
 					.main-card__reviews.reviews-rating
-						ul.reviews-rating__list.r-4
-							li.reviews-rating__item
-							li.reviews-rating__item
-							li.reviews-rating__item
-							li.reviews-rating__item
-							li.reviews-rating__item
+						div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
+						//- ul.reviews-rating__list.r-4
+						//- 	li.reviews-rating__item
+						//- 	li.reviews-rating__item
+						//- 	li.reviews-rating__item
+						//- 	li.reviews-rating__item
+						//- 	li.reviews-rating__item
 						.reviews-rating__value
 							a(href="#reviews") Отзывы (<span class="reviews-rating__count">5</span>)
 					.main-card__parameters.parameters
