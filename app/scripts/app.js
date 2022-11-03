@@ -2,7 +2,8 @@
 import './libs/jquery.min.js';
 
 // Увеличенные изображения в карточке товара
-import "./libs/jquery.fancybox.min.js";
+// import "./libs/jquery.fancybox.min.js";
+import fslightbox from "fslightbox";
 
 // Подключаем слайдер Swiper
 import './modules/sliders.js';
@@ -41,7 +42,7 @@ import "./modules/forms.js";
 import "./modules/dynamic_adapt.js";
 
 // Одиночные действия при клике на отдельные элементы
-import "./modules/single-actions.js";
+import * as single from "./modules/single-actions.js";
 
 // Инициализация галереи
 // import "./modules/galleries";
@@ -80,6 +81,8 @@ function addTouchClass() {
 		document.body.classList.add('_touch');
 	} else {
 		document.body.classList.add('_pc');
+		single.createImageCompoundTooltip();
 	}
 }
 addTouchClass();
+

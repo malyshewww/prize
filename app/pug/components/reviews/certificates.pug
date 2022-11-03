@@ -22,5 +22,5 @@
 div.certificate.reviews
    .certificate__body(data-gallery)
       each item in certificates
-         a(href=`img/certificate/${item.img}.jpg` data-lg-size="1600-2400").certificate__item
+         a(href=`img/certificate/${item.img}.jpg` data-lg-size="1600-2400" data-fslightbox).certificate__item
             img(src=`img/certificate/${item.img}.jpg`, alt="")

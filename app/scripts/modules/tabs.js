@@ -1,8 +1,10 @@
 // HashChange Event for Tabs
 let galleryHash = window.location.hash.substring(1) + 'gallery';
-window.addEventListener('hashchange', (event) => {
+window.addEventListener('hashchange', getHash);
+function getHash(event) {
    let hash = window.location.hash;
-   const hashLInk = document.querySelector(`.tabs__link[href$="${hash}"]`);
+   let target = event.target;
+   const hashLink = document.querySelector(`.tabs__link[href$="${hash}"]`);
    const hashElement = document.querySelector(hash);
    document.querySelectorAll('.tabs__link').forEach((child) => {
       child.classList.remove('active');
@@ -11,7 +13,7 @@ window.addEventListener('hashchange', (event) => {
       document.querySelectorAll('.tabs__content').forEach((child) => {
          child.classList.remove('show');
       })
-      hashLInk.classList.add('active');
+      hashLink.classList.add('active');
       hashElement.classList.add('show');
       const hashElementParent = hashElement.closest('.tabs__body');
       if (hashElementParent) {
@@ -22,7 +24,7 @@ window.addEventListener('hashchange', (event) => {
          }
       }
    }, 100)
-})
+}
 if (window.location.hash) {
    window.dispatchEvent(new Event("hashchange"))
 }

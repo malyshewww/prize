@@ -12,5 +12,5 @@
 	]
 .certificate__body.container(data-gallery)
 	each item in certificates
-		a(href=`img/certificate/${item.img}.jpg`).certificate__item
+		a(href=`img/certificate/${item.img}.jpg` data-fslightbox).certificate__item
 			img(src=`img/certificate/${item.img}.jpg`, alt="")

@@ -103,6 +103,13 @@ if (pageCategory) {
 		document.body.classList.remove('lock');
 	});
 }
+document.addEventListener('click', preventLink)
+// paginationLInks
+function preventLink(event) {
+	if (event.target.closest('.pagination__link')) {
+		event.preventDefault();
+	}
+}
 
 // Search header
 const mainHeaderSearch = document.querySelector('.main-header__search');
@@ -127,7 +134,7 @@ function createImageCompoundTooltip() {
 	picwrap.className = "card-compound__image-tooltip";
 	const compoundImages = document.querySelectorAll('.card-compound__images');
 	if (compoundImages) {
-		compoundImages.forEach((item) => {
+		[...compoundImages].forEach((item) => {
 			const currentImage = item.querySelector('.card-compound__image img');
 			// const imgParent = item.closest('.card-compound__images');
 			item.addEventListener("mouseover", (e) => {
@@ -142,6 +149,5 @@ function createImageCompoundTooltip() {
 		})
 	}
 }
-if (document.body.classList.contains('_pc')) {
-	createImageCompoundTooltip();
-}
+
+export { createImageCompoundTooltip }
