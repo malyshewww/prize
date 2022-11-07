@@ -26,7 +26,7 @@ function productActions(event) {
       inputResultWeight.value = selectGroupValueData;
       productPrice.innerText = currentPriceStr;
       const selectGroupValueDataStr = selectGroupValueData + " г";
-      selectGroupValue.innerText = selectGroupValueDataStr;
+      // selectGroupValue.innerText = selectGroupValueDataStr;
       inputResultWeight.value = selectGroupValueData;
       // inputResultDiscount.value = currentPrice - salePrice;
       inputResultCompound.value = selectGroupCompoundText.innerText;
@@ -46,6 +46,8 @@ function productActions(event) {
    if (target.closest('.select-group__choice') && !target.classList.contains('no-chocie') && parent != null && !parent.classList.contains('active')) {
       // event.stopPropagation();
       parent.classList.add('active');
+      const label = parent.querySelector('.select-group__label');
+      label.style.pointerEvents = 'none';
    } else {
       const selectGroup = document.querySelectorAll('[data-select]');
       selectGroup.forEach((item) => {
@@ -91,7 +93,7 @@ function productActions(event) {
             productPrice.innerText = currentPriceStr;
             let selectGroupValueData = selectGroupValue.dataset.selectValue;
             const selectGroupValueDataStr = selectGroupValueData + " г";
-            selectGroupValue.innerText = selectGroupValueDataStr;
+            // selectGroupValue.innerText = selectGroupValueDataStr;
             // inputResultDiscount.value = currentPrice - salePrice;
             inputResultCompound.value = selectGroupCompoundText.innerText;
             inputResultCompoundGet.value = selectGroupCompoundTextData;

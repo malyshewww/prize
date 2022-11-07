@@ -686,7 +686,6 @@
          transform: scale(1) translate3d(-50%, -50%, 0);
          opacity: 1;
          visibility: visible;
-         transition: all 0.3s ease 0s;
       }
       @media screen and (max-width: $md) {
          width: 200px;
