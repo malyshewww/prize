@@ -3,6 +3,7 @@ aside.category__aside
 	form(action="#").filter#filters
 		input(type="hidden" name="sortby" value="menuindex")
 		input(type="hidden" class="filter-input__sortdir" name="sortdir" value="asc")
+		input(type="hidden" class="filter-input__rating" name="rating")
 		.filter__body
 			.filter__header 
 				h2.filter__title.content-title Фильтры
@@ -12,20 +13,20 @@ aside.category__aside
 				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
-							input(type="number" data-value-start="0").filter-group__input
+							input(type="number" data-value-start="0").filter-group__input#price-start
 						span.filter-group__line
 						label.filter-group__label
-							input(type="number" data-value-end="10000").filter-group__input
+							input(type="number" data-value-end="10000").filter-group__input#price-end
 					.filter-group__slider.slider-filter(data-slider-filter)
 			.filter-group(data-filter-group)
 				.filter-group__title.content-title Вес
 				.filter-group__item
 					.filter-group__inputs
 						label.filter-group__label
-							input(type="number" data-value-start="0").filter-group__input
+							input(type="number" data-value-start="0").filter-group__input#weight-start
 						span.filter-group__line
 						label.filter-group__label
-							input(type="number" data-value-end="5000").filter-group__input
+							input(type="number" data-value-end="5000").filter-group__input#weight-end
 					.filter-group__slider.slider-filter(id="weight-slider" data-slider-filter)
 			if currentTitle = "Орехи и сухофрукты"
 				.filter-group.filter-group__material

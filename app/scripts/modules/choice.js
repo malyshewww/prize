@@ -39,21 +39,21 @@ function productActions(event) {
          productPriceOld.innerText = salePriceStr;
       }
       const input = label.querySelector('input.real-radio');
-      label.dispatchEvent(new Event('click'));
+      // label.dispatchEvent(new Event('click'));
       input.checked = true;
-      return;
    }
-   if (target.closest('.select-group__choice') && !target.classList.contains('no-chocie') && parent != null && !parent.classList.contains('active')) {
+   if (target.closest('.select-group__choice') && !target.classList.contains('no-choice') && parent != null && !parent.classList.contains('active')) {
       // event.stopPropagation();
       parent.classList.add('active');
       const label = parent.querySelector('.select-group__label');
-      label.style.pointerEvents = 'none';
+      // label.style.pointerEvents = 'none';
    } else {
       const selectGroup = document.querySelectorAll('[data-select]');
       selectGroup.forEach((item) => {
          item.classList.remove('active')
       })
    }
+
 
    // Переключение кнопок с превью карточки товара
    const products = document.querySelectorAll('.card-product');
@@ -84,9 +84,9 @@ function productActions(event) {
          //    arr.forEach(arrElement => arrElement.classList.toggle('active', arrElement === item))
          // });
          // }
+         let currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
+         let salePrice = selectGroupItemHeader.dataset.salePriceHeader;
          selectGroupItem.addEventListener('click', (e) => {
-            const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader;
-            const salePrice = selectGroupItemHeader.dataset.salePriceHeader;
             inputResultPrice.value = currentPrice;
             const currentPriceStr = currentPrice + " ₽";
             inputResultWeight.value = selectGroupValueData;
@@ -127,7 +127,11 @@ function productActions(event) {
                   inputResultPrice.value = priceValue;
                   inputResultDiscount.value = priceSaleValue - priceValue;
                   productPriceOld.innerText = priceSaleValueStr;
+                  selectGroupItemHeader.setAttribute('data-current-price-header', priceValue);
+                  selectGroupItemHeader.setAttribute('data-sale-price-header', priceSaleValue);
                }
+               selectGroupItemHeader.setAttribute('data-current-price-header', priceValue);
+               selectGroupValue.setAttribute('data-select-value', selectGroupDropdownValueData);
                inputResultPrice.value = priceValue;
                productPrice.innerText = priceValueStr;
                inputResultWeight.value = selectGroupDropdownValueData;

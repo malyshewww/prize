@@ -108,8 +108,9 @@
    &__favorite {
       position: absolute;
       z-index: 5;
-      top: 19px;
-      right: 20px;
+      top: 0px;
+      right: 0px;
+      padding: 20px;
       cursor: pointer;
       font-size: 0;
       &::before {

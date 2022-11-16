@@ -1,5 +1,6 @@
 // DROP-MENU
 const filterInputSortdir = document.querySelector('.filter-input__sortdir');
+// const filterInputRating = document.querySelector('.filter-input__rating');
 document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
    const dropMenuBtn = document.querySelector('.dropdown__button');
    const dropMenuList = dropDownWrapper.querySelector('.dropdown-list');
@@ -23,12 +24,32 @@ document.querySelectorAll('.dropdown').forEach((dropDownWrapper) => {
          dropDownWrapper.classList.remove('active');
          const itemSortAsc = listItem.dataset.sortAsc;
          const itemSortDesc = listItem.dataset.sortDesc;
+         const itemRatingUp = listItem.dataset.ratingUp;
+         const itemRatingDown = listItem.dataset.ratingDown;
+         const itemPricegUp = listItem.dataset.priceUp;
+         const itemPriceDown = listItem.dataset.priceDown;
          if (itemSortAsc) {
             filterInputSortdir.value = itemSortAsc;
             filterInputSortdir.closest('form').submit();
          }
          if (itemSortDesc) {
             filterInputSortdir.value = itemSortDesc;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (itemRatingUp) {
+            filterInputSortdir.value = itemRatingUp;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (itemRatingDown) {
+            filterInputSortdir.value = itemRatingDown;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (itemPricegUp) {
+            filterInputSortdir.value = itemPricegUp;
+            filterInputSortdir.closest('form').submit();
+         }
+         if (itemPriceDown) {
+            filterInputSortdir.value = itemPriceDown;
             filterInputSortdir.closest('form').submit();
          }
          if (listItem.innerHTML == dropMenuBtn.innerHTML) {

@@ -6,8 +6,10 @@
 		.dropdown
 			.category-sorting__button.dropdown__button По возрастанию цены
 			ul.category-sorting__list.dropdown-list
-				li.dropdown-list__item По возрастанию цены
-				li.dropdown-list__item По убыванию цены
-				li.dropdown-list__item(data-sort-asc="asc") По возрастанию рейтинга
-				li.dropdown-list__item(data-sort-desc="desc") По убыванию рейтинга
+				li.dropdown-list__item(data-price-up="price_up") По возрастанию цены
+				li.dropdown-list__item(data-price-down="price_down") По убыванию цены
+				li.dropdown-list__item(data-rating-up="up") По возрастанию рейтинга
+				li.dropdown-list__item(data-rating-down="down") По убыванию рейтинга
+				li.dropdown-list__item(data-sort-asc="asc") По возрастанию популярности
+				li.dropdown-list__item(data-sort-desc="desc") По убыванию популярности
 			input(type="text").dropdown__input-hidden
