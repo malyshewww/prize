@@ -9,17 +9,19 @@ if (filterSliders) {
 		const inputGroupItem = filterSlider.querySelector('.filter-group__item');
 		const valueStart = filterSlider.querySelector('[data-value-start]');
 		const valueEnd = filterSlider.querySelector('[data-value-end]');
+		const valueGetStart = filterSlider.querySelector('[data-get-start]');
+		const valueGetEnd = filterSlider.querySelector('[data-get-end]');
 		const inputValues = [valueStart, valueEnd];
 		const valueStartNumber = valueStart.dataset.valueStart;
 		const valueEndNumber = valueEnd.dataset.valueEnd;
+		const valueGetStardNumber = valueGetStart.dataset.getStart;
+		const valueGetEndNumber = valueGetEnd.dataset.getEnd;
 		// const priceStart = inputGroupItem.getElementById('price-start');
 		// const priceEnd = inputGroupItem.getElementById('price-end');
 		// const weightStart = inputGroupItem.getElementById('weight-start');
 		// const weightEnd = inputGroupItem.getElementById('weight-end');
-		// valueStart.name = "";
-		// valueEnd.name = "";
 		noUiSlider.create(rangeSlider, {
-			start: [valueStartNumber, valueEndNumber],
+			start: [valueGetStardNumber, valueGetEndNumber],
 			connect: true,
 			step: 1,
 			range: {
@@ -38,18 +40,6 @@ if (filterSliders) {
 		};
 		inputValues.forEach((el, index) => {
 			el.addEventListener('change', (e) => {
-				// if (el.getAttribute('id', 'price-start')) {
-				// 	priceStart.name = "price_from";
-				// }
-				// if (el.getAttribute('id', 'price-end')) {
-				// 	priceEnd.name = "price_to";
-				// }
-				// if (el.getAttribute('id', 'weight-start')) {
-				// 	weightStart.name = "weight_from";
-				// }
-				// if (el.getAttribute('id', 'weight-end')) {
-				// 	weightStart.name = "weight_to";
-				// }
 				setRangeSlider(index, e.currentTarget.value);
 			});
 			el.addEventListener('blur', (e) => {

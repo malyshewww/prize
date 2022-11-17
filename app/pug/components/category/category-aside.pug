@@ -17,7 +17,7 @@ aside.category__aside
 						span.filter-group__line
 						label.filter-group__label
 							input(type="number" data-value-end="10000").filter-group__input#price-end
-					.filter-group__slider.slider-filter(data-slider-filter)
+					.filter-group__slider.slider-filter(data-slider-filter data-get-start="500" data-get-end="1000")
 			.filter-group(data-filter-group)
 				.filter-group__title.content-title Вес
 				.filter-group__item
@@ -27,7 +27,7 @@ aside.category__aside
 						span.filter-group__line
 						label.filter-group__label
 							input(type="number" data-value-end="5000").filter-group__input#weight-end
-					.filter-group__slider.slider-filter(id="weight-slider" data-slider-filter)
+					.filter-group__slider.slider-filter(data-slider-filter data-get-start="800" data-get-end="2000")
 			if currentTitle = "Орехи и сухофрукты"
 				.filter-group.filter-group__material
 					.filter-group__title.content-title Категория
@@ -54,10 +54,16 @@ aside.category__aside
 			if currentTitle = "Сладкие подарки"
 				.filter-group.filter-group__material
 					.filter-group__title.content-title Материал упаковки
-					mixin checkboxes(title, name, checked)
+					mixin checkboxesWeight(weight, groupname)
 						.checkbox-item
 							label
-								input(type="checkbox" name=name checked=checked class="real-checkbox")
+								input(type="checkbox" name="weights[]" class="real-checkbox" data-check-weight=groupname)
+								span.custom-checkbox
+								span.checkbox-item__text #{weight} г
+					mixin checkboxes(title, name, checked, id)
+						.checkbox-item
+							label
+								input(type="checkbox" name=name checked=checked class="real-checkbox" id=id)
 								span.custom-checkbox
 								span.checkbox-item__text= title
 					+checkboxes('Картон', "material", "checked")
@@ -69,9 +75,40 @@ aside.category__aside
 					+checkboxes('Керамика и фетр', "material")
 				.filter-group.filter-group__compound
 					.filter-group__title.content-title Состав
-					+checkboxes('Классик ', "compound", "checked")
-					+checkboxes('Премиум ', "compound")
-					+checkboxes('VIP ', "compound")
+					.filter-group__compound-item
+						+checkboxes('Классик ', "compound", false, "classic")
+						.filter-group__list.list-filter-group 	
+							+checkboxesWeight("200", "classic")
+							+checkboxesWeight("290", "classic")
+							+checkboxesWeight("400", "classic")
+							+checkboxesWeight("550", "classic")
+							+checkboxesWeight("700", "classic")
+							+checkboxesWeight("800", "classic")
+							+checkboxesWeight("900", "classic")
+							+checkboxesWeight("1100", "classic")
+							+checkboxesWeight("1300", "classic")
+						button(type="button" class="filter-group__show-more") Показать все
+					.filter-group__compound-item
+						+checkboxes('Премиум ', "compound", false, "premium")
+						.filter-group__list.list-filter-group 	
+							+checkboxesWeight("300", "premium")
+							+checkboxesWeight("500", "premium")
+							+checkboxesWeight("650", "premium")
+							+checkboxesWeight("750", "premium")
+							+checkboxesWeight("850", "premium")
+							+checkboxesWeight("950", "premium")
+							+checkboxesWeight("1500", "premium")
+						button(type="button" class="filter-group__show-more") Показать все
+					.filter-group__compound-item
+						+checkboxes('VIP ', "compound", false, "vip")
+						.filter-group__list.list-filter-group 	
+							+checkboxesWeight("370", "vip")
+							+checkboxesWeight("600", "vip")
+							+checkboxesWeight("810", "vip")
+							+checkboxesWeight("1000", "vip")
+							+checkboxesWeight("1200", "vip")
+							+checkboxesWeight("2100", "vip")
+						button(type="button" class="filter-group__show-more") Показать все
 			.filter-group.filter-group__addit
 				.filter-group__title.content-title Дополнительно
 				+checkboxes('Новинка', "badge", "checked")

@@ -151,5 +151,85 @@ function createImageCompoundTooltip() {
 		})
 	}
 }
+// Show/hide weights in filter on category page
+function showHideWeights() {
+	const allCompoundItem = document.querySelectorAll('.filter-group__compound-item');
+	allCompoundItem.forEach(el => {
+		const filterList = el.querySelector('.filter-group__list');
+		const btnShowMore = el.querySelector('.filter-group__show-more');
+		btnShowMore.addEventListener('click', (event) => {
+			event.target.classList.toggle('active');
+			filterList.classList.toggle('active');
+			if (btnShowMore.classList.contains('active')) {
+				event.target.innerHTML = "Свернуть";
+			} else {
+				event.target.innerHTML = "Показать всё";
+			}
+		})
+	});
+}
+showHideWeights();
+
+window.addEventListener('change', choiceCompound);
+function choiceCompound(event) {
+	const target = event.target;
+	const inputPremium = document.getElementById('premium');
+	const inputVip = document.getElementById('vip');
+	if (target.closest('#classic')) {
+		let inputs = document.querySelectorAll('[data-check-weight="classic"]');
+		checked(inputs, target);
+	}
+	if (target.closest('#premium')) {
+		let inputs = document.querySelectorAll('[data-check-weight="premium"]');
+		checked(inputs, target);
+	}
+	if (target.closest('#vip')) {
+		let inputs = document.querySelectorAll('[data-check-weight="vip"]');
+		checked(inputs, target);
+	}
+}
+function checked(inputs, targetId) {
+	targetId.classList.toggle('active');
+	if (targetId.classList.contains('active')) {
+		for (let i = 0; i < inputs.length; i++) {
+			inputs[i].checked = true;
+		}
+	} else {
+		for (let i = 0; i < inputs.length; i++) {
+			inputs[i].checked = false;
+		}
+	}
+}
+// function unchecked(inputs, targetId) {
+// 	for (let i = 0; i < inputs.length; i++) {
+// 		inputs[i].checked = false;
+// 	}
+// }
+function emptyCheck(inputs, inputsChecked, compoundId) {
+	const inputsWeights = document.querySelectorAll(inputs);
+	if (inputsWeights) {
+		const inputCompoundId = document.getElementById(compoundId);
+		for (let i = 0; i < inputsWeights.length; i++) {
+			let currentInput = inputsWeights[i];
+			currentInput.addEventListener('change', (event) => {
+				const arrayChecked = [];
+				let activeCheckboxes = document.querySelectorAll(inputsChecked);
+				activeCheckboxes.forEach((checkbox) => {
+					arrayChecked.push(checkbox.value);
+				})
+				if (arrayChecked.length == 0) {
+					inputCompoundId.checked = false;
+					inputCompoundId.classList.remove('active');
+				}
+				if (arrayChecked.length == inputsWeights.length) {
+					inputCompoundId.checked = true;
+				}
+			})
+		}
+	}
+}
+emptyCheck("[data-check-weight='classic']", "[data-check-weight='classic']:checked", "classic");
+emptyCheck("[data-check-weight='premium']", "[data-check-weight='premium']:checked", "premium");
+emptyCheck("[data-check-weight='vip']", "[data-check-weight='vip']:checked", "vip");
 
 export { createImageCompoundTooltip }

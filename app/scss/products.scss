@@ -215,10 +215,24 @@
    &__inner {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       column-gap: 15px;
       row-gap: 10px;
       margin-bottom: 14px;
+      &-top {
+         display: flex;
+         justify-content: space-between;
+         flex-wrap: wrap;
+         gap: 10px;
+         margin-bottom: 2px;
+      }
+      & .reviews-rating-text {
+         font-size: 16px;
+         line-height: math.div(16, 16) * 100%;
+         color: $grayColor82;
+         border-bottom: 1px solid $grayColor82;
+      }
    }
    &__compare {
       color: $grayColorBD;

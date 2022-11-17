@@ -6,24 +6,24 @@ $breakpoints: (
   md: 767.98px,
   lg: 991.98px,
   xl: 1200px,
-  xxl: 1400px
-  ) !default;
+  xxl: 1400px,
+) !default;
 // Медиа выражение
-@mixin media($width){
-  @media screen and (max-width: $width){
+@mixin media($width) {
+  @media screen and (max-width: $width) {
     @content;
   }
 }
-// Контрольная точка 
+// Контрольная точка
 // Применение: @include bp(xs/sm/md/lg/xl/xxl/) {}
-@mixin bp($name){
+@mixin bp($name) {
   $width: map-get($breakpoints, $name);
   @include media($width) {
     @content;
   }
 }
 
-// 12-ТИ КОЛОНОЧНАЯ СЕТКА 
+// 12-ТИ КОЛОНОЧНАЯ СЕТКА
 // Применение: @include col(6)
 $grid-columns: 12 !default;
 @mixin col($size: false, $columns: $grid-columns) {
@@ -99,4 +99,29 @@ $grid-columns: 12 !default;
       #{$property}: rem($minSize);
     }
   }
+}
+
+@mixin gradient-triangle() {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background:
+    /* Left side */ linear-gradient(
+          to bottom left,
+          transparent 49.5%,
+          #000 50% calc(50% + 10px),
+          transparent calc(50% + 11px)
+        )
+        right/50% 100%,
+      /* right side */
+        linear-gradient(to bottom right, transparent 49.5%, #000 50% calc(50% + 10px), transparent calc(50% + 11px))
+        left/50% 100%,
+      /* bottom side*/ linear-gradient(#000, #000) bottom/calc(100% - 20px) 10px;
+    background-repeat: no-repeat;
+  }
+  //
 }

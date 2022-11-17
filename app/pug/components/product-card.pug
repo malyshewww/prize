@@ -23,15 +23,16 @@ each productItem, productIndex in product
 						.games-product__item.games-product__item_2
 						.games-product__item.games-product__item_3
 						.games-product__item.games-product__item_4
-				.card-product__article= productItem.article
+				.card-product__inner-top
+					.card-product__article= productItem.article
+					.card-product__compare.icon-prepare(class=productItem.selectedClass)
 				a(href="card.html").card-product__title= productItem.name
 			.card-product__body 
 				.card-product__inner 
 					.reviews-rating
-						ul.card-product__rating.reviews-rating__list.r-4
-							- for (var x = 0; x < 5; x++)
-								li.reviews-rating__item
-					.card-product__compare.icon-prepare(class=productItem.selectedClass)
+						div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
+					a(href="card.html").reviews-rating-text Отзывы 
+						span (15)
 				if !category
 					.select.select-wrapper
 						if productItem.choice
