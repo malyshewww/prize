@@ -335,3 +335,6 @@
 .rating > label:hover ~ input:checked ~ label::before {
    content: url("../img/icons/star-big.svg");
 }
+.rating:hover > input:checked ~ label::before {
+   content: url("../img/icons/star-t-big.svg");
+}

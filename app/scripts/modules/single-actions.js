@@ -208,10 +208,14 @@ function checked(inputs, targetId) {
 function emptyCheck(inputs, inputsChecked, compoundId) {
 	const inputsWeights = document.querySelectorAll(inputs);
 	if (inputsWeights) {
+		const inputHiddenClassic = document.querySelector('.filter-input__classic');
+		const inputHiddenPremium = document.querySelector('.filter-input__premium');
+		const inputHiddenVip = document.querySelector('.filter-input__vip');
 		const inputCompoundId = document.getElementById(compoundId);
 		for (let i = 0; i < inputsWeights.length; i++) {
 			let currentInput = inputsWeights[i];
 			currentInput.addEventListener('change', (event) => {
+				// setInputValue(event.target, inputHiddenClassic, inputHiddenPremium, inputHiddenVip);
 				const arrayChecked = [];
 				let activeCheckboxes = document.querySelectorAll(inputsChecked);
 				activeCheckboxes.forEach((checkbox) => {
@@ -226,6 +230,18 @@ function emptyCheck(inputs, inputsChecked, compoundId) {
 				}
 			})
 		}
+	}
+}
+function setInputValue(input, inputClassic, inputPremium, inputVip) {
+	const dataValueCompound = input.dataset.checkWeight;
+	if (dataValueCompound == "classic") {
+		inputClassic.value = dataValueCompound;
+	}
+	if (dataValueCompound == "premium") {
+		inputPremium.value = dataValueCompound;
+	}
+	if (dataValueCompound == "vip") {
+		inputVip.value = dataValueCompound;
 	}
 }
 emptyCheck("[data-check-weight='classic']", "[data-check-weight='classic']:checked", "classic");
