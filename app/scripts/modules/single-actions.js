@@ -52,14 +52,6 @@ parameters.forEach((item) => {
 	})
 })
 
-// const pathname = window.location.pathname;
-// // Указываем относительный путь файла
-// const url = new URL(window.location.href);
-// const urlParamCompound = url.searchParams.get('compound');
-// const urlParamWeight = url.searchParams.get('weight');
-// console.log(urlParamWeight);
-// console.log(urlParamCompound);
-
 // Menu header category
 const iconMenu = document.querySelector('.burger-icon-wrap');
 const menuBody = document.querySelector('.header-menu');
@@ -177,16 +169,24 @@ function choiceCompound(event) {
 		const inputHiddenClassic = document.querySelector('.filter-input__classic');
 		let inputs = document.querySelectorAll('[data-check-weight="classic"]');
 		checked(inputs, target, inputHiddenClassic);
+		nullCheckedNoCompound("nocompound");
 	}
 	if (target.closest('#premium')) {
 		const inputHiddenPremium = document.querySelector('.filter-input__premium');
 		let inputs = document.querySelectorAll('[data-check-weight="premium"]');
 		checked(inputs, target, inputHiddenPremium);
+		nullCheckedNoCompound("nocompound");
 	}
 	if (target.closest('#vip')) {
 		const inputHiddenVip = document.querySelector('.filter-input__vip');
 		let inputs = document.querySelectorAll('[data-check-weight="vip"]');
 		checked(inputs, target, inputHiddenVip);
+		nullCheckedNoCompound("nocompound");
+	}
+	if (target.closest('#nocompound')) {
+		nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
+		nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
+		nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
 	}
 }
 function checked(inputs, targetId, inputHidden) {
@@ -208,9 +208,15 @@ function checked(inputs, targetId, inputHidden) {
 // 		inputs[i].checked = false;
 // 	}
 // }
+
+function nullCheckedNoCompound(inputNoCompound) {
+	const input = document.getElementById(inputNoCompound);
+	input.checked = false;
+}
 function emptyCheck(inputs, inputsChecked, compoundId, inputHidden) {
 	const inputsWeights = document.querySelectorAll(inputs);
 	if (inputsWeights) {
+		// const inputNoCompound = document.getElementById('nocompound');
 		const inputHiddenClassic = document.querySelector('.filter-input__classic');
 		const inputHiddenPremium = document.querySelector('.filter-input__premium');
 		const inputHiddenVip = document.querySelector('.filter-input__vip');
@@ -219,6 +225,7 @@ function emptyCheck(inputs, inputsChecked, compoundId, inputHidden) {
 		for (let i = 0; i < inputsWeights.length; i++) {
 			let currentInput = inputsWeights[i];
 			currentInput.addEventListener('change', (event) => {
+				nullCheckedNoCompound("nocompound");
 				const arrayChecked = [];
 				let activeCheckboxes = document.querySelectorAll(inputsChecked);
 				activeCheckboxes.forEach((checkbox) => {
@@ -271,9 +278,9 @@ function resetFilters() {
 		for (const btn of filtersResetBtn) {
 			btn.addEventListener('click', (event) => {
 				event.preventDefault();
-				nullInputsCompoind("classic", "[data-check-weight='classic']", ".filter-input__classic");
-				nullInputsCompoind("premium", "[data-check-weight='premium']", ".filter-input__premium");
-				nullInputsCompoind("vip", "[data-check-weight='vip']", ".filter-input__vip");
+				nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
+				nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
+				nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
 				const baseUrl = window.location.href.split("?")[0];
 				window.history.pushState('name', '', baseUrl);
 				[...filtersInputs].forEach((item) => {
@@ -289,11 +296,12 @@ function removeAttributeBtnReset(btn) {
 		btn[i].disabled = false;
 	}
 }
-function nullInputsCompoind(compoundId, inputsCheck, inputHidden) {
+function nullInputsCompound(compoundId, inputsCheck, inputHidden) {
 	const compound = document.getElementById(compoundId);
 	const inputsCompound = document.querySelectorAll(inputsCheck);
 	const hiddenInput = document.querySelector(inputHidden);
 	compound.classList.remove('active');
+	compound.checked = false;
 	for (let i = 0; i < inputsCompound.length; i++) {
 		inputsCompound[i].checked = false;
 		inputsCompound[i].removeAttribute('checked');
@@ -301,5 +309,13 @@ function nullInputsCompoind(compoundId, inputsCheck, inputHidden) {
 	hiddenInput.value = "";
 }
 resetFilters();
+
+
+const pathname = window.location.pathname;
+// Указываем относительный путь файла
+const url = new URL(window.location.href);
+const urlParamCompound = url.searchParams.get('compound');
+const urlParamWeight = url.searchParams.get('weight');
+// console.log(urlParamCompound);
 
 export { createImageCompoundTooltip }

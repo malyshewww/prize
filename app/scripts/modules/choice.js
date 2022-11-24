@@ -44,13 +44,13 @@ function productActions(event) {
    }
    if (target.closest('.select-group__choice') && !target.classList.contains('no-choice') && parent != null && !parent.classList.contains('active')) {
       // event.stopPropagation();
-      parent.classList.add('active');
-      const label = parent.querySelector('.select-group__label');
+      parent.classList.toggle('active');
+      // const label = parent.querySelector('.select-group__label');
       // label.style.pointerEvents = 'none';
    } else {
       const selectGroup = document.querySelectorAll('[data-select]');
       selectGroup.forEach((item) => {
-         item.classList.remove('active')
+         item.classList.remove('active');
       })
    }
 
