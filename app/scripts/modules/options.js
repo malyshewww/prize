@@ -137,8 +137,6 @@ function setCheckedInput(input, parent) {
 	currentInput.checked = true;
 }
 function saveValuesToInputs(
-	product,
-	parent,
 	resultPrice,
 	resultWeight,
 	resultCompound,

@@ -42,7 +42,7 @@ import "./modules/forms.js";
 // Динамический адаптив
 import "./modules/dynamic_adapt.js";
 
-// Одиночные действия при клике на отдельные элементы
+// Одиночные действия на отдельных элементах
 import * as single from "./modules/single-actions.js";
 
 // Инициализация галереи
@@ -50,6 +50,9 @@ import * as single from "./modules/single-actions.js";
 
 // Модуль яндекс карты
 import "./modules/map.js";
+
+// Падающий снег
+import "./modules/snow.js";
 
 /* Проверка мобильного браузера */
 let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;

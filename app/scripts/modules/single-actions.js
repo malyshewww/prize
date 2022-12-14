@@ -95,13 +95,14 @@ if (pageCategory) {
 		document.body.classList.remove('lock');
 	});
 }
-document.addEventListener('click', preventLink)
-// paginationLInks
-function preventLink(event) {
-	if (event.target.closest('.pagination__link')) {
-		event.preventDefault();
-	}
-}
+
+// document.addEventListener('click', preventLink)
+// // paginationLInks
+// function preventLink(event) {
+// 	if (event.target.closest('.pagination__link')) {
+// 		event.preventDefault();
+// 	}
+// }
 
 // Search header
 const mainHeaderSearch = document.querySelector('.main-header__search');
@@ -183,11 +184,12 @@ function choiceCompound(event) {
 		checked(inputs, target, inputHiddenVip);
 		nullCheckedNoCompound("nocompound");
 	}
-	if (target.closest('#nocompound')) {
-		nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
-		nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
-		nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
-	}
+	// Чекбокс для выбора товаров без состава (убрать checked со всех составов)
+	// if (target.closest('#nocompound')) {
+	// 	nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
+	// 	nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
+	// 	nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
+	// }
 }
 function checked(inputs, targetId, inputHidden) {
 	targetId.classList.toggle('active');
@@ -225,7 +227,7 @@ function emptyCheck(inputs, inputsChecked, compoundId, inputHidden) {
 		for (let i = 0; i < inputsWeights.length; i++) {
 			let currentInput = inputsWeights[i];
 			currentInput.addEventListener('change', (event) => {
-				nullCheckedNoCompound("nocompound");
+				// nullCheckedNoCompound("nocompound");
 				const arrayChecked = [];
 				let activeCheckboxes = document.querySelectorAll(inputsChecked);
 				activeCheckboxes.forEach((checkbox) => {
@@ -311,11 +313,11 @@ function nullInputsCompound(compoundId, inputsCheck, inputHidden) {
 resetFilters();
 
 
-const pathname = window.location.pathname;
-// Указываем относительный путь файла
-const url = new URL(window.location.href);
-const urlParamCompound = url.searchParams.get('compound');
-const urlParamWeight = url.searchParams.get('weight');
+// const pathname = window.location.pathname;
+// // Указываем относительный путь файла
+// const url = new URL(window.location.href);
+// const urlParamCompound = url.searchParams.get('compound');
+// const urlParamWeight = url.searchParams.get('weight');
 // console.log(urlParamCompound);
 
 export { createImageCompoundTooltip }
