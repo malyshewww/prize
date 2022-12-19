@@ -23,3 +23,8 @@
       }
    }
 }
+.favorites .content-title {
+   &.hidden {
+      display: none;
+   }
+}
