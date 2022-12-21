@@ -1,21 +1,14 @@
 /*================== MODALS ====================*/
+import { body_lock } from "./single-actions.js";
+
 let wrapper = document.querySelector('.wrapper');
 const modalButtons = wrapper.querySelectorAll('[data-modal-button]');
 const modalClosebuttons = document.querySelectorAll('[data-modal-close]');
 const allModals = document.querySelectorAll('[data-modal]');
-function bodyLock() {
-	setTimeout(() => {
-		document.body.classList.add('lock');
-	}, 400)
-}
-function bodyUnLock() {
-	setTimeout(() => {
-		document.body.classList.remove('lock');
-	}, 400)
-}
+
 function closeModal(currentModal) {
 	currentModal.classList.remove('open-modal');
-	bodyUnLock();
+	body_lock();
 }
 document.addEventListener('click', openModal);
 function openModal(event) {
@@ -29,7 +22,7 @@ function openModal(event) {
 			const modal = item.getAttribute('id');
 			if (modalId == modal) {
 				item.classList.add('open-modal');
-				bodyLock();
+				body_lock();
 			}
 		})
 	}
@@ -74,7 +67,7 @@ allModals.forEach(item => {
 		e.preventDefault();
 		clearInput();
 		item.classList.remove('open-modal');
-		bodyUnLock();
+		body_lock();
 	});
 	const modalContent = item.querySelector('.modal__content');
 	modalContent.addEventListener('click', (e) => {

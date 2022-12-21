@@ -788,17 +788,19 @@
 			transform: rotate(-90deg);
 		}
 	}
-	.actions-header {
+	.main-actions {
 		position: fixed;
 		left: 0;
 		bottom: 0;
 		width: 100%;
 		background: $whiteColor;
 		box-shadow: 0px -5px 15px rgba($blackColor, 0.1);
+		z-index: 26;
+	}
+	.actions-header {
 		min-height: 65px;
 		padding: 10px 20px;
 		gap: 44px;
-		z-index: 26;
 	}
 	.actions-header__search svg {
 		width: 32px;

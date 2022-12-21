@@ -6,7 +6,7 @@ mixin picture(srcPc, srcTouch, medicPc, mediaTouch, srcDefault = srcPc)
 mixin actionsLink(path, count, iconClass)
 		.actions-header__link&attributes({'href': path, 'class' : iconClass})
 			span.actions-header__count= count
-header.header 
+header.header
 	.header-menu
 		.header-menu__category.category-menu(data-spollers="991.98,max")
 			button(type="button" data-spoller).category-menu__button.icon-arrow-next Каталог товаров
@@ -68,15 +68,16 @@ header.header
 							.search-header__actions
 								button(type="button").search-header__icon
 								input(type="submit" value="Поиск")
-					.main-header__actions.actions-header
-						button.actions-header__search(type="button")
-							<svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<circle cx="15.0387" cy="15.0966" r="13.2403" stroke="#282828" stroke-width="2"/>
-								<line x1="23.8007" y1="23.8093" x2="33.9724" y2="31.9466" stroke="#282828" stroke-width="2"/>
-							</svg>
-						+actionsLink("favorites.html", 1, "icon-favorites")
-						+actionsLink("/", 1, "icon-prepare")
-						+actionsLink("cart.html", 1, "icon-cart")
+					.main-actions
+						.main-header__actions.actions-header
+							button.actions-header__search(type="button")
+								<svg width="35" height="33" viewBox="0 0 35 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="15.0387" cy="15.0966" r="13.2403" stroke="#282828" stroke-width="2"/>
+									<line x1="23.8007" y1="23.8093" x2="33.9724" y2="31.9466" stroke="#282828" stroke-width="2"/>
+								</svg>
+							+actionsLink("favorites.html", 1, "icon-favorites")
+							+actionsLink("/", 1, "icon-prepare")
+							+actionsLink("cart.html", 1, "icon-cart")
 		.header__catalog
 			.container
 				include ./menu

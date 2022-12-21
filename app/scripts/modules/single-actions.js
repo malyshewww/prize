@@ -53,16 +53,79 @@ parameters.forEach((item) => {
 })
 
 // Menu header category
-const iconMenu = document.querySelector('.burger-icon-wrap');
-const menuBody = document.querySelector('.header-menu');
-if (iconMenu) {
-	iconMenu.addEventListener("click", (event) => {
-		event.currentTarget.classList.toggle('active');
-		menuBody.classList.toggle('show-menu');
-		document.body.classList.toggle('lock');
+// const iconMenu = document.querySelector('.burger-icon-wrap');
+// const menuBody = document.querySelector('.header-menu');
+// if (iconMenu) {
+// 	iconMenu.addEventListener("click", (event) => {
+// 		event.currentTarget.classList.toggle('active');
+// 		menuBody.classList.toggle('show-menu');
+// 		document.body.classList.toggle('lock');
+// 	});
+// }
+let unlock = true;
+let iconMenu = document.querySelector(".burger-icon-wrap");
+if (iconMenu != null) {
+	let delay = 500;
+	let menuBody = document.querySelector(".header-menu");
+	iconMenu.addEventListener("click", function (event) {
+		if (unlock) {
+			document.body.classList.toggle('lock');
+			event.currentTarget.classList.toggle("active");
+			menuBody.classList.toggle("show-menu");
+		}
 	});
+};
+// function menu_close() {
+// 	let iconMenu = document.querySelector(".burger-icon-wrap");
+// 	let menuBody = document.querySelector(".header-menu");
+// 	iconMenu.classList.remove("_active");
+// 	menuBody.classList.remove("_active");
+// }
+export function body_lock(delay) {
+	let body = document.querySelector("body");
+	if (body.classList.contains('lock')) {
+		body_lock_remove(delay);
+	} else {
+		body_lock_add(delay);
+	}
 }
+export function body_lock_remove(delay) {
+	const body = document.querySelector("body");
+	const lockPadding = document.querySelectorAll('.lock-padding');
+	setTimeout(function () {
+		if (lockPadding.length > 0) {
+			for (let index = 0; index < lockPadding.length; index++) {
+				const el = lockPadding[index];
+				el.style.paddingRight = '0px';
+			}
+		}
+		body.style.paddingRight = '0px';
+		body.classList.remove('lock');
+	}, delay);
 
+	unlock = false;
+	setTimeout(function () {
+		unlock = true;
+	}, delay);
+}
+export function body_lock_add(delay) {
+	const body = document.querySelector("body");
+	const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
+	const lockPadding = document.querySelectorAll('.lock-padding');
+	if (lockPadding.length > 0) {
+		for (let index = 0; index < lockPadding.length; index++) {
+			const el = lockPadding[index];
+			el.style.paddingRight = lockPaddingValue;
+		}
+	}
+	body.style.paddingRight = lockPaddingValue;
+	body.classList.add('lock');
+
+	unlock = false;
+	setTimeout(function () {
+		unlock = true;
+	}, delay);
+}
 // Filter
 const pageCategory = document.querySelector('.category-page');
 const overlay = document.querySelector('.overlay');
