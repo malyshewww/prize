@@ -148,25 +148,21 @@ function productActions(event) {
 }
 // Клик снаружи [data-select]. Закрыть [data-select]
 // }
-// document.addEventListener('click', function (e) {
-//    const selectGroup = document.querySelectorAll('[data-select]');
-//    if (selectGroup) {
-//       selectGroup.forEach((item) => {
-//          if (e.target != item) {
-//             item.classList.remove('active')
-//          }
-//       })
-//    }
-// })
+document.addEventListener('click', function (e) {
+   const selectGroup = document.querySelectorAll('[data-select]');
+   for (const select of selectGroup) {
+      if (!select.contains(e.target)) {
+         select.classList.remove('active');
+      }
+   }
+})
 // Нажатие на Tab или Escape. Закрыть [data-select]
 document.addEventListener('keydown', function (e) {
    const selectGroup = document.querySelectorAll('[data-select]');
-   if (selectGroup) {
-      selectGroup.forEach((item) => {
-         if (e.key === 'Tab' || e.key === 'Escape') {
-            item.classList.remove('active')
-         }
-      })
+   for (const select of selectGroup) {
+      if (e.key === 'Tab' || e.key === 'Escape') {
+         select.classList.remove('active')
+      }
    }
 });
 

@@ -1,0 +1,41 @@
+extends layout.pug
+
+block vars 
+	- var pageTitle = "Тест";
+
+block content
+	.container
+		.custom-select-wrapper
+			.custom-select
+				.custom-option-header(data-price="1000" data-price-old="1200")
+					.custom-option-label
+						input(type="radio" checked)
+						.custom-option-text
+							span Tesla
+					.custom-select__trigger
+						span 500 г
+						.arrow
+				.custom-options
+					div.custom-option.selected(data-value='tesla' data-price="800" data-price-old="500")
+						.custom-option-label
+							input(type="radio" checked)
+							.custom-option-text
+								span Tesla
+						.custom-select__trigger
+							span 400 г
+					div.custom-option(data-value='volvo' data-price="1800" data-price-old="1500")
+						.custom-option-label
+							input(type="radio" checked)
+							.custom-option-text
+								span volvo
+						.custom-select__trigger
+							span 700 г
+					div.custom-option(data-value='mercedes'  data-price="2800" data-price-old="2500")
+						.custom-option-label
+							input(type="radio" checked)
+							.custom-option-text
+								span mercedes
+						.custom-select__trigger
+							span 1000 г
+		.price 400
+		.price-old 500

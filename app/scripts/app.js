@@ -90,3 +90,35 @@ function addTouchClass() {
 }
 addTouchClass();
 
+// for (const dropdown of document.querySelectorAll(".custom-select-wrapper")) {
+// 	const trigger = dropdown.querySelector('.custom-select__trigger')
+// 	trigger.addEventListener('click', function () {
+// 		dropdown.querySelector('.custom-select').classList.toggle('open');
+// 	})
+// }
+
+// for (const option of document.querySelectorAll(".custom-option")) {
+// 	const trigger = option.querySelector('.custom-select__trigger span');
+// 	option.addEventListener('click', function () {
+// 		if (!this.classList.contains('selected')) {
+// 			this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
+// 			this.classList.add('selected');
+// 			this.closest('.custom-select').querySelector('.custom-option-header .custom-select__trigger span').textContent = trigger.textContent;
+// 		}
+// 	})
+// }
+
+// // window.addEventListener('click', function (e) {
+// //     const select = document.querySelector('.custom-select')
+// //     if (!select.contains(e.target)) {
+// //         select.classList.remove('open');
+// //     }
+// // });
+
+// window.addEventListener('click', function (e) {
+// 	for (const select of document.querySelectorAll('.custom-select')) {
+// 		if (!select.contains(e.target)) {
+// 			select.classList.remove('open');
+// 		}
+// 	}
+// });

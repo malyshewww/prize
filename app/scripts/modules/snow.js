@@ -1,4 +1,4 @@
-function snowIt(flakes = 200) {
+function snowIt(flakes = 50) {
 	const randInt = (min, max) => {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
@@ -7,7 +7,7 @@ function snowIt(flakes = 200) {
 	// console.log(hh, ww);
 	let animatedEllipses = "";
 	if (!flakes || Number.isNaN(flakes * 1)) {
-		flakes = 200;
+		flakes = 50;
 	}
 	for (let i = 0; i < flakes; i++) {
 		animatedEllipses += `<g transform="translate(${randInt(ww * -0.1, ww * 0.1)} -10) scale(1.${randInt(0, 4)})">
@@ -38,6 +38,7 @@ function snowIt(flakes = 200) {
 	element?.remove();
 	document.body.appendChild(doc);
 }
-
-snowIt();
-window.onresize = snowIt;
+if (document.body.classList.contains('_pc') || window.innerWidth >= 991.98) {
+	snowIt();
+	window.onresize = snowIt;
+}
