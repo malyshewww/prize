@@ -4,7 +4,7 @@ mixin picture(srcPc, srcTouch, medicPc, mediaTouch, srcDefault = srcPc)
 		source(srcset=srcTouch, media=`(min-width: ${mediaTouch}px)`)
 		img(src=srcDefault alt='')
 mixin actionsLink(path, count, iconClass)
-		.actions-header__link&attributes({'href': path, 'class' : iconClass})
+		a.actions-header__link&attributes({'href': path, 'class' : iconClass})
 			span.actions-header__count= count
 header.header
 	.header-menu
@@ -76,7 +76,7 @@ header.header
 									<line x1="23.8007" y1="23.8093" x2="33.9724" y2="31.9466" stroke="#282828" stroke-width="2"/>
 								</svg>
 							+actionsLink("favorites.html", 1, "icon-favorites")
-							+actionsLink("/", 1, "icon-prepare")
+							+actionsLink("compare.html", 1, "icon-prepare")
 							+actionsLink("cart.html", 1, "icon-cart")
 		.header__catalog
 			.container

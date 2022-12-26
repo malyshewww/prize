@@ -1,73 +1,109 @@
 -
-   product = [
-      {
-         "img": "product-3",
-         "article": "#0184",
-         "name": "Чемодан Фантазия маленький",
-         "price": "1005 ₽",
-         "badge": "Хит",
-         "delete": '<div class="card-product__delete icon-delete"></div>',
-         "selectedClass": "selected",
-         choice: [
-            {
-               "title": "Классик",
-               "value": "700 г",
-               "checked": true,
-               "radio": "compare-1"
-            },
-            {
-               "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "compare-1"
-            },
-            {
-               "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "compare-1"
-            },
-         ]
-      },
-      {
-         "img": "product-4",
-         "article": "#0225",
-         "name": "Почта-копилка",
-         "price": "1005 ₽",
-         "badge": "Хит",
-         "delete": '<div class="card-product__delete icon-delete"></div>',
-         "selectedClass": "selected",
-         choice: [
-            {
-               "title": "Классик",
-               "value": "550 г",
-               "checked": true,
-               "radio": "compare-2"
-            },
-            {
-               "title": "Премиум",
-               "value": "600 г",
-               "checked": false,
-               "radio": "compare-2"
-            },
-            {
-               "title": "VIP",
-               "value": "300 г",
-               "checked": false,
-               "radio": "compare-2"
-            },
-         ]
-      },
-   ]
+	product = [
+		{
+			"img": "products/product-1",
+			"article": "#0002",
+			"name": "Cнежинка золотая",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["200 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Классик",
+							"value": "700 г"
+						},
+						{
+							"title": "Классик",
+							"value": "700 г"
+						},
+					]
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						},
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						},
+					]
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "VIP",
+							"value": "700 г"
+						},
+						{
+							"title": "VIP",
+							"value": "700 г"
+						},
+					]
+				},
+			]
+		},
+		{
+			"img": "products/product-2",
+			"article": "#0074",
+			"name": "Короб почтальона Ассорти",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"key": "viewed",
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1100 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Классик",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "VIP",
+							"value": "700 г"
+						}
+					]
+				},
+			]
+		},
+	]
 .compare__products.products-compare
-   .products-compare__inner 
-      .products-compare__actions 
-         a(href="#").products-compare__button.btn.btn-green Добавить товар
-         .checkbox-item.compare-checkbox
-            label
-               input(type="checkbox").real-checkbox
-               span.custom-checkbox 
-               span.checkbox-item__text Только различия
-      .products-compare__cards.compare-cards 
-         include ../product-card
+	.products-compare__inner 
+		.products-compare__actions 
+			a(href="#").products-compare__button.btn.btn-green Удалить товар
+			.checkbox-item.compare-checkbox
+				label
+					input(type="checkbox" name="compare").real-checkbox
+					span.custom-checkbox 
+					span.checkbox-item__text Только различия
+		.products-compare__cards.compare-cards
+			.compare-cards__slider 	
+				.compare-cards__wrapper 
+					.compare-cards__body
+						include ../product-card
 

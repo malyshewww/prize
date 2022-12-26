@@ -1,33 +1,10 @@
--
-	menu = [
-		{	
-			"title": "Главная",
-			"link": "/",
-			"submenu": [
-				{
-					"title": "Пункт 1",
-					"link": "/",
-				},
-				{
-					"title": "Пункт 2",
-					"link": "/",
-				},
-				{
-					"title": "Пункт 3",
-					"link": "/",
-				},
-			]
-		},
-		{	
-			"title": "о компании",
-			"link": "#",
-		},
-		{	
-			"title": "новости",
-			"link": "#",
-		},
-		{	
-			"title": "контакты",
-			"link": "#",
-		},
-	];
+mixin compound(data, name, title, checked, classes)
+	.parameters-radiobutton(data-compound=data class=classes)
+		label
+			input(type="radio" name=name value=data checked=checked class="real-radio")
+			span.parameters__button= title
+mixin weight(name, value, title, checked)
+	.parameters-radiobutton(data-current-weight=value)
+		label
+			input(type="radio" name=name value=value checked=checked class="real-radio")
+			span.parameters__button= title

@@ -80,11 +80,6 @@ section.main-card
 								p.parameters__label Выберите состав:
 								.parameters__value
 									.parameters__buttons
-										mixin compound(data, name, title, checked, classes)
-											.parameters-radiobutton(data-compound=data class=classes)
-												label
-													input(type="radio" name=name value=data checked=checked class="real-radio")
-													span.parameters__button= title
 										+compound("classic", "compound", "Классик", "checked", "active")
 										+compound("premium", "compound", "Премиум")
 										+compound("vip", "compound", "VIP")
@@ -92,11 +87,6 @@ section.main-card
 								p.parameters__label Выберите вес:
 								.parameters__value
 									.parameters__buttons(id="classic" data-weight="classic").active
-										mixin weight(name, value, title, checked)
-											.parameters-radiobutton
-												label
-													input(type="radio" name=name value=value checked=checked class="real-radio")
-													span.parameters__button= title
 										+weight("weight", "290", "290 г", "checked")
 										+weight("weight", "380", "380 г")
 									.parameters__buttons(id="premium" data-weight="premium")

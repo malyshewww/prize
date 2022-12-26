@@ -30,8 +30,108 @@
       row-gap: 50px;
    }
 }
-.compare-cards .products__card{
-   max-width: auto;
-   width: 263px;
+.compare-cards {
+   & .products__card {
+      max-width: 100%;
+      width: 263px;
+   }
+   &__body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+   }
 }
 
+.data-compare {
+   &__label {
+      font-weight: 600;
+      font-family: "Montserrat";
+      font-size: 20px;
+      line-height: math.div(24, 20) * 100%;
+      margin-bottom: 19px;
+      &-compound {
+         margin-top: 26px;
+         margin-bottom: 26px;
+      }
+   }
+}
+.common-compare {
+   &__item {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid $grayColorBD;
+      padding: 14px 0 14px 16px;
+      &:last-child {
+         border-bottom: 1px solid $grayColorBD;
+      }
+   }
+   &__title {
+      line-height: math.div(24, 16) * 100%;
+      flex: 0 0 240px;
+   }
+   &__values {
+      flex: 1 1 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 263px);
+      gap: 30px;
+      text-align: center;
+   }
+   & .parameters__button {
+      min-width: 80px;
+      max-width: 80px;
+   }
+   & .parameters__buttons {
+      justify-content: center;
+   }
+}
+
+.compare-compound {
+   &__item {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      border-top: 1px solid $grayColorBD;
+      padding: 14px 0 14px 16px;
+      & .card-compound {
+         display: grid;
+         grid-template-columns: repeat(3, 263px);
+         gap: 30px;
+      }
+   }
+   & .card-compound__item {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 15px;
+      text-align: left;
+      min-height: 89px;
+      & .card-compound__company-name {
+         margin-bottom: 0;
+      }
+      & .card-compound__image {
+         height: 100%;
+         flex: 0 0 91px;
+      }
+   }
+}
+
+.compare-compound-result {
+   &__item {
+   }
+   &__body {
+      display: grid;
+      grid-template-columns: repeat(3, 263px);
+      gap: 30px;
+   }
+}
+.compare-compound__quantity {
+   width: 52px;
+   height: 52px;
+   background: $greenColor;
+   display: grid;
+   place-items: center;
+   border-radius: 50%;
+   color: $whiteColor;
+   font-size: 20px;
+   font-weight: 600;
+   font-family: "Montserrat", sans-serif;
+   line-height: math.div(24, 20) * 100%;
+}

@@ -121,7 +121,7 @@ function productActions(event) {
                const realInput = item.querySelector('.real-radio');
                realInput.checked = true;
                const priceValueStr = priceValue + " ₽";
-               if (inputResultSalePrice != null) {
+               if (productPriceOld) {
                   const priceSaleValueStr = priceSaleValue + " ₽";
                   inputResultSalePrice.value = priceSaleValue;
                   inputResultPrice.value = priceValue;
