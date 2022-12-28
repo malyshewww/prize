@@ -27,7 +27,7 @@ function openModal(event) {
 		})
 	}
 	if (target.closest('[data-modal-button="modal-request"]')) {
-		const parent = target.closest('.card-product');
+		const parent = target.closest('form');
 		const productInputName = parent.querySelector('input[name="shk-name"]');
 		const formRequest = document.getElementById('form-request');
 		const formRequestInput = formRequest.querySelector('input[name="product-title"]');

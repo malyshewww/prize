@@ -334,10 +334,10 @@ function resetFilters() {
 		const filtersResetBtn = filters.querySelectorAll('button[type="reset"]');
 		[...filtersInputs].forEach((input) => {
 			input.addEventListener('change', (event) => {
-				removeAttributeBtnReset(filtersResetBtn);
+				removeAttributeBtnReset(input);
 			});
 			input.addEventListener('input', (event) => {
-				removeAttributeBtnReset(filtersResetBtn);
+				removeAttributeBtnReset(input);
 			});
 		})
 		for (const btn of filtersResetBtn) {
@@ -363,15 +363,17 @@ function removeAttributeBtnReset(btn) {
 }
 function nullInputsCompound(compoundId, inputsCheck, inputHidden) {
 	const compound = document.getElementById(compoundId);
-	const inputsCompound = document.querySelectorAll(inputsCheck);
-	const hiddenInput = document.querySelector(inputHidden);
-	compound.classList.remove('active');
-	compound.checked = false;
-	for (let i = 0; i < inputsCompound.length; i++) {
-		inputsCompound[i].checked = false;
-		inputsCompound[i].removeAttribute('checked');
+	if (compound) {
+		const inputsCompound = document.querySelectorAll(inputsCheck);
+		const hiddenInput = document.querySelector(inputHidden);
+		compound.classList.remove('active');
+		compound.checked = false;
+		for (let i = 0; i < inputsCompound.length; i++) {
+			inputsCompound[i].checked = false;
+			inputsCompound[i].removeAttribute('checked');
+		}
+		hiddenInput.value = "";
 	}
-	hiddenInput.value = "";
 }
 resetFilters();
 

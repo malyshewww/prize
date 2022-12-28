@@ -261,8 +261,20 @@
 		justify-content: center;
 		align-items: center;
 		border: 1.3px solid $grayColorBD;
+		color: $grayColorBD;
+		transition: all 0.2s ease-in 0s;
 		&::before {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			font-size: 12px;
+			color: currentColor;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: $redColor;
+				border: 1px solid $redColor;
+			}
 		}
 	}
 }

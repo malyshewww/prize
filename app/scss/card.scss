@@ -196,7 +196,6 @@
       font-size: 16px;
       line-height: math.div(20, 16) * 100%;
       font-family: "Montserrat", sans-serif;
-      padding: 0 0 0 5px;
       @media screen and (max-width: $lg) {
          padding: 0;
       }
@@ -231,6 +230,23 @@
       z-index: 3;
       @media screen and (max-width: $xs) {
          left: 0;
+      }
+   }
+   &__download {
+      background: transparent;
+      line-height: math.div(24, 16) * 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.1s ease-in 0s;
+      &::before {
+         font-size: 20px;
+         color: currentColor;
+      }
+      @media (any-hover: hover) {
+         &:hover {
+            color: $redColor;
+         }
       }
    }
 }

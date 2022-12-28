@@ -27,8 +27,8 @@ import "./modules/tabs.js";
 import "./modules/spollers.js";
 
 // Подключение модуля Choice (в первью карточки товара)
-import "./modules/choice.js";
-// import "./modules/options.js";
+// import "./modules/choice.js";
+import "./modules/options.js";
 
 // Подключение модуля Observer
 import "./modules/observer.js";

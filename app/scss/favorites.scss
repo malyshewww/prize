@@ -3,6 +3,35 @@
    @media screen and (max-width: $md) {
       padding-bottom: 65px;
    }
+   &__remove-btn {
+      background: transparent;
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-bottom: 20px;
+      gap: 10px;
+      color: $redColor;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: math.div(20, 18) * 100%;
+      &::before {
+         font-size: 14px;
+         width: 29px;
+         height: 29px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         border: 1.3px solid $redColor;
+         color: currentColor;
+         border-radius: 50%;
+         transition: transform 0.2s ease 0s;
+      }
+      @media (any-hover: hover) {
+         &:hover::before {
+            transform: rotate(-90deg);
+         }
+      }
+   }
    &__body {
       display: grid;
       grid-template-columns: repeat(4, 1fr);

@@ -28,41 +28,29 @@ function productOptions(event) {
 		const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader; // data-current-price-header
 		// Цена со скидкой (старая цена) на товаре
 		const salePrice = selectGroupItemHeader.dataset.salePriceHeader; // data-sale-price-header
-
 		// Выпадающий список опций
-		// const selectGroupDropdown = parent.querySelector('.dropdown-list');
 		const selectDropdownItems = parent.querySelectorAll('.dropdown-list .select-group__item');
 
 		if (target.closest('.no-choice') && parent != null) {
-			// let parent = target.closest('[data-select]');
-			const label = parent.querySelector('.select-group__label');
 			setPrice(inputResultPrice, currentPrice, productPrice);
 			setWeight(inputResultWeight, selectGroupValueData)
 			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData)
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
-			const input = label.querySelector('input.real-radio');
-			input.checked = true;
+			setCheckedInput("input.real-radio", ".select-group__label", parent);
 		}
 		if (target.closest('.select-group__item.select-group__header .select-group__label')) {
-			const label = parent.querySelector('.select-group__label');
-			const input = label.querySelector('input.real-radio');
-			input.checked = true;
 			setWeight(inputResultWeight, selectGroupValueData)
 			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData)
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			setPrice(inputResultPrice, currentPrice, productPrice);
-			// setCheckedInput("input.real-radio", "[data-select]");
+			setCheckedInput("input.real-radio", ".select-group__label", parent);
 		}
 
 		if (target.closest('.dropdown-list .select-group__item')) {
-			let parent = target.closest('[data-select]');
 			let self = target;
-			// let input = target.querySelector('.real-radio');
-			// input.checked = true;
-			// let product = parent.closest('.card-product');
-			let selectGroupDropdownValue = self.querySelector('[data-select-dropdown-value]');
+			let parent = self.closest('[data-select]');
+			let selectGroupDropdownValue = self.querySelector('.select-group__value');
 			let selectGroupDropdownValueData = selectGroupDropdownValue.dataset.selectDropdownValue;
-			// console.log(selectGroupDropdownValueData);
 			// Значение дата атрибута в выпадающем меню
 			const priceValue = self.dataset.price;
 			const priceSaleValue = self.dataset.salePrice;
@@ -70,7 +58,7 @@ function productOptions(event) {
 				el.classList.remove('current');
 			})
 			self.classList.add('current');
-			setCheckedInput(".real-radio", "[data-select]");
+			setCheckedInput("input.real-radio", ".select-group__label", parent);
 			setPrice(inputResultPrice, priceValue, productPrice);
 			setWeight(inputResultWeight, selectGroupDropdownValueData);
 			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData);
@@ -81,19 +69,13 @@ function productOptions(event) {
 			}
 			selectGroupItemHeader.setAttribute('data-current-price-header', priceValue);
 			selectGroupValue.setAttribute('data-select-value', selectGroupDropdownValueData);
-			selectGroupValue.innerHTML = selectGroupDropdownValue.innerHTML;
+			selectGroupValue.textContent = selectGroupDropdownValue.textContent;
 			// setCheckedInput("input.real-radio", "[data-select]");
 			parent.classList.remove('active');
 		}
 		if (target.closest('.select-group__choice') && !target.classList.contains('no-choice') && parent != null && !parent.classList.contains('active')) {
 			parent.classList.add('active');
 		}
-		// else {
-		// 	const selectGroup = document.querySelectorAll('[data-select]');
-		// 	selectGroup.forEach((item) => {
-		// 		item.classList.remove('active')
-		// 	})
-		// }
 	}
 }
 function setPrice(resultPrice, currentPrice, productPrice) {
@@ -117,8 +99,8 @@ function setSalePrices(salePrice, resultSale, resultPrice, resultDiscount, produ
 		saveValuesPriceToHTML(productOldPrice, salePriceStr);
 	}
 }
-function setCheckedInput(input, parent) {
-	const selectParent = document.querySelector(parent);
+function setCheckedInput(input, label, parent) {
+	const selectParent = parent.querySelector(label);
 	const currentInput = selectParent.querySelector(input);
 	currentInput.checked = true;
 }

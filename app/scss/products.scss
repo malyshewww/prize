@@ -486,6 +486,10 @@
       z-index: 2;
       box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.17);
       padding-top: 33px;
+      & .custom-radio,
+      & .select-group__text {
+         pointer-events: none;
+      }
       & li {
          padding: 0;
       }
