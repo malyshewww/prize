@@ -184,6 +184,7 @@ function showSearch(event) {
 
 // Card-compound image-tooltip
 function createImageCompoundTooltip() {
+	let delay = 400;
 	const picwrap = document.createElement('div');
 	const bigpic = document.createElement('img');
 	picwrap.appendChild(bigpic);
@@ -200,10 +201,11 @@ function createImageCompoundTooltip() {
 					bigpic.alt = currentImage.alt;
 					picwrap.classList.add('show');
 				})
+
 				item.addEventListener("mouseout", (e) => {
 					picwrap.classList.remove('show');
 				})
-			}, 500)
+			}, delay)
 		})
 	}
 }

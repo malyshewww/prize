@@ -54,6 +54,12 @@ import "./modules/map.js";
 // Падающий снег
 import "./modules/snow.js";
 
+// Модуль Избранных товаров
+import "./modules/favorites.js";
+
+// Модуль Для скачивания состава подарка + добавление данных в скрытый инпут в json формате
+import "./modules/download-compound.js";
+
 /* Проверка мобильного браузера */
 let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 let isMobile = {
