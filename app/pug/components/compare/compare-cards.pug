@@ -92,6 +92,98 @@
 				},
 			]
 		},
+		{
+			"img": "products/product-1",
+			"article": "#0002",
+			"name": "Cнежинка золотая",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"delete": `<div class="card-product__delete icon-delete"></div>`,
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["200 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Классик",
+							"value": "700 г"
+						},
+						{
+							"title": "Классик",
+							"value": "700 г"
+						},
+					]
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						},
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						},
+					]
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "VIP",
+							"value": "700 г"
+						},
+						{
+							"title": "VIP",
+							"value": "700 г"
+						},
+					]
+				},
+			]
+		},
+		{
+			"img": "products/product-2",
+			"article": "#0074",
+			"name": "Короб почтальона Ассорти",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"key": "viewed",
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1100 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Классик",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "VIP",
+							"value": "700 г"
+						}
+					]
+				},
+			]
+		},
 	]
 .compare__products.products-compare
 	.products-compare__inner 
@@ -107,4 +199,7 @@
 				.compare-cards__wrapper 
 					.compare-cards__body
 						include ../product-card
+					.compare-cards__controls 
+						button.slide-arrow.slide-arrow__prev.icon-arrow-prev
+						button.slide-arrow.slide-arrow__next.icon-arrow-next
 

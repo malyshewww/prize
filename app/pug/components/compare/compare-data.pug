@@ -234,45 +234,74 @@
 			mixin common(title)
 				li.common-compare__item
 					.common-compare__title= title
-					.common-compare__values
-						block
+					.common-compare__body.compare-body
+						.common-compare__values.compare-values
+							block
 			ul.common-compare__list
 				+common("Размер(см)")
-					.common-compare__value 19*23,5*11
-					.common-compare__value 11*5,5*18
+					.common-compare__value.compare-item 19*23,5*11
+					.common-compare__value.compare-item 11*5,5*18
+					.common-compare__value.compare-item 11*5,5*18
+					.common-compare__value.compare-item 11*5,5*18
 				+common("Категория")
-					.common-compare__value
+					.common-compare__value.compare-item
 						.parameters__buttons
 							+compound("classic", "compound", "Классик", "checked", "active")
 							+compound("premium", "compound", "Премиум")
 							+compound("vip", "compound", "VIP")
-					.common-compare__value
+					.common-compare__value.compare-item
 						.parameters__buttons
 							+compound("classic", "compound", "Классик", false, "active")
 							+compound("premium", "compound", "Премиум")
 							+compound("vip", "compound", "VIP")
+					.common-compare__value.compare-item
+						.parameters__buttons
+							+compound("classic", "compound", "Классик", "checked", "active")
+					.common-compare__value.compare-item
+						.parameters__buttons
+							+compound("classic", "compound", "Классик", false, "active")
 				+common("Вес НЕТТО")
-					.common-compare__value
+					.common-compare__value.compare-item
 						.parameters__buttons(data-weight="classic").active
 							+weight("weight", "290", "290 г", "checked")
 							+weight("weight", "380", "380 г")
-					.common-compare__value
+					.common-compare__value.compare-item
 						.parameters__buttons(data-weight="premium")
 							+weight("weight", "400", "400 г")
 							+weight("weight", "500", "500 г")
+					.common-compare__value.compare-item
+						.parameters__buttons(data-weight="classic").active
+							+weight("weight", "290", "290 г", "checked")
+					.common-compare__value.compare-item
+						.parameters__buttons(data-weight="premium")
+							+weight("weight", "400", "400 г")
 				+common("Состав")
-					.common-compare__value 50 конфет
-					.common-compare__value 43 конфеты
+					.common-compare__value.compare-item 50 конфет
+					.common-compare__value.compare-item 43 конфеты
+					.common-compare__value.compare-item 43 конфеты
+					.common-compare__value.compare-item 43 конфеты
 				+common("В наличии")
-					.common-compare__value 70-50 шт.
-					.common-compare__value 31-50 шт.
+					.common-compare__value.compare-item 70-50 шт.
+					.common-compare__value.compare-item 31-50 шт.
+					.common-compare__value.compare-item 31-50 шт.
+					.common-compare__value.compare-item 31-50 шт.
 				+common("Рейтинг")
-					.common-compare__value 
+					.common-compare__value.compare-item
 						.reviews-rating
 							div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
 							.reviews-rating__value.
 								Отзывы (<span class="reviews-rating__count">10</span>)
-					.common-compare__value
+					.common-compare__value.compare-item
+						.reviews-rating
+							div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
+							.reviews-rating__value.
+								Отзывы (<span class="reviews-rating__count">5</span>)
+					.common-compare__value.compare-item
+						.reviews-rating
+							div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
+							.reviews-rating__value.
+								Отзывы (<span class="reviews-rating__count">10</span>)
+					.common-compare__value.compare-item
 						.reviews-rating
 							div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
 							.reviews-rating__value.
@@ -284,25 +313,45 @@
 				each item, index in categoryCandies
 					li.compare-compound__item 
 						.compare-compound__title= item.title
-						.card-compound 
-							.compare-compound__body
-								each child, childIndex in item.children
-									.card-compound__item
-										.card-compound__count 1
-										.card-compound__image 
-											img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
-										.card-compound__content 
-											.card-compound__company-name!= child.companyName
-											.card-compound__title!= child.title
-							.compare-compound__body
-								each child, childIndex in item.children
-									.card-compound__item
-										.card-compound__count 1
-										.card-compound__image 
-											img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
-										.card-compound__content 
-											.card-compound__company-name!= child.companyName
-											.card-compound__title!= child.title
+						.card-compound
+							.compare-body
+								.compare-values
+									.compare-compound__body.compare-item
+										each child, childIndex in item.children
+											.card-compound__item
+												.card-compound__count 1
+												.card-compound__image 
+													img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
+												.card-compound__content 
+													.card-compound__company-name!= child.companyName
+													.card-compound__title!= child.title
+									.compare-compound__body.compare-item
+										each child, childIndex in item.children
+											.card-compound__item
+												.card-compound__count 1
+												.card-compound__image 
+													img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
+												.card-compound__content 
+													.card-compound__company-name!= child.companyName
+													.card-compound__title!= child.title
+									.compare-compound__body.compare-item
+										each child, childIndex in item.children
+											.card-compound__item
+												.card-compound__count 1
+												.card-compound__image 
+													img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
+												.card-compound__content 
+													.card-compound__company-name!= child.companyName
+													.card-compound__title!= child.title
+									.compare-compound__body.compare-item
+										each child, childIndex in item.children
+											.card-compound__item
+												.card-compound__count 1
+												.card-compound__image 
+													img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
+												.card-compound__content 
+													.card-compound__company-name!= child.companyName
+													.card-compound__title!= child.title
 				li.compare-compound__item.compare-compound-result
 					.compare-compound__title Всего конфет
 					.compare-compound-result__body

@@ -41,9 +41,9 @@ const compoundObj = {
 }
 function compoundData() {
 	const cardCompound = document.querySelector('.card-compound');
-	if (cardCompound) {
+	const productInfo = document.querySelector('.main-card__info');
+	if (cardCompound != null && productInfo != null) {
 		const cardCompoundBoxes = cardCompound.querySelectorAll('.card-compound__box-wrap');
-		const productInfo = document.querySelector('.main-card__info');
 		const productTitle = productInfo.querySelector('.main-card__title');
 		const productArticle = productInfo.querySelector('[data-article]');
 		const productSize = productInfo.querySelector('[data-size]');

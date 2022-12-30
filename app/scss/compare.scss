@@ -23,22 +23,31 @@
       width: 100%;
    }
    &__cards {
-      padding-left: 81px;
-      display: flex;
-      flex-wrap: wrap;
-      column-gap: 90px;
-      row-gap: 50px;
+      padding-left: 109px;
    }
 }
 .compare-cards {
    & .products__card {
-      max-width: 100%;
-      width: 263px;
+      min-width: 263px;
+   }
+   &__slider {
+      position: relative;
+      & .swiper-initialized .card-product {
+         opacity: 1;
+         visibility: visible;
+      }
+   }
+   &__wrapper {
+      max-width: 890px;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      margin: -20px;
    }
    &__body {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
    }
 }
 
@@ -55,7 +64,23 @@
       }
    }
 }
+.compare-body {
+   width: 100%;
+   overflow: hidden;
+   max-width: 850px;
+}
+.compare-values {
+   display: flex;
+   flex-flow: row nowrap;
+   gap: 30px;
+   text-align: center;
+   flex: 1 1 auto;
+   & > * {
+      flex: 0 0 263px;
+   }
+}
 .common-compare {
+   overflow: hidden;
    &__item {
       display: flex;
       align-items: center;
@@ -67,14 +92,7 @@
    }
    &__title {
       line-height: math.div(24, 16) * 100%;
-      flex: 0 0 240px;
-   }
-   &__values {
-      flex: 1 1 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 263px);
-      gap: 30px;
-      text-align: center;
+      flex: 0 0 280px;
    }
    & .parameters__button {
       min-width: 80px;
@@ -87,15 +105,12 @@
 
 .compare-compound {
    &__item {
-      display: grid;
-      grid-template-columns: 240px 1fr;
+      display: flex;
       border-top: 1px solid $grayColorBD;
       padding: 14px 0 14px 16px;
-      & .card-compound {
-         display: grid;
-         grid-template-columns: repeat(3, 263px);
-         gap: 30px;
-      }
+   }
+   &__title {
+      flex: 0 0 280px;
    }
    & .card-compound__item {
       flex-direction: row;

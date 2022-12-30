@@ -96,6 +96,32 @@ function addTouchClass() {
 }
 addTouchClass();
 
+// let block1 = $(".compare-cards__wrapper");
+// let block2 = $('.common-compare__values');
+// block1.addEventListener("scroll", function () {
+// 	block2.scrollLeft = block1.scrollLeft;
+// });
+
+function syncScroll(el1, el2) {
+	let $el1 = $(el1);
+	let $el2 = $(el2);
+	let forcedScroll = false;
+	$el1.onscroll = function () {
+		performScroll($el1, $el2);
+	};
+	$el2.onscroll = function () {
+		performScroll($el2, $el1);
+	};
+	function performScroll($scrolled, $toScroll) {
+		if (forcedScroll) return (forcedScroll = false);
+		setScrollTopFromPercent($toScroll, $scrolled.scrollLeft() / ($scrolled[0].scrollWidth - $scrolled.outerWidth()));
+	}
+	function setScrollTopFromPercent($el, percent) {
+		forcedScroll = true;
+		$el.scrollLeft(percent * ($el[0].scrollWidth - $el.outerWidth()));
+	}
+}
+syncScroll($('.compare-cards__wrapper'), $('.common-compare__values'));
 // for (const dropdown of document.querySelectorAll(".custom-select-wrapper")) {
 // 	const trigger = dropdown.querySelector('.custom-select__trigger')
 // 	trigger.addEventListener('click', function () {
