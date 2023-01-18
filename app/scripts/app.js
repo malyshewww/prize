@@ -31,7 +31,7 @@ import "./modules/spollers.js";
 import "./modules/options.js";
 
 // Подключение модуля Observer
-import "./modules/observer.js";
+// import "./modules/observer.js";
 
 // Подключение модуля Формы
 import "./modules/forms.js";
@@ -59,6 +59,9 @@ import "./modules/favorites.js";
 
 // Модуль Для скачивания состава подарка + добавление данных в скрытый инпут в json формате
 import "./modules/download-compound.js";
+
+// Сравнение
+// import "./modules/compare.js";
 
 /* Проверка мобильного браузера */
 let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -122,6 +125,15 @@ function syncScroll(el1, el2) {
 	}
 }
 syncScroll($('.compare-cards__wrapper'), $('.common-compare__values'));
+const boxSlider = document.querySelector('.compare-cards');
+if (boxSlider) {
+	const cardSlider = document.querySelector('.compare-cards__slider')
+	const fixedSlider = document.createElement('div');
+	fixedSlider.className = "compare-cards__slider-fixed";
+	boxSlider.insertAdjacentElement('afterbegin', fixedSlider);
+	const sliderClone = cardSlider.cloneNode(true);
+	fixedSlider.appendChild(sliderClone)
+}
 // for (const dropdown of document.querySelectorAll(".custom-select-wrapper")) {
 // 	const trigger = dropdown.querySelector('.custom-select__trigger')
 // 	trigger.addEventListener('click', function () {

@@ -73,8 +73,11 @@ section.main-card
 							a(href="#reviews") Отзывы (<span class="reviews-rating__count">5</span>)
 					.main-card__parameters.parameters
 						.parameters-group 
+							p.parameters__label Артикул: 
+							.parameters__value(data-article) #0001
+						.parameters-group 
 							p.parameters__label Размер (см): 
-							.parameters__value 11*5,5*18
+							.parameters__value(data-size) 11*5,5*18
 						form.parameters-group__form
 							.parameters-group
 								p.parameters__label Выберите состав:
@@ -98,8 +101,9 @@ section.main-card
 									.parameters__warning Вес подарка указан без упаковки и дополнительных вложений
 						.parameters-group 
 							p.parameters__label Состав: 
-							.parameters__value 97 конфет
-							a(href="#compound").parameters__watch Посмотреть состав
+							.parameters__value 
+								span.label-compound-result__quantity 97 конфет
+								a(href="#compound").parameters__watch Посмотреть состав
 						.parameters-group 
 							p.parameters__label В наличии: 
 							.parameters__value 31-50 шт.
@@ -119,13 +123,18 @@ section.main-card
 						|
 						|
 						button(type="button" data-modal-button="buy").actions__button.btn.btn__zero Купить в 1 клик
-					.main-card__bottom
-						|
-						|
-						button(type="button").main-card__favorite.icon-favorites В избранное
-						|
-						|
-						button(type="button").main-card__compare.icon-prepare В сравнение
+					form#formBottom(action="#" method="post") 
+						input(type="hidden" name="shk-id" value="216")
+						input(type="hidden" name="compound-id" value="466")
+						input(type="hidden" name="compound-title" value="Классик")
+						input(type="hidden" name="compound_data")
+						.main-card__bottom
+							|
+							|
+							button(type="button").main-card__favorite.icon-favorites В избранное
+							|
+							|
+							button(type="button" data-compare).main-card__compare.icon-prepare В сравнение
 					form#formCompound(method="post")
 						input(type="hidden" name="data")
 						input(type="hidden" name="alias")

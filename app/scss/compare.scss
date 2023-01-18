@@ -24,14 +24,25 @@
    }
    &__cards {
       padding-left: 109px;
+      width: 100%;
    }
 }
 .compare-cards {
    & .products__card {
-      min-width: 263px;
+      flex-shrink: 0;
+      transition: none;
+   }
+   &.fixed {
+      & .compare-cards__slider {
+         position: fixed;
+         top: 20px;
+         width: 100%;
+         z-index: 20;
+      }
    }
    &__slider {
       position: relative;
+      width: 100%;
       & .swiper-initialized .card-product {
          opacity: 1;
          visibility: visible;
@@ -66,21 +77,23 @@
 }
 .compare-body {
    width: 100%;
-   overflow: hidden;
-   max-width: 850px;
+   height: auto;
+   // overflow: hidden;
+   // max-width: 850px;
 }
 .compare-values {
    display: flex;
    flex-flow: row nowrap;
-   gap: 30px;
    text-align: center;
    flex: 1 1 auto;
+   transition-property: transform;
+   box-sizing: content-box;
+   align-items: flex-start;
    & > * {
-      flex: 0 0 263px;
+      flex-shrink: 0;
    }
 }
 .common-compare {
-   overflow: hidden;
    &__item {
       display: flex;
       align-items: center;
@@ -88,6 +101,9 @@
       padding: 14px 0 14px 16px;
       &:last-child {
          border-bottom: 1px solid $grayColorBD;
+      }
+      & .compare-body {
+         overflow: hidden;
       }
    }
    &__title {
@@ -108,6 +124,13 @@
       display: flex;
       border-top: 1px solid $grayColorBD;
       padding: 14px 0 14px 16px;
+      & .card-compound {
+         overflow: hidden;
+         width: 100%;
+      }
+      &.swiper-slide-active {
+         height: auto;
+      }
    }
    &__title {
       flex: 0 0 280px;
@@ -125,6 +148,10 @@
          height: 100%;
          flex: 0 0 91px;
       }
+   }
+   &__result {
+      overflow: hidden;
+      width: 100%;
    }
 }
 

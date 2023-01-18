@@ -2,16 +2,24 @@ extends layout.pug
 
 
 block vars 
-   - var pageTitle = "Сравнение товаров";
+	- var pageTitle = "Сравнение товаров";
+	- function range(start, end) {
+		- for (var i = start; i < end; i++) 
+		- var arr = [];
+		- arr.push(i);
+		- return arr;
+		- }
 
 block content
-   div.breadcrumbs.container
-      ul.breadcrumbs__list
-         li.breadcrumbs__item 
-            a(href="#").breadcrumbs__link Главная
-         li.breadcrumbs__item Сравнение товаров
-   .compare
-      .compare__body.container
-         .compare__title.general-title сравнение товаров <span class="compare__count">(2)</span>
-         include ./components/compare/compare-cards
-         include ./components/compare/compare-data
+	div.breadcrumbs.container
+		ul.breadcrumbs__list
+			li.breadcrumbs__item 
+				a(href="#").breadcrumbs__link Главная
+			li.breadcrumbs__item Сравнение товаров
+	.compare
+		.compare__body.container
+			.compare__title.general-title сравнение товаров <span class="compare__count">(2)</span>
+			include ./components/compare/compare-cards
+			include ./components/compare/compare-data
+			//- each i in range(1, 4)
+			//- 	include('slide-' + i)

@@ -27,36 +27,37 @@ each productItem, productIndex in product
 					.card-product__article= productItem.article
 					.card-product__compare.icon-prepare(class=productItem.selectedClass)
 				a(href="card.html").card-product__title= productItem.name
-			.card-product__body 
-				.card-product__inner 
-					.reviews-rating
-						div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
-					a(href="card.html").reviews-rating-text Отзывы 
-						span (15)
-				if !category
-					.select.select-wrapper
-						if productItem.choice
-							each choiceItem, choiceIndex in productItem.choice
-								.select-group(data-select)
-									.select-group__item.select-group__header(data-current-price-header="300" data-sale-price-header="400")
-										label.select-group__label
-											input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
-											span.custom-radio
-											span.select-group__label-text(data-text="classic")= choiceItem.title
-										.select-group__choice(class=choiceItem.dropmenu ? "" : "no-choice")
-											if choiceItem.values
-												span.select-group__value(data-select-value=choiceItem.values[0])= choiceItem.values[0]
-											if choiceItem.dropmenu
-												span.select-group__arrow
-										input(type="text" class="select-group__input-hidden")
-									if choiceItem.dropmenu
-										.select-group__dropdown.dropdown-list
-											each dropItem, dropIndex in choiceItem.dropmenu
-												.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
-													input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
-													span.custom-radio
-													span.select-group__text(data-text="classic")= dropItem.title
-													span.select-group__value(data-select-dropdown-value=dropItem.value)= dropItem.value
+			if pageTitle != "Сравнение товаров"
+				.card-product__body 
+					.card-product__inner 
+						.reviews-rating
+							div(class="stars" style="--rating: 3.5;" aria-label="Rating of this product is 3.5 out of 5.")
+						a(href="card.html").reviews-rating-text Отзывы 
+							span (15)
+					if !category
+						.select.select-wrapper
+							if productItem.choice
+								each choiceItem, choiceIndex in productItem.choice
+									.select-group(data-select)
+										.select-group__item.select-group__header(data-current-price-header="300" data-sale-price-header="400")
+											label.select-group__label
+												input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
+												span.custom-radio
+												span.select-group__label-text(data-text="classic")= choiceItem.title
+											.select-group__choice(class=choiceItem.dropmenu ? "" : "no-choice")
+												if choiceItem.values
+													span.select-group__value(data-select-value=choiceItem.values[0])= choiceItem.values[0]
+												if choiceItem.dropmenu
+													span.select-group__arrow
+											input(type="text" class="select-group__input-hidden")
+										if choiceItem.dropmenu
+											.select-group__dropdown.dropdown-list
+												each dropItem, dropIndex in choiceItem.dropmenu
+													.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
+														input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
+														span.custom-radio
+														span.select-group__text(data-text="classic")= dropItem.title
+														span.select-group__value(data-select-dropdown-value=dropItem.value)= dropItem.value
 			.card-product__footer
 				.card-product__prices 
 					.card-product__price= productItem.price

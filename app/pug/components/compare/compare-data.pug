@@ -325,6 +325,14 @@
 												.card-compound__content 
 													.card-compound__company-name!= child.companyName
 													.card-compound__title!= child.title
+											if childIndex == 2
+												.card-compound__item
+													.card-compound__count 1
+													.card-compound__image 
+														img(src=`img/compare/${item.key}/${childIndex+1}.png`, alt=child.title)
+													.card-compound__content 
+														.card-compound__company-name!= child.companyName
+														.card-compound__title!= child.title
 									.compare-compound__body.compare-item
 										each child, childIndex in item.children
 											.card-compound__item
@@ -354,8 +362,9 @@
 													.card-compound__title!= child.title
 				li.compare-compound__item.compare-compound-result
 					.compare-compound__title Всего конфет
-					.compare-compound-result__body
-						.compare-compound-result__item
-							span.compare-compound__quantity 50
-						.compare-compound-result__item
-							span.compare-compound__quantity 48
+					.compare-compound__result
+						.compare-compound-result__body
+							.compare-compound-result__item
+								span.compare-compound__quantity 50
+							.compare-compound-result__item
+								span.compare-compound__quantity 48

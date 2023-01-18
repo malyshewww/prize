@@ -51,3 +51,34 @@ if (collectShowBtn) {
    })
 }
 
+function compareSlider() {
+   let options = {
+      root: null,
+      threshold: 0,
+      // rootMargin: '0px 0px 0px 0px',
+   }
+   let box = document.querySelector('.compare-cards')
+   let observer = new IntersectionObserver(([entry]) => {
+      const targetInfo = entry.boundingClientRect;
+      const rootBoundsInfo = entry.rootBounds;
+      if (targetInfo.bottom < rootBoundsInfo.top || targetInfo.isIntersecting) {
+         box.classList.add('fixed');
+      } else {
+         box.classList.remove('fixed');
+      }
+   }, options)
+   observer.observe(box)
+   // функция построения шкалы пересечения
+   // шкала представляет собой массив из 20 элементов, определяющих цвет контейнера
+   function buildThresholdList() {
+      let thresholds = []
+      let steps = 20
+
+      for (let i = 1.0; i <= steps; i++) {
+         let ratio = i / steps
+         thresholds.push(ratio)
+      }
+      return thresholds
+   }
+}
+compareSlider();

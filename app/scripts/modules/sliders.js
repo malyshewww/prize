@@ -47,49 +47,91 @@ productSliders.forEach((el) => {
 })
 function initSliders() {
 	// COMPARE SLIDER
-	let compareSwiper;
-	const compareSlider = document.querySelector('.compare-cards__wrapper');
-	const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
-	const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
-	compareSwiper = new Swiper(compareSlider, {
-		modules: [Thumbs, Navigation],
-		watchOverflow: true,
-		modules: [Navigation],
-		wrapperClass: "compare-cards__body",
-		slideClass: "products__card ",
-		loop: false,
-		initialSlide: 0,
-		slidesPerView: 3,
-		spaceBetween: 30,
-		speed: 500,
-		simulateTouch: true,
-		navigation: {
-			nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-			prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-		},
-	})
-	if (compareSliderItems < 3) {
-		compareSwiper.navigation.destroy();
-	}
-	const compareBodySliders = document.querySelectorAll('.compare-body');
-	[...compareBodySliders].forEach((item) => {
-		let commonSwiper = new Swiper(item, {
+	const comparePage = document.querySelector('.compare');
+	if (comparePage) {
+		let compareSwiper;
+		let commonSwiper;
+		let fixedSwiper;
+		// let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper');
+		// fixedSwiper = new Swiper(sliderFixed, {
+		// 	modules: [Thumbs, Navigation],
+		// 	watchOverflow: true,
+		// 	autoHeight: true,
+		// 	slidesPerGroup: 1,
+		// 	modules: [Navigation],
+		// 	wrapperClass: "compare-cards__body",
+		// 	slideClass: "products__card ",
+		// 	loop: false,
+		// 	slidesPerView: 3,
+		// 	spaceBetween: 30,
+		// 	speed: 500,
+		// 	simulateTouch: false,
+		// 	grabCursor: false,
+		// 	allowTouchMove: false,
+		// 	observer: true,
+		// 	observeParents: true,
+		// 	navigation: {
+		// 		nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+		// 		prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+		// 	},
+		// })
+		const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
+		const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
+		const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
+		compareSwiper = new Swiper(compareSlider, {
 			modules: [Thumbs, Navigation],
-			simulateTouch: false,
-			// watchOverflow: true,
+			watchOverflow: true,
+			autoHeight: true,
+			slidesPerGroup: 1,
+			modules: [Navigation],
+			wrapperClass: "compare-cards__body",
+			slideClass: "products__card ",
+			loop: false,
 			slidesPerView: 3,
-			slideClass: "compare-item",
-			wrapperClass: "compare-values",
+			spaceBetween: 30,
 			speed: 500,
-			thumbs: {
-				swiper: compareSwiper,
-			},
+			simulateTouch: false,
+			grabCursor: false,
+			allowTouchMove: false,
+			observer: true,
+			observeParents: true,
 			navigation: {
 				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
 				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
 			},
+		});
+		if (compareSliderItems <= 3) {
+			compareSwiper.navigation.destroy();
+			compareSliderControls.remove();
+		}
+		const compareBodySliders = comparePage.querySelectorAll('.compare-body');
+		[...compareBodySliders].forEach((item) => {
+			commonSwiper = new Swiper(item, {
+				modules: [Thumbs, Navigation],
+				autoHeight: true,
+				simulateTouch: false,
+				slidesPerGroup: 1,
+				watchOverflow: true,
+				slidesPerView: 3,
+				slideClass: "compare-item",
+				wrapperClass: "compare-values",
+				speed: 500,
+				spaceBetween: 30,
+				simulateTouch: false,
+				grabCursor: false,
+				allowTouchMove: false,
+				// thumbs: {
+				// 	swiper: compareSwiper,
+				// },
+				navigation: {
+					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+				},
+			})
 		})
-	})
+		compareSwiper.controller.control = commonSwiper;
+		commonSwiper.controller.control = compareSwiper;
+	}
 	// HOME-BANNER SLIDER
 	const bannerSlider = document.querySelector('.home-banner__body');
 	if (bannerSlider) {
