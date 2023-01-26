@@ -31,7 +31,7 @@ import "./modules/spollers.js";
 import "./modules/options.js";
 
 // Подключение модуля Observer
-// import "./modules/observer.js";
+import "./modules/observer.js";
 
 // Подключение модуля Формы
 import "./modules/forms.js";
@@ -130,9 +130,12 @@ if (boxSlider) {
 	const cardSlider = document.querySelector('.compare-cards__slider')
 	const fixedSlider = document.createElement('div');
 	fixedSlider.className = "compare-cards__slider-fixed";
+	fixedSlider.setAttribute('id', "fixed-slider")
 	boxSlider.insertAdjacentElement('afterbegin', fixedSlider);
 	const sliderClone = cardSlider.cloneNode(true);
 	fixedSlider.appendChild(sliderClone)
+	const fixedSliderWrapper = fixedSlider.querySelector('.compare-cards__wrapper');
+	fixedSliderWrapper.classList.replace('compare-cards__wrapper', 'compare-cards__wrapper-fixed');
 }
 // for (const dropdown of document.querySelectorAll(".custom-select-wrapper")) {
 // 	const trigger = dropdown.querySelector('.custom-select__trigger')

@@ -32,8 +32,35 @@
       flex-shrink: 0;
       transition: none;
    }
+   &__slider-fixed {
+      & .card-product {
+         height: 100%;
+         &__title {
+            min-height: auto;
+         }
+      }
+      & .card-product__image {
+         padding-bottom: 30%;
+         min-height: auto;
+         & img {
+            max-height: 100%;
+         }
+      }
+      & .games-product__item {
+         width: 25px;
+         height: 25px;
+      }
+   }
+   &__wrapper-fixed {
+      margin: -20px;
+      max-width: 890px;
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+   }
    &.fixed {
-      & .compare-cards__slider {
+      & .compare-cards__slider-fixed {
+         display: block;
          position: fixed;
          top: 20px;
          width: 100%;
@@ -177,3 +204,41 @@
    font-family: "Montserrat", sans-serif;
    line-height: math.div(24, 20) * 100%;
 }
+
+// TEST
+// .common-compare {
+//    &__titles {
+//       flex: 0 0 280px;
+//       & > * {
+//          border-bottom: 1px solid #bdbdbd;
+//          padding: 14px 0 14px 16px;
+//          position: relative;
+//          &::before {
+//             content: "";
+//             display: block;
+//             width: 100vw;
+//             height: 1px;
+//             position: absolute;
+//             right: 0;
+//             bottom: -1px;
+//             transform: translateX(100%);
+//             background: #bdbdbd;
+//          }
+//       }
+//    }
+//    &__values {
+//       & .slide {
+//          line-height: 150%;
+//          & .common-compare__value {
+//             padding: 14px 0;
+//          }
+//       }
+//    }
+//    &__item {
+//       padding: 0;
+//       align-items: flex-start;
+//       overflow: hidden;
+//    }
+// }
+// .compare__titles {
+// }

@@ -52,38 +52,12 @@ function initSliders() {
 		let compareSwiper;
 		let commonSwiper;
 		let fixedSwiper;
-		// let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper');
-		// fixedSwiper = new Swiper(sliderFixed, {
-		// 	modules: [Thumbs, Navigation],
-		// 	watchOverflow: true,
-		// 	autoHeight: true,
-		// 	slidesPerGroup: 1,
-		// 	modules: [Navigation],
-		// 	wrapperClass: "compare-cards__body",
-		// 	slideClass: "products__card ",
-		// 	loop: false,
-		// 	slidesPerView: 3,
-		// 	spaceBetween: 30,
-		// 	speed: 500,
-		// 	simulateTouch: false,
-		// 	grabCursor: false,
-		// 	allowTouchMove: false,
-		// 	observer: true,
-		// 	observeParents: true,
-		// 	navigation: {
-		// 		nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-		// 		prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-		// 	},
-		// })
-		const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
-		const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
-		const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
-		compareSwiper = new Swiper(compareSlider, {
+		let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper-fixed');
+		fixedSwiper = new Swiper(sliderFixed, {
 			modules: [Thumbs, Navigation],
 			watchOverflow: true,
 			autoHeight: true,
 			slidesPerGroup: 1,
-			modules: [Navigation],
 			wrapperClass: "compare-cards__body",
 			slideClass: "products__card ",
 			loop: false,
@@ -99,38 +73,110 @@ function initSliders() {
 				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
 				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
 			},
-		});
-		if (compareSliderItems <= 3) {
-			compareSwiper.navigation.destroy();
-			compareSliderControls.remove();
-		}
-		const compareBodySliders = comparePage.querySelectorAll('.compare-body');
-		[...compareBodySliders].forEach((item) => {
-			commonSwiper = new Swiper(item, {
-				modules: [Thumbs, Navigation],
-				autoHeight: true,
-				simulateTouch: false,
-				slidesPerGroup: 1,
-				watchOverflow: true,
-				slidesPerView: 3,
-				slideClass: "compare-item",
-				wrapperClass: "compare-values",
-				speed: 500,
-				spaceBetween: 30,
-				simulateTouch: false,
-				grabCursor: false,
-				allowTouchMove: false,
-				// thumbs: {
-				// 	swiper: compareSwiper,
-				// },
-				navigation: {
-					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-				},
-			})
+			on: {
+				slideChange: function () {
+					compareSwiper.slideTo(fixedSwiper.realIndex)
+				}
+			}
 		})
-		compareSwiper.controller.control = commonSwiper;
-		commonSwiper.controller.control = compareSwiper;
+		var interleaveOffset = 0.5;
+		const compareValues = document.querySelectorAll('.compare-values');
+		const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
+		const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
+		const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
+		compareSwiper = new Swiper(compareSlider, {
+			modules: [Thumbs, Navigation],
+			watchOverflow: true,
+			autoHeight: true,
+			slidesPerGroup: 1,
+			wrapperClass: "compare-cards__body",
+			slideClass: "products__card ",
+			loop: false,
+			slidesPerView: 3,
+			spaceBetween: 30,
+			speed: 500,
+			simulateTouch: false,
+			grabCursor: false,
+			allowTouchMove: false,
+			observer: true,
+			observeParents: true,
+			navigation: {
+				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+			},
+			// Событие смены слайда
+			on: {
+				// progress: function () {
+				// 	var swiper = this;
+				// 	for (var i = 0; i < swiper.slides.length; i++) {
+				// 		for (let j = 0; j < compareValues.length; j++) {
+				// 			var slideProgress = swiper.slides[i].progress;
+				// 			var innerOffset = swiper.width * interleaveOffset;
+				// 			var innerTranslate = slideProgress * innerOffset;
+				// 			var transform = swiper.slides[i].style.transform =
+				// 				"translate3d(" + innerTranslate + "px, 0, 0)";
+				// 			compareValues[j].style.setProperty('transform', transform)
+				// 		}
+				// 	}
+				// },
+				slideChange: function () {
+					for (let i = 0; i < commonSwiper.length; i++) {
+						commonSwiper[i].slideTo(compareSwiper.realIndex)
+					}
+					fixedSwiper.slideTo(compareSwiper.realIndex)
+				},
+			}
+		})
+		commonSwiper = new Swiper('.compare-body', {
+			modules: [Navigation],
+			slideClass: "compare-item",
+			wrapperClass: "compare-values",
+			speed: 500,
+			spaceBetween: 30,
+			watchOverflow: true,
+			autoHeight: true,
+			slidesPerView: 3,
+			simulateTouch: false,
+			allowTouchMove: false,
+			slidesPerGroup: 1,
+			grabCursor: false,
+			navigation: {
+				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+			},
+		})
+		// function menuSlider() {
+		// 	const compareValues = document.querySelectorAll('.compare-values');
+		// 	[...compareValues].forEach((el) => {
+		// 		// таблица стилей, где будем искать нужно нам правило
+		// 		let transform = getComputedStyle(document.querySelector(".compare-cards__body")).getPropertyValue("transform");
+		// 		el.style.setProperty('transform', transform)
+		// 		let compareItems = el.querySelectorAll('.compare-item');
+		// 		for (let index = 0; index < compareItems.length; index++) {
+		// 			const item = compareItems[index];
+		// 			let addIndex = item.setAttribute('data-index', index);
+		// 			menuSliderRemove();
+		// 			// compareSwiper.slideTo(index, 1200);
+		// 			item.classList.add('_active');
+		// 		}
+		// 	})
+		// }
+		// function menuSliderRemove() {
+		// 	let menuLinkActive = document.querySelector('.compare-item._active');
+		// 	if (menuLinkActive) {
+		// 		menuLinkActive.classList.remove('_active');
+		// 	}
+		// }
+
+		// if (compareSliderItems <= 3) {
+		// 	compareSwiper.navigation.destroy();
+		// 	compareSliderControls.remove();
+		// }
+		// function swipeAllSliders(index) {
+		// 	compareSwiper.slideTo(index);
+		// 	commonSwiper.slideTo(index);
+		// 	compoundSwiper.slideTo(index);
+		// }
 	}
 	// HOME-BANNER SLIDER
 	const bannerSlider = document.querySelector('.home-banner__body');
