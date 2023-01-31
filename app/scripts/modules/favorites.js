@@ -1,4 +1,6 @@
+console.log('test favorites.js');
 document.addEventListener('click', favoriteActions);
+
 let counter = 0;
 const arrIds = [];
 function getInputValues(elem) {
@@ -44,7 +46,7 @@ function favoriteActions(event) {
 
 function getFavoritesQuantity(id, action) {
 	let dataCount = document.querySelector('[data-count-favorites]');
-	const path = "/countfavorites";
+	const path = "api/favorites/count";
 	const data = {
 		id: id,
 		action: action
@@ -68,7 +70,7 @@ function getFavoritesQuantity(id, action) {
 		})
 }
 function addFavorites(id, action, el) {
-	const path = "/checkfavorites";
+	const path = "api/favorites/check";
 	const data = {
 		id: id,
 		action: action
@@ -100,7 +102,7 @@ if (typeof (pdoPage) !== "undefined") {
 function addFavoritesHandler() {
 	let obj = {};
 	getFieldsToObject(obj);
-	const path = "/favoriteshandler";
+	const path = "api/favorites/handler";
 	const formData = new FormData();
 	formData.append("data", JSON.stringify(obj));
 	fetch(path, {
@@ -137,7 +139,7 @@ if (removeFavorites) {
 		const contentBlock = parent.querySelector('.content-title');
 		const dataCount = document.querySelector('[data-count-favorites]');
 		getFieldsToObject(obj);
-		const path = "/removefavorites";
+		const path = "api/favorites/remove";
 		const formData = new FormData();
 		formData.append("data", JSON.stringify(obj));
 		fetch(path, {

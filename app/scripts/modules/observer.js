@@ -57,7 +57,7 @@ function compareSlider() {
       threshold: 0,
       // rootMargin: '0px 0px 0px 0px',
    }
-   let box = document.querySelector('.compare-cards')
+   let box = document.querySelector('.compare-cards');
    let observer = new IntersectionObserver(([entry]) => {
       const targetInfo = entry.boundingClientRect;
       const rootBoundsInfo = entry.rootBounds;

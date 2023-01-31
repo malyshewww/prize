@@ -6,6 +6,7 @@ each productItem, productIndex in product
 		input(type="hidden" class="input-card-discount")
 		input(type="hidden" class="input-card-compound")
 		input(type="hidden" class="input-card-compound-get")
+		input(type="hidden" class="input-card-compound-id")
 		input(type="hidden" name='shk-name' value=productItem.name)
 		!=productItem.delete ? productItem.delete : ""
 		form(action="#").card-product__box
@@ -39,11 +40,11 @@ each productItem, productIndex in product
 							if productItem.choice
 								each choiceItem, choiceIndex in productItem.choice
 									.select-group(data-select)
-										.select-group__item.select-group__header(data-current-price-header="300" data-sale-price-header="400")
+										.select-group__item.select-group__header(data-current-price-header="300" data-sale-price-header="400" data-compound-id="60")
 											label.select-group__label
 												input(type="radio" name=`radio-${productIndex}` checked=choiceIndex==0 class="select-group__input real-radio")
 												span.custom-radio
-												span.select-group__label-text(data-text="classic")= choiceItem.title
+												span.select-group__label-text(data-text="classic" data-title="Классик")= choiceItem.title
 											.select-group__choice(class=choiceItem.dropmenu ? "" : "no-choice")
 												if choiceItem.values
 													span.select-group__value(data-select-value=choiceItem.values[0])= choiceItem.values[0]
@@ -53,10 +54,10 @@ each productItem, productIndex in product
 										if choiceItem.dropmenu
 											.select-group__dropdown.dropdown-list
 												each dropItem, dropIndex in choiceItem.dropmenu
-													.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` class=dropIndex==0 ? "current" : "")
+													.select-group__item(data-sale-price="500" data-price=`600${dropIndex+1}` data-compound-id="70" class=dropIndex==0 ? "current" : "")
 														input(type="radio" name=`radio-${productIndex}` class="select-group__input real-radio")
 														span.custom-radio
-														span.select-group__text(data-text="classic")= dropItem.title
+														span.select-group__text(data-text="classic" data-title="Классик")= dropItem.title
 														span.select-group__value(data-select-dropdown-value=dropItem.value)= dropItem.value
 			.card-product__footer
 				.card-product__prices 

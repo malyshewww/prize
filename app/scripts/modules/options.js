@@ -11,13 +11,18 @@ function productOptions(event) {
 		const inputResultDiscount = product.querySelector('.input-card-discount'); // discount
 		const inputResultCompound = product.querySelector('.input-card-compound'); // compound name rus
 		const inputResultCompoundGet = product.querySelector('.input-card-compound-get'); // compound name eng
+		const inputResultCompoundId = product.querySelector('.input-card-compound-id'); // compound id
 		// Старая и новая цена на товаре
 		const productPrice = product.querySelector('.card-product__price');
 		const productPriceOld = product.querySelector('.card-product__price-old');
 		// Название конкретного состава
 		const selectGroupCompoundText = parent.querySelector('[data-text]');
+		// Название конкретного состава
+		const selectGroupCompoundTitle = parent.querySelector('[data-title]');
 		// Значение состава из дата атрибута
 		const selectGroupCompoundTextData = selectGroupCompoundText.dataset.text;
+		// Значение состава из дата атрибута
+		const selectGroupCompoundTitleData = selectGroupCompoundTitle.dataset.title;
 		// Дата атрибут с граммовкой
 		const selectGroupValue = parent.querySelector('[data-select-value]');
 		// Значение из дата атрибута с граммовкой
@@ -28,19 +33,22 @@ function productOptions(event) {
 		const currentPrice = selectGroupItemHeader.dataset.currentPriceHeader; // data-current-price-header
 		// Цена со скидкой (старая цена) на товаре
 		const salePrice = selectGroupItemHeader.dataset.salePriceHeader; // data-sale-price-header
+		// Значение id состава из дата атрибута
+		const selectGroupCompoundIdData = selectGroupItemHeader.dataset.compoundId;
+		console.log(selectGroupCompoundIdData);
 		// Выпадающий список опций
 		const selectDropdownItems = parent.querySelectorAll('.dropdown-list .select-group__item');
 
 		if (target.closest('.no-choice') && parent != null) {
 			setPrice(inputResultPrice, currentPrice, productPrice);
 			setWeight(inputResultWeight, selectGroupValueData)
-			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData)
+			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundTitleData, selectGroupCompoundTextData, inputResultCompoundId, selectGroupCompoundIdData)
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
 		}
 		if (target.closest('.select-group__item.select-group__header .select-group__label')) {
 			setWeight(inputResultWeight, selectGroupValueData)
-			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData)
+			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundTitleData, selectGroupCompoundTextData, inputResultCompoundId, selectGroupCompoundIdData)
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			setPrice(inputResultPrice, currentPrice, productPrice);
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
@@ -51,6 +59,7 @@ function productOptions(event) {
 			let parent = self.closest('[data-select]');
 			let selectGroupDropdownValue = self.querySelector('.select-group__value');
 			let selectGroupDropdownValueData = selectGroupDropdownValue.dataset.selectDropdownValue;
+			let selectGroupDropdownCompoundId = self.dataset.compoundId;
 			// Значение дата атрибута в выпадающем меню
 			const priceValue = self.dataset.price;
 			const priceSaleValue = self.dataset.salePrice;
@@ -61,7 +70,7 @@ function productOptions(event) {
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
 			setPrice(inputResultPrice, priceValue, productPrice);
 			setWeight(inputResultWeight, selectGroupDropdownValueData);
-			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundText, selectGroupCompoundTextData);
+			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundTitleData, selectGroupCompoundTextData, inputResultCompoundId, selectGroupDropdownCompoundId)
 			setSalePrices(priceSaleValue, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			if (inputResultSalePrice != null) {
 				selectGroupItemHeader.setAttribute('data-current-price-header', priceValue);
@@ -69,6 +78,8 @@ function productOptions(event) {
 			}
 			selectGroupItemHeader.setAttribute('data-current-price-header', priceValue);
 			selectGroupValue.setAttribute('data-select-value', selectGroupDropdownValueData);
+			selectGroupItemHeader.setAttribute('data-compound-id', selectGroupDropdownCompoundId);
+			// selectGroupCompoundId.setAttribute('data-compound-id', selectGroupDropdownCompoundId);
 			selectGroupValue.textContent = selectGroupDropdownValue.textContent;
 			// setCheckedInput("input.real-radio", "[data-select]");
 			parent.classList.remove('active');
@@ -86,9 +97,10 @@ function setPrice(resultPrice, currentPrice, productPrice) {
 function setWeight(resultWeight, dataWeight) {
 	resultWeight.value = dataWeight;
 }
-function setCompound(resultCompound, resultCompoundGet, compoundText, compoundTextData) {
-	resultCompound.value = compoundText.textContent;
+function setCompound(resultCompound, resultCompoundGet, compoundTitle, compoundTextData, resultCompoundId, compoundIdData) {
+	resultCompound.value = compoundTitle.textContent;
 	resultCompoundGet.value = compoundTextData;
+	resultCompoundId.value = compoundIdData;
 }
 function setSalePrices(salePrice, resultSale, resultPrice, resultDiscount, productOldPrice, currentPrice) {
 	if (productOldPrice) {

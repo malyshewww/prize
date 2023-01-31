@@ -30,7 +30,7 @@ if (btnCompound) {
 				target.removeAttribute('disabled');
 			})
 			.catch((error) => {
-				console.log('error');
+				console.log('error', error);
 				target.removeAttribute('disabled');
 			})
 	})
