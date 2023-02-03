@@ -7,6 +7,9 @@
    }
    &__products {
    }
+   & .content-title.hidden {
+      display: none;
+   }
 }
 .products-compare {
    padding-bottom: 50px;
@@ -28,11 +31,17 @@
    }
 }
 .compare-cards {
+   position: relative;
    & .products__card {
       flex-shrink: 0;
       transition: none;
    }
    &__slider-fixed {
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0;
+      visibility: hidden;
       & .card-product {
          height: 100%;
          &__title {
@@ -64,6 +73,9 @@
          position: fixed;
          top: 20px;
          width: 100%;
+         opacity: 1;
+         visibility: visible;
+         right: initial;
          z-index: 20;
       }
    }

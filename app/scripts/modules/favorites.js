@@ -1,7 +1,6 @@
 console.log('test favorites.js');
 document.addEventListener('click', favoriteActions);
 
-let counter = 0;
 const arrIds = [];
 function getInputValues(elem) {
 	let parent = elem.closest(".form");
@@ -46,6 +45,7 @@ function favoriteActions(event) {
 
 function getFavoritesQuantity(id, action) {
 	let dataCount = document.querySelector('[data-count-favorites]');
+	let counter = 0;
 	const path = "api/favorites/count";
 	const data = {
 		id: id,

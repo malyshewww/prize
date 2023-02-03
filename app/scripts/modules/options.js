@@ -97,8 +97,8 @@ function setPrice(resultPrice, currentPrice, productPrice) {
 function setWeight(resultWeight, dataWeight) {
 	resultWeight.value = dataWeight;
 }
-function setCompound(resultCompound, resultCompoundGet, compoundTitle, compoundTextData, resultCompoundId, compoundIdData) {
-	resultCompound.value = compoundTitle.textContent;
+function setCompound(resultCompound, resultCompoundGet, compoundTitleData, compoundTextData, resultCompoundId, compoundIdData) {
+	resultCompound.value = compoundTitleData;
 	resultCompoundGet.value = compoundTextData;
 	resultCompoundId.value = compoundIdData;
 }

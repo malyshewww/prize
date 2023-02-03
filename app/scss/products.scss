@@ -247,16 +247,25 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      font-size: 0;
+      margin-left: auto;
       &::before {
          font-size: 20px;
-         transition: all 0.2s ease 0s;
+         color: $grayColorBD;
+         transition: color 0.2s ease 0s;
       }
       @media (any-hover: hover) {
          &:hover::before {
-            color: $redColor;
+            color: rgba($redColor, 0.6);
          }
       }
       &.selected::before {
+         color: $redColor;
+      }
+      &.add-compare--active::before {
+         color: $redColor;
+      }
+      &.add-compare--active:hover::before {
          color: $redColor;
       }
    }
@@ -310,8 +319,10 @@
       border: 1.3px solid $grayColorBD;
       color: $grayColorBD;
       border-radius: 50%;
+      background: $whiteColor;
       transition: all 0.2s ease 0s;
       cursor: pointer;
+      font-size: 0;
       &::before {
          color: inherit;
          font-size: 14px;
