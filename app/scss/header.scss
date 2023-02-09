@@ -54,6 +54,23 @@
 	&__menu {
 		padding-left: 128px;
 		flex: 0 0 66.2%;
+		&-back {
+			display: none;
+			padding: 0 28px 0 22px;
+			@media screen and (max-width: $lg) {
+				display: block;
+			}
+			@media screen and (max-width: $sm) {
+				padding: 0 15px;
+			}
+			& .top-header__link {
+				width: 100%;
+				&.active {
+					color: $redColor;
+					font-weight: 600;
+				}
+			}
+		}
 	}
 	&__list {
 		display: flex;
@@ -84,6 +101,9 @@
 		}
 		& li .submenu__list {
 			min-width: 133px;
+			@media screen and (min-width: $lg) {
+				width: max-content;
+			}
 			padding-top: 0px;
 		}
 	}
@@ -888,6 +908,14 @@
 		display: inline-flex;
 		align-items: flex-end;
 		margin-left: auto;
+		row-gap: 14px;
+	}
+	.main-header__link {
+		line-height: 18px;
+		display: block;
+	}
+	.social-header__button {
+		margin-bottom: 13px;
 	}
 	.social-header__link {
 		width: auto;

@@ -293,12 +293,19 @@
 	&.filter-group__compound,
 	&.filter-group__addit {
 		padding-bottom: 33px;
+		@media screen and (max-width: $lg) {
+			padding-bottom: 25px;
+		}
 	}
 	&.filter-group__material .filter-group__title {
 		margin-bottom: 21px;
 	}
 	&.filter-group__buttons {
 		margin-top: auto;
+		@media screen and (max-width: $lg) {
+			padding-top: 10px;
+			padding-bottom: 20px;
+		}
 	}
 	&__item {
 		display: flex;

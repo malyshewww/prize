@@ -53,9 +53,9 @@ function initSliders() {
 		let commonSwiper;
 		let fixedSwiper;
 		let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper-fixed');
-		let sliderFixedChildren = sliderFixed.querySelectorAll('.products__card').length;
-		const sliderFixedControls = sliderFixed.querySelector('.compare-cards__controls');
 		if (sliderFixed) {
+			let sliderFixedChildren = sliderFixed.querySelectorAll('.products__card').length;
+			const sliderFixedControls = sliderFixed.querySelector('.compare-cards__controls');
 			fixedSwiper = new Swiper(sliderFixed, {
 				modules: [Thumbs, Navigation],
 				watchOverflow: true,

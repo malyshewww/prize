@@ -8,6 +8,8 @@ mixin actionsLink(path, count, iconClass)
 			span.actions-header__count= count
 header.header
 	.header-menu
+		nav.top-header__menu-back
+			a(href="/").top-header__link Главная
 		.header-menu__category.category-menu(data-spollers="991.98,max")
 			button(type="button" data-spoller).category-menu__button.icon-arrow-next Каталог товаров
 			.category-menu__navigation
@@ -18,13 +20,13 @@ header.header
 					.burger-icon-wrap
 						button.burger-icon(type="button")
 							span
-					nav.top-header__menu(data-da=".header-menu, 991.98, 1")
+					nav.top-header__menu(data-da=".header-menu, 991.98, 2")
 						ul.top-header__list
 							li.top-header__list-item
 								a.top-header__link(href="about.html") О компании
 								span.menu__arrow.icon-arrow-next
 								ul.submenu__list
-									each item in [{"title": "FAQ", "link": "faq.html"}, {"title": "Отзывы", "link": "reviews.html"}, {"title": "Вакансии","link": "vacancy.html"}, {"title": "Сертификаты", "link": "certificate.html"}]
+									each item in [{"title": "Вопрос-ответ", "link": "faq.html"}, {"title": "Отзывы", "link": "reviews.html"}, {"title": "Вакансии","link": "vacancy.html"}, {"title": "Сертификаты", "link": "certificate.html"}]
 										li.submenu__item
 											a.submenu__link(href=item.link)= item.title
 							li.top-header__list-item
