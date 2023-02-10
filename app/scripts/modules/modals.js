@@ -1,5 +1,5 @@
 /*================== MODALS ====================*/
-import { body_lock } from "./single-actions.js";
+import { body_lock, body_lock_remove } from "./single-actions.js";
 
 let wrapper = document.querySelector('.wrapper');
 const modalButtons = wrapper.querySelectorAll('[data-modal-button]');
@@ -67,7 +67,7 @@ allModals.forEach(item => {
 		e.preventDefault();
 		clearInput();
 		item.classList.remove('open-modal');
-		body_lock();
+		body_lock_remove();
 	});
 	const modalContent = item.querySelector('.modal__content');
 	modalContent.addEventListener('click', (e) => {

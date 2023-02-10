@@ -77,6 +77,15 @@ function initSliders() {
 					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
 					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
 				},
+				breakpoints: {
+					320: {
+						slidesPerView: 2,
+						slidesPerGroup: 1,
+					},
+					767.98: {
+						slidesPerView: 3,
+					},
+				},
 				on: {
 					slideChange: function () {
 						compareSwiper.slideTo(fixedSwiper.realIndex)
@@ -88,6 +97,36 @@ function initSliders() {
 				sliderFixedControls.remove();
 			}
 		}
+		commonSwiper = new Swiper('.compare-body', {
+			modules: [Navigation],
+			slideClass: "compare-item",
+			wrapperClass: "compare-values",
+			speed: 500,
+			spaceBetween: 30,
+			watchOverflow: true,
+			autoHeight: true,
+			slidesPerView: 3,
+			simulateTouch: false,
+			allowTouchMove: false,
+			slidesPerGroup: 1,
+			grabCursor: false,
+			observer: true,
+			observeParents: true,
+			observeSlideChildren: true,
+			navigation: {
+				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+			},
+			breakpoints: {
+				320: {
+					slidesPerView: 2,
+					slidesPerGroup: 1,
+				},
+				767.98: {
+					slidesPerView: 3,
+				},
+			},
+		})
 		var interleaveOffset = 0.5;
 		const compareValues = document.querySelectorAll('.compare-values');
 		const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
@@ -114,6 +153,15 @@ function initSliders() {
 				navigation: {
 					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
 					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+				},
+				breakpoints: {
+					320: {
+						slidesPerView: 2,
+						slidesPerGroup: 1,
+					},
+					767.98: {
+						slidesPerView: 3,
+					},
 				},
 				// Событие смены слайда
 				on: {
@@ -143,27 +191,6 @@ function initSliders() {
 				compareSliderControls.remove();
 			}
 		}
-		commonSwiper = new Swiper('.compare-body', {
-			modules: [Navigation],
-			slideClass: "compare-item",
-			wrapperClass: "compare-values",
-			speed: 500,
-			spaceBetween: 30,
-			watchOverflow: true,
-			autoHeight: true,
-			slidesPerView: 3,
-			simulateTouch: false,
-			allowTouchMove: false,
-			slidesPerGroup: 1,
-			grabCursor: false,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-			navigation: {
-				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-			},
-		})
 		// function menuSlider() {
 		// 	const compareValues = document.querySelectorAll('.compare-values');
 		// 	[...compareValues].forEach((el) => {

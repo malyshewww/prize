@@ -1,4 +1,3 @@
-console.log('test favorites.js');
 document.addEventListener('click', favoriteActions);
 
 const arrIds = [];

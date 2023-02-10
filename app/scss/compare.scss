@@ -15,18 +15,26 @@
    padding-bottom: 50px;
    &__inner {
       display: flex;
+      @media screen and (max-width: $xl) {
+         flex-direction: column;
+         gap: 50px;
+      }
    }
    &__actions {
-      flex: 0 0 181px;
+      flex: 0 0 274px;
+      @media screen and (max-width: $xl) {
+         flex: 1 1 auto;
+      }
    }
    &__button {
       padding: 10px 23px;
       margin-bottom: 25px;
       text-align: center;
       width: 100%;
+      max-width: 181px;
    }
    &__cards {
-      padding-left: 109px;
+      // padding-left: 109px;
       width: 100%;
    }
 }
@@ -66,6 +74,10 @@
       overflow: hidden;
       padding: 20px;
       position: relative;
+      @media screen and (max-width: $xl) {
+         max-width: none;
+         width: 100%;
+      }
    }
    &.fixed {
       & .compare-cards__slider-fixed {
@@ -93,11 +105,26 @@
       overflow: hidden;
       padding: 20px;
       margin: -20px;
+      @media screen and (max-width: $xl) {
+         max-width: none;
+      }
    }
    &__body {
       width: 100%;
       display: flex;
       flex-flow: row nowrap;
+   }
+}
+.compare-checkbox {
+   & .real-checkbox:checked + .custom-checkbox {
+      background-color: #5ecbad;
+      border: 1px solid transparent;
+   }
+   & .custom-checkbox::before {
+      background-image: url(../img/icons/check-white.svg);
+      background-position: 50%;
+      background-size: 12px 12px;
+      left: 50%;
    }
 }
 
@@ -128,8 +155,11 @@
    transition-property: transform;
    box-sizing: content-box;
    align-items: flex-start;
-   & > * {
+   & > *:not(.compare-compound__body) {
       flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      text-align: center;
    }
 }
 .common-compare {
@@ -138,8 +168,12 @@
       align-items: center;
       border-top: 1px solid $grayColorBD;
       padding: 14px 0 14px 16px;
+      position: relative;
       &:last-child {
          border-bottom: 1px solid $grayColorBD;
+      }
+      @media screen and (max-width: $xl) {
+         padding: 40px 0 15px 16px;
       }
       & .compare-body {
          overflow: hidden;
@@ -147,7 +181,12 @@
    }
    &__title {
       line-height: math.div(24, 16) * 100%;
-      flex: 0 0 280px;
+      flex: 0 0 258px;
+      @media screen and (max-width: $xl) {
+         flex: 0;
+         position: absolute;
+         top: 10px;
+      }
    }
    & .parameters__button {
       min-width: 80px;
@@ -163,16 +202,25 @@
       display: flex;
       border-top: 1px solid $grayColorBD;
       padding: 14px 0 14px 16px;
+      position: relative;
       & .card-compound {
          overflow: hidden;
          width: 100%;
+      }
+      @media screen and (max-width: $xl) {
+         padding: 40px 0 15px 16px;
       }
       &.swiper-slide-active {
          height: auto;
       }
    }
    &__title {
-      flex: 0 0 280px;
+      flex: 0 0 274px;
+      @media screen and (max-width: $xl) {
+         flex: 0;
+         position: absolute;
+         top: 10px;
+      }
    }
    & .card-compound__item {
       flex-direction: row;

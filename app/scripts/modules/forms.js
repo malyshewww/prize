@@ -138,6 +138,18 @@ function formHandler(formId, path) {
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
                const inputAddress = thisForm.querySelector('input[name="address"]');
                const inputAgreement = thisForm.querySelector('input[name="agreement"]');
+               if (result == "ym") {
+                  if (formId == 'form') {
+                     if (typeof ym != "undefined") {
+                        ym(49095607, 'reachGoal', result.ym);
+                        console.log("ym(49095607,'reachGoal',".concat(result.ym, ");"));
+                     }
+                     if ((typeof yaCounter49095607 === "undefined" ? "undefined" : _typeof(yaCounter49095607)) == "object") {
+                        yaCounter49095607.reachGoal(result.ym);
+                        console.log("yaCounter49095607.reachGoal(".concat(result.ym, ");"));
+                     }
+                  }
+               }
                if (result.status == "success") {
                   // Вызывыаем модальку об успехе
                   // if (formId == 'shopOrderForm') {
@@ -168,9 +180,9 @@ function formHandler(formId, path) {
                   if (inputAddress) {
                      inputAddress.value = '';
                   }
-                  if (inputAgreement) {
-                     inputAgreement.value = '';
-                  }
+                  // if (inputAgreement) {
+                  //    inputAgreement.value = '';
+                  // }
                   const fields = document.querySelectorAll("[data-field]");
                   fields.forEach(input => {
                      const parent = input.parentNode;
@@ -304,9 +316,9 @@ function formHandlerModal(formId, path) {
                   if (inputProductTitle) {
                      inputProductTitle.value = '';
                   }
-                  if (inputAgreement) {
-                     inputAgreement.value = '';
-                  }
+                  // if (inputAgreement) {
+                  //    inputAgreement.value = '';
+                  // }
                   if (inputRating) {
                   }
                } else {

@@ -1,4 +1,3 @@
-console.log('test app.js');
 // Подключаем Jquery
 import './libs/jquery.min.js';
 
