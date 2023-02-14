@@ -5,16 +5,16 @@ block vars
 doctype html
 html(lang="ru")
 	include ./variables
-	include chunks/head
+	include components/Head/head
 	body(class=bodyClass)
 		.wrapper
-			include chunks/header
+			include components/Header/header
 			main.content
 				block content
 			
-			include chunks/footer
+			include components/Footer/footer
 
-			include chunks/modals
+			include components/Modals/modals
 		.overlay
 		block scripts
 			script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js")

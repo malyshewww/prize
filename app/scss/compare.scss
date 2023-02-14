@@ -1,4 +1,5 @@
 .compare {
+   overflow: hidden;
    &__body {
    }
    &__title {
@@ -44,21 +45,77 @@
       flex-shrink: 0;
       transition: none;
    }
+   & .card-product {
+      &__games {
+         flex-wrap: wrap;
+         row-gap: 5px;
+      }
+      @media screen and (max-width: $sm) {
+         &__article,
+         &__title,
+         &__compare::before {
+            font-size: 14px;
+            line-height: 100%;
+         }
+         &__price {
+            font-size: 16px;
+            line-height: 100%;
+         }
+         &__button {
+            font-size: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            padding: 10px;
+            &::before {
+               display: block;
+               font-size: 20px;
+            }
+         }
+         &__box {
+            padding: 23px 15px 15px;
+         }
+         &__image {
+            min-height: 100px;
+            max-height: 150px;
+            & img {
+               height: 100%;
+            }
+         }
+         &__games {
+            & .games-product__item {
+               width: 25px;
+               height: 25px;
+            }
+         }
+      }
+   }
    &__slider-fixed {
       position: absolute;
       top: 0;
-      right: 0;
       opacity: 0;
       visibility: hidden;
+      max-width: 1170px;
+      padding: 0 15px;
+      @media screen and (max-width: $xl) {
+         left: 0;
+      }
       & .card-product {
          height: 100%;
          &__title {
             min-height: auto;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            display: -webkit-box;
+         }
+         &__games {
+            flex-wrap: wrap;
          }
       }
       & .card-product__image {
          padding-bottom: 30%;
          min-height: auto;
+         min-height: 70px;
          & img {
             max-height: 100%;
          }
@@ -76,7 +133,6 @@
       position: relative;
       @media screen and (max-width: $xl) {
          max-width: none;
-         width: 100%;
       }
    }
    &.fixed {
@@ -153,9 +209,9 @@
    text-align: center;
    flex: 1 1 auto;
    transition-property: transform;
-   box-sizing: content-box;
+   // box-sizing: content-box;
    align-items: flex-start;
-   & > *:not(.compare-compound__body) {
+   & > *:not(.compare-compound__body, .compare-compound-result__item) {
       flex-shrink: 0;
       display: flex;
       justify-content: center;
@@ -175,8 +231,21 @@
       @media screen and (max-width: $xl) {
          padding: 40px 0 15px 16px;
       }
+      @media screen and (max-width: $md) {
+         padding: 40px 0 15px 0px;
+      }
       & .compare-body {
          overflow: hidden;
+      }
+      & .reviews-rating {
+         @media screen and (max-width: $md) {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            &__value {
+               margin: 0;
+            }
+         }
       }
    }
    &__title {
@@ -186,6 +255,7 @@
          flex: 0;
          position: absolute;
          top: 10px;
+         font-weight: 600;
       }
    }
    & .parameters__button {
@@ -198,6 +268,11 @@
 }
 
 .compare-compound {
+   &__body {
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+   }
    &__item {
       display: flex;
       border-top: 1px solid $grayColorBD;
@@ -210,6 +285,9 @@
       @media screen and (max-width: $xl) {
          padding: 40px 0 15px 16px;
       }
+      @media screen and (max-width: $md) {
+         padding: 40px 0 15px 0px;
+      }
       &.swiper-slide-active {
          height: auto;
       }
@@ -220,6 +298,7 @@
          flex: 0;
          position: absolute;
          top: 10px;
+         font-weight: 600;
       }
    }
    & .card-compound__item {
@@ -227,13 +306,33 @@
       align-items: flex-start;
       gap: 15px;
       text-align: left;
-      min-height: 89px;
+      min-height: initial;
+      @media screen and (max-width: $md) {
+         flex-direction: column;
+         gap: 7px;
+      }
       & .card-compound__company-name {
          margin-bottom: 0;
       }
       & .card-compound__image {
          height: 100%;
          flex: 0 0 91px;
+         @media screen and (max-width: $md) {
+            flex: 1 1 auto;
+            height: 91px;
+         }
+      }
+      & .card-compound__title {
+         -webkit-box-orient: vertical;
+         -webkit-line-clamp: 2;
+         display: -webkit-box;
+         overflow: hidden;
+         min-height: 42px;
+      }
+   }
+   &__body {
+      @media screen and (max-width: $md) {
+         row-gap: 20px;
       }
    }
    &__result {
@@ -244,6 +343,7 @@
 
 .compare-compound-result {
    &__item {
+      flex-shrink: 0;
    }
    &__body {
       display: grid;

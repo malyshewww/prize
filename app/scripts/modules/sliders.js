@@ -48,6 +48,20 @@ productSliders.forEach((el) => {
 function initSliders() {
 	// COMPARE SLIDER
 	const comparePage = document.querySelector('.compare');
+	const swiperParams = {
+		watchOverflow: true,
+		autoHeight: true,
+		speed: 800,
+		spaceBetween: 30,
+		loop: false,
+		slidesPerGroup: 1,
+		simulateTouch: false,
+		grabCursor: false,
+		allowTouchMove: false,
+		observer: true,
+		observeParents: true,
+		observeSlideChildren: true,
+	};
 	if (comparePage) {
 		let compareSwiper;
 		let commonSwiper;
@@ -60,19 +74,19 @@ function initSliders() {
 				modules: [Thumbs, Navigation],
 				watchOverflow: true,
 				autoHeight: true,
-				slidesPerGroup: 1,
-				wrapperClass: "compare-cards__body",
-				slideClass: "products__card ",
-				loop: false,
-				slidesPerView: 3,
-				spaceBetween: 30,
 				speed: 500,
+				spaceBetween: 30,
+				loop: false,
+				slidesPerGroup: 1,
 				simulateTouch: false,
 				grabCursor: false,
 				allowTouchMove: false,
 				observer: true,
 				observeParents: true,
 				observeSlideChildren: true,
+				slidesPerGroup: 1,
+				wrapperClass: "compare-cards__body",
+				slideClass: "products__card ",
 				navigation: {
 					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
 					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
@@ -81,6 +95,7 @@ function initSliders() {
 					320: {
 						slidesPerView: 2,
 						slidesPerGroup: 1,
+						spaceBetween: 17,
 					},
 					767.98: {
 						slidesPerView: 3,
@@ -88,13 +103,20 @@ function initSliders() {
 				},
 				on: {
 					slideChange: function () {
+						for (let i = 0; i < commonSwiper.length; i++) {
+							commonSwiper[i].slideTo(fixedSwiper.realIndex)
+						}
 						compareSwiper.slideTo(fixedSwiper.realIndex)
 					}
 				}
 			})
 			if (sliderFixedChildren <= 3) {
 				fixedSwiper.navigation.destroy();
-				sliderFixedControls.remove();
+				sliderFixedControls.style.display = 'none';
+			}
+			if (window.innerWidth <= 767.98 && sliderFixedChildren >= 3) {
+				fixedSwiper.navigation.init();
+				sliderFixedControls.style.display = 'block';
 			}
 		}
 		commonSwiper = new Swiper('.compare-body', {
@@ -105,7 +127,6 @@ function initSliders() {
 			spaceBetween: 30,
 			watchOverflow: true,
 			autoHeight: true,
-			slidesPerView: 3,
 			simulateTouch: false,
 			allowTouchMove: false,
 			slidesPerGroup: 1,
@@ -121,6 +142,7 @@ function initSliders() {
 				320: {
 					slidesPerView: 2,
 					slidesPerGroup: 1,
+					spaceBetween: 17,
 				},
 				767.98: {
 					slidesPerView: 3,
@@ -158,6 +180,7 @@ function initSliders() {
 					320: {
 						slidesPerView: 2,
 						slidesPerGroup: 1,
+						spaceBetween: 17,
 					},
 					767.98: {
 						slidesPerView: 3,
@@ -165,19 +188,6 @@ function initSliders() {
 				},
 				// Событие смены слайда
 				on: {
-					// progress: function () {
-					// 	var swiper = this;
-					// 	for (var i = 0; i < swiper.slides.length; i++) {
-					// 		for (let j = 0; j < compareValues.length; j++) {
-					// 			var slideProgress = swiper.slides[i].progress;
-					// 			var innerOffset = swiper.width * interleaveOffset;
-					// 			var innerTranslate = slideProgress * innerOffset;
-					// 			var transform = swiper.slides[i].style.transform =
-					// 				"translate3d(" + innerTranslate + "px, 0, 0)";
-					// 			compareValues[j].style.setProperty('transform', transform)
-					// 		}
-					// 	}
-					// },
 					slideChange: function () {
 						for (let i = 0; i < commonSwiper.length; i++) {
 							commonSwiper[i].slideTo(compareSwiper.realIndex)
@@ -188,7 +198,11 @@ function initSliders() {
 			})
 			if (compareSliderItems <= 3) {
 				compareSwiper.navigation.destroy();
-				compareSliderControls.remove();
+				compareSliderControls.style.display = 'none';
+			}
+			if (window.innerWidth <= 767.98 && compareSliderItems >= 3) {
+				compareSwiper.navigation.init();
+				compareSliderControls.style.display = 'block';
 			}
 		}
 		// function menuSlider() {

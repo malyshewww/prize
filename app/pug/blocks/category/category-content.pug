@@ -1,34 +1,12 @@
 -
 	product = [
 		{
-			"img": "products/product-1",
-			"article": "#0002",
-			"name": "Cнежинка золотая",
-			"price": "1005 ₽",
-			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
-			"favoriteSelected": "selected",
-			choice: [
-				{
-					"title": "Классик",
-					"values": ["200 г", "700 г"],
-				},
-				{
-					"title": "Премиум",
-					"values": ["600 г", "700 г"],
-				},
-				{
-					"title": "VIP",
-					"values": ["300 г", "700 г"],
-				},
-			]
-		},
-		{
-			"img": "products/product-2",
+			"img": "products/category-prize/product-1",
 			"article": "#0074",
 			"name": "Короб почтальона Ассорти",
 			"price": "1005 ₽",
 			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
-			"favoriteSelected": "selected",
+			"sale": `<div class="card-product__sale sale-product sale-product__pink">-20%</div>`,
 			choice: [
 				{
 					"title": "Классик",
@@ -45,16 +23,16 @@
 			]
 		},
 		{
-			"img": "products/product-3",
+			"img": "products/category-prize/product-2",
 			"article": "#0184",
-			"name": "Чемодан Фантазия маленький",
+			"name": "Кубок желтый",
 			"price": "1005 ₽",
-			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
-			"favoriteSelected": "selected",
+			"badge": `<div class="card-product__badge card-product__badge_new"><span>New</span></div>`,
+			"sale": `<div class="card-product__sale sale-product sale-product__green">-10%</div>`,
 			choice: [
 				{
 					"title": "Классик",
-					"values": ["700 г", "700 г"],
+					"values": ["400 г", "700 г"],
 				},
 				{
 					"title": "Премиум",
@@ -67,12 +45,12 @@
 			]
 		},
 		{
-			"img": "products/product-4",
+			"img": "products/category-prize/product-3",
 			"article": "#0225",
 			"name": "Почта-копилка",
 			"price": "1005 ₽",
 			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
-			"favoriteSelected": "selected",
+			"sale": `<div class="card-product__sale sale-product sale-product__green">-10%</div>`,
 			choice: [
 				{
 					"title": "Классик",
@@ -88,9 +66,9 @@
 				},
 			]
 		},
-	]
-div.favorites
-	.favorites__container
-		button(type="button").favorites__remove-btn.icon-delete#removeFavorites Очистить избранное
-		.favorites__body 
-			include ../product-card
+	];
+.category__content
+	.category__cards
+		include ../../components/product-card
+	button(type="button").category__button Показать ещё
+	include ../../components/Pagination/pagination

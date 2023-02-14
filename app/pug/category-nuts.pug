@@ -15,10 +15,10 @@ block content
 			h1.category-page__title.general-title= currentTitle
 		div.category 
 			.category__container 
-				include ./components/category/category-sorting
+				include ./blocks/category/category-sorting
 				.category__body
 					- let categoryNuts = true;
-					include ./components/category/category-aside
-					include ./components/category-nuts/category-content
+					include ./blocks/category/category-aside
+					include ./blocks/category-nuts/category-content
 		include ./components/consultation
 		include ./components/popular

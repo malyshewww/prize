@@ -1,0 +1,16 @@
+-
+	certificates = [
+		{
+			img: "certificate-1",
+		},
+		{
+			img: "certificate-1",
+		},
+		{
+			img: "certificate-1",
+		},
+	]
+.certificate__body.container(data-gallery)
+	each item, index in certificates
+		a(href=`img/certificate/certificate-${index+1}.jpg` data-fslightbox).certificate__item
+			img(src=`img/certificate/certificate-${index+1}.jpg`, alt="")

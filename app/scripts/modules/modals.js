@@ -8,7 +8,7 @@ const allModals = document.querySelectorAll('[data-modal]');
 
 function closeModal(currentModal) {
 	currentModal.classList.remove('open-modal');
-	body_lock();
+	body_lock_remove();
 }
 document.addEventListener('click', openModal);
 function openModal(event) {

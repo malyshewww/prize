@@ -52,8 +52,9 @@ if (collectShowBtn) {
 }
 
 function compareSlider() {
-   let box = document.querySelector('.compare-cards');
-   if (box) {
+   let compareData = document.querySelector('.compare-data');
+   let compareCards = document.querySelector('.compare-cards');
+   if (compareCards) {
       let options = {
          root: null,
          threshold: 0,
@@ -62,13 +63,14 @@ function compareSlider() {
       let observer = new IntersectionObserver(([entry]) => {
          const targetInfo = entry.boundingClientRect;
          const rootBoundsInfo = entry.rootBounds;
+         const targetInfoData = compareData.boundingClientRect;
          if (targetInfo.bottom < rootBoundsInfo.top || targetInfo.isIntersecting) {
-            box.classList.add('fixed');
+            compareCards.classList.add('fixed');
          } else {
-            box.classList.remove('fixed');
+            compareCards.classList.remove('fixed');
          }
       }, options)
-      observer.observe(box)
+      observer.observe(compareCards)
       // функция построения шкалы пересечения
       // шкала представляет собой массив из 20 элементов, определяющих цвет контейнера
       function buildThresholdList() {
@@ -81,6 +83,23 @@ function compareSlider() {
          }
          return thresholds
       }
+   }
+   if (compareData) {
+      let options = {
+         root: null,
+         threshold: 0,
+         rootMargin: '-300px 0px 0px 0px',
+      }
+      let observerData = new IntersectionObserver(([entry]) => {
+         const targetInfoData = entry.boundingClientRect;
+         const rootBounds = entry.rootBounds;
+         if (targetInfoData.bottom < rootBounds.top || targetInfoData.isIntersecting) {
+            compareCards.classList.remove('fixed');
+         } else if (rootBounds.bottom > targetInfoData.bottom) {
+            compareCards.classList.add('fixed');
+         }
+      }, options)
+      observerData.observe(compareData)
    }
 }
 compareSlider();
