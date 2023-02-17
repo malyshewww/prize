@@ -45,92 +45,129 @@ productSliders.forEach((el) => {
 		el.classList.add('disabled');
 	}
 })
-function initSliders() {
-	// COMPARE SLIDER
-	const comparePage = document.querySelector('.compare');
-	const swiperParams = {
+// COMPARE SLIDER
+const comparePage = document.querySelector('.compare');
+const swiperParams = {
+	watchOverflow: true,
+	autoHeight: true,
+	speed: 800,
+	spaceBetween: 30,
+	loop: false,
+	slidesPerGroup: 1,
+	simulateTouch: false,
+	grabCursor: false,
+	allowTouchMove: false,
+	observer: true,
+	observeParents: true,
+	observeSlideChildren: true,
+};
+if (comparePage) {
+	let compareSwiper;
+	let commonSwiper;
+	let fixedSwiper;
+	let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper-fixed');
+	if (sliderFixed) {
+		let sliderFixedChildren = sliderFixed.querySelectorAll('.products__card').length;
+		const sliderFixedControls = sliderFixed.querySelector('.compare-cards__controls');
+		fixedSwiper = new Swiper(sliderFixed, {
+			modules: [Thumbs, Navigation],
+			watchOverflow: true,
+			autoHeight: true,
+			speed: 500,
+			spaceBetween: 30,
+			loop: false,
+			slidesPerGroup: 1,
+			simulateTouch: false,
+			grabCursor: false,
+			allowTouchMove: false,
+			observer: true,
+			observeParents: true,
+			observeSlideChildren: true,
+			slidesPerGroup: 1,
+			wrapperClass: "compare-cards__body",
+			slideClass: "products__card ",
+			navigation: {
+				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+			},
+			breakpoints: {
+				320: {
+					slidesPerView: 2,
+					slidesPerGroup: 1,
+					spaceBetween: 17,
+				},
+				767.98: {
+					slidesPerView: 3,
+				},
+			},
+			on: {
+				slideChange: function () {
+					for (let i = 0; i < commonSwiper.length; i++) {
+						commonSwiper[i].slideTo(fixedSwiper.realIndex)
+					}
+					compareSwiper.slideTo(fixedSwiper.realIndex)
+				}
+			}
+		})
+		if (sliderFixedChildren <= 3) {
+			fixedSwiper.navigation.destroy();
+			sliderFixedControls.style.display = 'none';
+		}
+		if (window.innerWidth <= 767.98 && sliderFixedChildren >= 3) {
+			fixedSwiper.navigation.init();
+			sliderFixedControls.style.display = 'block';
+		}
+	}
+	commonSwiper = new Swiper('.compare-body', {
+		modules: [Navigation],
+		slideClass: "compare-item",
+		wrapperClass: "compare-values",
+		speed: 500,
+		spaceBetween: 30,
 		watchOverflow: true,
 		autoHeight: true,
-		speed: 800,
-		spaceBetween: 30,
-		loop: false,
-		slidesPerGroup: 1,
 		simulateTouch: false,
-		grabCursor: false,
 		allowTouchMove: false,
+		slidesPerGroup: 1,
+		grabCursor: false,
 		observer: true,
 		observeParents: true,
 		observeSlideChildren: true,
-	};
-	if (comparePage) {
-		let compareSwiper;
-		let commonSwiper;
-		let fixedSwiper;
-		let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper-fixed');
-		if (sliderFixed) {
-			let sliderFixedChildren = sliderFixed.querySelectorAll('.products__card').length;
-			const sliderFixedControls = sliderFixed.querySelector('.compare-cards__controls');
-			fixedSwiper = new Swiper(sliderFixed, {
-				modules: [Thumbs, Navigation],
-				watchOverflow: true,
-				autoHeight: true,
-				speed: 500,
-				spaceBetween: 30,
-				loop: false,
+		navigation: {
+			nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
+			prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+		},
+		breakpoints: {
+			320: {
+				slidesPerView: 2,
 				slidesPerGroup: 1,
-				simulateTouch: false,
-				grabCursor: false,
-				allowTouchMove: false,
-				observer: true,
-				observeParents: true,
-				observeSlideChildren: true,
-				slidesPerGroup: 1,
-				wrapperClass: "compare-cards__body",
-				slideClass: "products__card ",
-				navigation: {
-					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-				},
-				breakpoints: {
-					320: {
-						slidesPerView: 2,
-						slidesPerGroup: 1,
-						spaceBetween: 17,
-					},
-					767.98: {
-						slidesPerView: 3,
-					},
-				},
-				on: {
-					slideChange: function () {
-						for (let i = 0; i < commonSwiper.length; i++) {
-							commonSwiper[i].slideTo(fixedSwiper.realIndex)
-						}
-						compareSwiper.slideTo(fixedSwiper.realIndex)
-					}
-				}
-			})
-			if (sliderFixedChildren <= 3) {
-				fixedSwiper.navigation.destroy();
-				sliderFixedControls.style.display = 'none';
-			}
-			if (window.innerWidth <= 767.98 && sliderFixedChildren >= 3) {
-				fixedSwiper.navigation.init();
-				sliderFixedControls.style.display = 'block';
-			}
-		}
-		commonSwiper = new Swiper('.compare-body', {
-			modules: [Navigation],
-			slideClass: "compare-item",
-			wrapperClass: "compare-values",
-			speed: 500,
-			spaceBetween: 30,
+				spaceBetween: 17,
+			},
+			767.98: {
+				slidesPerView: 3,
+			},
+		},
+	})
+	var interleaveOffset = 0.5;
+	const compareValues = document.querySelectorAll('.compare-values');
+	const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
+	if (compareSlider) {
+		const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
+		const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
+		compareSwiper = new Swiper(compareSlider, {
+			modules: [Thumbs, Navigation],
 			watchOverflow: true,
 			autoHeight: true,
-			simulateTouch: false,
-			allowTouchMove: false,
 			slidesPerGroup: 1,
+			wrapperClass: "compare-cards__body",
+			slideClass: "products__card ",
+			loop: false,
+			slidesPerView: 3,
+			spaceBetween: 30,
+			speed: 500,
+			simulateTouch: false,
 			grabCursor: false,
+			allowTouchMove: false,
 			observer: true,
 			observeParents: true,
 			observeSlideChildren: true,
@@ -148,91 +185,54 @@ function initSliders() {
 					slidesPerView: 3,
 				},
 			},
-		})
-		var interleaveOffset = 0.5;
-		const compareValues = document.querySelectorAll('.compare-values');
-		const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
-		if (compareSlider) {
-			const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
-			const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
-			compareSwiper = new Swiper(compareSlider, {
-				modules: [Thumbs, Navigation],
-				watchOverflow: true,
-				autoHeight: true,
-				slidesPerGroup: 1,
-				wrapperClass: "compare-cards__body",
-				slideClass: "products__card ",
-				loop: false,
-				slidesPerView: 3,
-				spaceBetween: 30,
-				speed: 500,
-				simulateTouch: false,
-				grabCursor: false,
-				allowTouchMove: false,
-				observer: true,
-				observeParents: true,
-				observeSlideChildren: true,
-				navigation: {
-					nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-					prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+			// Событие смены слайда
+			on: {
+				slideChange: function () {
+					for (let i = 0; i < commonSwiper.length; i++) {
+						commonSwiper[i].slideTo(compareSwiper.realIndex)
+					}
+					fixedSwiper.slideTo(compareSwiper.realIndex)
 				},
-				breakpoints: {
-					320: {
-						slidesPerView: 2,
-						slidesPerGroup: 1,
-						spaceBetween: 17,
-					},
-					767.98: {
-						slidesPerView: 3,
-					},
-				},
-				// Событие смены слайда
-				on: {
-					slideChange: function () {
-						for (let i = 0; i < commonSwiper.length; i++) {
-							commonSwiper[i].slideTo(compareSwiper.realIndex)
-						}
-						fixedSwiper.slideTo(compareSwiper.realIndex)
-					},
-				}
-			})
-			if (compareSliderItems <= 3) {
-				compareSwiper.navigation.destroy();
-				compareSliderControls.style.display = 'none';
 			}
+		})
+		if (compareSliderItems <= 3) {
+			compareSwiper.navigation.destroy();
+			compareSliderControls.style.display = 'none';
+		}
+		window.addEventListener('resize', () => {
 			if (window.innerWidth <= 767.98 && compareSliderItems >= 3) {
 				compareSwiper.navigation.init();
 				compareSliderControls.style.display = 'block';
+			} else {
+				compareSwiper.navigation.destroy();
+				compareSliderControls.style.display = 'none';
 			}
-		}
-		// function menuSlider() {
-		// 	const compareValues = document.querySelectorAll('.compare-values');
-		// 	[...compareValues].forEach((el) => {
-		// 		// таблица стилей, где будем искать нужно нам правило
-		// 		let transform = getComputedStyle(document.querySelector(".compare-cards__body")).getPropertyValue("transform");
-		// 		el.style.setProperty('transform', transform)
-		// 		let compareItems = el.querySelectorAll('.compare-item');
-		// 		for (let index = 0; index < compareItems.length; index++) {
-		// 			const item = compareItems[index];
-		// 			let addIndex = item.setAttribute('data-index', index);
-		// 			menuSliderRemove();
-		// 			// compareSwiper.slideTo(index, 1200);
-		// 			item.classList.add('_active');
-		// 		}
-		// 	})
-		// }
-		// function menuSliderRemove() {
-		// 	let menuLinkActive = document.querySelector('.compare-item._active');
-		// 	if (menuLinkActive) {
-		// 		menuLinkActive.classList.remove('_active');
-		// 	}
-		// }
-		// function swipeAllSliders(index) {
-		// 	compareSwiper.slideTo(index);
-		// 	commonSwiper.slideTo(index);
-		// 	compoundSwiper.slideTo(index);
-		// }
+		})
 	}
+	// function menuSlider() {
+	// 	const compareValues = document.querySelectorAll('.compare-values');
+	// 	[...compareValues].forEach((el) => {
+	// 		// таблица стилей, где будем искать нужно нам правило
+	// 		let transform = getComputedStyle(document.querySelector(".compare-cards__body")).getPropertyValue("transform");
+	// 		el.style.setProperty('transform', transform)
+	// 		let compareItems = el.querySelectorAll('.compare-item');
+	// 		for (let index = 0; index < compareItems.length; index++) {
+	// 			const item = compareItems[index];
+	// 			let addIndex = item.setAttribute('data-index', index);
+	// 			menuSliderRemove();
+	// 			// compareSwiper.slideTo(index, 1200);
+	// 			item.classList.add('_active');
+	// 		}
+	// 	})
+	// }
+	// function menuSliderRemove() {
+	// 	let menuLinkActive = document.querySelector('.compare-item._active');
+	// 	if (menuLinkActive) {
+	// 		menuLinkActive.classList.remove('_active');
+	// 	}
+	// }
+}
+function initSliders() {
 	// HOME-BANNER SLIDER
 	const bannerSlider = document.querySelector('.home-banner__body');
 	if (bannerSlider) {

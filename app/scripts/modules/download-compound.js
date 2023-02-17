@@ -3,7 +3,6 @@ if (btnCompound) {
 	const path = '/skachat-sostav-podarka';
 	btnCompound.addEventListener('click', (event) => {
 		const target = event.target;
-		console.log(target);
 		let formCompound = document.getElementById('formCompound');
 		const inputData = formCompound.querySelector('input[name="data"]');
 		const inputAlias = formCompound.querySelector('input[name="alias"]');
@@ -30,8 +29,8 @@ if (btnCompound) {
 				target.removeAttribute('disabled');
 			})
 			.catch((error) => {
-				console.log('error', error);
 				target.removeAttribute('disabled');
+				console.log('error', error);
 			})
 	})
 }

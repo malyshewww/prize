@@ -227,158 +227,160 @@ function showHideWeights() {
 	});
 }
 showHideWeights();
+if (pageCategory) {
 
-window.addEventListener('change', choiceCompound);
-function choiceCompound(event) {
-	const target = event.target;
-	if (target.closest('#classic')) {
-		const inputHiddenClassic = document.querySelector('.filter-input__classic');
-		let inputs = document.querySelectorAll('[data-check-weight="classic"]');
-		checked(inputs, target, inputHiddenClassic);
-		nullCheckedNoCompound("nocompound");
+
+	pageCategory.addEventListener('change', choiceCompound);
+	function choiceCompound(event) {
+		const target = event.target;
+		if (target.closest('#classic')) {
+			const inputHiddenClassic = document.querySelector('.filter-input__classic');
+			let inputs = document.querySelectorAll('[data-check-weight="classic"]');
+			checked(inputs, target, inputHiddenClassic);
+			nullCheckedNoCompound("nocompound");
+		}
+		if (target.closest('#premium')) {
+			const inputHiddenPremium = document.querySelector('.filter-input__premium');
+			let inputs = document.querySelectorAll('[data-check-weight="premium"]');
+			checked(inputs, target, inputHiddenPremium);
+			nullCheckedNoCompound("nocompound");
+		}
+		if (target.closest('#vip')) {
+			const inputHiddenVip = document.querySelector('.filter-input__vip');
+			let inputs = document.querySelectorAll('[data-check-weight="vip"]');
+			checked(inputs, target, inputHiddenVip);
+			nullCheckedNoCompound("nocompound");
+		}
+		// Чекбокс для выбора товаров без состава (убрать checked со всех составов)
+		// if (target.closest('#nocompound')) {
+		// 	nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
+		// 	nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
+		// 	nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
+		// }
 	}
-	if (target.closest('#premium')) {
-		const inputHiddenPremium = document.querySelector('.filter-input__premium');
-		let inputs = document.querySelectorAll('[data-check-weight="premium"]');
-		checked(inputs, target, inputHiddenPremium);
-		nullCheckedNoCompound("nocompound");
+	function checked(inputs, targetId, inputHidden) {
+		targetId.classList.toggle('active');
+		if (targetId.classList.contains('active')) {
+			for (let i = 0; i < inputs.length; i++) {
+				inputs[i].checked = true;
+				inputHidden.value = inputs[i].dataset.checkWeight;
+			}
+		} else {
+			for (let i = 0; i < inputs.length; i++) {
+				inputs[i].checked = false;
+				inputHidden.value = "";
+			}
+		}
 	}
-	if (target.closest('#vip')) {
-		const inputHiddenVip = document.querySelector('.filter-input__vip');
-		let inputs = document.querySelectorAll('[data-check-weight="vip"]');
-		checked(inputs, target, inputHiddenVip);
-		nullCheckedNoCompound("nocompound");
-	}
-	// Чекбокс для выбора товаров без состава (убрать checked со всех составов)
-	// if (target.closest('#nocompound')) {
-	// 	nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
-	// 	nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
-	// 	nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
+	// function unchecked(inputs, targetId) {
+	// 	for (let i = 0; i < inputs.length; i++) {
+	// 		inputs[i].checked = false;
+	// 	}
 	// }
-}
-function checked(inputs, targetId, inputHidden) {
-	targetId.classList.toggle('active');
-	if (targetId.classList.contains('active')) {
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].checked = true;
-			inputHidden.value = inputs[i].dataset.checkWeight;
-		}
-	} else {
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].checked = false;
-			inputHidden.value = "";
-		}
-	}
-}
-// function unchecked(inputs, targetId) {
-// 	for (let i = 0; i < inputs.length; i++) {
-// 		inputs[i].checked = false;
-// 	}
-// }
 
-function nullCheckedNoCompound(inputNoCompound) {
-	const input = document.getElementById(inputNoCompound);
-	input.checked = false;
-}
-function emptyCheck(inputs, inputsChecked, compoundId, inputHidden) {
-	const inputsWeights = document.querySelectorAll(inputs);
-	if (inputsWeights) {
-		// const inputNoCompound = document.getElementById('nocompound');
-		const inputHiddenClassic = document.querySelector('.filter-input__classic');
-		const inputHiddenPremium = document.querySelector('.filter-input__premium');
-		const inputHiddenVip = document.querySelector('.filter-input__vip');
-		const inputCompoundId = document.getElementById(compoundId);
-		const inputHiddenCompound = document.querySelector(inputHidden);
-		for (let i = 0; i < inputsWeights.length; i++) {
-			let currentInput = inputsWeights[i];
-			currentInput.addEventListener('change', (event) => {
-				// nullCheckedNoCompound("nocompound");
-				const arrayChecked = [];
-				let activeCheckboxes = document.querySelectorAll(inputsChecked);
-				activeCheckboxes.forEach((checkbox) => {
-					setInputValue(checkbox, inputHiddenClassic, inputHiddenPremium, inputHiddenVip);
-					// const dataValue = checkbox.dataset.checkWeight;
-					arrayChecked.push(checkbox.value);
+	function nullCheckedNoCompound(inputNoCompound) {
+		const input = document.getElementById(inputNoCompound);
+		input.checked = false;
+	}
+	function emptyCheck(inputs, inputsChecked, compoundId, inputHidden) {
+		const inputsWeights = document.querySelectorAll(inputs);
+		if (inputsWeights) {
+			// const inputNoCompound = document.getElementById('nocompound');
+			const inputHiddenClassic = document.querySelector('.filter-input__classic');
+			const inputHiddenPremium = document.querySelector('.filter-input__premium');
+			const inputHiddenVip = document.querySelector('.filter-input__vip');
+			const inputCompoundId = document.getElementById(compoundId);
+			const inputHiddenCompound = document.querySelector(inputHidden);
+			for (let i = 0; i < inputsWeights.length; i++) {
+				let currentInput = inputsWeights[i];
+				currentInput.addEventListener('change', (event) => {
+					// nullCheckedNoCompound("nocompound");
+					const arrayChecked = [];
+					let activeCheckboxes = document.querySelectorAll(inputsChecked);
+					activeCheckboxes.forEach((checkbox) => {
+						setInputValue(checkbox, inputHiddenClassic, inputHiddenPremium, inputHiddenVip);
+						// const dataValue = checkbox.dataset.checkWeight;
+						arrayChecked.push(checkbox.value);
+					})
+					if (arrayChecked.length == 0) {
+						inputCompoundId.checked = false;
+						inputCompoundId.classList.remove('active');
+						inputHiddenCompound.value = "";
+					}
+					if (arrayChecked.length == inputsWeights.length) {
+						inputCompoundId.checked = true;
+					}
 				})
-				if (arrayChecked.length == 0) {
-					inputCompoundId.checked = false;
-					inputCompoundId.classList.remove('active');
-					inputHiddenCompound.value = "";
-				}
-				if (arrayChecked.length == inputsWeights.length) {
-					inputCompoundId.checked = true;
-				}
-			})
+			}
 		}
 	}
-}
-emptyCheck("[data-check-weight='classic']", "[data-check-weight='classic']:checked", "classic", ".filter-input__classic");
-emptyCheck("[data-check-weight='premium']", "[data-check-weight='premium']:checked", "premium", ".filter-input__premium");
-emptyCheck("[data-check-weight='vip']", "[data-check-weight='vip']:checked", "vip", ".filter-input__vip");
+	emptyCheck("[data-check-weight='classic']", "[data-check-weight='classic']:checked", "classic", ".filter-input__classic");
+	emptyCheck("[data-check-weight='premium']", "[data-check-weight='premium']:checked", "premium", ".filter-input__premium");
+	emptyCheck("[data-check-weight='vip']", "[data-check-weight='vip']:checked", "vip", ".filter-input__vip");
 
-function setInputValue(input, inputClassic, inputPremium, inputVip) {
-	const dataValueCompound = input.dataset.checkWeight;
-	if (dataValueCompound == "classic") {
-		inputClassic.value = dataValueCompound;
+	function setInputValue(input, inputClassic, inputPremium, inputVip) {
+		const dataValueCompound = input.dataset.checkWeight;
+		if (dataValueCompound == "classic") {
+			inputClassic.value = dataValueCompound;
+		}
+		if (dataValueCompound == "premium") {
+			inputPremium.value = dataValueCompound;
+		}
+		if (dataValueCompound == "vip") {
+			inputVip.value = dataValueCompound;
+		}
 	}
-	if (dataValueCompound == "premium") {
-		inputPremium.value = dataValueCompound;
-	}
-	if (dataValueCompound == "vip") {
-		inputVip.value = dataValueCompound;
-	}
-}
 
-function resetFilters() {
-	const filters = document.getElementById('filters');
-	if (filters) {
-		const filtersInputs = filters.querySelectorAll('.real-checkbox');
-		const filtersResetBtn = filters.querySelectorAll('button[type="reset"]');
-		[...filtersInputs].forEach((input) => {
-			input.addEventListener('change', (event) => {
-				removeAttributeBtnReset(input);
-			});
-			input.addEventListener('input', (event) => {
-				removeAttributeBtnReset(input);
-			});
-		})
-		for (const btn of filtersResetBtn) {
-			btn.addEventListener('click', (event) => {
-				event.preventDefault();
-				nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
-				nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
-				nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
-				const baseUrl = window.location.href.split("?")[0];
-				window.history.pushState('name', '', baseUrl);
-				[...filtersInputs].forEach((item) => {
-					item.removeAttribute('checked');
-					item.value = "";
+	function resetFilters() {
+		const filters = document.getElementById('filters');
+		if (filters) {
+			const filtersInputs = filters.querySelectorAll('.real-checkbox');
+			const filtersResetBtn = filters.querySelectorAll('button[type="reset"]');
+			[...filtersInputs].forEach((input) => {
+				input.addEventListener('change', (event) => {
+					removeAttributeBtnReset(input);
+				});
+				input.addEventListener('input', (event) => {
+					removeAttributeBtnReset(input);
+				});
+			})
+			for (const btn of filtersResetBtn) {
+				btn.addEventListener('click', (event) => {
+					event.preventDefault();
+					nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
+					nullInputsCompound("premium", "[data-check-weight='premium']", ".filter-input__premium");
+					nullInputsCompound("vip", "[data-check-weight='vip']", ".filter-input__vip");
+					const baseUrl = window.location.href.split("?")[0];
+					window.history.pushState('name', '', baseUrl);
+					[...filtersInputs].forEach((item) => {
+						item.removeAttribute('checked');
+						item.value = "";
+					})
 				})
-			})
+			}
 		}
 	}
-}
-function removeAttributeBtnReset(btn) {
-	for (let i = 0; i < btn.length; i++) {
-		btn[i].disabled = false;
-	}
-}
-function nullInputsCompound(compoundId, inputsCheck, inputHidden) {
-	const compound = document.getElementById(compoundId);
-	if (compound) {
-		const inputsCompound = document.querySelectorAll(inputsCheck);
-		const hiddenInput = document.querySelector(inputHidden);
-		compound.classList.remove('active');
-		compound.checked = false;
-		for (let i = 0; i < inputsCompound.length; i++) {
-			inputsCompound[i].checked = false;
-			inputsCompound[i].removeAttribute('checked');
+	function removeAttributeBtnReset(btn) {
+		for (let i = 0; i < btn.length; i++) {
+			btn[i].disabled = false;
 		}
-		hiddenInput.value = "";
 	}
+	function nullInputsCompound(compoundId, inputsCheck, inputHidden) {
+		const compound = document.getElementById(compoundId);
+		if (compound) {
+			const inputsCompound = document.querySelectorAll(inputsCheck);
+			const hiddenInput = document.querySelector(inputHidden);
+			compound.classList.remove('active');
+			compound.checked = false;
+			for (let i = 0; i < inputsCompound.length; i++) {
+				inputsCompound[i].checked = false;
+				inputsCompound[i].removeAttribute('checked');
+			}
+			hiddenInput.value = "";
+		}
+	}
+	resetFilters();
 }
-resetFilters();
-
 
 // const pathname = window.location.pathname;
 // // Указываем относительный путь файла

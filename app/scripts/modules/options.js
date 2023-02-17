@@ -39,7 +39,7 @@ function checkOption(newObj, elem) {
 					changeStateElements('add-compare', 'В сравнение', 'add-compare--active', elem);
 				}
 			}
-			console.log('success', result);
+			// console.log('success', result);
 		})
 		.catch((error) => {
 			console.log('error', error);
@@ -61,12 +61,6 @@ function productOptions(event) {
 		// Кнопка сравнения
 		const compareBtn = product.querySelector('[data-compare]');
 		let { id, compoundId } = getCompoundProduct(compareBtn);
-		// Объектт с данным для проверки наличия состава в сравнении
-		let newObj = {
-			product_id: id,
-			compound_id: compoundId,
-			action: false
-		}
 		// Старая и новая цена на товаре
 		const productPrice = product.querySelector('.card-product__price');
 		const productPriceOld = product.querySelector('.card-product__price-old');
@@ -92,8 +86,14 @@ function productOptions(event) {
 		const selectGroupCompoundIdData = selectGroupItemHeader.dataset.compoundId;
 		// Выпадающий список опций
 		const selectDropdownItems = parent.querySelectorAll('.dropdown-list .select-group__item');
-		if (target.closest('.no-choice') || target.closest('.select-group__item.select-group__header .select-group__label')) {
-			checkOption(newObj, compareBtn);
+		// if (target.closest('.no-choice') || target.closest('.select-group__item.select-group__header .select-group__label')) {
+		// 	checkOption(newObj, compareBtn);
+		// }
+		// Объектт с данным для проверки наличия состава в сравнении
+		let newObj = {
+			product_id: id,
+			compound_id: selectGroupCompoundIdData,
+			action: false
 		}
 		if (target.closest('.no-choice') && parent != null) {
 			setPrice(inputResultPrice, currentPrice, productPrice);
@@ -101,6 +101,7 @@ function productOptions(event) {
 			setCompound(inputResultCompound, inputResultCompoundGet, selectGroupCompoundTitleData, selectGroupCompoundTextData, inputResultCompoundId, selectGroupCompoundIdData)
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
+			checkOption(newObj, compareBtn);
 		}
 		if (target.closest('.select-group__item.select-group__header .select-group__label')) {
 			setWeight(inputResultWeight, selectGroupValueData)
@@ -108,6 +109,7 @@ function productOptions(event) {
 			setSalePrices(salePrice, inputResultSalePrice, inputResultPrice, inputResultDiscount, productPriceOld, currentPrice)
 			setPrice(inputResultPrice, currentPrice, productPrice);
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
+			checkOption(newObj, compareBtn);
 		}
 
 		if (target.closest('.dropdown-list .select-group__item')) {
@@ -139,7 +141,7 @@ function productOptions(event) {
 			selectGroupValue.textContent = selectGroupDropdownValue.textContent;
 			// setCheckedInput("input.real-radio", "[data-select]");
 			let { id } = getCompoundProduct(compareBtn);
-			// Объектт с данным для проверки наличия состава в сравнении
+			// Объект с данным для проверки наличия состава в сравнении
 			let newObjDrop = {
 				product_id: id,
 				compound_id: selectGroupDropdownCompoundId,
@@ -148,8 +150,8 @@ function productOptions(event) {
 			checkOption(newObjDrop, compareBtn);
 			parent.classList.remove('active');
 		}
-		if (target.closest('.select-group__choice') && !target.classList.contains('no-choice') && parent != null && !parent.classList.contains('active')) {
-			parent.classList.add('active');
+		if (target.closest('.select-group__choice') && !target.classList.contains('no-choice') && parent != null) {
+			parent.classList.toggle('active');
 		}
 	}
 }

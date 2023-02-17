@@ -25,18 +25,18 @@ function favoriteActions(event) {
 	let activeClass = "add-favorite--active";
 	if (target.closest('[data-action]')) {
 		let { id, action } = getInputValues(target);
-		target.classList.toggle(activeClass);
-		if (target.classList.contains(activeClass)) {
-			target.innerText = "Удалить из избранного";
-			target.setAttribute("title", "Удалить из избранного");
-			action = "add";
-			// inputAction.value = "add";
-		} else {
-			target.innerText = "В избранное";
-			target.setAttribute("title", "В избранное");
-			action = "delete";
-			// inputAction.value = "delete";
-		}
+		// target.classList.toggle(activeClass);
+		// if (target.classList.contains(activeClass)) {
+		// 	target.innerText = "Удалить из избранного";
+		// 	target.setAttribute("title", "Удалить из избранного");
+		action = "add";
+		// inputAction.value = "add";
+		// } else {
+		// 	target.innerText = "В избранное";
+		// 	target.setAttribute("title", "В избранное");
+		// 	action = "delete";
+		// 	// inputAction.value = "delete";
+		// }
 		addFavorites(id, action, target);
 		getFavoritesQuantity(id, action, target);
 	}
@@ -69,7 +69,7 @@ function getFavoritesQuantity(id, action) {
 		})
 }
 function addFavorites(id, action, el) {
-	const path = "api/favorites/check";
+	const path = "/api/favorites/check";
 	const data = {
 		id: id,
 		action: action
@@ -77,6 +77,10 @@ function addFavorites(id, action, el) {
 	const formData = new FormData();
 	formData.append("data", JSON.stringify(data));
 	const newData = Object.entries(data).reduce((newData, [k, v]) => (newData.append(k, v), newData), new FormData);
+	el.setAttribute('disabled', 'true');
+	el.classList.remove("add-favorite--active");
+	el.setAttribute("title", "В избранное");
+	el.innerText = "В избранное";
 	fetch(path, {
 		method: 'POST',
 		body: newData
@@ -86,10 +90,13 @@ function addFavorites(id, action, el) {
 			if (result == 'true') {
 				el.classList.add("add-favorite--active");
 				el.setAttribute("title", "Удалить из избранного");
+				el.innerText = "Удалить из избранного";
 			}
+			el.removeAttribute('disabled');
 			// console.log('success', result);
 		})
 		.catch((error) => {
+			el.removeAttribute('disabled');
 			console.log('error', error);
 		})
 }
@@ -141,6 +148,7 @@ if (removeFavorites) {
 		const path = "api/favorites/remove";
 		const formData = new FormData();
 		formData.append("data", JSON.stringify(obj));
+		btn.setAttribute('disabled', 'true');
 		fetch(path, {
 			method: 'POST',
 			body: formData,
@@ -160,9 +168,11 @@ if (removeFavorites) {
 						contentBlock.classList.remove('hidden');
 					}
 				})
+				btn.removeAttribute('disabled');
 			})
 			.catch((error) => {
 				console.log('error', error);
+				btn.removeAttribute('disabled');
 			})
 	}
 }

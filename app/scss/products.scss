@@ -119,6 +119,9 @@
          transition: color 0.2s ease 0s;
       }
       @media (any-hover: hover) {
+         &:hover {
+            color: rgba($redColor, 0.6);
+         }
          &:hover::before {
             color: rgba($redColor, 0.6);
          }
@@ -126,7 +129,13 @@
       &.selected::before {
          color: $redColor;
       }
+      &.add-favorite--active {
+         color: $redColor;
+      }
       &.add-favorite--active::before {
+         color: $redColor;
+      }
+      &.add-favorite--active:hover {
          color: $redColor;
       }
       &.add-favorite--active:hover::before {
@@ -250,12 +259,16 @@
       cursor: pointer;
       font-size: 0;
       margin-left: auto;
+      background-color: transparent;
       &::before {
          font-size: 20px;
          color: $grayColorBD;
          transition: color 0.2s ease 0s;
       }
       @media (any-hover: hover) {
+         &:hover {
+            color: rgba($redColor, 0.6);
+         }
          &:hover::before {
             color: rgba($redColor, 0.6);
          }
@@ -263,7 +276,13 @@
       &.selected::before {
          color: $redColor;
       }
+      &.add-compare--active {
+         color: $redColor;
+      }
       &.add-compare--active::before {
+         color: $redColor;
+      }
+      &.add-compare--active:hover {
          color: $redColor;
       }
       &.add-compare--active:hover::before {

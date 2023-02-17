@@ -110,6 +110,37 @@ const closeModalBtn = document.querySelector('.js-modal-close');
 const formAllInputs = document.querySelectorAll('.form__input, .form__textarea, .form-modal__input, .form-modal__textarea, input[name="agreement"], [data-field]');
 const formAllInputsRating = document.querySelectorAll('input[name="rating"]');
 
+
+function resultYandexMetrika(formId, selector, result) {
+   if (formId == selector) {
+      if (result.ym) {
+         if (typeof ym != "undefined") {
+            ym(49095607, 'reachGoal', result.ym);
+            console.log("ym(49095607,'reachGoal',".concat(result.ym, ");"));
+         }
+         if ((typeof yaCounter49095607 === "undefined" ? "undefined" : typeof yaCounter49095607) == "object") {
+            yaCounter49095607.reachGoal(result.ym);
+            console.log("yaCounter49095607.reachGoal(".concat(result.ym, ");"));
+         }
+      }
+   }
+}
+function successModal(formId, selector, modalId) {
+   if (formId == selector) {
+      const modal = document.getElementById(modalId);
+      modal.classList.add('open-modal')
+      setTimeout(() => {
+         modal.classList.remove("open-modal");
+      }, 5000)
+   }
+}
+function errorModal(modalId) {
+   const modal = document.getElementById(modalId);
+   modal.classList.add('open-modal')
+   setTimeout(() => {
+      modal.classList.remove("open-modal");
+   }, 5000)
+}
 function formHandler(formId, path) {
    const formElement = document.getElementById(formId);
    if (formElement) {
@@ -138,95 +169,77 @@ function formHandler(formId, path) {
                const inputMessage = thisForm.querySelector('textarea[name="message"]');
                const inputAddress = thisForm.querySelector('input[name="address"]');
                const inputAgreement = thisForm.querySelector('input[name="agreement"]');
-               if (result == "ym") {
-                  if (formId == 'form') {
-                     if (typeof ym != "undefined") {
-                        ym(49095607, 'reachGoal', result.ym);
-                        console.log("ym(49095607,'reachGoal',".concat(result.ym, ");"));
+               try {
+                  if (result.status == "success") {
+                     // Форма "Остались вопросы"
+                     resultYandexMetrika.call(this, formId, 'form', result);
+                     successModal.call(this, formId, 'form', 'notice');
+                     // Вызывыаем модальку об успехе
+                     // if (formId == 'shopOrderForm') {
+                     //    window.location.href = "http://test3.komplex-info.ru/spasibo-za-zakaz.html";
+                     // }
+                     if (inputName) {
+                        inputName.value = '';
                      }
-                     if ((typeof yaCounter49095607 === "undefined" ? "undefined" : _typeof(yaCounter49095607)) == "object") {
-                        yaCounter49095607.reachGoal(result.ym);
-                        console.log("yaCounter49095607.reachGoal(".concat(result.ym, ");"));
+                     if (inputFullName) {
+                        inputFullName.value = '';
+                     }
+                     if (inputPhone) {
+                        inputPhone.value = '';
+                     }
+                     if (inputEmail) {
+                        inputEmail.value = '';
+                     }
+                     if (inputMessage) {
+                        inputMessage.value = '';
+                     }
+                     if (inputAddress) {
+                        inputAddress.value = '';
+                     }
+                     // if (inputAgreement) {
+                     //    inputAgreement.value = '';
+                     // }
+                     const fields = document.querySelectorAll("[data-field]");
+                     fields.forEach(input => {
+                        const parent = input.parentNode;
+                        parent.classList.remove('focus');
+                     })
+                  } else {
+                     if (result.name) {
+                        inputName.classList.add('error');
+                        // inputName.setAttribute('title', result.name.trim());
+                     }
+                     if (result.fullname) {
+                        inputFullName.classList.add('error');
+                        // inputName.setAttribute('title', result.name.trim());
+                     }
+                     if (result.phone) {
+                        inputPhone.classList.add('error');
+                        // inputPhone.setAttribute('title', result.phone.trim());
+                     }
+                     if (result.email) {
+                        inputEmail.classList.add('error');
+                        // inputEmail.setAttribute('title', result.email.trim());
+                     }
+                     if (result.message) {
+                        // inputMessage.setAttribute('title', result.message.trim());
+                     }
+                     if (result.address) {
+                        // inputMessage.setAttribute('title', result.message.trim());
+                     }
+                     if (result.agreement) {
+                        inputAgreement.classList.add('error');
+                        // inputMessage.setAttribute('title', result.message.trim());
                      }
                   }
+                  buttonSubmit.removeAttribute('disabled');
+                  buttonSubmit.classList.remove('disabled');
+                  buttonSubmit.textContent = buttonSubmitText;
+               } catch (e) {
+                  console.error(e);
                }
-               if (result.status == "success") {
-                  // Вызывыаем модальку об успехе
-                  // if (formId == 'shopOrderForm') {
-                  //    window.location.href = "http://test3.komplex-info.ru/spasibo-za-zakaz.html";
-                  // }
-                  if (formId != 'shopOrderForm') {
-                     const modal = document.getElementById('notice');
-                     modal.classList.add('open-modal')
-                     setTimeout(() => {
-                        modal.classList.remove("open-modal");
-                     }, 5000)
-                  }
-                  if (inputName) {
-                     inputName.value = '';
-                  }
-                  if (inputFullName) {
-                     inputFullName.value = '';
-                  }
-                  if (inputPhone) {
-                     inputPhone.value = '';
-                  }
-                  if (inputEmail) {
-                     inputEmail.value = '';
-                  }
-                  if (inputMessage) {
-                     inputMessage.value = '';
-                  }
-                  if (inputAddress) {
-                     inputAddress.value = '';
-                  }
-                  // if (inputAgreement) {
-                  //    inputAgreement.value = '';
-                  // }
-                  const fields = document.querySelectorAll("[data-field]");
-                  fields.forEach(input => {
-                     const parent = input.parentNode;
-                     parent.classList.remove('focus');
-                  })
-               } else {
-                  if (result.name) {
-                     inputName.classList.add('error');
-                     // inputName.setAttribute('title', result.name.trim());
-                  }
-                  if (result.fullname) {
-                     inputFullName.classList.add('error');
-                     // inputName.setAttribute('title', result.name.trim());
-                  }
-                  if (result.phone) {
-                     inputPhone.classList.add('error');
-                     // inputPhone.setAttribute('title', result.phone.trim());
-                  }
-                  if (result.email) {
-                     inputEmail.classList.add('error');
-                     // inputEmail.setAttribute('title', result.email.trim());
-                  }
-                  if (result.message) {
-                     // inputMessage.setAttribute('title', result.message.trim());
-                  }
-                  if (result.address) {
-                     // inputMessage.setAttribute('title', result.message.trim());
-                  }
-                  if (result.agreement) {
-                     inputAgreement.classList.add('error');
-                     // inputMessage.setAttribute('title', result.message.trim());
-                  }
-               }
-               buttonSubmit.removeAttribute('disabled');
-               buttonSubmit.classList.remove('disabled');
-               buttonSubmit.textContent = buttonSubmitText;
             }).catch((error) => {
-               if (formId != 'shopOrderForm') {
-                  const modal = document.getElementById('notice-error');
-                  modal.classList.add('open-modal')
-                  setTimeout(() => {
-                     modal.classList.remove("open-modal");
-                  }, 5000)
-               }
+               errorModal('notice-error');
                buttonSubmit.removeAttribute('disabled');
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
@@ -263,94 +276,87 @@ function formHandlerModal(formId, path) {
                const inputProductTitle = thisForm.querySelector('input[name="product-title"]');
                const inputAgreement = thisForm.querySelector('input[name="agreement"]');
                const inputRating = thisForm.querySelectorAll('input[name="rating"]');
-               if (result.status == "success") {
-                  // Вызывыаем модальку об успехе
-                  const modals = document.querySelectorAll('[data-modal]');
-                  modals.forEach((item) => {
-                     item.classList.remove('open-modal');
-                  })
-                  document.body.classList.remove('lock');
-                  if (formId == "form-demonstration") {
-                     const modal = document.getElementById('success-demonstration');
-                     modal.classList.add('open-modal');
-                     setTimeout(() => {
-                        modal.classList.remove("open-modal");
-                     }, 5000)
+               try {
+                  if (result.status == "success") {
+                     // Вызывыаем модальку об успехе
+                     const modals = document.querySelectorAll('[data-modal]');
+                     modals.forEach((item) => {
+                        item.classList.remove('open-modal');
+                     })
+                     document.body.classList.remove('lock');
+                     // Форма "Заказать звонок"
+                     successModal(formId, 'form-call', 'notice');
+                     resultYandexMetrika(formId, 'form-call', result);
+                     // Форма "Заказать демонстрацию"
+                     successModal(formId, 'form-demonstration', 'success-demonstration');
+                     resultYandexMetrika(formId, 'form-demonstration', result);
+                     // Форма "Купить в 1 клик"
+                     successModal(formId, 'form-buy', 'success-order');
+                     resultYandexMetrika(formId, 'form-buy', result);
+                     // Форма "в конструкторе Собери сам"
+                     successModal(formId, 'form-order', 'success-order');
+                     resultYandexMetrika(formId, 'form-order', result);
+                     // Форма "Оставить заявку"
+                     successModal(formId, 'form-request', 'notice');
+                     // Форма "Оставить отзыв"
+                     successModal(formId, 'form-reviews', 'success-reviews');
+                     if (inputName) {
+                        inputName.value = '';
+                     }
+                     if (inputPhone) {
+                        inputPhone.value = '';
+                     }
+                     if (inputEmail) {
+                        inputEmail.value = '';
+                     }
+                     if (inputMessage) {
+                        inputMessage.value = '';
+                     }
+                     if (inputComment) {
+                        inputComment.value = '';
+                     }
+                     if (inputProductTitle) {
+                        inputProductTitle.value = '';
+                     }
+                     // if (inputAgreement) {
+                     //    inputAgreement.value = '';
+                     // }
+                     if (inputRating) {
+                     }
+                  } else {
+                     if (result.name) {
+                        inputName.classList.add('error');
+                        // inputName.setAttribute('title', result.name.trim());
+                     }
+                     if (result.phone) {
+                        inputPhone.classList.add('error');
+                        // inputPhone.setAttribute('title', result.phone.trim());
+                     }
+                     if (result.email) {
+                        inputEmail.classList.add('error');
+                        // inputEmail.setAttribute('title', result.email.trim());
+                     }
+                     if (result.message) {
+                        // inputMessage.setAttribute('title', result.message.trim());
+                     }
+                     if (result.comment) {
+                        // inputComment.setAttribute('title', result.message.trim());
+                     }
+                     if (result.agreement) {
+                        inputAgreement.classList.add('error');
+                        // inputAgreement.setAttribute('title', result.message.trim());
+                     }
+                     if (result.rating) {
+                     }
                   }
-                  if (formId == "form-buy" || formId == "form-order") {
-                     const modal = document.getElementById('success-order');
-                     modal.classList.add('open-modal');
-                     setTimeout(() => {
-                        modal.classList.remove("open-modal");
-                     }, 5000)
-                  }
-                  if (formId == "form-call" || formId == "form-request") {
-                     const modal = document.getElementById('notice');
-                     modal.classList.add('open-modal');
-                     setTimeout(() => {
-                        modal.classList.remove("open-modal");
-                     }, 5000)
-                  }
-                  if (formId == "form-reviews") {
-                     const modal = document.getElementById('success-reviews');
-                     modal.classList.add('open-modal')
-                     setTimeout(() => {
-                        modal.classList.remove("open-modal");
-                     }, 2000)
-                  }
-                  if (inputName) {
-                     inputName.value = '';
-                  }
-                  if (inputPhone) {
-                     inputPhone.value = '';
-                  }
-                  if (inputEmail) {
-                     inputEmail.value = '';
-                  }
-                  if (inputMessage) {
-                     inputMessage.value = '';
-                  }
-                  if (inputComment) {
-                     inputComment.value = '';
-                  }
-                  if (inputProductTitle) {
-                     inputProductTitle.value = '';
-                  }
-                  // if (inputAgreement) {
-                  //    inputAgreement.value = '';
-                  // }
-                  if (inputRating) {
-                  }
-               } else {
-                  if (result.name) {
-                     inputName.classList.add('error');
-                     // inputName.setAttribute('title', result.name.trim());
-                  }
-                  if (result.phone) {
-                     inputPhone.classList.add('error');
-                     // inputPhone.setAttribute('title', result.phone.trim());
-                  }
-                  if (result.email) {
-                     inputEmail.classList.add('error');
-                     // inputEmail.setAttribute('title', result.email.trim());
-                  }
-                  if (result.message) {
-                     // inputMessage.setAttribute('title', result.message.trim());
-                  }
-                  if (result.comment) {
-                     // inputComment.setAttribute('title', result.message.trim());
-                  }
-                  if (result.agreement) {
-                     inputAgreement.classList.add('error');
-                     // inputAgreement.setAttribute('title', result.message.trim());
-                  }
-                  if (result.rating) {
-                  }
+                  buttonSubmit.removeAttribute('disabled');
+                  buttonSubmit.classList.remove('disabled');
+                  buttonSubmit.textContent = buttonSubmitText;
+               } catch (e) {
+                  console.error(e);
                }
-               buttonSubmit.removeAttribute('disabled');
-               buttonSubmit.classList.remove('disabled');
-               buttonSubmit.textContent = buttonSubmitText;
             }).catch((error) => {
+               errorModal('notice-error');
                buttonSubmit.removeAttribute('disabled');
                buttonSubmit.classList.remove('disabled');
                buttonSubmit.textContent = buttonSubmitText;
@@ -361,12 +367,12 @@ function formHandlerModal(formId, path) {
 formHandler("form", "/formhandler");
 // formHandler("shopOrderForm", "/formhandlerorder");
 
+formHandlerModal("form-call", "/formhandler");
 formHandlerModal("form-demonstration", "/formhandler");
 formHandlerModal("form-buy", "/formhandler");
-formHandlerModal("form-call", "/formhandler");
 formHandlerModal("form-request", "/formhandler");
-formHandlerModal("form-reviews", "/formhandlerreviews");
 formHandlerModal("form-order", "/formhandlercalcorder");
+formHandlerModal("form-reviews", "/formhandlerreviews");
 
 formAllInputsRating.forEach((item) => {
    const removeErrorClass = (event) => {
