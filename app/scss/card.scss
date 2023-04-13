@@ -776,6 +776,9 @@
          font-size: 16px;
          line-height: math.div(24, 16) * 100%;
          color: $blackColor;
+         &:not(:last-child) {
+            margin-bottom: 15px;
+         }
       }
       @media screen and (max-width: $lg) {
          padding: 30px 40px 30px 20px;

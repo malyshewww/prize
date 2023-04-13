@@ -228,8 +228,6 @@ function showHideWeights() {
 }
 showHideWeights();
 if (pageCategory) {
-
-
 	pageCategory.addEventListener('change', choiceCompound);
 	function choiceCompound(event) {
 		const target = event.target;
@@ -334,17 +332,19 @@ if (pageCategory) {
 	function resetFilters() {
 		const filters = document.getElementById('filters');
 		if (filters) {
-			const filtersInputs = filters.querySelectorAll('.real-checkbox');
+			const filtersInputs = filters.querySelectorAll('.real-checkbox, .filter-group__input');
 			const filtersResetBtn = filters.querySelectorAll('button[type="reset"]');
 			[...filtersInputs].forEach((input) => {
 				input.addEventListener('change', (event) => {
-					removeAttributeBtnReset(input);
+					removeAttributeBtnReset(filtersResetBtn);
 				});
 				input.addEventListener('input', (event) => {
-					removeAttributeBtnReset(input);
+					removeAttributeBtnReset(filtersResetBtn);
 				});
 			})
 			for (const btn of filtersResetBtn) {
+				window.location.search ? btn.removeAttribute('disabled') : btn.setAttribute('disabled', 'true');
+				// btn.setAttribute('disabled', true);
 				btn.addEventListener('click', (event) => {
 					event.preventDefault();
 					nullInputsCompound("classic", "[data-check-weight='classic']", ".filter-input__classic");
@@ -353,7 +353,7 @@ if (pageCategory) {
 					const baseUrl = window.location.href.split("?")[0];
 					window.history.pushState('name', '', baseUrl);
 					[...filtersInputs].forEach((item) => {
-						item.removeAttribute('checked');
+						item.checked = false;
 						item.value = "";
 					})
 				})
@@ -362,7 +362,7 @@ if (pageCategory) {
 	}
 	function removeAttributeBtnReset(btn) {
 		for (let i = 0; i < btn.length; i++) {
-			btn[i].disabled = false;
+			btn[i].removeAttribute('disabled');
 		}
 	}
 	function nullInputsCompound(compoundId, inputsCheck, inputHidden) {

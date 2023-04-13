@@ -1,22 +1,4 @@
 /*===== FORM FOCUS =====*/
-// document.addEventListener('blur', removeFocus);
-// document.addEventListener('focus', addFocus);
-// function removeFocus(event) {
-//    let target = event.target;
-//    if (target.closest('[data-field]')) {
-//       let parent = target.parentNode;
-//       if (target.value == "") {
-//          parent.classList.remove("focus");
-//       }
-//    }
-// }
-// function addFocus(event) {
-//    let target = event.target;
-//    if (target.closest('[data-field]')) {
-//       let parent = this.parentNode;
-//       parent.classList.add("focus");
-//    }
-// }
 const fields = document.querySelectorAll("[data-field]");
 /*=== Add focus ===*/
 function addfocus() {
@@ -364,15 +346,14 @@ function formHandlerModal(formId, path) {
       })
    }
 }
-formHandler("form", "/formhandler");
+formHandler("form", "api/form/handler");
 // formHandler("shopOrderForm", "/formhandlerorder");
-
-formHandlerModal("form-call", "/formhandler");
-formHandlerModal("form-demonstration", "/formhandler");
-formHandlerModal("form-buy", "/formhandler");
-formHandlerModal("form-request", "/formhandler");
-formHandlerModal("form-order", "/formhandlercalcorder");
-formHandlerModal("form-reviews", "/formhandlerreviews");
+formHandlerModal("form-call", "api/form/handler");
+formHandlerModal("form-demonstration", "api/form/handler");
+formHandlerModal("form-buy", "api/form/handler");
+formHandlerModal("form-request", "api/form/handler");
+formHandlerModal("form-order", "api/form/handlercalcorder");
+formHandlerModal("form-reviews", "api/form/handlerreviews");
 
 formAllInputsRating.forEach((item) => {
    const removeErrorClass = (event) => {
@@ -422,7 +403,6 @@ const companyNameInput = document.querySelector('input[name="namecompany"]');
 if (companyItems) {
    companyItems.forEach((item) => {
       const companyInput = item.querySelector('input[name="company"]');
-      const radioButtonItem = item.querySelector('.radiobutton-item');
       companyInput.addEventListener('change', (event) => {
          radioBtnTransport.value = companyInput.value;
          companyNameInput.value = companyInput.value;

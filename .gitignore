@@ -6,3 +6,5 @@ _node_modules/
 package-lock.json
 .idea/
 data/
+.prettierignore
+.vscode/
