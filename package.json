@@ -48,5 +48,8 @@
     "fslightbox": "^3.3.1",
     "nouislider": "^15.6.0",
     "swiper": "^8.3.0"
+  },
+  "volta": {
+    "node": "16.14.0"
   }
 }
