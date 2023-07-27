@@ -144,6 +144,46 @@
 				},
 			]
 		},
+		{
+			"img": "products/product-2",
+			"article": "#0074",
+			"name": "Короб почтальона Ассорти",
+			"price": "1005 ₽",
+			"badge": `<div class="card-product__badge card-product__badge_hit"><span>Хит</span></div>`,
+			"key": "viewed",
+			choice: [
+				{
+					"title": "Классик",
+					"values": ["1100 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Классик",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "Премиум",
+					"values": ["600 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "Премиум",
+							"value": "700 г"
+						}
+					]
+				},
+				{
+					"title": "VIP",
+					"values": ["300 г", "700 г"],
+					"dropmenu": [
+						{
+							"title": "VIP",
+							"value": "700 г"
+						}
+					]
+				},
+			]
+		},
 		//- {
 		//- 	"img": "products/product-2",
 		//- 	"article": "#0074",
@@ -200,6 +240,6 @@
 					.compare-cards__body
 						include ../../components/product-card
 					.compare-cards__controls 
-						button.slide-arrow.slide-arrow__prev.icon-arrow-prev
-						button.slide-arrow.slide-arrow__next.icon-arrow-next
+						button#slide-arrow-prev.slide-arrow.slide-arrow__prev.icon-arrow-prev
+						button#slide-arrow-next.slide-arrow.slide-arrow__next.icon-arrow-next
 

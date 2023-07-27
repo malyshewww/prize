@@ -55,7 +55,7 @@ import "./modules/map.js";
 import "./modules/snow.js";
 
 // Модуль Избранных товаров
-import "./modules/favorites.js";
+// import "./modules/favorites.js";
 
 // Модуль Для скачивания состава подарка + добавление данных в скрытый инпут в json формате
 import "./modules/download-compound.js";
@@ -99,73 +99,44 @@ function addTouchClass() {
 }
 addTouchClass();
 
-// let block1 = $(".compare-cards__wrapper");
-// let block2 = $('.common-compare__values');
-// block1.addEventListener("scroll", function () {
-// 	block2.scrollLeft = block1.scrollLeft;
-// });
-
-function syncScroll(el1, el2) {
-	let $el1 = $(el1);
-	let $el2 = $(el2);
-	let forcedScroll = false;
-	$el1.onscroll = function () {
-		performScroll($el1, $el2);
-	};
-	$el2.onscroll = function () {
-		performScroll($el2, $el1);
-	};
-	function performScroll($scrolled, $toScroll) {
-		if (forcedScroll) return (forcedScroll = false);
-		setScrollTopFromPercent($toScroll, $scrolled.scrollLeft() / ($scrolled[0].scrollWidth - $scrolled.outerWidth()));
-	}
-	function setScrollTopFromPercent($el, percent) {
-		forcedScroll = true;
-		$el.scrollLeft(percent * ($el[0].scrollWidth - $el.outerWidth()));
-	}
-}
-syncScroll($('.compare-cards__wrapper'), $('.common-compare__values'));
-const boxSlider = document.querySelector('.compare-cards');
-if (boxSlider) {
-	const cardSlider = document.querySelector('.compare-cards__slider')
-	const fixedSlider = document.createElement('div');
-	fixedSlider.className = "compare-cards__slider-fixed";
-	fixedSlider.setAttribute('id', "fixed-slider")
-	boxSlider.insertAdjacentElement('afterbegin', fixedSlider);
-	const sliderClone = cardSlider.cloneNode(true);
-	fixedSlider.appendChild(sliderClone)
-	const fixedSliderWrapper = fixedSlider.querySelector('.compare-cards__wrapper');
-	fixedSliderWrapper.classList.replace('compare-cards__wrapper', 'compare-cards__wrapper-fixed');
-}
-// for (const dropdown of document.querySelectorAll(".custom-select-wrapper")) {
-// 	const trigger = dropdown.querySelector('.custom-select__trigger')
-// 	trigger.addEventListener('click', function () {
-// 		dropdown.querySelector('.custom-select').classList.toggle('open');
-// 	})
-// }
-
-// for (const option of document.querySelectorAll(".custom-option")) {
-// 	const trigger = option.querySelector('.custom-select__trigger span');
-// 	option.addEventListener('click', function () {
-// 		if (!this.classList.contains('selected')) {
-// 			this.parentNode.querySelector('.custom-option.selected').classList.remove('selected');
-// 			this.classList.add('selected');
-// 			this.closest('.custom-select').querySelector('.custom-option-header .custom-select__trigger span').textContent = trigger.textContent;
-// 		}
-// 	})
-// }
-
-// // window.addEventListener('click', function (e) {
-// //     const select = document.querySelector('.custom-select')
-// //     if (!select.contains(e.target)) {
-// //         select.classList.remove('open');
-// //     }
-// // });
-
-// window.addEventListener('click', function (e) {
-// 	for (const select of document.querySelectorAll('.custom-select')) {
-// 		if (!select.contains(e.target)) {
-// 			select.classList.remove('open');
-// 		}
+// function syncScroll(el1, el2) {
+// 	let $el1 = $(el1);
+// 	let $el2 = $(el2);
+// 	let forcedScroll = false;
+// 	$el1.onscroll = function () {
+// 		performScroll($el1, $el2);
+// 	};
+// 	$el2.onscroll = function () {
+// 		performScroll($el2, $el1);
+// 	};
+// 	function performScroll($scrolled, $toScroll) {
+// 		if (forcedScroll) return (forcedScroll = false);
+// 		setScrollTopFromPercent($toScroll, $scrolled.scrollLeft() / ($scrolled[0].scrollWidth - $scrolled.outerWidth()));
 // 	}
-// });
+// 	function setScrollTopFromPercent($el, percent) {
+// 		forcedScroll = true;
+// 		$el.scrollLeft(percent * ($el[0].scrollWidth - $el.outerWidth()));
+// 	}
+// }
+// syncScroll($('.compare-cards__wrapper'), $('.common-compare__values'));
+
+// const boxSlider = document.querySelector('.compare-cards');
+// if (boxSlider) {
+// 	const cardSlider = document.querySelector('.compare-cards__slider')
+// 	const fixedSlider = document.createElement('div');
+// 	fixedSlider.className = "compare-cards__slider-fixed";
+// 	fixedSlider.setAttribute('id', "fixed-slider")
+// 	const sliderClone = cardSlider.cloneNode(true);
+// 	fixedSlider.appendChild(sliderClone)
+// 	boxSlider.insertAdjacentElement('afterbegin', fixedSlider);
+// 	const fixedSliderWrapper = fixedSlider.querySelector('.compare-cards__wrapper');
+// 	const fixedSliderBody = fixedSlider.querySelector('.compare-cards__body');
+// 	fixedSliderWrapper.classList.replace('compare-cards__wrapper', 'compare-cards__wrapper-fixed');
+// 	fixedSliderWrapper.classList.add('compare-body');
+// 	fixedSliderBody.classList.replace('compare-cards__body', 'compare-values');
+// 	const fixedSliderItems = fixedSliderBody.querySelectorAll('.products__card');
+// 	fixedSliderItems.forEach((item) => {
+// 		item.classList.add('compare-item');
+// 	})
+// }
+

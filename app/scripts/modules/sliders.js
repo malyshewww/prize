@@ -47,190 +47,91 @@ productSliders.forEach((el) => {
 })
 // COMPARE SLIDER
 const comparePage = document.querySelector('.compare');
-const swiperParams = {
-	watchOverflow: true,
-	autoHeight: true,
-	speed: 800,
-	spaceBetween: 30,
-	loop: false,
-	slidesPerGroup: 1,
-	simulateTouch: false,
-	grabCursor: false,
-	allowTouchMove: false,
-	observer: true,
-	observeParents: true,
-	observeSlideChildren: true,
-};
+export let compareSwiper;
+let commonSwiper;
+let fixedSwiper;
 if (comparePage) {
-	let compareSwiper;
-	let commonSwiper;
-	let fixedSwiper;
-	let sliderFixed = comparePage.querySelector('.compare-cards__slider-fixed .compare-cards__wrapper-fixed');
-	if (sliderFixed) {
-		let sliderFixedChildren = sliderFixed.querySelectorAll('.products__card').length;
-		const sliderFixedControls = sliderFixed.querySelector('.compare-cards__controls');
-		fixedSwiper = new Swiper(sliderFixed, {
-			modules: [Thumbs, Navigation],
-			watchOverflow: true,
-			autoHeight: true,
-			speed: 500,
-			spaceBetween: 30,
-			loop: false,
-			slidesPerGroup: 1,
-			simulateTouch: false,
-			grabCursor: false,
-			allowTouchMove: false,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
-			slidesPerGroup: 1,
-			wrapperClass: "compare-cards__body",
-			slideClass: "products__card ",
-			navigation: {
-				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-			},
-			breakpoints: {
-				320: {
-					slidesPerView: 2,
-					slidesPerGroup: 1,
-					spaceBetween: 17,
-				},
-				767.98: {
-					slidesPerView: 3,
-				},
-			},
-			on: {
-				slideChange: function () {
-					for (let i = 0; i < commonSwiper.length; i++) {
-						commonSwiper[i].slideTo(fixedSwiper.realIndex)
-					}
-					compareSwiper.slideTo(fixedSwiper.realIndex)
-				}
-			}
-		})
-		if (sliderFixedChildren <= 3) {
-			fixedSwiper.navigation.destroy();
-			sliderFixedControls.style.display = 'none';
-		}
-		if (window.innerWidth <= 767.98 && sliderFixedChildren >= 3) {
-			fixedSwiper.navigation.init();
-			sliderFixedControls.style.display = 'block';
-		}
-	}
-	commonSwiper = new Swiper('.compare-body', {
-		modules: [Navigation],
-		slideClass: "compare-item",
-		wrapperClass: "compare-values",
+	const swiperParams = {
 		speed: 500,
+		// autoHeight: true,
 		spaceBetween: 30,
-		watchOverflow: true,
-		autoHeight: true,
+		slidesPerGroup: 1,
+		slidesPerView: 3,
+		loop: false,
+		slidesPerGroup: 1,
 		simulateTouch: false,
 		allowTouchMove: false,
-		slidesPerGroup: 1,
 		grabCursor: false,
 		observer: true,
 		observeParents: true,
 		observeSlideChildren: true,
-		navigation: {
-			nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-			prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
-		},
 		breakpoints: {
 			320: {
 				slidesPerView: 2,
-				slidesPerGroup: 1,
 				spaceBetween: 17,
+				simulateTouch: true,
+				allowTouchMove: true,
+				slidesPerGroup: 1,
 			},
 			767.98: {
 				slidesPerView: 3,
+				slidesPerGroup: 1,
 			},
 		},
-	})
-	var interleaveOffset = 0.5;
-	const compareValues = document.querySelectorAll('.compare-values');
+	};
 	const compareSlider = comparePage.querySelector('.compare-cards__slider .compare-cards__wrapper');
 	if (compareSlider) {
-		const compareSliderItems = compareSlider.querySelectorAll('.products__card').length;
+		const compareSliderItems = compareSlider.querySelectorAll('.products__card');
 		const compareSliderControls = compareSlider.querySelector('.compare-cards__controls');
 		compareSwiper = new Swiper(compareSlider, {
-			modules: [Thumbs, Navigation],
-			watchOverflow: true,
-			autoHeight: true,
-			slidesPerGroup: 1,
+			modules: [Navigation],
 			wrapperClass: "compare-cards__body",
 			slideClass: "products__card ",
-			loop: false,
-			slidesPerView: 3,
-			spaceBetween: 30,
-			speed: 500,
-			simulateTouch: false,
-			grabCursor: false,
-			allowTouchMove: false,
-			observer: true,
-			observeParents: true,
-			observeSlideChildren: true,
+			...swiperParams,
 			navigation: {
-				nextEl: '.compare-cards__controls .slide-arrow.slide-arrow__next',
-				prevEl: '.compare-cards__controls .slide-arrow.slide-arrow__prev',
+				nextEl: '.compare-cards__controls .slide-arrow__next',
+				prevEl: '.compare-cards__controls .slide-arrow__prev',
 			},
-			breakpoints: {
-				320: {
-					slidesPerView: 2,
-					slidesPerGroup: 1,
-					spaceBetween: 17,
-				},
-				767.98: {
-					slidesPerView: 3,
-				},
-			},
-			// Событие смены слайда
-			on: {
-				slideChange: function () {
-					for (let i = 0; i < commonSwiper.length; i++) {
-						commonSwiper[i].slideTo(compareSwiper.realIndex)
-					}
-					fixedSwiper.slideTo(compareSwiper.realIndex)
-				},
-			}
 		})
-		if (compareSliderItems <= 3) {
+		if (compareSliderItems.length <= 3) {
 			compareSwiper.navigation.destroy();
 			compareSliderControls.style.display = 'none';
 		}
+		function setStylesElement() {
+			$('.data-compare .compare-item').attr('style', $('.compare-cards .products__card').attr('style'))
+		}
+		setStylesElement();
 		window.addEventListener('resize', () => {
-			if (window.innerWidth <= 767.98 && compareSliderItems >= 3) {
-				compareSwiper.navigation.init();
-				compareSliderControls.style.display = 'block';
-			} else {
-				compareSwiper.navigation.destroy();
-				compareSliderControls.style.display = 'none';
-			}
+			setStylesElement()
+		})
+		compareSwiper.on('slideChange', function () {
+			$('.data-compare .compare-values')
+				.attr('style', $('.compare-cards__slider .compare-cards__wrapper')
+					.find('.compare-cards__body').attr('style'));
+		})
+		let root = document.querySelector('.data-compare')
+		let options = {
+			root: root,
+		}
+		// Создаем новый observer (наблюдатель)
+		let observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				// получаем свойства, которые доступны в объекте entry
+				const { target, isIntersecting } = entry;
+				if (isIntersecting) {
+					target.classList.remove('hidden')
+				} else {
+					target.classList.add('hidden')
+				}
+			});
+		}, options);
+		// Задаем элемент(-ы) для наблюдения
+		let elements = document.querySelectorAll('.data-compare .compare-item');
+		// Прикрепляем его к «наблюдателю»
+		elements.forEach(function (item) {
+			observer.observe(item);
 		})
 	}
-	// function menuSlider() {
-	// 	const compareValues = document.querySelectorAll('.compare-values');
-	// 	[...compareValues].forEach((el) => {
-	// 		// таблица стилей, где будем искать нужно нам правило
-	// 		let transform = getComputedStyle(document.querySelector(".compare-cards__body")).getPropertyValue("transform");
-	// 		el.style.setProperty('transform', transform)
-	// 		let compareItems = el.querySelectorAll('.compare-item');
-	// 		for (let index = 0; index < compareItems.length; index++) {
-	// 			const item = compareItems[index];
-	// 			let addIndex = item.setAttribute('data-index', index);
-	// 			menuSliderRemove();
-	// 			// compareSwiper.slideTo(index, 1200);
-	// 			item.classList.add('_active');
-	// 		}
-	// 	})
-	// }
-	// function menuSliderRemove() {
-	// 	let menuLinkActive = document.querySelector('.compare-item._active');
-	// 	if (menuLinkActive) {
-	// 		menuLinkActive.classList.remove('_active');
-	// 	}
-	// }
 }
 function initSliders() {
 	// HOME-BANNER SLIDER
@@ -302,7 +203,6 @@ function initSliders() {
 			factoriesSlider.classList.add('disabled');
 		}
 	}
-
 
 	// MAIN-CARD SLIDER
 	const cardMainSlider = document.querySelector('.base-slider');

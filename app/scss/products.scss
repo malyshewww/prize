@@ -113,6 +113,7 @@
       padding: 20px;
       cursor: pointer;
       font-size: 0;
+      background-color: transparent;
       &::before {
          font-size: 20px;
          color: $grayColorBD;
@@ -196,6 +197,8 @@
          height: initial;
          width: initial;
          transition: all 0.5s ease 0s;
+         max-width: 100%;
+         max-height: 100%;
       }
       @media screen and (max-width: $lg) {
          padding: 0 0 50%;
@@ -289,8 +292,6 @@
          color: $redColor;
       }
    }
-   &__choice {
-   }
    &__footer {
       margin-top: auto;
       display: flex;
@@ -324,6 +325,7 @@
       line-height: math.div(20, 16) * 100%;
       min-height: 40px;
       font-weight: 500;
+      transition: background 0.2s ease 0s;
       &::before {
          display: none;
       }

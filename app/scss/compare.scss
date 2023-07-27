@@ -1,5 +1,6 @@
 .compare {
    overflow: hidden;
+   padding-bottom: 60px;
    &__body {
    }
    &__title {
@@ -35,7 +36,6 @@
       max-width: 181px;
    }
    &__cards {
-      // padding-left: 109px;
       width: 100%;
    }
 }
@@ -90,61 +90,30 @@
          }
       }
    }
-   &__slider-fixed {
-      position: absolute;
-      top: 0;
-      opacity: 0;
-      visibility: hidden;
-      max-width: 1170px;
-      padding: 0 15px;
-      @media screen and (max-width: $xl) {
-         left: 0;
+   &.fixed {
+      & .compare-cards__slider {
+         position: fixed;
+         top: 20px;
+         z-index: 20;
       }
-      & .card-product {
-         height: 100%;
-         &__title {
-            min-height: auto;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 2;
-            display: -webkit-box;
-         }
-         &__games {
-            flex-wrap: wrap;
-         }
+      & .compare-cards__wrapper {
+         max-width: 100%;
       }
       & .card-product__image {
          padding-bottom: 30%;
-         min-height: auto;
          min-height: 70px;
-         & img {
-            max-height: 100%;
-         }
       }
       & .games-product__item {
          width: 25px;
          height: 25px;
       }
-   }
-   &__wrapper-fixed {
-      margin: -20px;
-      max-width: 890px;
-      overflow: hidden;
-      padding: 20px;
-      position: relative;
-      @media screen and (max-width: $xl) {
-         max-width: none;
-      }
-   }
-   &.fixed {
-      & .compare-cards__slider-fixed {
-         display: block;
-         position: fixed;
-         top: 20px;
-         width: 100%;
-         opacity: 1;
-         visibility: visible;
-         right: initial;
-         z-index: 20;
+      & .card-product__button {
+         font-size: 0;
+         padding: 10px;
+         &::before {
+            display: block;
+            font-size: 20px;
+         }
       }
    }
    &__slider {
@@ -164,6 +133,8 @@
       margin: -20px;
       @media screen and (max-width: $xl) {
          max-width: none;
+         margin: -15px;
+         padding: 15px;
       }
    }
    &__body {
@@ -219,7 +190,25 @@
       text-align: center;
    }
 }
+.compare-values.common-data {
+   display: grid;
+   grid-template-columns: repeat(var(--items), var(--width));
+   transform: translateX(var(--x));
+   transition: transform 0.5s ease 0s;
+   gap: 30px;
+   @media screen and (max-width: $md) {
+      gap: 17px;
+   }
+}
+.compare-item {
+   &.hidden {
+      height: 0;
+   }
+}
 .common-compare {
+   &__wrapper {
+      overflow: hidden;
+   }
    &__item {
       display: flex;
       align-items: center;
@@ -267,7 +256,6 @@
       justify-content: center;
    }
 }
-
 .compare-compound {
    padding-bottom: 65px;
    @media screen and (max-width: $lg) {
@@ -369,41 +357,3 @@
    font-family: "Montserrat", sans-serif;
    line-height: math.div(24, 20) * 100%;
 }
-
-// TEST
-// .common-compare {
-//    &__titles {
-//       flex: 0 0 280px;
-//       & > * {
-//          border-bottom: 1px solid #bdbdbd;
-//          padding: 14px 0 14px 16px;
-//          position: relative;
-//          &::before {
-//             content: "";
-//             display: block;
-//             width: 100vw;
-//             height: 1px;
-//             position: absolute;
-//             right: 0;
-//             bottom: -1px;
-//             transform: translateX(100%);
-//             background: #bdbdbd;
-//          }
-//       }
-//    }
-//    &__values {
-//       & .slide {
-//          line-height: 150%;
-//          & .common-compare__value {
-//             padding: 14px 0;
-//          }
-//       }
-//    }
-//    &__item {
-//       padding: 0;
-//       align-items: flex-start;
-//       overflow: hidden;
-//    }
-// }
-// .compare__titles {
-// }

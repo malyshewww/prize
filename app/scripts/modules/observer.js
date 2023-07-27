@@ -1,4 +1,5 @@
 import { matches } from './matches.js';
+import { compareSwiper } from './sliders.js';
 /**
    Создаем intersection observer
    callback - callback-функция
@@ -50,20 +51,19 @@ if (collectShowBtn) {
       parent.classList.toggle('active');
    })
 }
-
 function compareSlider() {
    let compareData = document.querySelector('.compare-data');
    let compareCards = document.querySelector('.compare-cards');
+   let compareCardSlider = document.querySelector('.compare-cards__slider');
    if (compareCards) {
       let options = {
          root: null,
          threshold: 0,
-         // rootMargin: '0px 0px 0px 0px',
+         rootMargin: '0px 0px 0px 0px',
       }
       let observer = new IntersectionObserver(([entry]) => {
          const targetInfo = entry.boundingClientRect;
          const rootBoundsInfo = entry.rootBounds;
-         const targetInfoData = compareData.boundingClientRect;
          if (targetInfo.bottom < rootBoundsInfo.top || targetInfo.isIntersecting) {
             compareCards.classList.add('fixed');
          } else {
@@ -71,34 +71,32 @@ function compareSlider() {
          }
       }, options)
       observer.observe(compareCards)
-      // функция построения шкалы пересечения
-      // шкала представляет собой массив из 20 элементов, определяющих цвет контейнера
-      function buildThresholdList() {
-         let thresholds = []
-         let steps = 20
-
-         for (let i = 1.0; i <= steps; i++) {
-            let ratio = i / steps
-            thresholds.push(ratio)
-         }
-         return thresholds
-      }
    }
    if (compareData) {
-      let options = {
+      let optionsData = {
          root: null,
          threshold: 0,
-         rootMargin: '-300px 0px 0px 0px',
+         rootMargin: '-200px 0px 0px 0px',
       }
       let observerData = new IntersectionObserver(([entry]) => {
          const targetInfoData = entry.boundingClientRect;
          const rootBounds = entry.rootBounds;
          if (targetInfoData.bottom < rootBounds.top || targetInfoData.isIntersecting) {
-            compareCards.classList.remove('fixed');
+            compareCards.style.cssText = `
+               opacity: 0;
+               visibility: hidden;
+               pointer-events: none;
+            `;
+            compareSwiper.update();
          } else if (rootBounds.bottom > targetInfoData.bottom) {
-            compareCards.classList.add('fixed');
+            compareCards.style.cssText = `
+               opacity: 1;
+               visibility: visible;
+               pointer-events: all;
+            `;
+            compareSwiper.update();
          }
-      }, options)
+      }, optionsData)
       observerData.observe(compareData)
    }
 }
