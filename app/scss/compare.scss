@@ -91,13 +91,15 @@
       }
    }
    &.fixed {
+      & .compare-cards__wrapper {
+         @media screen and (max-width: $xl) {
+            max-width: 100%;
+         }
+      }
       & .compare-cards__slider {
          position: fixed;
          top: 20px;
          z-index: 20;
-      }
-      & .compare-cards__wrapper {
-         max-width: 100%;
       }
       & .card-product__image {
          padding-bottom: 30%;
@@ -110,6 +112,11 @@
       & .card-product__button {
          font-size: 0;
          padding: 10px;
+         display: grid;
+         place-items: center;
+         width: 40px;
+         height: 40px;
+         border-radius: 50%;
          &::before {
             display: block;
             font-size: 20px;
@@ -144,6 +151,7 @@
    }
 }
 .compare-checkbox {
+   font-family: "Montserrat", sans-serif;
    & .real-checkbox:checked + .custom-checkbox {
       background-color: #5ecbad;
       border: 1px solid transparent;
@@ -337,6 +345,8 @@
 .compare-compound-result {
    &__item {
       flex-shrink: 0;
+      display: flex;
+      justify-content: center;
    }
    &__body {
       display: grid;

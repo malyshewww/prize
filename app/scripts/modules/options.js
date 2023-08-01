@@ -30,13 +30,22 @@ function checkOption(newObj, elem) {
 	})
 		.then((response) => response.json())
 		.then((result) => {
+			// console.log(result);
 			let { product_id: itemId, compound_id: c_id } = newObj;
 			for (const key in result) {
 				const element = result[key];
-				if (element['id'] == itemId && element['compound'] == c_id && element['action'] == 'true') {
-					changeStateElements('delete-compare', 'Удалить из сравнения', 'add-compare--active', elem);
+				if (element['id'] == itemId && element['compound'] === c_id && element['action'] === 'true') {
+					elem.setAttribute('data-compare', 'delete-compare');
+					elem.textContent = 'Удалить из сравнения';
+					elem.classList.add('add-compare--active');
+					elem.setAttribute("title", 'Удалить из сравнения');
+					// changeStateElements('delete-compare', 'Удалить из сравнения', 'add-compare--active', elem);
 				} else {
-					changeStateElements('add-compare', 'В сравнение', 'add-compare--active', elem);
+					elem.setAttribute('data-compare', 'add-compare');
+					elem.textContent = 'В сравнение';
+					elem.classList.remove('add-compare--active');
+					elem.setAttribute("title", 'В сравнение');
+					// changeStateElements('add-compare', 'В сравнение', 'add-compare--active', elem);
 				}
 			}
 			// console.log('success', result);
