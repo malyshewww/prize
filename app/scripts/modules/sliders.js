@@ -48,8 +48,6 @@ productSliders.forEach((el) => {
 // COMPARE SLIDER
 const comparePage = document.querySelector('.compare');
 export let compareSwiper;
-let commonSwiper;
-let fixedSwiper;
 if (comparePage) {
 	const swiperParams = {
 		speed: 500,

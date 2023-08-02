@@ -693,14 +693,17 @@
       justify-content: center;
       align-items: center;
       padding: 30px;
-      transform: scale(0) translate3d(-50%, -50%, 0);
+      transform: scale(0) translate(-50%, -50%);
       opacity: 0;
       visibility: hidden;
       transform-origin: 0 0;
-      transition: transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s, visibility 0.4s ease 0.1s;
+      transition:
+         transform 0.4s ease 0s,
+         opacity 0.4s ease 0s,
+         visibility 0.4s ease 0s;
       z-index: 5;
-      &.show {
-         transform: scale(1) translate3d(-50%, -50%, 0);
+      .card-compound__images:hover & {
+         transform: scale(1) translate(-50%, -50%);
          opacity: 1;
          visibility: visible;
       }

@@ -194,18 +194,15 @@ function createImageCompoundTooltip() {
 		[...compoundImages].forEach((item) => {
 			const currentImage = item.querySelector('.card-compound__image img');
 			// const imgParent = item.closest('.card-compound__images');
-			setTimeout(() => {
-				item.addEventListener("mouseover", (e) => {
-					item.appendChild(picwrap);
-					bigpic.src = currentImage.src;
-					bigpic.alt = currentImage.alt;
-					picwrap.classList.add('show');
-				})
-
-				item.addEventListener("mouseout", (e) => {
-					picwrap.classList.remove('show');
-				})
-			}, delay)
+			item.addEventListener("mouseover", (e) => {
+				item.appendChild(picwrap);
+				bigpic.src = currentImage.src;
+				bigpic.alt = currentImage.alt;
+				item.classList.add('show');
+			})
+			item.addEventListener("mouseout", (e) => {
+				item.classList.remove('show');
+			})
 		})
 	}
 }
