@@ -16,14 +16,6 @@ if (stepper) {
                   self.value = 1;
                }
             }
-            // if (el.classList.contains('collect-quantity')) {
-            //    if (self.value.substring(0, 1) == "0") {
-            //       self.value = stepperInput.value.replace(/^0+/g, "");
-            //    }
-            //    if (self.value == "0" || self.value == "") {
-            //       self.value = stepperInput.value.replace("", "0");
-            //    }
-            // }
             count = stepperInput.value;
             conditionClasses();
          }

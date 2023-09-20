@@ -1,5 +1,4 @@
 // HashChange Event for Tabs
-let galleryHash = window.location.hash.substring(1) + 'gallery';
 window.addEventListener('hashchange', getHash);
 function getHash(event) {
    let hash = window.location.hash;

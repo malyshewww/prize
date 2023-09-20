@@ -1,3 +1,4 @@
+// Старый вариант выбора опций в превью товара
 document.addEventListener('click', productActions);
 
 function productActions(event) {

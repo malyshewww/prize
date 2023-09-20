@@ -1,3 +1,4 @@
+// Скрипт маски для телефона
 window.addEventListener("DOMContentLoaded", function () {
    [].forEach.call(document.querySelectorAll('[data-tel]'), function (input) {
       var keyCode;

@@ -328,8 +328,6 @@ function formHandlerModal(formId, path) {
                         inputAgreement.classList.add('error');
                         // inputAgreement.setAttribute('title', result.message.trim());
                      }
-                     if (result.rating) {
-                     }
                   }
                   buttonSubmit.removeAttribute('disabled');
                   buttonSubmit.classList.remove('disabled');

@@ -176,105 +176,76 @@ input.error + .custom-checkbox {
 @import "common";
 
 // Стили для диапазон Цены и Веса на странице "Категории"
-@import "range-slider";
+@import "components/range-slider";
 
 // Подключение стилей отдельных блоков и страниц
-@import "header";
-
+@import "components/header";
 // Стили для модальных окон
-@import "graph-modal.scss";
-@import "modals";
-
+// @import "graph-modal.scss";
+@import "components/modals";
 // Стили для Аккордеона
-@import "accordeon";
+@import "components/accordeon";
+// Секция "Получить консультацию"
+@import "components/consultation";
+// Стили для хлебных крошек
+@import "components/breadcrumbs";
+// Стили для Пагинации
+@import "components/pagination";
 
 // Стили отдельных секций на "Главной странице"
-@import "banner";
-@import "advantages";
-@import "prizes";
-@import "package";
-@import "nuts";
-@import "products";
-@import "factories";
-@import "steps";
-@import "sale";
-@import "retail";
-
+@import "sections/banner";
+@import "sections/advantages";
+@import "sections/prizes";
+@import "sections/package";
+@import "sections/nuts";
+@import "sections/products";
+@import "sections/factories";
+@import "sections/steps";
+@import "sections/sale";
+@import "sections/retail";
 //Блок "delivery" на главной + Страница "Доставка и оплата"
-@import "delivery";
+@import "sections/delivery";
 
-// Секция "Получить консультацию"
-@import "consultation";
-// Секция "Популярные товары
-@import "popular";
-
-@import "footer";
 // Подключение стилей отдельных страниц
-
 // Страница "Карточка товара"
-@import "card";
-
+@import "pages/card";
 // Страница "Сравнение товаров"
-@import "compare";
-
+@import "pages/compare";
 // Страница "О компании"
-@import "about";
-
+@import "pages/about";
 // Страница "Сертификаты"
-@import "certificate";
-
+@import "pages/certificate";
 // Страница "FAQ"
-@import "faq";
-
+@import "pages/faq";
 // Страница "Вакансии"
-@import "vacancy";
-
+@import "pages/vacancy";
 // Страница "Отзывы"
-@import "reviews";
-
-// Страница "Отзывы"
-@import "reviews";
-
+@import "pages/reviews";
 // Страница "Корпоративные клиенты"
-@import "clients";
-
+@import "pages/clients";
 // Страница "Контакты"
-@import "contacts";
-
+@import "pages/contacts";
 // Страница "Корзина"
-@import "cart";
-
+@import "pages/cart";
 // Страница "Оформление заказа"
-@import "order";
-
+@import "pages/order";
 // Страница "Соберите подарок"
-@import "collect";
-
+@import "pages/collect";
 // Страница "Категории"
-@import "category";
-
+@import "pages/category";
 // Страница "Избранное"
-@import "favorites";
-
+@import "pages/favorites";
 // Страница "Текстовая" (Политика конфиденциальности, Обрабокта персональных данных)
-@import "textpage";
-
+@import "pages/textpage";
 // Страница "Главная"
-@import "home";
-
-// Стили для хлебных крошек
-@import "breadcrumbs";
-
-// Стили для Пагинации
-@import "pagination";
-
-// Стили для галереи
-// @import "lightgallery";
-@import "fancybox";
-
+@import "pages/home";
 // Стили для Страницы "Карта сайта"
-@import "sitemap";
+@import "pages/sitemap";
+// @import "test";
 
-@import "test";
+// Секция "Популярные товары
+@import "components/popular";
+// Стили для подвала сайта
+@import "components/footer";
 
 //</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================

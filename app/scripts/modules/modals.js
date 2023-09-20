@@ -14,7 +14,6 @@ document.addEventListener('click', openModal);
 function openModal(event) {
 	const target = event.target;
 	const modals = document.querySelectorAll('[data-modal]');
-	// console.log(target);
 	if (target.closest('[data-modal-button]')) {
 		event.preventDefault();
 		const modalId = target.dataset.modalButton;

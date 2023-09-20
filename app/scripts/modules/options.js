@@ -1,3 +1,4 @@
+// Опции для выбора состава в превью товара
 document.addEventListener('click', productOptions);
 function getCompoundProduct(elem) {
 	let parent = elem.closest(".shk-item");
@@ -120,7 +121,6 @@ function productOptions(event) {
 			setCheckedInput("input.real-radio", ".select-group__label", parent);
 			checkOption(newObj, compareBtn);
 		}
-
 		if (target.closest('.dropdown-list .select-group__item')) {
 			let self = target;
 			let parent = self.closest('[data-select]');
@@ -165,8 +165,8 @@ function productOptions(event) {
 	}
 }
 function setPrice(resultPrice, currentPrice, productPrice) {
-	resultPrice.value = currentPrice;
-	const currentPriceStr = currentPrice + " ₽";
+	resultPrice.value = Number(currentPrice);
+	const currentPriceStr = `${currentPrice} ₽`;
 	saveValuesPriceToHTML(productPrice, currentPriceStr);
 }
 function setWeight(resultWeight, dataWeight) {
@@ -179,10 +179,10 @@ function setCompound(resultCompound, resultCompoundGet, compoundTitleData, compo
 }
 function setSalePrices(salePrice, resultSale, resultPrice, resultDiscount, productOldPrice, currentPrice) {
 	if (productOldPrice) {
-		const salePriceStr = salePrice + " ₽";
-		resultSale.value = salePrice;
-		resultPrice.value = currentPrice;
-		resultDiscount.value = salePrice - currentPrice;
+		const salePriceStr = `${salePrice} ₽`;
+		resultSale.value = Number(salePrice);
+		resultPrice.value = Number(currentPrice);
+		resultDiscount.value = Number(salePrice - currentPrice);
 		saveValuesPriceToHTML(productOldPrice, salePriceStr);
 	}
 }

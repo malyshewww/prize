@@ -2,7 +2,6 @@
 import './libs/jquery.min.js';
 
 // Увеличенные изображения в карточке товара
-// import "./libs/jquery.fancybox.min.js";
 import fslightbox from "fslightbox";
 
 // Подключаем слайдер Swiper
@@ -30,7 +29,7 @@ import "./modules/spollers.js";
 // import "./modules/choice.js";
 import "./modules/options.js";
 
-// Подключение модуля Observer
+// Подключение модуля Observer (Наблюдателя)
 import "./modules/observer.js";
 
 // Подключение модуля Формы
@@ -45,23 +44,14 @@ import "./modules/dynamic_adapt.js";
 // Одиночные действия на отдельных элементах
 import * as single from "./modules/single-actions.js";
 
-// Инициализация галереи
-// import "./modules/galleries";
-
 // Модуль яндекс карты
 import "./modules/map.js";
 
 // Падающий снег
 import "./modules/snow.js";
 
-// Модуль Избранных товаров
-// import "./modules/favorites.js";
-
 // Модуль Для скачивания состава подарка + добавление данных в скрытый инпут в json формате
 import "./modules/download-compound.js";
-
-// Сравнение
-// import "./modules/compare.js";
 
 /* Проверка мобильного браузера */
 let isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -98,45 +88,3 @@ function addTouchClass() {
 	}
 }
 addTouchClass();
-
-// function syncScroll(el1, el2) {
-// 	let $el1 = $(el1);
-// 	let $el2 = $(el2);
-// 	let forcedScroll = false;
-// 	$el1.onscroll = function () {
-// 		performScroll($el1, $el2);
-// 	};
-// 	$el2.onscroll = function () {
-// 		performScroll($el2, $el1);
-// 	};
-// 	function performScroll($scrolled, $toScroll) {
-// 		if (forcedScroll) return (forcedScroll = false);
-// 		setScrollTopFromPercent($toScroll, $scrolled.scrollLeft() / ($scrolled[0].scrollWidth - $scrolled.outerWidth()));
-// 	}
-// 	function setScrollTopFromPercent($el, percent) {
-// 		forcedScroll = true;
-// 		$el.scrollLeft(percent * ($el[0].scrollWidth - $el.outerWidth()));
-// 	}
-// }
-// syncScroll($('.compare-cards__wrapper'), $('.common-compare__values'));
-
-// const boxSlider = document.querySelector('.compare-cards');
-// if (boxSlider) {
-// 	const cardSlider = document.querySelector('.compare-cards__slider')
-// 	const fixedSlider = document.createElement('div');
-// 	fixedSlider.className = "compare-cards__slider-fixed";
-// 	fixedSlider.setAttribute('id', "fixed-slider")
-// 	const sliderClone = cardSlider.cloneNode(true);
-// 	fixedSlider.appendChild(sliderClone)
-// 	boxSlider.insertAdjacentElement('afterbegin', fixedSlider);
-// 	const fixedSliderWrapper = fixedSlider.querySelector('.compare-cards__wrapper');
-// 	const fixedSliderBody = fixedSlider.querySelector('.compare-cards__body');
-// 	fixedSliderWrapper.classList.replace('compare-cards__wrapper', 'compare-cards__wrapper-fixed');
-// 	fixedSliderWrapper.classList.add('compare-body');
-// 	fixedSliderBody.classList.replace('compare-cards__body', 'compare-values');
-// 	const fixedSliderItems = fixedSliderBody.querySelectorAll('.products__card');
-// 	fixedSliderItems.forEach((item) => {
-// 		item.classList.add('compare-item');
-// 	})
-// }
-

@@ -16,10 +16,6 @@ if (filterSliders) {
 		const valueEndNumber = valueEnd.dataset.valueEnd;
 		const valueGetStardNumber = valueGetStart.dataset.getStart;
 		const valueGetEndNumber = valueGetEnd.dataset.getEnd;
-		// const priceStart = inputGroupItem.getElementById('price-start');
-		// const priceEnd = inputGroupItem.getElementById('price-end');
-		// const weightStart = inputGroupItem.getElementById('weight-start');
-		// const weightEnd = inputGroupItem.getElementById('weight-end');
 		noUiSlider.create(rangeSlider, {
 			start: [valueGetStardNumber, valueGetEndNumber],
 			connect: true,

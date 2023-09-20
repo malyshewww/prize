@@ -53,15 +53,6 @@ parameters.forEach((item) => {
 })
 
 // Menu header category
-// const iconMenu = document.querySelector('.burger-icon-wrap');
-// const menuBody = document.querySelector('.header-menu');
-// if (iconMenu) {
-// 	iconMenu.addEventListener("click", (event) => {
-// 		event.currentTarget.classList.toggle('active');
-// 		menuBody.classList.toggle('show-menu');
-// 		document.body.classList.toggle('lock');
-// 	});
-// }
 let unlock = true;
 let iconMenu = document.querySelector(".burger-icon-wrap");
 if (iconMenu != null) {
@@ -75,12 +66,6 @@ if (iconMenu != null) {
 		}
 	});
 };
-// function menu_close() {
-// 	let iconMenu = document.querySelector(".burger-icon-wrap");
-// 	let menuBody = document.querySelector(".header-menu");
-// 	iconMenu.classList.remove("_active");
-// 	menuBody.classList.remove("_active");
-// }
 export function body_lock(delay) {
 	let body = document.querySelector("body");
 	if (body.classList.contains('lock')) {
@@ -158,14 +143,6 @@ if (pageCategory) {
 		document.body.classList.remove('lock');
 	});
 }
-
-// document.addEventListener('click', preventLink)
-// // paginationLInks
-// function preventLink(event) {
-// 	if (event.target.closest('.pagination__link')) {
-// 		event.preventDefault();
-// 	}
-// }
 
 // Search header
 const mainHeaderSearch = document.querySelector('.main-header__search');
@@ -267,11 +244,6 @@ if (pageCategory) {
 			}
 		}
 	}
-	// function unchecked(inputs, targetId) {
-	// 	for (let i = 0; i < inputs.length; i++) {
-	// 		inputs[i].checked = false;
-	// 	}
-	// }
 
 	function nullCheckedNoCompound(inputNoCompound) {
 		const input = document.getElementById(inputNoCompound);
@@ -378,12 +350,5 @@ if (pageCategory) {
 	}
 	resetFilters();
 }
-
-// const pathname = window.location.pathname;
-// // Указываем относительный путь файла
-// const url = new URL(window.location.href);
-// const urlParamCompound = url.searchParams.get('compound');
-// const urlParamWeight = url.searchParams.get('weight');
-// console.log(urlParamCompound);
 
 export { createImageCompoundTooltip }

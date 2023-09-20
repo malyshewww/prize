@@ -1,3 +1,4 @@
+// Подключение api yandex map
 (function () {
 	if (typeof ymaps === 'undefined') {
 		return;

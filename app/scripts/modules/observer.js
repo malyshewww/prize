@@ -16,6 +16,7 @@ let mql = window.matchMedia("(orientation: portrait)");
 // Прослушка события изменения ориентации
 mql.addEventListener('resize', matches);
 
+// Наблюдатель за нижним блоком с результатом на странице Калькулятора
 function observer() {
    const collect = document.getElementById('collect-footer');
    if (collect) {
@@ -51,6 +52,7 @@ if (collectShowBtn) {
       parent.classList.toggle('active');
    })
 }
+// Наблюдатель за карточками товара на странице Сравнения
 function compareSlider() {
    let compareData = document.querySelector('.compare-data');
    let compareCards = document.querySelector('.compare-cards');
