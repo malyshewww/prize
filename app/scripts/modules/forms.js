@@ -380,22 +380,34 @@ const radioBtnTransport = document.getElementById('transport');
 const radioBtnPickup = document.getElementById('pickup');
 const radioBtnCourier = document.getElementById('courier');
 const companyList = document.getElementById('company-order');
+const courierItem = document.querySelector('.cart-result__courier');
+const orderPage = document.querySelector('.order-page');
+if (orderPage) courierItem?.classList.add('hidden');
 if (radioBtnTransport) {
    radioBtnTransport.addEventListener('change', (event) => {
+      if (orderPage) courierItem?.classList.add('hidden');
       companyList.classList.remove('hidden');
    })
 }
 if (radioBtnPickup) {
    radioBtnPickup.addEventListener('change', (event) => {
+      if (orderPage) courierItem?.classList.add('hidden');
       companyList.classList.add('hidden');
    })
 }
 if (radioBtnCourier) {
    radioBtnCourier.addEventListener('change', (event) => {
+      if (orderPage) {
+         showDeliveryBlock();
+      }
       companyList.classList.add('hidden');
    })
 }
-
+function showDeliveryBlock() {
+   if (courierItem && courierItem.classList.contains('hidden')) {
+      courierItem.classList.remove('hidden');
+   }
+}
 const companyItems = document.querySelectorAll('.company-order__item')
 const companyNameInput = document.querySelector('input[name="namecompany"]');
 if (companyItems) {

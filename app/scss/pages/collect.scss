@@ -43,7 +43,7 @@
 	bottom: 0px;
 	border-radius: 10px;
 	box-shadow: none;
-	@media screen and (max-width: $md) {
+	@media screen and (max-width: $pc) {
 		background-size: cover;
 	}
 }
